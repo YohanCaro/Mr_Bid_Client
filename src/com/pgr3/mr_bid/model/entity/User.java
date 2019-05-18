@@ -1,6 +1,7 @@
 package com.pgr3.mr_bid.model.entity;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class User {
 	
@@ -11,6 +12,8 @@ public class User {
 	private LocalDate birthDate;
 	private boolean isFemale;
 	private CreditCard creditCard;
+	private ArrayList<Bidding> myBiddings;
+	private ArrayList<Bidding> myParcitipations;
 	
 	public User(String firstName, String lastName, String email, String password, LocalDate birthDate, boolean isFemale,
 			CreditCard creditCard) {
