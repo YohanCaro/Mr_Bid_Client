@@ -9,13 +9,13 @@ public class User {
 	private String lastName;
 	private String email;
 	private String password;
-	private LocalDate birthDate;
+	private BidDate birthDate;
 	private boolean isFemale;
 	private CreditCard creditCard;
 	private ArrayList<Bidding> myBiddings;
 	private ArrayList<Bidding> myParcitipations;
 	
-	public User(String firstName, String lastName, String email, String password, LocalDate birthDate, boolean isFemale,
+	public User(String firstName, String lastName, String email, String password, BidDate birthDate, boolean isFemale,
 			CreditCard creditCard) {
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -42,7 +42,7 @@ public class User {
 		return password;
 	}
 
-	public LocalDate getBirthDate() {
+	public BidDate getBirthDate() {
 		return birthDate;
 	}
 
