@@ -31,7 +31,7 @@ public class JPanelPrincipalLogin extends JPanel{
     private JPasswordField jpassword;
 
 
-	ImageIcon imageIcon;
+	ImageIcon imageIcon, imageIcon2;
 	Icon icon;
 
 	public JPanelPrincipalLogin() {
