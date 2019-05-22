@@ -2,11 +2,11 @@ package comminication;
 
 import java.io.IOException;
 
-import com.pgr3.mr_bid.communication.Client;
-import com.pgr3.mr_bid.communication.Commands;
-import com.pgr3.mr_bid.model.entity.BidDate;
-import com.pgr3.mr_bid.model.entity.User;
-import com.pgr3.mr_bid.utilities.Constants;
+import com.prg3.mr_bid.communication.Client;
+import com.prg3.mr_bid.communication.Commands;
+import com.prg3.mr_bid.model.entity.BidDate;
+import com.prg3.mr_bid.model.entity.User;
+import com.prg3.mr_bid.utilities.Constants;
 
 public class TestClient {
 	

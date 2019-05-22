@@ -1,6 +1,6 @@
 package view;
 
-import com.pgr3.mr_bid.view.JFrameMain;
+import com.prg3.mr_bid.view.JFrameMain;
 
 public class MainTest {
 	

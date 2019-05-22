@@ -1,6 +1,6 @@
 package view;
 
-import com.pgr3.mr_bid.view.JDialogAddUser;
+import com.prg3.mr_bid.view.JDialogAddUser;
 
 public class Form {
 

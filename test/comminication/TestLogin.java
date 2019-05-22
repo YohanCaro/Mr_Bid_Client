@@ -2,11 +2,11 @@ package comminication;
 
 import java.util.Scanner;
 
-import com.pgr3.mr_bid.model.entity.BidDate;
-import com.pgr3.mr_bid.model.entity.BidTime;
-import com.pgr3.mr_bid.model.entity.Product;
-import com.pgr3.mr_bid.model.entity.TypeProduct;
-import com.pgr3.mr_bid.model.manager.Manager;
+import com.prg3.mr_bid.model.entity.BidDate;
+import com.prg3.mr_bid.model.entity.BidTime;
+import com.prg3.mr_bid.model.entity.Product;
+import com.prg3.mr_bid.model.entity.TypeProduct;
+import com.prg3.mr_bid.model.manager.Manager;
 
 public class TestLogin {
 	

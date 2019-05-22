@@ -7,7 +7,7 @@ import javax.swing.Icon;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 
-import com.pgr3.mr_bid.view.JPanelMainProduct;
+import com.prg3.mr_bid.view.JPanelMainProduct;
 
 public class Product {
 

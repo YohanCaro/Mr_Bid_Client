@@ -2,7 +2,7 @@ package view;
 
 import javax.swing.JFrame;
 
-import com.pgr3.mr_bid.view.JPanelLicencia;
+import com.prg3.mr_bid.view.JPanelLicencia;
 
 public class Licencia{
 	public static void main(String[] args) {

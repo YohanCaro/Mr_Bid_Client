@@ -7,8 +7,8 @@ import javax.swing.Icon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import com.pgr3.mr_bid.view.JPanelOptionMenu;
-import com.pgr3.mr_bid.view.JPanelPrincipalLogin;
+import com.prg3.mr_bid.view.JPanelOptionMenu;
+import com.prg3.mr_bid.view.JPanelPrincipalLogin;
 
 public class Login {
 
