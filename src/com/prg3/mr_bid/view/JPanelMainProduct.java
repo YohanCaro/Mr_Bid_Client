@@ -30,6 +30,8 @@ public class JPanelMainProduct extends JPanel {
 	private Icon icon;
 
 	public JPanelMainProduct() {
+		JpanelImage();
+
 		this.jPanelSouth = new JPanel();
 		this.jPanelizqImage = new JPanel();
 		this.jPanelizqInfo = new JPanel();
@@ -52,7 +54,6 @@ public class JPanelMainProduct extends JPanel {
 		sizePanel();
 		card2();
 
-		JpanelImage();
 		init();
 	}
 
@@ -68,7 +69,7 @@ public class JPanelMainProduct extends JPanel {
 	}
 
 	private void JpanelImage() {
-		imageIcon = new ImageIcon(getClass().getResource("/images/tv.jpg"));
+		imageIcon = new ImageIcon(getClass().getResource("data/images/publicidad1.png"));
 		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(350, 350, Image.SCALE_AREA_AVERAGING));
 		jLabel.setIcon(icon);
 		jPanelizqImage.add(jLabel);
