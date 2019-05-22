@@ -63,5 +63,12 @@ public class Bidding {
 	public User getOwner() {
 		return owner;
 	}
+	
+	@Override
+	public String toString() {
+		return "Nombre de publicacion: " + biddingName + ", tipo: " + typeProduct.name() + 
+				"\nProducto: " + product.toString() + "\nTiempo de publicacion: " + publicationTime.toString() 
+				+ "\nTiempo de inico: " + initTime.toString() + "\nTiempo final: " + finishTime.toString();
+	}
 
 }

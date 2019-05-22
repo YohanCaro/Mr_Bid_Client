@@ -4,20 +4,25 @@ import java.util.Date;
 
 public class BidTime {
 	
-	private Date date;
+	private BidDate date;
 	private short hours;
 	
-	public BidTime(Date date, short hours) {
+	public BidTime(BidDate date, short hours) {
 		this.date = date;
 		this.hours = hours;
 	}
 	
-	public Date getDate() {
+	public BidDate getDate() {
 		return date;
 	}
 	
 	public short getHours() {
 		return hours;
+	}
+	
+	@Override
+	public String toString() {
+		return date.getDateString() + " " + hours;
 	}
 
 }

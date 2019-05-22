@@ -16,6 +16,18 @@ public class BidDate {
 		this((short)day, (short) month, (short)year);
 	}
 	
+	public BidDate(String date) {
+		this(stringToDate(date)[0], stringToDate(date)[1], stringToDate(date)[2]);
+	}
+	
+	public static short[] stringToDate(String date) {
+		short[] shortDate = new short[3];
+		for (int i = 0; i < shortDate.length; i++) {
+			shortDate[i] = Short.parseShort(date.split("/")[i]);
+		}
+		return shortDate;
+	}
+	
 	public short getDay() {
 		return day;
 	}
@@ -27,7 +39,7 @@ public class BidDate {
 	public short getYear() {
 		return year;
 	}
-	
+		
 	public String getDateString() {
 		return day + "/" + month + "/" + year;
 	}

@@ -1,6 +1,5 @@
 package com.pgr3.mr_bid.model.entity;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class User {
@@ -24,6 +23,8 @@ public class User {
 		this.birthDate = birthDate;
 		this.isFemale = isFemale;
 		this.creditCard = creditCard;
+		
+		myBiddings = new ArrayList<>();
 	}
 
 	public String getFirstName() {
@@ -52,6 +53,20 @@ public class User {
 
 	public CreditCard getCreditCard() {
 		return creditCard;
+	}
+	
+	public ArrayList<Bidding> getMyBiddings() {
+		return myBiddings;
+	}
+	
+	public ArrayList<Bidding> getMyParcitipations() {
+		return myParcitipations;
+	}
+	
+	@Override
+	public String toString() {
+		return "Nombre y apellido: " + firstName + " email " + email +
+				"\nFecha de nacimiento: " + birthDate.getDateString() + " genero " + (isFemale?"Femenino":"Masculino");
 	}
 
 }

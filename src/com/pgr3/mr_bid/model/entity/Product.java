@@ -13,6 +13,11 @@ public class Product {
 		this.description = description;
 		this.images = images;
 	}
+	
+	public Product(String nameProduct, String description) {
+		this.nameProduct = nameProduct;
+		this.description = description;
+	}
 
 	public String getNameProduct() {
 		return nameProduct;
@@ -24,6 +29,11 @@ public class Product {
 
 	public ArrayList<String> getImages() {
 		return images;
+	}
+	
+	@Override
+	public String toString() {
+		return "Nombre: " + nameProduct + ", descripcion: " + description;
 	}
 	
 }

@@ -17,11 +17,13 @@ public class TestClient {
 			client.initClient();
 			client.sendMessage(Commands.LOGIN, user);
 			try {
-				Thread.sleep(500);
+				Thread.sleep(200);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 			System.out.println(Constants.user.getCreditCard().getCardholderName());
+			System.out.println(Constants.user.getBirthDate().getDateString());
+			client.close();
 		} catch (IOException e) {
 			System.err.println("Error al crear el cliente");
 			e.printStackTrace();
