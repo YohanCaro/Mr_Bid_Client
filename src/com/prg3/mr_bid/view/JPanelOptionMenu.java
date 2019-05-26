@@ -34,7 +34,6 @@ public class JPanelOptionMenu extends JPanel {
 
 	public JPanelOptionMenu() {
 		init();
-		this.repaint();
 	}
 
 	private void init() {
@@ -52,7 +51,7 @@ public class JPanelOptionMenu extends JPanel {
 		jButtonEnglish.setBackground(new Color(48, 48, 48));
 		// jButtonEnglish.setActionCommand(Commands.C_ENGLISH.name());
 		// jButtonEnglish.addActionListener(control);
-		imageIcon = new ImageIcon("data/images/carro.png");
+		imageIcon = new ImageIcon(getClass().getResource("/images/carro.png"));
 		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(70, 70, Image.SCALE_AREA_AVERAGING));
 		jButtonEnglish.setIcon(icon);
 
@@ -60,7 +59,7 @@ public class JPanelOptionMenu extends JPanel {
 		jButtonSpanish.setBackground(new Color(48, 48, 48));
 		// jButtonSpanish.setActionCommand(Commands.C_SPANISH.name());
 		// jButtonSpanish.addActionListener(control);
-		imageIcon = new ImageIcon("data/images/notificacion.png");
+		imageIcon = new ImageIcon(getClass().getResource("/images/notificacion.png"));
 		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(70, 70, Image.SCALE_AREA_AVERAGING));
 		jButtonSpanish.setIcon(icon);
 
@@ -68,7 +67,7 @@ public class JPanelOptionMenu extends JPanel {
 		// jButtonLogin.setActionCommand(Commands.SHOW_LOGIN.name());
 		// jButtonLogin.addActionListener(control);
 		jButtonLogin.setBackground(new Color(48, 48, 48));
-		imageIcon = new ImageIcon("data/images/usuario.png");
+		imageIcon = new ImageIcon(getClass().getResource("/images/usuario.png"));
 		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(70, 70, Image.SCALE_AREA_AVERAGING));
 		jButtonLogin.setIcon(icon);
 

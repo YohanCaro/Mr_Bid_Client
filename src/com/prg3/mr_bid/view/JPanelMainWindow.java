@@ -55,7 +55,7 @@ public class JPanelMainWindow extends JPanel {
 	}
 
 	private void JpanelImage() {
-		imageIcon = new ImageIcon("data/images/publicidad1.png");
+		imageIcon = new ImageIcon(getClass().getResource("/images/publicidad1.png"));
 		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(1150, 300, Image.SCALE_AREA_AVERAGING));
 		jLabel.setIcon(icon);
 		jPanelMainImage.add(jLabel);
@@ -81,6 +81,8 @@ public class JPanelMainWindow extends JPanel {
 		jPanelCenter.add(jPanelEspacio, BorderLayout.CENTER);
 
 		jPanelEspacio.setLayout(new GridLayout(10, 1));
+		jPanelEspacio.add(new JPanelCard("Computador LG", "Publico","No inicida", "7;80", "/images/lg.jpg"));
+		jPanelEspacio.add(new JPanelCard("Iphone X", "Publico"," Inicida", "8;80", "/images/iphone.png"));
 		jPanelEspacio.add(new JPanelCard());
 		jPanelEspacio.add(new JPanelCard());
 		jPanelEspacio.add(new JPanelCard());

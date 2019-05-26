@@ -15,6 +15,7 @@ public class JFrameMainAddProduc extends JFrame {
 	private JScrollPane jScrollPane;
 	private JPanelMainAddProduct jPanelMain;
 	Icon icon;
+
 	
 	public JFrameMainAddProduc() {
 		this.jScrollPane = new JScrollPane();

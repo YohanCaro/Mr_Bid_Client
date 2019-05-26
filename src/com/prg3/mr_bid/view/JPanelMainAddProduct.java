@@ -7,11 +7,14 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
 
+import javax.swing.ButtonGroup;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -21,13 +24,16 @@ import com.toedter.calendar.JDateChooser;
 public class JPanelMainAddProduct extends JPanel {
 
 	private JPanel jPanelNorth, jPanelSouth, jPanelWest, jPanelEast, jPanelCenter, jPanelCard1, jPanelCard2,
-			jPanelCard3, jPanelCard4, jPanelCard5;
+			jPanelCard3;
 	private JLabel jLabel;
 	private ImageIcon imageIcon;
 	private Icon icon;
 	private JLabel jLabelName;
 	private JTextField jTextFieldName;
 	private JDateChooser jCalendar, jCalendar2, jCalendar3;
+	private JRadioButton jRadioButton, jRadioButton2, jRadioButtonPublic, jRadioButtonPrivate;
+	private ButtonGroup buttonGroup, buttonGroup2;
+	private JSpinner jSpinnerPublicatedHour, jSpinnerStartHour, jSpinnerFinishHour;
 
 	public JPanelMainAddProduct() {
 		this.jPanelNorth = new JPanel();
@@ -42,8 +48,6 @@ public class JPanelMainAddProduct extends JPanel {
 		Card1();
 		Card2();
 		Card3();
-		Card4();
-		Card5();
 
 		init();
 	}
@@ -100,9 +104,7 @@ public class JPanelMainAddProduct extends JPanel {
 
 		jPanelCard2.add(createLabel("FECHA DE LA PUBLICACION", 20, 60, 200, 30));
 		jPanelCard2.add(createLabel("FECHA DE INICIO", 20, 120, 200, 30));
-		// jPanelCard2.add(createTextField("FECHA DE INICIO", 200, 120, 200, 30));
 		jPanelCard2.add(createLabel("FECHA DE CIERRE", 20, 180, 200, 30));
-		// jPanelCard2.add(createTextField("FECHA DE CIERRE", 200, 180, 200, 30));
 
 		jCalendar = new JDateChooser();
 		jCalendar.setBounds(200, 60, 200, 30);
@@ -115,33 +117,68 @@ public class JPanelMainAddProduct extends JPanel {
 		jCalendar3 = new JDateChooser();
 		jCalendar3.setBounds(200, 180, 200, 30);
 		jPanelCard2.add(jCalendar3);
-		
-		
 
 		jPanelCard2.add(createLabel("HORA DE LA PUBLICACION", 600, 60, 200, 30));
-		jPanelCard2.add(createTextField("HORA DE LA PUBLICACION", 790, 60, 200, 30));
+		jSpinnerPublicatedHour = new JSpinner();
+		jSpinnerPublicatedHour.setBounds(790, 60, 200, 30);
+		jPanelCard2.add(jSpinnerPublicatedHour);
+
 		jPanelCard2.add(createLabel("HORA DE INICIO", 600, 120, 200, 30));
-		jPanelCard2.add(createTextField("HORA DE INICIO", 790, 120, 200, 30));
+		jSpinnerStartHour = new JSpinner();
+		jSpinnerStartHour.setBounds(790, 120, 200, 30);
+		jPanelCard2.add(jSpinnerStartHour);
+
 		jPanelCard2.add(createLabel("HORA DE CIERRE", 600, 180, 200, 30));
-		jPanelCard2.add(createTextField("HORA DE CIERRE", 790, 180, 200, 30));
+		jSpinnerFinishHour = new JSpinner();
+		jSpinnerFinishHour.setBounds(790, 180, 200, 30);
+		jPanelCard2.add(jSpinnerFinishHour);
 
 	}
 
 	private void Card3() {
 		this.jPanelCard3 = new JPanel();
-		jPanelCard3.setBackground(Color.red);
 
-	}
+		JButton jButton = new JButton("Agregar imagen");
+		JTextArea jTextArea = new JTextArea();
+		jTextArea.setBounds(600, 60, 500, 200);
+		jButton.setBounds(200, 180, 200, 30);
+		jPanelCard3.setLayout(null);
+		jPanelCard3.setBackground(Color.LIGHT_GRAY);
 
-	private void Card4() {
-		this.jPanelCard4 = new JPanel();
-		jPanelCard4.setBackground(Color.blue);
+		jPanelCard3.add(createLabel("SOBRE LA SUBASTA", 10, 10, 200, 30));
 
-	}
+		jPanelCard3.add(createLabel("VALOR MINIMO ACEPTADO", 20, 60, 200, 30));
+		// jPanelCard3.add(createTextField("VALOR MINIMO ACEPTADO", 200, 60, 200, 30));
+		jPanelCard3.add(createLabel("TIPO DE INCEMENTO ", 20, 120, 200, 30));
+		// jPanelCard3.add(createTextField("VIABILIDAD", 200, 180, 200, 30));
+		jPanelCard3.add(createLabel("VIABILIAD", 20, 180, 200, 30));
+		jPanelCard3.add(createTextField("TIPO DE INCREMENTO ", 200, 120, 200, 30));
 
-	private void Card5() {
-		this.jPanelCard5 = new JPanel();
-		jPanelCard5.setBackground(Color.ORANGE);
+		jRadioButton = new JRadioButton("FEMALE");
+		jRadioButton.setBounds(200, 60, 100, 30);
+		jRadioButton.setSelected(true);
+		jPanelCard3.add(jRadioButton);
+
+		jRadioButton2 = new JRadioButton("MALE");
+		jRadioButton2.setBounds(300, 60, 100, 30);
+		jPanelCard3.add(jRadioButton2);
+
+		buttonGroup = new ButtonGroup();
+		buttonGroup.add(jRadioButton);
+		buttonGroup.add(jRadioButton2);
+
+		jRadioButtonPublic = new JRadioButton("PUBLIC");
+		jRadioButtonPublic.setBounds(200, 180, 100, 30);
+		jRadioButtonPublic.setSelected(true);
+		jPanelCard3.add(jRadioButtonPublic);
+
+		jRadioButtonPrivate = new JRadioButton("PRIVATE");
+		jRadioButtonPrivate.setBounds(300, 180, 100, 30);
+		jPanelCard3.add(jRadioButtonPrivate);
+
+		buttonGroup2 = new ButtonGroup();
+		buttonGroup2.add(jRadioButtonPublic);
+		buttonGroup2.add(jRadioButtonPrivate);
 
 	}
 

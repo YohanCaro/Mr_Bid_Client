@@ -16,11 +16,14 @@ public class JFrameMain extends JFrame {
 	private JPanelMainWindow jPanelMain;
 	Icon icon;
 
+	
 	public JFrameMain() {
 		this.jScrollPane = new JScrollPane();
 		this.jPanelMain = new JPanelMainWindow();
 		init();
 	}
+	
+	
 	
 	private void init() {
 		this.setResizable(true);

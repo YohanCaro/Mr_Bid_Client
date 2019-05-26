@@ -31,7 +31,7 @@ public class JPanelPrincipalLogin extends JPanel{
     private JPasswordField jpassword;
 
 
-	ImageIcon imageIcon, imageIcon2;
+	ImageIcon imageIcon;
 	Icon icon;
 
 	public JPanelPrincipalLogin() {
@@ -78,7 +78,7 @@ public class JPanelPrincipalLogin extends JPanel{
 		this.setBackground(Color.RED);
 
 		jLabel = new JLabel();
-		imageIcon = new ImageIcon("data/images/usuario.png");
+		imageIcon = new ImageIcon(getClass().getResource("/images/usuario.png"));
 		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(250, 250, Image.SCALE_AREA_AVERAGING));
 		jLabel.setIcon(icon);
 		jPanelCenterImage.add(jLabel);
@@ -134,14 +134,14 @@ public class JPanelPrincipalLogin extends JPanel{
         return String.valueOf(jpassword.getPassword());
     }
 	
-//	@Override
-//	protected void paintComponent(Graphics g) {
-//		imageIcon = new ImageIcon(getClass().getResource("data/images/fondoLogin.jpg"));
-//		g.drawImage(imageIcon.getImage(), 0, 0, getWidth(), getHeight(), this);
-//		setOpaque(false);
-//		super.paintComponent(g);
-//	}
-//        
+	@Override
+	protected void paintComponent(Graphics g) {
+		imageIcon = new ImageIcon(getClass().getResource("/images/fondoLogin.jpg"));
+		g.drawImage(imageIcon.getImage(), 0, 0, getWidth(), getHeight(), this);
+		setOpaque(false);
+		super.paintComponent(g);
+	}
+        
         
 
 
