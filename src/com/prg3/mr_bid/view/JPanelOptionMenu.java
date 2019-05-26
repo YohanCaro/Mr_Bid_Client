@@ -27,7 +27,7 @@ public class JPanelOptionMenu extends JPanel {
 	private JPanel jPanelWhite;
 	private JMenu jMenu, jMenu2, jMenu3, jMenu4, jMenu5;
 	private JButton jButtonEnglish, jButtonSpanish, jButtonLogin;
-	private JMenuItem jMenuItemHome, jMenuItemEstadisticas, jMenuItemPlantLibrary, jMenuItemAportesHis,
+	private JMenuItem jMenuItemHome, jMenuItemEstadisticas, jMenuItemLogin, jMenuItemAportesHis,
 			jMenuItemCreateBotanic, jMenuItemJtableInstitucion, jMenuItemMobile, jMenuItemDeleteBotanic;
 	private JMenuBar jMenuBar;
 	ImageIcon imageIcon;
@@ -113,10 +113,10 @@ public class JPanelOptionMenu extends JPanel {
 		jMenu5.setForeground(Color.WHITE);
 		jMenuBar.add(jMenu5);
 
-		jMenuItemPlantLibrary = new JMenuItem("OPTION");
-		// jMenuItemPlantLibrary.setActionCommand(Commands.SHOW_PLANTLIBRARY.name());
-		// jMenuItemPlantLibrary.addActionListener(control);
-		jMenu2.add(jMenuItemPlantLibrary);
+		jMenuItemLogin = new JMenuItem("LOGIN");
+		jMenuItemLogin.setActionCommand(Commands.SHOW_REGISTER_USER.name());
+		jMenuItemLogin.addActionListener(control);
+		jMenu2.add(jMenuItemLogin);
 
 		jMenuItemJtableInstitucion = new JMenuItem("OPTION");
 		// jMenuItemJtableInstitucion.setActionCommand(Commands.SHOW_TABLE_INSTITUCION.name());

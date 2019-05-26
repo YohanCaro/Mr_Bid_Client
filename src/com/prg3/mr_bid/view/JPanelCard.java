@@ -9,6 +9,7 @@ import java.awt.Toolkit;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -20,6 +21,7 @@ public class JPanelCard extends JPanel {
 	private JLabel jLabel, jLabelName, jLabelType, jLabelSatus, jLabelTime, jLabelType2, jLabelSatus2, jLabelTime2;
 	private ImageIcon imageIcon;
 	private Icon icon;
+	private JButton jButton;
 
 	public JPanelCard() {
 
@@ -82,6 +84,10 @@ public class JPanelCard extends JPanel {
 		jPanelInfoProduct.add(createLabel(type, 200, 20, jLabelType2, 20, 130));
 		jPanelInfoProduct.add(createLabel(status, 200, 70, jLabelSatus2, 20, 130));
 		jPanelInfoProduct.add(createLabel(time, 230, 120, jLabelTime2, 20, 130));
+
+		jButton = new JButton("Ingresar");
+		jButton.setBounds(150, 200, 100, 30);
+		jPanelInfoProduct.add(jButton);
 
 	}
 

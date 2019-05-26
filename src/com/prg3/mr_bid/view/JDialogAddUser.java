@@ -7,12 +7,14 @@ import java.awt.Toolkit;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 
+import com.prg3.mr_bid.controller.UserController;
+
 public class JDialogAddUser extends JDialog {
 	JPanelForm jPanelForm;
 	// JpanelNorte jpanelNorte;
 
-	public JDialogAddUser() {
-		this.jPanelForm = new JPanelForm();
+	public JDialogAddUser(UserController controller) {
+		this.jPanelForm = new JPanelForm(controller);
 		// this.jpanelNorte = new JpanelNorte();
 		init();
 	}

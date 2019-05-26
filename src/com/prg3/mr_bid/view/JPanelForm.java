@@ -27,6 +27,9 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
 import javax.swing.text.DefaultFormatter;
 
+import com.prg3.mr_bid.controller.Commands;
+import com.prg3.mr_bid.controller.UserController;
+
 public class JPanelForm extends JPanel {
 
 	private static final long serialVersionUID = 1L;
@@ -36,15 +39,15 @@ public class JPanelForm extends JPanel {
 	private JComboBox jComboBox;
 	private JPanelRobotCenter jPanelRobotCenter;
 
-	public JPanelForm() {
+	public JPanelForm(UserController controller) {
 		this.jPanelRobotCenter = new JPanelRobotCenter();
 		this.setLayout(null);
 		setSize(350, 400);
-		initComponents();
+		initComponents(controller);
 
 	}
 
-	private void initComponents() {
+	private void initComponents(UserController controller) {
 
 		this.setBackground(Color.WHITE);
 
@@ -80,6 +83,8 @@ public class JPanelForm extends JPanel {
 		
 		
 		jButton = new JButton("Add Tarjeta");
+		jButton.setActionCommand(Commands.SHOW_ADD_CREDIT_CARD.name());
+		jButton.addActionListener(controller);
 		jButton.setBounds(150, 370, 250, 40);
 		add(jButton);
 		
