@@ -2,7 +2,11 @@ package com.prg3.mr_bid.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.UnknownHostException;
 
+import com.prg3.mr_bid.communication.Client;
+import com.prg3.mr_bid.communication.Commands;
 import com.prg3.mr_bid.view.JDialogAddCreditCard;
 import com.prg3.mr_bid.view.JDialogAddUser;
 import com.prg3.mr_bid.view.JFrameMain;
@@ -12,6 +16,7 @@ public class UserController implements ActionListener {
 	private JFrameMain jFrameMain;
 	private JDialogAddUser jDialogAddUser;
 	private JDialogAddCreditCard jDialogAddCreditCard;
+	private static UserController controller;
 
 	public UserController() {
 		this.jFrameMain = new JFrameMain(this);
@@ -21,11 +26,10 @@ public class UserController implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		switch (Commands.valueOf(e.getActionCommand())) {
+		switch (ControlCommands.valueOf(e.getActionCommand())) {
 		case SHOW_LOGIN:
 			jFrameMain.showLogin();
 			break;
-
 		case SHOW_HOME:
 			jFrameMain.showHome();
 			break;
@@ -36,10 +40,24 @@ public class UserController implements ActionListener {
 			jDialogAddCreditCard.setVisible(true);
 			break;
 
-		default:
-			break;
 		}
-
+	}
+	
+	private void sendData(Commands command, Object data) {
+		try {
+			Client.getInstanceOf().sendMessage(command, data);
+		} catch (UnknownHostException e) {
+			System.out.println("No se ha encontrado el servidor");
+		} catch (IOException e) {
+			System.out.println("Error al enviar el dato");
+		}
+	}
+	
+	public static UserController getInstanceOf() {
+		if (controller == null) {
+			controller = new UserController();
+		}
+		return controller;
 	}
 
 }
