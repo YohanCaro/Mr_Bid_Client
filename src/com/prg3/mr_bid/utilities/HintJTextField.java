@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.prg3.mr_bid.utilities;
 
 import java.awt.Color;
@@ -12,6 +9,12 @@ import java.util.LinkedList;
 
 import javax.swing.JTextField;
 
+/**
+ * Clase HintJTextField - Oculta el texto de un JTextField
+ *
+ * @author Andres Felipe Chaparro - Ohmio Mega
+ * @version 1.0 
+ */
 public class HintJTextField extends JTextField implements FocusListener {
 	private static final long serialVersionUID = 1L;
 	private final String hint;
