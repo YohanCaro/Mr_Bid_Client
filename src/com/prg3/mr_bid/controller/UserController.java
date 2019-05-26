@@ -1,10 +1,29 @@
 package com.prg3.mr_bid.controller;
 
-public class UserController {
-	
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import com.prg3.mr_bid.view.JFrameMain;
+
+public class UserController implements ActionListener {
+
+	private JFrameMain jFrameMain;
+
 	public UserController() {
-		// TODO Auto-generated constructor stub
+		this.jFrameMain = new JFrameMain(this);
 	}
 
-	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		switch (Commands.valueOf(e.getActionCommand())) {
+		case SHOW_LOGIN:
+			jFrameMain.showLogin();
+			break;
+
+		default:
+			break;
+		}
+
+	}
+
 }

@@ -19,6 +19,9 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
+import com.prg3.mr_bid.controller.Commands;
+import com.prg3.mr_bid.controller.UserController;
+
 
 
 public class JPanelOptionMenu extends JPanel {
@@ -32,11 +35,11 @@ public class JPanelOptionMenu extends JPanel {
 	ImageIcon imageIcon;
 	Icon icon;
 
-	public JPanelOptionMenu() {
-		init();
+	public JPanelOptionMenu(UserController controller) {
+		init(controller);
 	}
 
-	private void init() {
+	private void init(UserController control) {
 		// this.setLayout(new GridLayout(1, 7));
 		this.setLayout(new BorderLayout());
 		this.setBackground(new Color(48, 48, 48));
@@ -64,8 +67,8 @@ public class JPanelOptionMenu extends JPanel {
 		jButtonSpanish.setIcon(icon);
 
 		jButtonLogin = new JButton();
-		// jButtonLogin.setActionCommand(Commands.SHOW_LOGIN.name());
-		// jButtonLogin.addActionListener(control);
+		 jButtonLogin.setActionCommand(Commands.SHOW_LOGIN.name());
+		jButtonLogin.addActionListener(control);
 		jButtonLogin.setBackground(new Color(48, 48, 48));
 		imageIcon = new ImageIcon(getClass().getResource("/images/usuario.png"));
 		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(70, 70, Image.SCALE_AREA_AVERAGING));

@@ -9,22 +9,26 @@ import javax.swing.Icon;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 
+import com.prg3.mr_bid.controller.UserController;
+
 
 public class JFrameMain extends JFrame {
 
 	private JScrollPane jScrollPane;
 	private JPanelMainWindow jPanelMain;
+	private JPanelPrincipalLogin jPanelPrincipalLogin;
+	private JPanelOptionMenu jPanelOptionMenu;
 	Icon icon;
 
-	
-	public JFrameMain() {
+	public JFrameMain(UserController control) {
 		this.jScrollPane = new JScrollPane();
-		this.jPanelMain = new JPanelMainWindow();
+		this.jPanelMain = new JPanelMainWindow(control);
+		this.jPanelPrincipalLogin = new JPanelPrincipalLogin();
+		this.jPanelOptionMenu = new JPanelOptionMenu(control);
+
 		init();
 	}
-	
-	
-	
+
 	private void init() {
 		this.setResizable(true);
 		this.setLayout(new BorderLayout());
@@ -35,5 +39,13 @@ public class JFrameMain extends JFrame {
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+	}
+	
+	
+	public void showLogin() {
+		jPanelMain.removeAll();
+		jPanelMain.add(jPanelPrincipalLogin, BorderLayout.CENTER);
+		repaint();
+		revalidate();
 	}
 }

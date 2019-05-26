@@ -43,7 +43,7 @@ public class JPanelMainProduct extends JPanel {
 		this.jPanelCard = new JPanel();
 		this.jPanelCard2 = new JPanel();
 
-		this.jPanelOptionMenu = new JPanelOptionMenu();
+//		this.jPanelOptionMenu = new JPanelOptionMenu();
 		this.jTextArea = new JTextArea();
 		this.jLabel = new JLabel();
 		card();

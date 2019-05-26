@@ -13,6 +13,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.prg3.mr_bid.controller.UserController;
+
 public class JPanelMainWindow extends JPanel {
 
 	private JPanel jPanelNorth, jPanelSouth, jPanelWest, jPanelEast, jPanelCenter, jPanelMainImage,
@@ -24,7 +26,7 @@ public class JPanelMainWindow extends JPanel {
 	private Icon icon;
 
 
-	public JPanelMainWindow() {
+	public JPanelMainWindow(UserController controller) {
 		this.jPanelMainWindowProduct = new JPanelCard();
 		this.jPanelNorth = new JPanel();
 		this.jPanelSouth = new JPanel();
@@ -33,7 +35,7 @@ public class JPanelMainWindow extends JPanel {
 		this.jPanelCenter = new JPanel();
 		this.jPanelMainImage = new JPanel();
 		this.jPanelEspacio = new JPanel();
-		this.jPanelOptionMenu = new JPanelOptionMenu();
+		this.jPanelOptionMenu = new JPanelOptionMenu(controller);
 	
 
 		this.jLabel = new JLabel();
