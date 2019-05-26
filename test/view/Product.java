@@ -12,12 +12,13 @@ import com.prg3.mr_bid.view.JPanelMainProduct;
 public class Product {
 
 	public static void main(String[] args) {
-		JFrame jFrame = new JFrame("hola");
 
 		JPanelMainProduct jPanelMainProduct;
 		JScrollPane jScrollPane;
 		jScrollPane = new JScrollPane();
 
+
+		JFrame jFrame = new JFrame("hola");
 		Icon icon;
 
 		jPanelMainProduct = new JPanelMainProduct();

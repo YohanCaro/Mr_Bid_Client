@@ -30,10 +30,9 @@ public class Login {
 		jFrame.setTitle("MR BID");
 		jFrame.add(jPanelPrincipalLogin, BorderLayout.CENTER);
 		jFrame.add(jPanelOptionMenu, BorderLayout.NORTH);
-		jFrame.repaint();
-		jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		jFrame.setVisible(true);
-		
+		jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 	}
 
 }
