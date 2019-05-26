@@ -17,13 +17,21 @@ public class Client extends Socket implements Runnable {
 	private DataOutputStream dataOS;
 	private Gson gson;
 	private boolean isConect;
+	private static Client client;
 	
-	public Client() throws UnknownHostException, IOException {
+	private Client() throws UnknownHostException, IOException {
 		super(Constants.ip, Constants.port);
 		dataIS = new DataInputStream(this.getInputStream());
 		dataOS = new DataOutputStream(this.getOutputStream());
 		gson = new Gson();
 		this.isConect = true;
+	}
+	
+	public static Client getInstanceOf() throws UnknownHostException, IOException {
+		if (client == null) {
+			client = new Client();
+		}
+		return client;
 	}
 	
 	public void initClient() {
@@ -52,19 +60,31 @@ public class Client extends Socket implements Runnable {
 			Constants.user = gson.fromJson(json, User.class);
 			break;
 		case SIGNIN: 
-			Constants.product = gson.fromJson(json, Product.class);
+			Constants.user = gson.fromJson(json, User.class);
 			break;
 		case UPBIDDING: 
 			
 			break;
-		default:
+		case CHANGE_BIDDING:
+			
+			break;
+		case DELETE_BIDDING:
+			
+			break;
+		case DELETE_USER:
+			
 			break;
 		}
 	}
 	
 	public void sendMessage(Commands command, Object o) throws IOException {
 		dataOS.writeUTF(gson.toJson(command));
-		dataOS.writeUTF(gson.toJson(o));
+		if (o.getClass().equals(String.class)) {
+			dataOS.writeUTF(o.toString());
+		} else {
+			dataOS.writeUTF(gson.toJson(o));
+		}
+		
 	}
 
 }

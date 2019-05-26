@@ -13,7 +13,7 @@ public class TestClient {
 	public static void main(String[] args) {
 		try {
 			User user = new User("Juan", "Diaz", "juan@nn.c", "1234", new BidDate(7, 4, 2003), false, null);
-			Client client = new Client();
+			Client client = Client.getInstanceOf();
 			client.initClient();
 			client.sendMessage(Commands.LOGIN, user);
 			try {
