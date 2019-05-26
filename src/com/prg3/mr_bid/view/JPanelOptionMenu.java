@@ -22,8 +22,6 @@ import javax.swing.JPanel;
 import com.prg3.mr_bid.controller.Commands;
 import com.prg3.mr_bid.controller.UserController;
 
-
-
 public class JPanelOptionMenu extends JPanel {
 
 	private JPanel jPanelWhite;
@@ -67,7 +65,7 @@ public class JPanelOptionMenu extends JPanel {
 		jButtonSpanish.setIcon(icon);
 
 		jButtonLogin = new JButton();
-		 jButtonLogin.setActionCommand(Commands.SHOW_LOGIN.name());
+		jButtonLogin.setActionCommand(Commands.SHOW_LOGIN.name());
 		jButtonLogin.addActionListener(control);
 		jButtonLogin.setBackground(new Color(48, 48, 48));
 		imageIcon = new ImageIcon(getClass().getResource("/images/usuario.png"));
@@ -83,12 +81,12 @@ public class JPanelOptionMenu extends JPanel {
 		jMenuBar.setOpaque(false);
 
 		jMenuItemHome = new JMenuItem("HOME");
-		// jMenuItemHome.setActionCommand(Commands.SHOW_HOME.name());
+		jMenuItemHome.setActionCommand(Commands.SHOW_HOME.name());
 		jMenuItemHome.setPreferredSize(new Dimension(100, 100));
 		jMenuItemHome.setFont(new Font("Arial", 1, 15));
 		jMenuItemHome.setOpaque(false);
 		jMenuItemHome.setForeground(Color.WHITE);
-		// jMenuItemHome.addActionListener(control);
+		jMenuItemHome.addActionListener(control);
 		jMenuBar.add(jMenuItemHome);
 
 		jMenu2 = new JMenu("OPTION");
@@ -116,45 +114,43 @@ public class JPanelOptionMenu extends JPanel {
 		jMenuBar.add(jMenu5);
 
 		jMenuItemPlantLibrary = new JMenuItem("OPTION");
-//		jMenuItemPlantLibrary.setActionCommand(Commands.SHOW_PLANTLIBRARY.name());
-//		jMenuItemPlantLibrary.addActionListener(control);
+		// jMenuItemPlantLibrary.setActionCommand(Commands.SHOW_PLANTLIBRARY.name());
+		// jMenuItemPlantLibrary.addActionListener(control);
 		jMenu2.add(jMenuItemPlantLibrary);
 
 		jMenuItemJtableInstitucion = new JMenuItem("OPTION");
-//		jMenuItemJtableInstitucion.setActionCommand(Commands.SHOW_TABLE_INSTITUCION.name());
-//		jMenuItemJtableInstitucion.addActionListener(control);
+		// jMenuItemJtableInstitucion.setActionCommand(Commands.SHOW_TABLE_INSTITUCION.name());
+		// jMenuItemJtableInstitucion.addActionListener(control);
 		jMenu2.add(jMenuItemJtableInstitucion);
 
 		jMenuItemEstadisticas = new JMenuItem("OPTION");
-//		jMenuItemEstadisticas.setActionCommand(Commands.SHOW_ESTADISTIC.name());
-//		jMenuItemEstadisticas.addActionListener(control);
+		// jMenuItemEstadisticas.setActionCommand(Commands.SHOW_ESTADISTIC.name());
+		// jMenuItemEstadisticas.addActionListener(control);
 		jMenu4.add(jMenuItemEstadisticas);
 
 		jMenuItemAportesHis = new JMenuItem("OPTION");
-//		jMenuItemAportesHis.setActionCommand(Commands.SHOW_HISTORICALCONTRIBUTIONS.name());
-//		jMenuItemAportesHis.addActionListener(control);
+		// jMenuItemAportesHis.setActionCommand(Commands.SHOW_HISTORICALCONTRIBUTIONS.name());
+		// jMenuItemAportesHis.addActionListener(control);
 		jMenu3.add(jMenuItemAportesHis);
 
 		jMenuItemDeleteBotanic = new JMenuItem("OPTION");
-//		jMenuItemDeleteBotanic.setActionCommand(Commands.DELETE_BOTANIC.name());
-//		jMenuItemDeleteBotanic.addActionListener(control);
+		// jMenuItemDeleteBotanic.setActionCommand(Commands.DELETE_BOTANIC.name());
+		// jMenuItemDeleteBotanic.addActionListener(control);
 		jMenu5.add(jMenuItemDeleteBotanic);
 
 		jMenuItemCreateBotanic = new JMenuItem("OPTION");
-//		jMenuItemCreateBotanic.setActionCommand(Commands.SHOW_CREATEBOTANICO.name());
-//		jMenuItemCreateBotanic.addActionListener(control);
+		// jMenuItemCreateBotanic.setActionCommand(Commands.SHOW_CREATEBOTANICO.name());
+		// jMenuItemCreateBotanic.addActionListener(control);
 		jMenu5.add(jMenuItemCreateBotanic);
 
 		jMenuItemMobile = new JMenuItem("APP MOBILE");
-//		jMenuItemMobile.setActionCommand(Commands.SHOW_MOBILE.name());
-//		jMenuItemMobile.addActionListener(control);
+		// jMenuItemMobile.setActionCommand(Commands.SHOW_MOBILE.name());
+		// jMenuItemMobile.addActionListener(control);
 		jMenu5.add(jMenuItemMobile);
 
 		this.add(jMenuBar, BorderLayout.CENTER);
 		this.add(jPanelWhite, BorderLayout.EAST);
 
 	}
-
-
 
 }

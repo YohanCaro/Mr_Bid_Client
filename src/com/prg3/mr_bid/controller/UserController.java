@@ -19,6 +19,10 @@ public class UserController implements ActionListener {
 		case SHOW_LOGIN:
 			jFrameMain.showLogin();
 			break;
+			
+		case SHOW_HOME:
+			jFrameMain.showHome();
+			break;
 
 		default:
 			break;

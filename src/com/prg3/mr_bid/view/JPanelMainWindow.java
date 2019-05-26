@@ -17,14 +17,11 @@ import com.prg3.mr_bid.controller.UserController;
 
 public class JPanelMainWindow extends JPanel {
 
-	private JPanel jPanelNorth, jPanelSouth, jPanelWest, jPanelEast, jPanelCenter, jPanelMainImage,
-			jPanelEspacio;
+	private JPanel jPanelNorth, jPanelSouth, jPanelWest, jPanelEast, jPanelCenter, jPanelMainImage, jPanelEspacio;
 	private JPanelCard jPanelMainWindowProduct;
-	private JPanelOptionMenu jPanelOptionMenu;
 	private JLabel jLabel;
 	private ImageIcon imageIcon;
 	private Icon icon;
-
 
 	public JPanelMainWindow(UserController controller) {
 		this.jPanelMainWindowProduct = new JPanelCard();
@@ -35,8 +32,6 @@ public class JPanelMainWindow extends JPanel {
 		this.jPanelCenter = new JPanel();
 		this.jPanelMainImage = new JPanel();
 		this.jPanelEspacio = new JPanel();
-		this.jPanelOptionMenu = new JPanelOptionMenu(controller);
-	
 
 		this.jLabel = new JLabel();
 		character();
@@ -48,10 +43,10 @@ public class JPanelMainWindow extends JPanel {
 	private void character() {
 		jPanelNorth.setBackground(Color.RED);
 		jPanelSouth.setBackground(Color.GREEN);
-//		jPanelWest.setBackground(Color.YELLOW);
-//		jPanelEast.setBackground(Color.BLUE);
+		// jPanelWest.setBackground(Color.YELLOW);
+		// jPanelEast.setBackground(Color.BLUE);
 		jPanelCenter.setBackground(Color.black);
-//		jPanelMainImage.setBackground(Color.cyan);
+		// jPanelMainImage.setBackground(Color.cyan);
 		jPanelEspacio.setBackground(Color.ORANGE);
 
 	}
@@ -83,15 +78,14 @@ public class JPanelMainWindow extends JPanel {
 		jPanelCenter.add(jPanelEspacio, BorderLayout.CENTER);
 
 		jPanelEspacio.setLayout(new GridLayout(10, 1));
-		jPanelEspacio.add(new JPanelCard("Computador LG", "Publico","No inicida", "7;80", "/images/lg.jpg"));
-		jPanelEspacio.add(new JPanelCard("Iphone X", "Publico"," Inicida", "8;80", "/images/iphone.png"));
+		jPanelEspacio.add(new JPanelCard("Computador LG", "Publico", "No inicida", "7;80", "/images/lg.jpg"));
+		jPanelEspacio.add(new JPanelCard("Iphone X", "Publico", " Inicida", "8;80", "/images/iphone.png"));
 		jPanelEspacio.add(new JPanelCard());
 		jPanelEspacio.add(new JPanelCard());
 		jPanelEspacio.add(new JPanelCard());
 		jPanelEspacio.add(new JPanelCard());
 		jPanelEspacio.add(new JPanelCard());
 
-		this.add(jPanelOptionMenu, BorderLayout.NORTH);
 		this.add(jPanelSouth, BorderLayout.SOUTH);
 		this.add(jPanelWest, BorderLayout.WEST);
 		this.add(jPanelEast, BorderLayout.EAST);
