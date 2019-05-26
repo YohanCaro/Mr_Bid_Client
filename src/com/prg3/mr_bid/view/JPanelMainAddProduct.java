@@ -7,6 +7,7 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
 
+import javax.print.attribute.standard.JobHoldUntil;
 import javax.swing.ButtonGroup;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -18,6 +19,7 @@ import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import com.prg3.mr_bid.utilities.HintJTextField;
 import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
 
@@ -29,7 +31,7 @@ public class JPanelMainAddProduct extends JPanel {
 	private ImageIcon imageIcon;
 	private Icon icon;
 	private JLabel jLabelName;
-	private JTextField jTextFieldName;
+	private HintJTextField jTextFieldName;
 	private JDateChooser jCalendar, jCalendar2, jCalendar3;
 	private JRadioButton jRadioButton, jRadioButton2, jRadioButtonPublic, jRadioButtonPrivate;
 	private ButtonGroup buttonGroup, buttonGroup2;
@@ -211,7 +213,7 @@ public class JPanelMainAddProduct extends JPanel {
 	}
 
 	public JTextField createTextField(String name, int x, int y, int sisex, int sizey) {
-		jTextFieldName = new JTextField(name);
+		jTextFieldName = new HintJTextField(name);
 		jTextFieldName.setBounds(x, y, sisex, sizey);
 		jTextFieldName.setBackground(new Color(244, 244, 244));
 		add(jTextFieldName);

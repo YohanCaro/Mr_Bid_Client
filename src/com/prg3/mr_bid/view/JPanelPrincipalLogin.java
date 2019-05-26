@@ -20,16 +20,15 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-
+import com.prg3.mr_bid.utilities.HintJTextField;
 
 public class JPanelPrincipalLogin extends JPanel{
 
 	private JPanel jPanelNorth, jPanelWest, jPanelEast, jPanelSout, jPanelCenter, jPanelCenterImage, jPanelCenterCampos;
 	private JLabel jLabel;
 	private JButton jButton;
-	private JTextField jTextFieldName;
+	private HintJTextField jTextFieldName;
     private JPasswordField jpassword;
-
 
 	ImageIcon imageIcon;
 	Icon icon;
@@ -83,7 +82,7 @@ public class JPanelPrincipalLogin extends JPanel{
 		jLabel.setIcon(icon);
 		jPanelCenterImage.add(jLabel);
 		
-		jTextFieldName = new JTextField();
+		jTextFieldName = new HintJTextField("Nombre");
 		jTextFieldName.setPreferredSize(new Dimension(400, 60));
 		jTextFieldName.setBackground(new Color(244, 244, 244));
 		jPanelCenterCampos.add(jTextFieldName);
@@ -109,8 +108,8 @@ public class JPanelPrincipalLogin extends JPanel{
 
 	}
 
-	public JTextField createJTextField(String name, Color color, int largo, int ancho) {
-		jTextFieldName = new JTextField(name);
+	public HintJTextField createJTextField(String name, Color color, int largo, int ancho) {
+		jTextFieldName = new HintJTextField(name);
 		jTextFieldName.setBackground(color);
 		jTextFieldName.setPreferredSize(new Dimension(largo, ancho));
 		this.add(jTextFieldName);

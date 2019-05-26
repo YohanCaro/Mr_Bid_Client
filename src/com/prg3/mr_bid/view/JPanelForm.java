@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import javax.print.attribute.standard.JobHoldUntil;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -27,15 +28,17 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
 import javax.swing.text.DefaultFormatter;
 
-import com.prg3.mr_bid.controller.Commands;
+import com.prg3.mr_bid.controller.ControlCommands;
 import com.prg3.mr_bid.controller.UserController;
+import com.prg3.mr_bid.utilities.HintJTextField;
 
 public class JPanelForm extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JLabel jLabelName, jLabelImage;
 	private JButton jBLogin, jButton;
-	private JTextField jTextFieldName, jTextFieldEmail, jTextFieldPasswor, jTextFieldid, jTextFieldBirthdate, jTextFieldgenero, jTextFieldCaptchat ;
+	private HintJTextField jTextFieldName, jTextFieldEmail, jTextFieldPasswor, jTextFieldid, jTextFieldBirthdate,
+	jTextFieldgenero, jTextFieldCaptchat ;
 	private JComboBox jComboBox;
 	private JPanelRobotCenter jPanelRobotCenter;
 
@@ -44,7 +47,6 @@ public class JPanelForm extends JPanel {
 		this.setLayout(null);
 		setSize(350, 400);
 		initComponents(controller);
-
 	}
 
 	private void initComponents(UserController controller) {
@@ -83,7 +85,7 @@ public class JPanelForm extends JPanel {
 		
 		
 		jButton = new JButton("Add Tarjeta");
-		jButton.setActionCommand(Commands.SHOW_ADD_CREDIT_CARD.name());
+		jButton.setActionCommand(ControlCommands.SHOW_ADD_CREDIT_CARD.name());
 		jButton.addActionListener(controller);
 		jButton.setBounds(150, 370, 250, 40);
 		add(jButton);
@@ -117,9 +119,8 @@ public class JPanelForm extends JPanel {
 
 	}
 
-
-	public JTextField createTextField(String name, int x, int y, JTextField atribute) {
-		atribute = new JTextField(name);
+	public HintJTextField createTextField(String name, int x, int y, HintJTextField atribute) {
+		atribute = new HintJTextField(name);
 		atribute.setBounds(x, y, 250, 40);
 		atribute.setBackground(new Color(244, 244, 244));
 		atribute.setPreferredSize(new Dimension(200, 60));

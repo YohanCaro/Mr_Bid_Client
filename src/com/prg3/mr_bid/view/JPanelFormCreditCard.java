@@ -27,18 +27,19 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
 import javax.swing.text.DefaultFormatter;
 
+import com.prg3.mr_bid.utilities.HintJTextField;
+
 public class JPanelFormCreditCard extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JLabel jLabelName;
 	private JButton jButton;
-	private JTextField jTextFieldDate, jTextFieldName, jTextFieldNumberFront, jTextFieldCod;
+	private HintJTextField jTextFieldDate, jTextFieldName, jTextFieldNumberFront, jTextFieldCod;
 
 	public JPanelFormCreditCard() {
 		this.setLayout(null);
 		setSize(350, 400);
 		initComponents();
-
 	}
 
 	private void initComponents() {
@@ -74,8 +75,8 @@ public class JPanelFormCreditCard extends JPanel {
 
 	}
 
-	public JTextField createTextField(String name, int x, int y, JTextField atribute) {
-		atribute = new JTextField(name);
+	public HintJTextField createTextField(String name, int x, int y, HintJTextField atribute) {
+		atribute = new HintJTextField(name);
 		atribute.setBounds(x, y, 250, 40);
 		atribute.setBackground(new Color(244, 244, 244));
 		atribute.setPreferredSize(new Dimension(200, 60));

@@ -19,7 +19,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
-import com.prg3.mr_bid.controller.Commands;
+import com.prg3.mr_bid.controller.ControlCommands;
 import com.prg3.mr_bid.controller.UserController;
 
 public class JPanelOptionMenu extends JPanel {
@@ -65,7 +65,7 @@ public class JPanelOptionMenu extends JPanel {
 		jButtonSpanish.setIcon(icon);
 
 		jButtonLogin = new JButton();
-		jButtonLogin.setActionCommand(Commands.SHOW_LOGIN.name());
+		jButtonLogin.setActionCommand(ControlCommands.SHOW_LOGIN.name());
 		jButtonLogin.addActionListener(control);
 		jButtonLogin.setBackground(new Color(48, 48, 48));
 		imageIcon = new ImageIcon(getClass().getResource("/images/usuario.png"));
@@ -81,7 +81,7 @@ public class JPanelOptionMenu extends JPanel {
 		jMenuBar.setOpaque(false);
 
 		jMenuItemHome = new JMenuItem("HOME");
-		jMenuItemHome.setActionCommand(Commands.SHOW_HOME.name());
+		jMenuItemHome.setActionCommand(ControlCommands.SHOW_HOME.name());
 		jMenuItemHome.setPreferredSize(new Dimension(100, 100));
 		jMenuItemHome.setFont(new Font("Arial", 1, 15));
 		jMenuItemHome.setOpaque(false);
@@ -114,7 +114,7 @@ public class JPanelOptionMenu extends JPanel {
 		jMenuBar.add(jMenu5);
 
 		jMenuItemLogin = new JMenuItem("LOGIN");
-		jMenuItemLogin.setActionCommand(Commands.SHOW_REGISTER_USER.name());
+		jMenuItemLogin.setActionCommand(ControlCommands.SHOW_REGISTER_USER.name());
 		jMenuItemLogin.addActionListener(control);
 		jMenu2.add(jMenuItemLogin);
 
