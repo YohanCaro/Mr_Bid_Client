@@ -29,7 +29,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
 import javax.swing.text.DefaultFormatter;
 
-import com.prg3.mr_bid.controller.Commands;
+import com.prg3.mr_bid.controller.ControlCommands;
 import com.prg3.mr_bid.controller.UserController;
 import com.toedter.calendar.JDateChooser;
 
@@ -59,15 +59,14 @@ public class JPanelForm extends JPanel {
 		this.setBackground(Color.WHITE);
 
 		createLabel("Nombre", 20, 20);
-		createTextField("name", 150, 20, jTextFieldName, 120);
-		
-		createTextField("last name", 280, 20, jTextFieldLastName, 120);
+		createTextField("name", 150, 20, jTextFieldName);
+		createTextField("last name", 150, 20, jTextFieldLastName);
 
 		createLabel("EMAIL", 20, 70);
-		createTextField("email", 150, 70, jTextFieldEmail, 250);
+		createTextField("email", 150, 70, jTextFieldEmail);
 
 		createLabel("Passwor", 20, 120);
-		createTextField("Password", 150, 120, jTextFieldPasswor, 250);
+		createTextField("Password", 150, 120, jTextFieldPasswor);
 
 		createLabel("Tipo de Documento", 20, 170);
 		jComboBox = new JComboBox<String>();
@@ -82,7 +81,7 @@ public class JPanelForm extends JPanel {
 		jComboBox.addItem("PASAPORTE");
 
 		createLabel("Numero Documento", 20, 220);
-		createTextField("Numero Documento", 150, 220, jTextFieldid, 250);
+		createTextField("Numero Documento", 150, 220, jTextFieldid);
 
 		createLabel("Fecha de Nacimiento", 20, 270);
 		jDateChooser = new JDateChooser();
@@ -106,13 +105,13 @@ public class JPanelForm extends JPanel {
 		buttonGroup.add(jRadioButton2);
 
 		jButton = new JButton("Add Tarjeta");
-		jButton.setActionCommand(Commands.SHOW_ADD_CREDIT_CARD.name());
+		jButton.setActionCommand(ControlCommands.SHOW_ADD_CREDIT_CARD.name());
 		jButton.addActionListener(controller);
 		jButton.setBounds(150, 370, 250, 40);
 		add(jButton);
 
 		createLabel("CAPTCHAT", 20, 420);
-		createTextField("CAPTCHAT", 150, 420, jTextFieldCaptchat, 250);
+		createTextField("CAPTCHAT", 150, 420, jTextFieldCaptchat);
 
 		jBLogin = new JButton("Registrar");
 		jBLogin.setBounds(150, 480, 250, 40);
@@ -140,9 +139,9 @@ public class JPanelForm extends JPanel {
 
 	}
 
-	public JTextField createTextField(String name, int x, int y, JTextField atribute ,int sizeX) {
+	public JTextField createTextField(String name, int x, int y, JTextField atribute) {
 		atribute = new JTextField(name);
-		atribute.setBounds(x, y, sizeX, 40);
+		atribute.setBounds(x, y, 250, 40);
 		atribute.setBackground(new Color(244, 244, 244));
 		atribute.setPreferredSize(new Dimension(200, 60));
 		add(atribute);

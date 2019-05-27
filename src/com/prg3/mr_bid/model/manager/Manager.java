@@ -4,17 +4,25 @@ import com.prg3.mr_bid.model.entity.BidDate;
 import com.prg3.mr_bid.model.entity.BidTime;
 import com.prg3.mr_bid.model.entity.Bidding;
 import com.prg3.mr_bid.model.entity.CreditCard;
+import com.prg3.mr_bid.model.entity.Gender;
 import com.prg3.mr_bid.model.entity.Product;
+import com.prg3.mr_bid.model.entity.TypeDocument;
 import com.prg3.mr_bid.model.entity.TypeProduct;
 import com.prg3.mr_bid.model.entity.User;
 
 public class Manager {
 	
 	private User user;
+	private static Manager manager;
 	
-	public Manager(String firstName, String lastName, String email, String password, BidDate birthDate,
-			boolean isFemale, CreditCard creditCard) {
-		user = new User(firstName, lastName, email, password, birthDate, isFemale, creditCard);
+	private Manager() {
+		
+	}
+	
+	public User createUser(String firstName, String lastName, String email, String password, BidDate birthDate,
+			String document, String typeDocument, String gender, CreditCard creditCard) {
+		return new User(firstName, lastName, email, password, birthDate, document,
+				TypeDocument.valueOf(typeDocument),	Gender.valueOf(gender), creditCard);
 	}
 	
 	public void addBidding(String biddingName, TypeProduct typeProduct, Product product, BidTime publicationTime,
@@ -35,8 +43,16 @@ public class Manager {
 		return builder.toString();
 	}
 	
+	public static Manager getInstanceOf() {
+		if (manager == null) {
+			manager = new Manager();
+		}
+		return manager;
+	}
+	
 	public User getUser() {
 		return user;
 	}
+	
 	
 }
