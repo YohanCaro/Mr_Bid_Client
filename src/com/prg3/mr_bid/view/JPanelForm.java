@@ -186,7 +186,7 @@ public class JPanelForm extends JPanel {
 			Date date = jDateChooser.getDate();
 			DateFormat df = DateFormat.getDateInstance();
 			String date2 = df.format(date);
-			return date2;
+			return date2; 
 		}
 		return null;
 	}
