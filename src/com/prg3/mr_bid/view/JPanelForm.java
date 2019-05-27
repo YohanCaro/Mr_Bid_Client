@@ -156,7 +156,7 @@ public class JPanelForm extends JPanel {
 	}
 
 	public String getLastName() {
-		return null;
+		return jTextFieldLastName.getText();
 	}
 
 	public String getEmail() {

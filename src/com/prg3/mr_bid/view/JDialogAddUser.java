@@ -31,5 +31,11 @@ public class JDialogAddUser extends JDialog {
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 	}
+	
+	
+	public JPanelForm getjPanelForm() {
+		return jPanelForm;
+	}
+
 
 }

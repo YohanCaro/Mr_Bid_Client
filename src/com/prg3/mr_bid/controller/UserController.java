@@ -38,7 +38,7 @@ public class UserController implements ActionListener {
 			break;
 		case SHOW_REGISTER_USER:
 			jDialogAddUser.setVisible(true);
-			
+
 			break;
 		case SHOW_ADD_CREDIT_CARD:
 			jDialogAddCreditCard.setVisible(true);
@@ -49,11 +49,10 @@ public class UserController implements ActionListener {
 		case SHOW_ADDPRODUCT:
 			jFrameMain.showPanelAddProduct();
 			break;
-			
 
 		}
 	}
-	
+
 	private void sendData(Commands command, Object data) {
 		try {
 			Client.getInstanceOf().sendMessage(command, data);
@@ -63,18 +62,21 @@ public class UserController implements ActionListener {
 			System.out.println("Error al enviar el dato");
 		}
 	}
-	
+
 	/**
 	 * En proceso
+	 * 
 	 * @return
 	 */
-//	private User createUser() {
-//		return Manager.getInstanceOf().createUser(jDialogAddUser.getjPanelForm().getFirstName(),
-//				jDialogAddUser.getjPanelForm().getLastName(), jDialogAddUser.getjPanelForm().getEmail(),
-//				jDialogAddUser.getjPanelForm().getPassword(), new BidDate(jDialogAddUser.getjPanelForm().getBirthDate()),
-//				jDialogAddUser.getjPanelForm()., null);
-//	}
-	
+	private User createUser() {
+		return Manager.getInstanceOf().createUser(jDialogAddUser.getjPanelForm().getFirstName(),
+				jDialogAddUser.getjPanelForm().getLastName(), jDialogAddUser.getjPanelForm().getEmail(),
+				jDialogAddUser.getjPanelForm().getPassword(),
+				new BidDate(jDialogAddUser.getjPanelForm().getBirthDate()),
+				jDialogAddUser.getjPanelForm().getDocument(), jDialogAddUser.getjPanelForm().getTypeDocument(), null,
+				null);
+	}
+
 	public static UserController getInstanceOf() {
 		if (controller == null) {
 			controller = new UserController();
