@@ -9,23 +9,44 @@ public class User {
 	private String email;
 	private String password;
 	private BidDate birthDate;
-	private boolean isFemale;
+	private String document;
+	private TypeDocument typeDocument;
+	private Gender gender;
 	private CreditCard creditCard;
 	private ArrayList<Bidding> myBiddings;
 	private ArrayList<Bidding> myParcitipations;
 	
-	public User(String firstName, String lastName, String email, String password, BidDate birthDate, boolean isFemale,
-			CreditCard creditCard) {
+	/**
+	 * @param firstName
+	 * @param lastName
+	 * @param email
+	 * @param password
+	 * @param birthDate
+	 * @param document
+	 * @param typeDocument
+	 * @param isFemale
+	 * @param creditCard
+	 * @param myBiddings
+	 * @param myParcitipations
+	 */
+	public User(String firstName, String lastName, String email, String password, BidDate birthDate, String document,
+			TypeDocument typeDocument, Gender gender, CreditCard creditCard) {
+		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.password = password;
 		this.birthDate = birthDate;
-		this.isFemale = isFemale;
+		this.document = document;
+		this.typeDocument = typeDocument;
+		this.gender = gender;
 		this.creditCard = creditCard;
 		
 		myBiddings = new ArrayList<>();
+		myParcitipations = new ArrayList<>();
 	}
+
+
 
 	public String getFirstName() {
 		return firstName;
@@ -47,8 +68,8 @@ public class User {
 		return birthDate;
 	}
 
-	public boolean isFemale() {
-		return isFemale;
+	public Gender getGender() {
+		return gender;
 	}
 
 	public CreditCard getCreditCard() {
@@ -66,7 +87,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "Nombre y apellido: " + firstName + " email " + email +
-				"\nFecha de nacimiento: " + birthDate.getDateString() + " genero " + (isFemale?"Femenino":"Masculino");
+				"\nFecha de nacimiento: " + birthDate.getDateString() + " genero " + gender.getValue();
 	}
 
 }
