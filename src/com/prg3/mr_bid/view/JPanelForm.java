@@ -39,7 +39,7 @@ public class JPanelForm extends JPanel {
 	private JLabel jLabelName, jLabelImage;
 	private JButton jBLogin, jButton;
 	private JTextField jTextFieldName, jTextFieldEmail, jTextFieldPasswor, jTextFieldid, jTextFieldBirthdate,
-			jTextFieldgenero, jTextFieldCaptchat;
+			jTextFieldLastName, jTextFieldCaptchat;
 	private JComboBox jComboBox;
 	private JPanelRobotCenter jPanelRobotCenter;
 	private JDateChooser jDateChooser;
@@ -59,13 +59,15 @@ public class JPanelForm extends JPanel {
 		this.setBackground(Color.WHITE);
 
 		createLabel("Nombre", 20, 20);
-		createTextField("name", 150, 20, jTextFieldName);
+		createTextField("name", 150, 20, jTextFieldName, 120);
+		
+		createTextField("last name", 280, 20, jTextFieldLastName, 120);
 
 		createLabel("EMAIL", 20, 70);
-		createTextField("email", 150, 70, jTextFieldEmail);
+		createTextField("email", 150, 70, jTextFieldEmail, 250);
 
 		createLabel("Passwor", 20, 120);
-		createTextField("Password", 150, 120, jTextFieldPasswor);
+		createTextField("Password", 150, 120, jTextFieldPasswor, 250);
 
 		createLabel("Tipo de Documento", 20, 170);
 		jComboBox = new JComboBox<String>();
@@ -80,7 +82,7 @@ public class JPanelForm extends JPanel {
 		jComboBox.addItem("PASAPORTE");
 
 		createLabel("Numero Documento", 20, 220);
-		createTextField("Numero Documento", 150, 220, jTextFieldid);
+		createTextField("Numero Documento", 150, 220, jTextFieldid, 250);
 
 		createLabel("Fecha de Nacimiento", 20, 270);
 		jDateChooser = new JDateChooser();
@@ -110,7 +112,7 @@ public class JPanelForm extends JPanel {
 		add(jButton);
 
 		createLabel("CAPTCHAT", 20, 420);
-		createTextField("CAPTCHAT", 150, 420, jTextFieldCaptchat);
+		createTextField("CAPTCHAT", 150, 420, jTextFieldCaptchat, 250);
 
 		jBLogin = new JButton("Registrar");
 		jBLogin.setBounds(150, 480, 250, 40);
@@ -138,9 +140,9 @@ public class JPanelForm extends JPanel {
 
 	}
 
-	public JTextField createTextField(String name, int x, int y, JTextField atribute) {
+	public JTextField createTextField(String name, int x, int y, JTextField atribute ,int sizeX) {
 		atribute = new JTextField(name);
-		atribute.setBounds(x, y, 250, 40);
+		atribute.setBounds(x, y, sizeX, 40);
 		atribute.setBackground(new Color(244, 244, 244));
 		atribute.setPreferredSize(new Dimension(200, 60));
 		add(atribute);
