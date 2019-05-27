@@ -21,8 +21,8 @@ public class JPanelMainProduct extends JPanel {
 
 	private JPanel jPanelSouth, jPanelWest, jPanelEast, jPanelCenter, jPanelDere, jPanelizq, jPanelizqImage,
 			jPanelizqInfo, jPanelderNorth, jPanelderCenter, jPanelCard, jPanelCardnorth, jPanelCardSouth,
-			jPanelCardWest, jPanelCardEast, jPanelCard2, jPanelCardnorth2, jPanelCardSouth2, jPanelCardWest2,
-			jPanelCardEast2;
+			jPanelCardWest, jPanelCardEast, jPanelCard2, jPanelCardnorth2, jPanelCardSouthDere, jPanelCardWest2,
+			jPanelCardSouthIzq;
 	private JPanelOptionMenu jPanelOptionMenu;
 	private JTextArea jTextArea;
 	private JLabel jLabel;
@@ -42,8 +42,10 @@ public class JPanelMainProduct extends JPanel {
 		this.jPanelCenter = new JPanel();
 		this.jPanelCard = new JPanel();
 		this.jPanelCard2 = new JPanel();
+		this.jPanelCardSouthIzq = new JPanel();
 
-//		this.jPanelOptionMenu = new JPanelOptionMenu();
+
+		// this.jPanelOptionMenu = new JPanelOptionMenu();
 		this.jTextArea = new JTextArea();
 		this.jLabel = new JLabel();
 		card();
@@ -58,12 +60,11 @@ public class JPanelMainProduct extends JPanel {
 
 	private void character() {
 		jPanelSouth.setBackground(Color.GREEN);
-		jPanelCenter.setBackground(Color.black);
+		jPanelCenter.setBackground(Color.GREEN);
 		jPanelDere.setBackground(Color.YELLOW);
 		jPanelizq.setBackground(Color.BLUE);
-		jPanelizqInfo.setBackground(Color.GREEN);
+		jPanelizqInfo.setBackground(Color.ORANGE);
 		jPanelderNorth.setBackground(Color.BLUE);
-		jPanelderCenter.setBackground(Color.ORANGE);
 
 	}
 
@@ -191,24 +192,27 @@ public class JPanelMainProduct extends JPanel {
 		jPanelCard2.add(jButton);
 
 		this.jPanelCardnorth2 = new JPanel();
-		this.jPanelCardSouth2 = new JPanel();
+		this.jPanelCardSouthDere = new JPanel();
 		this.jPanelCardWest2 = new JPanel();
-		this.jPanelCardEast2 = new JPanel();
 
-		jPanelCard2.setBackground(Color.RED);
-		jPanelCard2.setPreferredSize(new Dimension(500, 100));
+		jPanelCard2.setBackground(Color.BLUE);
+		jPanelCardSouthDere.setBackground(Color.GRAY);
+		jPanelCard2.setPreferredSize(new Dimension(200, 10));
+		jPanelderCenter.setBackground(Color.GREEN);
 		jPanelderCenter.setLayout(new BorderLayout());
+		jPanelderCenter.setPreferredSize(new Dimension(0, 200));
 
+		//
 		jPanelCardnorth2.setPreferredSize(new Dimension(50, 50));
-		jPanelCardSouth2.setPreferredSize(new Dimension(50, 300));
+		jPanelCardSouthDere.setPreferredSize(new Dimension(50, 1300));
 		jPanelCardWest2.setPreferredSize(new Dimension(50, 50));
-		jPanelCardEast2.setPreferredSize(new Dimension(50, 50));
+		//
 
 		jPanelderCenter.add(jPanelCard2, BorderLayout.CENTER);
 		jPanelderCenter.add(jPanelCardnorth2, BorderLayout.NORTH);
-		jPanelderCenter.add(jPanelCardSouth2, BorderLayout.SOUTH);
+		// jPanelderCenter.add(jPanelCardSouth2, BorderLayout.SOUTH);
 		jPanelderCenter.add(jPanelCardWest2, BorderLayout.WEST);
-		jPanelderCenter.add(jPanelCardEast2, BorderLayout.EAST);
+		// jPanelderCenter.add(jPanelCardEast2, BorderLayout.EAST);
 
 	}
 
@@ -217,11 +221,12 @@ public class JPanelMainProduct extends JPanel {
 		jPanelWest.setPreferredSize(new Dimension(100, 0));
 		jPanelEast.setPreferredSize(new Dimension(100, 0));
 		jPanelizq.setPreferredSize(new Dimension(500, 0));
-		jPanelDere.setPreferredSize(new Dimension(100, 0));
+		jPanelDere.setPreferredSize(new Dimension(100, 800));
 		jPanelizqImage.setPreferredSize(new Dimension(100, 400));
-		jPanelderNorth.setPreferredSize(new Dimension(100, 400));
+		jPanelderNorth.setPreferredSize(new Dimension(400, 400));
+		jPanelderCenter.setPreferredSize(new Dimension(10, 400));
 
-		jPanelCenter.setPreferredSize(new Dimension(100, 1000));
+		jPanelCenter.setPreferredSize(new Dimension(100, 2000));
 
 	}
 
@@ -233,6 +238,7 @@ public class JPanelMainProduct extends JPanel {
 		jPanelDere.setLayout(new BorderLayout());
 		jPanelDere.add(jPanelderNorth, BorderLayout.NORTH);
 		jPanelDere.add(jPanelderCenter, BorderLayout.CENTER);
+		jPanelDere.add(jPanelCardSouthDere, BorderLayout.SOUTH);
 
 		jPanelizq.setLayout(new BorderLayout());
 		jPanelizq.add(jPanelizqImage, BorderLayout.NORTH);
@@ -242,7 +248,7 @@ public class JPanelMainProduct extends JPanel {
 		jPanelCenter.add(jPanelDere, BorderLayout.CENTER);
 		jPanelCenter.add(jPanelizq, BorderLayout.WEST);
 
-		this.add(jPanelOptionMenu, BorderLayout.NORTH);
+		// this.add(jPanelderNorth, BorderLayout.NORTH);
 		this.add(jPanelSouth, BorderLayout.SOUTH);
 		this.add(jPanelWest, BorderLayout.WEST);
 		this.add(jPanelEast, BorderLayout.EAST);
