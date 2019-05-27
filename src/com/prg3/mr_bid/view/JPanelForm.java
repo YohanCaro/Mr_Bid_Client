@@ -5,7 +5,9 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -147,6 +149,46 @@ public class JPanelForm extends JPanel {
 		add(atribute);
 		return atribute;
 
+	}
+	
+	public String getFirstName() {
+		return jTextFieldName.getText();
+	}
+
+	public String getLastName() {
+		return null;
+	}
+
+	public String getEmail() {
+		return jTextFieldEmail.getText();
+	}
+
+	public String getPassword() {
+		return jTextFieldPasswor.getText();
+	}
+
+	public String getDocument() {
+		return jTextFieldid.getText();
+	}
+
+	public String getTypeDocument() {
+		return (String) jComboBox.getSelectedItem();
+	}
+
+	/**
+	 * Metodo que verifica el campo de entrada de la fecha de nacimiento utilizando 
+	 * una libreria externa y convirtiendo el valor en un String!
+	 * @return la cadena con el valor extraido del textfield si lo encuantra, sino 
+	 * devuelve un null!
+	 */
+	public String getBirthDate() {
+		if (jDateChooser.getDate() != null) {
+			Date date = jDateChooser.getDate();
+			DateFormat df = DateFormat.getDateInstance();
+			String date2 = df.format(date);
+			return date2; 
+		}
+		return null;
 	}
 
 }
