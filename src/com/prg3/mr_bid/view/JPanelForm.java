@@ -38,7 +38,7 @@ public class JPanelForm extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JLabel jLabelName, jLabelImage;
 	private JButton jBLogin, jButton;
-	private JTextField jTextFieldName, jTextFieldEmail, jTextFieldPasswor, jTextFieldid, jTextFieldBirthdate,
+	private JTextField jTextFieldName, jTextFieldEmail, jTextFieldPasswor, jTextFieldid,
 			jTextFieldLastName, jTextFieldCaptchat;
 	private JComboBox jComboBox;
 	private JPanelRobotCenter jPanelRobotCenter;
