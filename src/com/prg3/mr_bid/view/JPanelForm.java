@@ -91,7 +91,6 @@ public class JPanelForm extends JPanel {
 		add(jDateChooser);
 
 		createLabel("Genero", 20, 320);
-		// createTextField("Genero", 150, 320, jTextFieldgenero);
 
 		jRadioButton = new JRadioButton("FEMALE");
 		jRadioButton.setBounds(150, 330, 100, 30);
@@ -174,6 +173,11 @@ public class JPanelForm extends JPanel {
 	public String getTypeDocument() {
 		return (String) jComboBox.getSelectedItem();
 	}
+	
+	public String getGender() {
+		String sexoSelected = buttonGroup.getSelection().getActionCommand();
+		return sexoSelected;
+		}
 
 	/**
 	 * Metodo que verifica el campo de entrada de la fecha de nacimiento utilizando 

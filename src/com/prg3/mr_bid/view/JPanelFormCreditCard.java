@@ -5,7 +5,9 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -27,12 +29,15 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
 import javax.swing.text.DefaultFormatter;
 
+import com.toedter.calendar.JDateChooser;
+
 public class JPanelFormCreditCard extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JLabel jLabelName;
 	private JButton jButton;
 	private JTextField jTextFieldDate, jTextFieldName, jTextFieldNumberFront, jTextFieldCod;
+	private JDateChooser jDateChooser;
 
 	public JPanelFormCreditCard() {
 		this.setLayout(null);
@@ -47,7 +52,11 @@ public class JPanelFormCreditCard extends JPanel {
 		createLabel("AGREGAR TARJETA DE CREDITO", 20, 0);
 
 		createLabel("FECHA DE VENCIMIENTO", 20, 50);
-		createTextField("FECHA DE VENCIMIENTO", 200, 50, jTextFieldDate);
+		// createTextField("FECHA DE VENCIMIENTO", 200, 50, jTextFieldDate);
+
+		jDateChooser = new JDateChooser();
+		jDateChooser.setBounds(200, 50, 250, 40);
+		add(jDateChooser);
 
 		createLabel("NOMBRE TITULAR", 20, 100);
 		createTextField("NOMBRE TITULAR", 200, 100, jTextFieldName);
@@ -62,6 +71,35 @@ public class JPanelFormCreditCard extends JPanel {
 		jButton.setBounds(200, 250, 250, 40);
 		add(jButton);
 
+	}
+
+	public String getnameholder() {
+		return jTextFieldName.getText();
+	}
+
+	public String getcardnNumber() {
+		return jTextFieldName.getText();
+	}
+
+	public String getsecurityCode() {
+		return jTextFieldName.getText();
+	}
+
+	/**
+	 * Metodo que verifica el campo de entrada de la fecha de nacimiento utilizando
+	 * una libreria externa y convirtiendo el valor en un String!
+	 * 
+	 * @return la cadena con el valor extraido del textfield si lo encuantra, sino
+	 *         devuelve un null!
+	 */
+	public String getexpirationdDate() {
+		if (jDateChooser.getDate() != null) {
+			Date date = jDateChooser.getDate();
+			DateFormat df = DateFormat.getDateInstance();
+			String date2 = df.format(date);
+			return date2;
+		}
+		return null;
 	}
 
 	public JLabel createLabel(String name, int x, int y) {

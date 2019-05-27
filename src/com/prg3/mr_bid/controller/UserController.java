@@ -73,8 +73,8 @@ public class UserController implements ActionListener {
 				jDialogAddUser.getjPanelForm().getLastName(), jDialogAddUser.getjPanelForm().getEmail(),
 				jDialogAddUser.getjPanelForm().getPassword(),
 				new BidDate(jDialogAddUser.getjPanelForm().getBirthDate()),
-				jDialogAddUser.getjPanelForm().getDocument(), jDialogAddUser.getjPanelForm().getTypeDocument(), null,
-				null);
+				jDialogAddUser.getjPanelForm().getDocument(), jDialogAddUser.getjPanelForm().getTypeDocument(),
+				jDialogAddUser.getjPanelForm().getGender(), null);
 	}
 
 	public static UserController getInstanceOf() {
