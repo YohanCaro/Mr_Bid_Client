@@ -51,7 +51,8 @@ public class JPanelCard extends JPanel {
 		jPanelSouth.setBackground(Color.WHITE);
 		jPanelWest.setBackground(Color.WHITE);
 		jPanelEast.setBackground(Color.WHITE);
-		jPanelCenter.setBackground(Color.BLACK);
+//		jPanelCenter.setBackground(Color.BLACK);
+		jPanelCenter.setOpaque(false);
 		jPanelCenterWest.setBackground(Color.GRAY);
 		jPanelCenterEast.setBackground(Color.BLUE);
 
@@ -64,6 +65,7 @@ public class JPanelCard extends JPanel {
 		imageIcon = new ImageIcon(getClass().getResource(url));
 		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(250, 250, Image.SCALE_AREA_AVERAGING));
 		jLabel.setIcon(icon);
+		jpanelImageProduct.setOpaque(false);
 		jpanelImageProduct.add(jLabel);
 	}
 
