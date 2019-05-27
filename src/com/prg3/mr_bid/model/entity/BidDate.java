@@ -28,6 +28,7 @@ public class BidDate {
 		return shortDate;
 	}
 	
+	
 	public short getDay() {
 		return day;
 	}
