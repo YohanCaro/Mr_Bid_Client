@@ -28,7 +28,7 @@ public class JPanelOptionMenu extends JPanel {
 	private JMenu jMenu, jMenu2, jMenu3, jMenu4, jMenu5;
 	private JButton jButtonEnglish, jButtonSpanish, jButtonLogin;
 	private JMenuItem jMenuItemHome, jMenuItemEstadisticas, jMenuItemLogin, jMenuItemAportesHis,
-			jMenuItemCreateBotanic, jMenuItemJtableInstitucion, jMenuItemMobile, jMenuItemDeleteBotanic;
+			jMenuItemCreateBotanic, jMenuItemMyCount, jMenuItemMobile, jMenuItemDeleteBotanic;
 	private JMenuBar jMenuBar;
 	ImageIcon imageIcon;
 	Icon icon;
@@ -118,10 +118,10 @@ public class JPanelOptionMenu extends JPanel {
 		jMenuItemLogin.addActionListener(control);
 		jMenu2.add(jMenuItemLogin);
 
-		jMenuItemJtableInstitucion = new JMenuItem("OPTION");
-		// jMenuItemJtableInstitucion.setActionCommand(Commands.SHOW_TABLE_INSTITUCION.name());
-		// jMenuItemJtableInstitucion.addActionListener(control);
-		jMenu2.add(jMenuItemJtableInstitucion);
+		jMenuItemMyCount = new JMenuItem("Mi Cuenta");
+		jMenuItemMyCount.setActionCommand(ControlCommands.SHOW_MYCOUNT.name());
+		jMenuItemMyCount.addActionListener(control);
+		jMenu2.add(jMenuItemMyCount);
 
 		jMenuItemEstadisticas = new JMenuItem("OPTION");
 		// jMenuItemEstadisticas.setActionCommand(Commands.SHOW_ESTADISTIC.name());

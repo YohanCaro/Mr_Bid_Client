@@ -43,6 +43,9 @@ public class UserController implements ActionListener {
 		case SHOW_ADD_CREDIT_CARD:
 			jDialogAddCreditCard.setVisible(true);
 			break;
+		case SHOW_MYCOUNT:
+			jFrameMain.showMyCount();
+			break;
 
 		}
 	}
