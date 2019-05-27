@@ -16,6 +16,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import com.prg3.mr_bid.controller.ControlCommands;
+import com.prg3.mr_bid.controller.UserController;
+
 public class JPanelMainWindowCuenta extends JPanel {
 
 	private JPanel jPanelNorth, jPanelNorth2, jPanelSouth, jPanelSouth2, jPanelWest, jPanelEast, jPanelCenter,
@@ -28,7 +31,7 @@ public class JPanelMainWindowCuenta extends JPanel {
 	private JLabel jLabelName;
 	private JButton jButton, jButton2, jButton3, jButton4, jButton5;
 
-	public JPanelMainWindowCuenta() {
+	public JPanelMainWindowCuenta(UserController controller) {
 		this.setOpaque(false);
 		this.jPanelMainWindowProduct = new JPanelCard();
 		this.jPanelNorth = new JPanel();
@@ -41,10 +44,10 @@ public class JPanelMainWindowCuenta extends JPanel {
 		this.jPanelMainImage = new JPanel();
 		this.jPanelTools = new JPanel();
 		this.jPanelPhoto = new JPanel();
-//		this.jPanelOptionMenu = new JPanelOptionMenu();
+		// this.jPanelOptionMenu = new JPanelOptionMenu();
 		this.jLabel = new JLabel();
 		panelPhoto();
-		myjButton();
+		myjButton(controller);
 		character();
 		sizePanel();
 		JpanelImage();
@@ -92,15 +95,15 @@ public class JPanelMainWindowCuenta extends JPanel {
 
 	}
 
-	private void myjButton() {
+	private void myjButton(UserController control) {
 
 		jPanelTools.setLayout(new GridLayout(5, 1));
 
-		jPanelTools.add(createJbuton("COMPRAS", 0, 0, jButton, "/images/compras.png"));
-		jPanelTools.add(createJbuton("VENTAS", 0, 0, jButton2, "/images/venta.png"));
-		jPanelTools.add(createJbuton("RESUMEN", 0, 0, jButton3, "/images/bloc.png"));
-		jPanelTools.add(createJbuton("REPUTACION", 0, 0, jButton4, "/images/favoritos.png"));
-		jPanelTools.add(createJbuton("CONFIGURACION", 0, 0, jButton5, "/images/ajuste.png"));
+		jPanelTools.add(createJbuton("COMPRAS", 0, 0, jButton, "/images/compras.png", ControlCommands.SHOW_ADDPRODUCT.name(), control));
+		jPanelTools.add(createJbuton("VENTAS", 0, 0, jButton2, "/images/venta.png", "", control));
+		jPanelTools.add(createJbuton("RESUMEN", 0, 0, jButton3, "/images/bloc.png", "", control));
+		jPanelTools.add(createJbuton("REPUTACION", 0, 0, jButton4, "/images/favoritos.png", "", control));
+		jPanelTools.add(createJbuton("CONFIGURACION", 0, 0, jButton5, "/images/ajuste.png", "", control));
 
 	}
 
@@ -116,12 +119,12 @@ public class JPanelMainWindowCuenta extends JPanel {
 
 	}
 
-	public JButton createJbuton(String name, int x, int y, JButton atribute, String url) {
+	public JButton createJbuton(String name, int x, int y, JButton atribute, String url, String commands, UserController control) {
 		atribute = new JButton(name);
 		atribute.setForeground(new Color(244, 244, 244));
 		atribute.setBackground(new Color(48, 48, 48));
-		// atribute.setActionCommand(Commands.C_ENGLISH.name());
-		// atribute.addActionListener(control);
+		atribute.setActionCommand(commands);
+		atribute.addActionListener(control);
 		imageIcon = new ImageIcon(getClass().getResource(url));
 		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(70, 70, Image.SCALE_AREA_AVERAGING));
 		atribute.setIcon(icon);

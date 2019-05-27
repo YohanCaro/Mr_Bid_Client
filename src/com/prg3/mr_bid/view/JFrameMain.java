@@ -18,6 +18,7 @@ public class JFrameMain extends JFrame {
 	private JPanelPrincipalLogin jPanelPrincipalLogin;
 	private JPanelOptionMenu jPanelOptionMenu;
 	private JPanelMainWindowCuenta jPanelMainWindowCuenta;
+	private JPanelMainAddProduct jPanelMainAddProduct;
 	private MainPanelHome jMainPanelHome;
 	Icon icon;
 
@@ -27,7 +28,8 @@ public class JFrameMain extends JFrame {
 		this.jPanelPrincipalLogin = new JPanelPrincipalLogin();
 		this.jMainPanelHome = new MainPanelHome(control);
 		this.jPanelOptionMenu = new JPanelOptionMenu(control);
-		this.jPanelMainWindowCuenta = new JPanelMainWindowCuenta();
+		this.jPanelMainWindowCuenta = new JPanelMainWindowCuenta(control);
+		this.jPanelMainAddProduct = new JPanelMainAddProduct();
 
 
 		init();
@@ -64,6 +66,13 @@ public class JFrameMain extends JFrame {
 	public void showMyCount() {
 		jPanelMain.removeAll();
 		jPanelMain.add(jPanelMainWindowCuenta, BorderLayout.CENTER);
+		repaint();
+		revalidate();
+	}
+	
+	public void showPanelAddProduct() {
+		jPanelMain.removeAll();
+		jPanelMain.add(jPanelMainAddProduct, BorderLayout.CENTER);
 		repaint();
 		revalidate();
 	}

@@ -46,6 +46,10 @@ public class UserController implements ActionListener {
 		case SHOW_MYCOUNT:
 			jFrameMain.showMyCount();
 			break;
+		case SHOW_ADDPRODUCT:
+			jFrameMain.showPanelAddProduct();
+			break;
+			
 
 		}
 	}
