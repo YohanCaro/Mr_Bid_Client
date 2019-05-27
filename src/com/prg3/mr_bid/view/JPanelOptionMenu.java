@@ -89,7 +89,7 @@ public class JPanelOptionMenu extends JPanel {
 		jMenuItemHome.addActionListener(control);
 		jMenuBar.add(jMenuItemHome);
 
-		jMenu2 = new JMenu("OPTION");
+		jMenu2 = new JMenu("CUENTA");
 		jMenu2.setFont(new Font("Arial", 1, 15));
 		jMenu2.setBackground(Color.BLACK);
 		jMenu2.setForeground(Color.WHITE);
