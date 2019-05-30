@@ -1,10 +1,16 @@
 package com.prg3.mr_bid.communication;
 
+import java.awt.image.BufferedImage;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
+
+import javax.imageio.IIOImage;
+import javax.imageio.ImageIO;
 
 import com.google.gson.Gson;
 import com.prg3.mr_bid.model.entity.Product;
@@ -51,6 +57,19 @@ public class Client extends Socket implements Runnable {
 				isConect = false;
 				e.printStackTrace();
 			}
+		}
+	}
+	
+	/**
+	 * Recibe un arraylist con la ruta de las imagenes de la subasta/ hacer en vista/controlador
+	 * @throws IOException 
+	 */
+	public void sendImages(ArrayList<String> pathsImg, long bidId) throws IOException {
+		sendMessage(Commands.SENDIMG, pathsImg.size()+" "+bidId);
+		for (int i = 0; i < pathsImg.size(); i++) {
+			BufferedImage bufferedImage = ImageIO.read(new File(pathsImg.get(i)));
+			ImageIO.write(bufferedImage, "png", dataOS);
+			bufferedImage.flush();
 		}
 	}
 	
