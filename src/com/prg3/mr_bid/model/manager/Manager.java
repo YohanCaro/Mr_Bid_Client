@@ -19,10 +19,14 @@ public class Manager {
 		
 	}
 	
-	public User createUser(String firstName, String lastName, String email, String password, BidDate birthDate,
+	public User createUser(String firstName, String lastName, String email, String password, String birthDate,
 			String document, TypeDocument typeDocument, Gender gender, CreditCard creditCard) {
-		return new User(firstName, lastName, email, password, birthDate, document,
-				typeDocument,	gender, creditCard);
+		if (firstName != null && lastName != null && email != null && password != null && birthDate != null
+				&& document != null) {
+			return new User(firstName, lastName, email, password,new BidDate(birthDate), document,
+					typeDocument,	gender, creditCard);
+		}
+		return null;
 	}
 	
 	public void addBidding(String biddingName, TypeProduct typeProduct, Product product, BidTime publicationTime,
