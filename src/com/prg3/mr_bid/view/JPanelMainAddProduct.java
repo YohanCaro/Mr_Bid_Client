@@ -11,6 +11,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
@@ -18,6 +19,8 @@ import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import com.prg3.mr_bid.controller.ControlCommands;
+import com.prg3.mr_bid.controller.UserController;
 import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
 
@@ -34,8 +37,9 @@ public class JPanelMainAddProduct extends JPanel {
 	private JRadioButton jRadioButton, jRadioButton2, jRadioButtonPublic, jRadioButtonPrivate;
 	private ButtonGroup buttonGroup, buttonGroup2;
 	private JSpinner jSpinnerPublicatedHour, jSpinnerStartHour, jSpinnerFinishHour;
+	private JFileChooser jFileChooser;
 
-	public JPanelMainAddProduct() {
+	public JPanelMainAddProduct(UserController control) {
 		this.jPanelNorth = new JPanel();
 		this.jPanelSouth = new JPanel();
 		this.jPanelWest = new JPanel();
@@ -45,7 +49,7 @@ public class JPanelMainAddProduct extends JPanel {
 		this.jLabel = new JLabel();
 		character();
 		sizePanel();
-		Card1();
+		Card1(control);
 		Card2();
 		Card3();
 
@@ -68,9 +72,11 @@ public class JPanelMainAddProduct extends JPanel {
 
 	}
 
-	private void Card1() {
+	private void Card1(UserController control) {
 		this.jPanelCard1 = new JPanel();
 		JButton jButton = new JButton("Agregar imagen");
+		jButton.setActionCommand(ControlCommands.ADD_PHOTO.name());
+		jButton.addActionListener(control);
 		JTextArea jTextArea = new JTextArea();
 		jTextArea.setBounds(600, 60, 500, 200);
 		jButton.setBounds(200, 180, 200, 30);

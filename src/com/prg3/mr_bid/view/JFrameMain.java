@@ -21,6 +21,7 @@ public class JFrameMain extends JFrame {
 	private JPanelMainAddProduct jPanelMainAddProduct;
 	private MainPanelHome jMainPanelHome;
 	private JPanelMainProduct jPanelMainProduct;
+	private JPanelMainWindowMisSubastas jPanelMainWindowMisSubastas;
 	Icon icon;
 
 	public JFrameMain(UserController control) {
@@ -30,8 +31,10 @@ public class JFrameMain extends JFrame {
 		this.jMainPanelHome = new MainPanelHome(control);
 		this.jPanelOptionMenu = new JPanelOptionMenu(control);
 		this.jPanelMainWindowCuenta = new JPanelMainWindowCuenta(control);
-		this.jPanelMainAddProduct = new JPanelMainAddProduct();
+		this.jPanelMainAddProduct = new JPanelMainAddProduct(control);
 		this.jPanelMainProduct = new JPanelMainProduct();
+		this.jPanelMainWindowMisSubastas = new JPanelMainWindowMisSubastas();
+
 
 
 		init();
@@ -82,6 +85,13 @@ public class JFrameMain extends JFrame {
 	public void showPanelCardProduct() {
 		jPanelMain.removeAll();
 		jPanelMain.add(jPanelMainProduct, BorderLayout.CENTER);
+		repaint();
+		revalidate();
+	}
+	
+	public void showMyHistory() {
+		jPanelMain.removeAll();
+		jPanelMain.add(jPanelMainWindowMisSubastas, BorderLayout.CENTER);
 		repaint();
 		revalidate();
 	}

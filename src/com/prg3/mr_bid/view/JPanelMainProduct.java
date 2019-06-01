@@ -291,7 +291,7 @@ public class JPanelMainProduct extends JPanel {
 		cardPublicaciones.setLayout(null);
 		cardPublicaciones.setBackground(new Color(0, 0, 0, 94));
 
-		jLabel3 = new JLabel("VALOR ACTUAL");
+		jLabel3 = new JLabel("OFRECIDO POR");
 		jLabel3.setBounds(20, 10, 300, 25);
 		jLabel3.setFont(new Font("Andale Mono", 3, 15));
 		jLabel3.setForeground(Color.WHITE);
@@ -305,7 +305,7 @@ public class JPanelMainProduct extends JPanel {
 		offer.setForeground(new java.awt.Color(255, 0, 0));
 		cardPublicaciones.add(offer);
 
-		jLabel2 = new JLabel("VALOR DE LA PUJA");
+		jLabel2 = new JLabel("NUMERO DE PUBLICACIONES");
 		jLabel2.setBounds(20, 85, 200, 25);
 		jLabel2.setFont(new Font("Andale Mono", 3, 15));
 		jLabel2.setForeground(Color.WHITE);
@@ -328,7 +328,7 @@ public class JPanelMainProduct extends JPanel {
 		cardParticipantes.setBackground(new Color(0, 0, 0, 94));
 		cardParticipantes.setPreferredSize(new Dimension(10, 300));
 
-		jLabel4 = new JLabel("VALOR ACTUAL");
+		jLabel4 = new JLabel("PARTICIPANTES");
 		jLabel4.setBounds(20, 10, 300, 25);
 		jLabel4.setFont(new Font("Andale Mono", 3, 15));
 		jLabel4.setForeground(Color.WHITE);

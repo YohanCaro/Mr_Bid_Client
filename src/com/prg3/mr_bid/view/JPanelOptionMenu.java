@@ -26,7 +26,7 @@ public class JPanelOptionMenu extends JPanel {
 
 	private JPanel jPanelWhite;
 	private JMenu jMenu, jMenu2, jMenu3, jMenu4, jMenu5;
-	private JButton jButtonEnglish, jButtonSpanish, jButtonLogin;
+	private JButton jButtonEnglish, signin, jButtonLogin;
 	private JMenuItem jMenuItemHome, jMenuItemEstadisticas, jMenuItemLogin, jMenuItemAportesHis,
 			jMenuItemCreateBotanic, jMenuItemMyCount, jMenuItemMobile, jMenuItemDeleteBotanic;
 	private JMenuBar jMenuBar;
@@ -56,13 +56,11 @@ public class JPanelOptionMenu extends JPanel {
 		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(70, 70, Image.SCALE_AREA_AVERAGING));
 		jButtonEnglish.setIcon(icon);
 
-		jButtonSpanish = new JButton();
-		jButtonSpanish.setBackground(new Color(48, 48, 48));
-		// jButtonSpanish.setActionCommand(Commands.C_SPANISH.name());
-		// jButtonSpanish.addActionListener(control);
-		imageIcon = new ImageIcon(getClass().getResource("/images/notificacion.png"));
-		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(70, 70, Image.SCALE_AREA_AVERAGING));
-		jButtonSpanish.setIcon(icon);
+		signin = new JButton("Registrar");
+		signin.setForeground(Color.WHITE);
+		signin.setBackground(new Color(48, 48, 48));
+		signin.setActionCommand(ControlCommands.SHOW_REGISTER_USER.name());
+		signin.addActionListener(control);
 
 		jButtonLogin = new JButton();
 		jButtonLogin.setActionCommand(ControlCommands.SHOW_LOGIN.name());
@@ -73,7 +71,7 @@ public class JPanelOptionMenu extends JPanel {
 		jButtonLogin.setIcon(icon);
 
 		jPanelWhite.add(jButtonEnglish);
-		jPanelWhite.add(jButtonSpanish);
+		jPanelWhite.add(signin);
 		jPanelWhite.add(jButtonLogin);
 
 		jMenuBar = new JMenuBar();

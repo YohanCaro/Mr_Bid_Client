@@ -5,6 +5,13 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.UnknownHostException;
 
+import javax.swing.JFileChooser;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactoryConfigurationError;
+
+import org.w3c.dom.DOMException;
+
 import com.prg3.mr_bid.communication.Client;
 import com.prg3.mr_bid.communication.Commands;
 import com.prg3.mr_bid.model.entity.BidDate;
@@ -53,7 +60,19 @@ public class UserController implements ActionListener {
 			jFrameMain.showPanelAddProduct();
 			break;
 		case SHOW_PRODUCT:
-			jFrameMain.showPanelCardProduct();;
+			jFrameMain.showPanelCardProduct();
+			break;
+		case SHOW_HISTORY:
+			jFrameMain.showMyHistory();
+			break;
+		case ADD_PHOTO:
+			try {
+				selectImagge();
+			} catch (DOMException | TransformerFactoryConfigurationError | ParserConfigurationException
+					| TransformerException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			break;
 		case ACTION_SINGIN:
 			if (jDialogAddUser.isVisible()) {
@@ -64,10 +83,11 @@ public class UserController implements ActionListener {
 	}
 
 	private void addProduct() {
-		this.jPanelMainWindow = new JPanelMainWindow("Computador LG", "Publico", "No inicida", "7;80", "/images/lg.jpg",this);
-		
+		this.jPanelMainWindow = new JPanelMainWindow("Computador LG", "Publico", "No inicida", "7;80", "/images/lg.jpg",
+				this);
+
 	}
-	
+
 	private void sendData(Commands command, Object data) {
 		try {
 			Client.getInstanceOf().sendMessage(command, data);
@@ -80,6 +100,7 @@ public class UserController implements ActionListener {
 
 	/**
 	 * En proceso
+	 * 
 	 * @return
 	 */
 	private User createUser() {
@@ -96,6 +117,16 @@ public class UserController implements ActionListener {
 			controller = new UserController();
 		}
 		return controller;
+	}
+
+	private void selectImagge() throws DOMException, TransformerFactoryConfigurationError,
+			ParserConfigurationException, TransformerException {
+		JFileChooser ventanaG = new JFileChooser();
+		ventanaG.showSaveDialog(null);
+		if (ventanaG.getSelectedFile() != null) {
+			// se debe guardar la imagen
+		}
+
 	}
 
 }
