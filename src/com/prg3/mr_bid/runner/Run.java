@@ -20,8 +20,6 @@ public class Run {
 	 */
 	public static void main(String[] args) {
 		
-		
-		
 		if (args.length == 2) {
 			try {
 				Constants.ip = args[0];

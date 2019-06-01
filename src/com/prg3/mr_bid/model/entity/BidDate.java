@@ -21,11 +21,14 @@ public class BidDate {
 	}
 	
 	public static short[] stringToDate(String date) {
-		short[] shortDate = new short[3];
-		for (int i = 0; i < shortDate.length; i++) {
-			shortDate[i] = Short.parseShort(date.split("/")[i]);
+		if (date != null && !date.isEmpty()) {
+			short[] shortDate = new short[3];
+			for (int i = 0; i < shortDate.length; i++) {
+				shortDate[i] = Short.parseShort(date.split("/")[i]);
+			}
+			return shortDate;
 		}
-		return shortDate;
+		return null;
 	}
 	
 	

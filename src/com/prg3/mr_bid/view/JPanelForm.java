@@ -21,6 +21,7 @@ import com.prg3.mr_bid.controller.UserController;
 import com.prg3.mr_bid.model.entity.Gender;
 import com.prg3.mr_bid.model.entity.TypeDocument;
 import com.prg3.mr_bid.utilities.HintJTextField;
+import com.prg3.mr_bid.utilities.Utilities;
 import com.toedter.calendar.JDateChooser;
 
 public class JPanelForm extends JPanel {
@@ -154,9 +155,11 @@ public class JPanelForm extends JPanel {
 	}
 
 	public String getEmail() {
-		if (jTextFieldEmail.getText() != null && !jTextFieldEmail.getText().isEmpty()) {
+		if (Utilities.isEmailAvailable(jTextFieldEmail.getText())){
 			return jTextFieldEmail.getText();
-		} 
+		} else {
+			jTextFieldEmail.setForeground(Color.RED);
+		}
 		return null;
 	}
 

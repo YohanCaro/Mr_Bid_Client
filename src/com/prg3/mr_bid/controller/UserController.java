@@ -17,6 +17,7 @@ import com.prg3.mr_bid.communication.Commands;
 import com.prg3.mr_bid.model.entity.BidDate;
 import com.prg3.mr_bid.model.entity.User;
 import com.prg3.mr_bid.model.manager.Manager;
+import com.prg3.mr_bid.utilities.Utilities;
 import com.prg3.mr_bid.view.JDialogAddCreditCard;
 import com.prg3.mr_bid.view.JDialogAddUser;
 import com.prg3.mr_bid.view.JFrameMain;
@@ -75,8 +76,10 @@ public class UserController implements ActionListener {
 			}
 			break;
 		case ACTION_SINGIN:
-			if (jDialogAddUser.isVisible()) {
+			if (jDialogAddUser.isVisible() && this.createUser() != null) {
 				this.sendData(Commands.SIGNIN, this.createUser());
+			} else {
+				Utilities.showMessageWarning("Por favor complete todos los campos correctamente!", "Datos no validos o vacios!");
 			}
 			break;
 		}
@@ -107,10 +110,16 @@ public class UserController implements ActionListener {
 		return Manager.getInstanceOf().createUser(jDialogAddUser.getjPanelForm().getFirstName(),
 				jDialogAddUser.getjPanelForm().getLastName(), jDialogAddUser.getjPanelForm().getEmail(),
 				jDialogAddUser.getjPanelForm().getPassword(),
-				new BidDate(jDialogAddUser.getjPanelForm().getBirthDate()),
+				jDialogAddUser.getjPanelForm().getBirthDate(),
 				jDialogAddUser.getjPanelForm().getDocument(), jDialogAddUser.getjPanelForm().getTypeDocument(),
 				jDialogAddUser.getjPanelForm().getGender(), null);
 	}
+	
+//	private void createBidding() {
+//	Product p = new Product(, description);
+//	Manager.getInstanceOf().addBidding(biddingName, typeProduct, product, publicationTime,
+//			initTime, finishTime, isAutomaticIncremet, isPublic);
+//}
 
 	public static UserController getInstanceOf() {
 		if (controller == null) {
