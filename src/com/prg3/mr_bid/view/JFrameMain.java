@@ -20,6 +20,7 @@ public class JFrameMain extends JFrame {
 	private JPanelMainWindowCuenta jPanelMainWindowCuenta;
 	private JPanelMainAddProduct jPanelMainAddProduct;
 	private MainPanelHome jMainPanelHome;
+	private JPanelMainProduct jPanelMainProduct;
 	Icon icon;
 
 	public JFrameMain(UserController control) {
@@ -30,6 +31,7 @@ public class JFrameMain extends JFrame {
 		this.jPanelOptionMenu = new JPanelOptionMenu(control);
 		this.jPanelMainWindowCuenta = new JPanelMainWindowCuenta(control);
 		this.jPanelMainAddProduct = new JPanelMainAddProduct();
+		this.jPanelMainProduct = new JPanelMainProduct();
 
 
 		init();
@@ -73,6 +75,13 @@ public class JFrameMain extends JFrame {
 	public void showPanelAddProduct() {
 		jPanelMain.removeAll();
 		jPanelMain.add(jPanelMainAddProduct, BorderLayout.CENTER);
+		repaint();
+		revalidate();
+	}
+	
+	public void showPanelCardProduct() {
+		jPanelMain.removeAll();
+		jPanelMain.add(jPanelMainProduct, BorderLayout.CENTER);
 		repaint();
 		revalidate();
 	}

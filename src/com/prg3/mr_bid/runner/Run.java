@@ -19,6 +19,9 @@ public class Run {
 	 * @param args (ip, port) (localHost 12345)
 	 */
 	public static void main(String[] args) {
+		
+		
+		
 		if (args.length == 2) {
 			try {
 				Constants.ip = args[0];

@@ -52,6 +52,9 @@ public class UserController implements ActionListener {
 		case SHOW_ADDPRODUCT:
 			jFrameMain.showPanelAddProduct();
 			break;
+		case SHOW_PRODUCT:
+			jFrameMain.showPanelCardProduct();;
+			break;
 		case ACTION_SINGIN:
 			if (jDialogAddUser.isVisible()) {
 				this.sendData(Commands.SIGNIN, this.createUser());
@@ -61,7 +64,7 @@ public class UserController implements ActionListener {
 	}
 
 	private void addProduct() {
-		this.jPanelMainWindow = new JPanelMainWindow("Computador LG", "Publico", "No inicida", "7;80", "/images/lg.jpg");
+		this.jPanelMainWindow = new JPanelMainWindow("Computador LG", "Publico", "No inicida", "7;80", "/images/lg.jpg",this);
 		
 	}
 	

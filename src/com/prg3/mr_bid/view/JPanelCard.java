@@ -14,6 +14,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import com.prg3.mr_bid.controller.ControlCommands;
+import com.prg3.mr_bid.controller.UserController;
+
 public class JPanelCard extends JPanel {
 
 	private JPanel jPanelNorth, jPanelSouth, jPanelWest, jPanelEast, jPanelCenter, jPanelCenterEast, jPanelCenterWest,
@@ -27,7 +30,7 @@ public class JPanelCard extends JPanel {
 
 	}
 
-	public JPanelCard(String name, String type, String staut, String time, String url) {
+	public JPanelCard(String name, String type, String staut, String time, String url, UserController controller) {
 		this.jPanelNorth = new JPanel();
 		this.jPanelSouth = new JPanel();
 		this.jPanelWest = new JPanel();
@@ -39,7 +42,7 @@ public class JPanelCard extends JPanel {
 		this.jPanelNameProduct = new JPanel();
 		this.jPanelInfoProduct = new JPanel();
 		this.jLabel = new JLabel();
-		informacion(name, type, staut, time);
+		informacion(name, type, staut, time,controller);
 		character();
 		sizePanel();
 		JpanelImageProduct(url);
@@ -77,7 +80,7 @@ public class JPanelCard extends JPanel {
 
 	}
 
-	private void informacion(String name, String type, String status, String time) {
+	private void informacion(String name, String type, String status, String time, UserController control) {
 		jPanelNameProduct.add(createLabel(name, 10, 100, jLabelName, 30, 400));
 		jPanelInfoProduct.add(createLabel("TIPO", 10, 20, jLabelType, 20, 130));
 		jPanelInfoProduct.add(createLabel("ESTADO", 10, 70, jLabelSatus, 20, 130));
@@ -89,6 +92,8 @@ public class JPanelCard extends JPanel {
 
 		jButton = new JButton("Ingresar");
 		jButton.setBounds(150, 200, 100, 30);
+		jButton.setActionCommand(ControlCommands.SHOW_PRODUCT.name());
+		jButton.addActionListener(control);
 		jPanelInfoProduct.add(jButton);
 
 	}
