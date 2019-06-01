@@ -13,18 +13,22 @@ import com.prg3.mr_bid.model.manager.Manager;
 import com.prg3.mr_bid.view.JDialogAddCreditCard;
 import com.prg3.mr_bid.view.JDialogAddUser;
 import com.prg3.mr_bid.view.JFrameMain;
+import com.prg3.mr_bid.view.JPanelMainWindow;
 
 public class UserController implements ActionListener {
 
 	private JFrameMain jFrameMain;
 	private JDialogAddUser jDialogAddUser;
 	private JDialogAddCreditCard jDialogAddCreditCard;
+	private JPanelMainWindow jPanelMainWindow;
 	private static UserController controller;
 
 	public UserController() {
 		this.jFrameMain = new JFrameMain(this);
 		this.jDialogAddUser = new JDialogAddUser(this);
 		this.jDialogAddCreditCard = new JDialogAddCreditCard();
+		this.jPanelMainWindow = new JPanelMainWindow(this);
+		addProduct();
 	}
 
 	@Override
@@ -53,6 +57,13 @@ public class UserController implements ActionListener {
 		}
 	}
 
+	
+	private void addProduct() {
+		this.jPanelMainWindow = new JPanelMainWindow("Computador LG", "Publico", "No inicida", "7;80", "/images/lg.jpg");
+		
+	}
+	
+	
 	private void sendData(Commands command, Object data) {
 		try {
 			Client.getInstanceOf().sendMessage(command, data);

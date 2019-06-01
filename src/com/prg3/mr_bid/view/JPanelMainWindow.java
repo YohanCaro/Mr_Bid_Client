@@ -23,7 +23,7 @@ public class JPanelMainWindow extends JPanel {
 	private JLabel jLabel;
 	private ImageIcon imageIcon;
 	private JScrollPane jScrollPane;
-
+	private String names;
 	private Icon icon;
 
 	public JPanelMainWindow(UserController controller) {
@@ -37,10 +37,29 @@ public class JPanelMainWindow extends JPanel {
 		this.jPanelEspacio = new JPanel();
 		this.jScrollPane = new JScrollPane();
 		this.jLabel = new JLabel();
+		// addNewProduct(name, type, staut, time, url);
 		character();
 		sizePanel();
 		JpanelImage();
 		init();
+
+	}
+	
+	
+
+
+
+	public JPanelMainWindow(String name, String type, String staut, String time, String url) {
+		addNewProduct(name, type, staut, time, url);
+		
+		names = name;
+		System.out.println(names);
+//		System.out.println(name+ type+ staut+ time+ url);
+
+	}
+	
+	public String getNames() {
+		return names;
 	}
 
 	private void character() {
@@ -72,28 +91,42 @@ public class JPanelMainWindow extends JPanel {
 
 	}
 
+	public JPanelCard addNewProduct(String name, String type, String staut, String time, String url) {
+		return jPanelMainWindowProduct = new JPanelCard(name, type, staut, time, url);
+	}
+
 	private void init() {
 
 		this.setLayout(new BorderLayout());
 		this.setSize(Toolkit.getDefaultToolkit().getScreenSize());
-		
-				
+
 		jPanelCenter.setLayout(new BorderLayout());
 		jScrollPane.setViewportView(jPanelEspacio);
 
 		jPanelCenter.add(jPanelMainImage, BorderLayout.NORTH);
 		jPanelCenter.add(jScrollPane, BorderLayout.CENTER);
 
+		
 		jPanelEspacio.setLayout(new GridLayout(0, 1));
-		jPanelEspacio.add(new JPanelCard("Computador LG", "Publico", "No inicida", "7;80", "/images/lg.jpg"));
-		jPanelEspacio.add(new JPanelCard("Iphone X", "Publico", " Inicida", "8;80", "/images/iphone.png"));
-		jPanelEspacio.add(new JPanelCard("Computador LG", "Publico", "No inicida", "7;80", "/images/lg.jpg"));
-		jPanelEspacio.add(new JPanelCard("Iphone X", "Publico", " Inicida", "8;80", "/images/iphone.png"));
-		jPanelEspacio.add(new JPanelCard("Computador LG", "Publico", "No inicida", "7;80", "/images/lg.jpg"));
-		jPanelEspacio.add(new JPanelCard("Iphone X", "Publico", " Inicida", "8;80", "/images/iphone.png"));
-		jPanelEspacio.add(new JPanelCard("Computador LG", "Publico", "No inicida", "7;80", "/images/lg.jpg"));
-		jPanelEspacio.add(new JPanelCard("Iphone X", "Publico", " Inicida", "8;80", "/images/iphone.png"));
-
+		
+//		jPanelEspacio.add(addNewProduct(this.getNames(), "Publico", "No inicida",
+//				 "7;80", "/images/lg.jpg"));
+		 jPanelEspacio.add(new JPanelCard("Computador LG", "Publico", "No inicida",
+		 "7;80", "/images/lg.jpg"));
+		 jPanelEspacio.add(new JPanelCard("Iphone X", "Publico", " Inicida", "8;80",
+		 "/images/iphone.png"));
+		 jPanelEspacio.add(new JPanelCard("Computador LG", "Publico", "No inicida",
+		 "7;80", "/images/lg.jpg"));
+		 jPanelEspacio.add(new JPanelCard("Iphone X", "Publico", " Inicida", "8;80",
+		 "/images/iphone.png"));
+		 jPanelEspacio.add(new JPanelCard("Computador LG", "Publico", "No inicida",
+		 "7;80", "/images/lg.jpg"));
+		 jPanelEspacio.add(new JPanelCard("Iphone X", "Publico", " Inicida", "8;80",
+		 "/images/iphone.png"));
+		 jPanelEspacio.add(new JPanelCard("Computador LG", "Publico", "No inicida",
+		 "7;80", "/images/lg.jpg"));
+		 jPanelEspacio.add(new JPanelCard("Iphone X", "Publico", " Inicida", "8;80",
+		 "/images/iphone.png"));
 
 		this.add(jPanelSouth, BorderLayout.SOUTH);
 		this.add(jPanelWest, BorderLayout.WEST);
