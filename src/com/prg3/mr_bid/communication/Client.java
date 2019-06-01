@@ -16,6 +16,7 @@ import com.google.gson.Gson;
 import com.prg3.mr_bid.model.entity.Product;
 import com.prg3.mr_bid.model.entity.User;
 import com.prg3.mr_bid.utilities.Constants;
+import com.prg3.mr_bid.utilities.Utilities;
 
 public class Client extends Socket implements Runnable {
 	
@@ -75,23 +76,12 @@ public class Client extends Socket implements Runnable {
 	
 	private void excecuteAction(Commands command, String json) {
 		switch (command) {
-		case LOGIN:
-			Constants.user = gson.fromJson(json, User.class);
+		case ERROR_SINGIN:
+			Utilities.showMessageWarning(json + "\nIntente con otra dirección o cargue su cuenta!",
+					"Correo no valido!");
 			break;
-		case SIGNIN: 
-			Constants.user = gson.fromJson(json, User.class);
-			break;
-		case UPBIDDING: 
-			
-			break;
-		case CHANGE_BIDDING:
-			
-			break;
-		case DELETE_BIDDING:
-			
-			break;
-		case DELETE_USER:
-			
+		default:
+			System.out.println("n");
 			break;
 		}
 	}

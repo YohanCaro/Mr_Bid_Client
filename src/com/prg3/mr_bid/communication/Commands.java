@@ -3,7 +3,8 @@ package com.prg3.mr_bid.communication;
 public enum Commands {
 
 	SIGNIN("signin"), LOGIN("login"), UPBIDDING("up_bidding"), DELETE_USER("delete_user"),
-	CHANGE_BIDDING("change_bidding"), DELETE_BIDDING("delete_bidding"), SENDIMG("send_img") ;
+	CHANGE_BIDDING("change_bidding"), DELETE_BIDDING("delete_bidding"), SENDIMG("send_img"),
+	ERROR_SINGIN("error_sigin");
 	
 	private String value;
 	

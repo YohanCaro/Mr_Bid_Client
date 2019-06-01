@@ -23,7 +23,7 @@ public class Run {
 			try {
 				Constants.ip = args[0];
 				Constants.port = Integer.parseInt(args[1]);
-				Client.getInstanceOf();
+				Client.getInstanceOf().initClient();
 				UserController.getInstanceOf();
 			} catch (UnknownHostException e) {
 				System.out.println("No se ha encontrado al servidor");
