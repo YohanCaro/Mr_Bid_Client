@@ -31,7 +31,6 @@ public class User {
 	 */
 	public User(String firstName, String lastName, String email, String password, BidDate birthDate, String document,
 			TypeDocument typeDocument, Gender gender, CreditCard creditCard) {
-		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
@@ -45,8 +44,6 @@ public class User {
 		myBiddings = new ArrayList<>();
 		myParcitipations = new ArrayList<>();
 	}
-
-
 
 	public String getFirstName() {
 		return firstName;

@@ -20,9 +20,9 @@ public class Manager {
 	}
 	
 	public User createUser(String firstName, String lastName, String email, String password, BidDate birthDate,
-			String document, String typeDocument, String gender, CreditCard creditCard) {
+			String document, TypeDocument typeDocument, Gender gender, CreditCard creditCard) {
 		return new User(firstName, lastName, email, password, birthDate, document,
-				TypeDocument.valueOf(typeDocument),	Gender.valueOf(gender), creditCard);
+				typeDocument,	gender, creditCard);
 	}
 	
 	public void addBidding(String biddingName, TypeProduct typeProduct, Product product, BidTime publicationTime,
@@ -53,6 +53,5 @@ public class Manager {
 	public User getUser() {
 		return user;
 	}
-	
 	
 }

@@ -23,7 +23,7 @@ public class UserController implements ActionListener {
 	private JPanelMainWindow jPanelMainWindow;
 	private static UserController controller;
 
-	public UserController() {
+	private UserController() {
 		this.jFrameMain = new JFrameMain(this);
 		this.jDialogAddUser = new JDialogAddUser(this);
 		this.jDialogAddCreditCard = new JDialogAddCreditCard();
@@ -42,7 +42,6 @@ public class UserController implements ActionListener {
 			break;
 		case SHOW_REGISTER_USER:
 			jDialogAddUser.setVisible(true);
-
 			break;
 		case SHOW_ADD_CREDIT_CARD:
 			jDialogAddCreditCard.setVisible(true);
@@ -53,16 +52,18 @@ public class UserController implements ActionListener {
 		case SHOW_ADDPRODUCT:
 			jFrameMain.showPanelAddProduct();
 			break;
-
+		case ACTION_SINGIN:
+			if (jDialogAddUser.isVisible()) {
+				this.sendData(Commands.SIGNIN, this.createUser());
+			}
+			break;
 		}
 	}
 
-	
 	private void addProduct() {
 		this.jPanelMainWindow = new JPanelMainWindow("Computador LG", "Publico", "No inicida", "7;80", "/images/lg.jpg");
 		
 	}
-	
 	
 	private void sendData(Commands command, Object data) {
 		try {
@@ -76,7 +77,6 @@ public class UserController implements ActionListener {
 
 	/**
 	 * En proceso
-	 * 
 	 * @return
 	 */
 	private User createUser() {
