@@ -99,7 +99,7 @@ public class JPanelMainWindowMisSubastas extends JPanel {
 		jPanelTools.setPreferredSize(new Dimension(300, 300));
 		jTextAreaParticiped = new JTextArea("MIS PARTICIPACIONES");
 		jTextAreaParticiped.setEditable(false);
-		jTextAreaParticiped.setBounds(50, 60, 450, 350);
+		jTextAreaParticiped.setBounds(50, 60, 450, 300);
 		jPanelTools.add(jTextAreaParticiped);
 		;
 
@@ -112,7 +112,7 @@ public class JPanelMainWindowMisSubastas extends JPanel {
 		jPanelPhoto.setBackground(new Color(0, 0, 0, 94));
 		jTextAreaMyBid = new JTextArea("MIS SUBASTAS");
 		jTextAreaMyBid.setEditable(false);
-		jTextAreaMyBid.setBounds(50, 60, 450, 350);
+		jTextAreaMyBid.setBounds(50, 60, 450, 300);
 		jPanelPhoto.add(jTextAreaMyBid);
 
 	}
