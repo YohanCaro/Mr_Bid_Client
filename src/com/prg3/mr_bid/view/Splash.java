@@ -3,6 +3,7 @@ package com.prg3.mr_bid.view;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
+import java.util.Random;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -35,11 +36,11 @@ public class Splash extends JDialog {
 
 	private void initThread() {
 		Thread thread = new Thread(new Runnable() {
-
 			int x = 0;
-
+			boolean isConect = false;
 			@Override
 			public void run() {
+				Random rnd = new Random();
 				try {
 					while (x <= 100) {
 						jProgressBar.setValue(x);
@@ -50,7 +51,6 @@ public class Splash extends JDialog {
 						dispose();
 						
 						UserController.getInstanceOf();
-
 				} catch (Exception e) {
 					// TODO: handle exception
 				}
@@ -79,6 +79,7 @@ public class Splash extends JDialog {
 		porcentaje1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		porcentaje1.setForeground(new Color(255, 255, 255));// blanco
 		porcentaje1.setBounds(330, 480, 46, 14);
+		
 		this.add(porcentaje1);
 
 	}

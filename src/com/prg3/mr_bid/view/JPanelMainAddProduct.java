@@ -28,6 +28,11 @@ import com.prg3.mr_bid.model.entity.TypeProduct;
 import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
 
+/**
+ * Clase JPanelMainAddProduct - 
+ *
+ * @version 1.0 - 2/06/2019
+ */
 public class JPanelMainAddProduct extends JPanel {
 
 	private JPanel jPanelNorth, jPanelSouth, jPanelWest, jPanelEast, jPanelCenter, jPanelCard1, jPanelCard2,
@@ -313,5 +318,7 @@ public class JPanelMainAddProduct extends JPanel {
 	public byte hourF() {
 		return (byte) jSpinnerFinishHour.getModel().getValue();
 	}
+	
+	
 
 }

@@ -25,6 +25,13 @@ import com.prg3.mr_bid.view.JFrameMain;
 import com.prg3.mr_bid.view.JPanelMainProduct;
 import com.prg3.mr_bid.view.JPanelMainWindow;
 
+/**
+ * Clase UserController - Clase encaragda de manejar las acciones de las ventanas 
+ *  y botones. 
+ *
+ * @author Yohan Caro
+ * @version 1.0 - 2/06/2019
+ */
 public class UserController implements ActionListener {
 
 	private JFrameMain jFrameMain;
@@ -33,6 +40,9 @@ public class UserController implements ActionListener {
 	private JPanelMainWindow jPanelMainWindow;
 	private static UserController controller;
 
+	/**
+	 * Construtor que inicia la app
+	 */
 	private UserController() {
 		this.jFrameMain = new JFrameMain(this);
 		this.jDialogAddUser = new JDialogAddUser(this);
@@ -42,6 +52,9 @@ public class UserController implements ActionListener {
 		sendComment();
 	}
 
+	/**
+	 * Maneja los eventos de botones
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		switch (ControlCommands.valueOf(e.getActionCommand())) {
@@ -97,17 +110,28 @@ public class UserController implements ActionListener {
 		}
 	}
 
+	/**
+	 * Añade un producto
+	 */
 	private void addProduct() {
 		this.jPanelMainWindow = new JPanelMainWindow("Computador LG", "Publico", "No inicida", "7;80", "/images/lg.jpg",
 				this);
 	}
 	
+	/**
+	 * Envia los datos de legueo
+	 */
 	private void sendDataLogin() {
 		String email = jFrameMain.getjPanelPrincipalLogin().getjTextFieldName();
 		String password = jFrameMain.getjPanelPrincipalLogin().getJpassword();
 		this.sendData(Commands.LOGIN, email + "," + password);
 	}
 
+	/**
+	 * Envia cualquier dato al servidor con 
+	 * @param command comando 
+	 * @param data objeto a enviar
+	 */
 	private void sendData(Commands command, Object data) {
 		try {
 			Client.getInstanceOf().sendMessage(command, data);
@@ -119,9 +143,8 @@ public class UserController implements ActionListener {
 	}
 
 	/**
-	 * En proceso
-	 * 
-	 * @return
+	 * Crea un usuario con los datos de la vista
+	 * @return user usuario
 	 */
 	private User createUser() {
 		return Manager.getInstanceOf().createUser(jDialogAddUser.getjPanelForm().getFirstName(),
@@ -138,6 +161,10 @@ public class UserController implements ActionListener {
 //			initTime, finishTime, isAutomaticIncremet, isPublic);
 //}
 
+	/**
+	 * Crea un unico controllador
+	 * @return controller controlador
+	 */
 	public static UserController getInstanceOf() {
 		if (controller == null) {
 			controller = new UserController();
@@ -160,6 +187,13 @@ public class UserController implements ActionListener {
 				
 	}
 	
+	/**
+	 * Selecciona una img
+	 * @throws DOMException e
+	 * @throws TransformerFactoryConfigurationError e
+	 * @throws ParserConfigurationException e
+	 * @throws TransformerException e
+	 */
 	private void selectImagge() throws DOMException, TransformerFactoryConfigurationError,
 			ParserConfigurationException, TransformerException {
 		JFileChooser ventanaG = new JFileChooser();

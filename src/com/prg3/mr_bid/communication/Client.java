@@ -9,15 +9,19 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 
-import javax.imageio.IIOImage;
 import javax.imageio.ImageIO;
 
 import com.google.gson.Gson;
-import com.prg3.mr_bid.model.entity.Product;
-import com.prg3.mr_bid.model.entity.User;
 import com.prg3.mr_bid.utilities.Constants;
 import com.prg3.mr_bid.utilities.Utilities;
 
+/**
+ * Clase Client - Envia y recibe datos del servidor 
+ * Utiliza la librería Gson para enviar objetos 
+ *
+ * @author Yohan Caro
+ * @version 1.0 - 2/06/2019
+ */
 public class Client extends Socket implements Runnable {
 	
 	private DataInputStream dataIS;
@@ -26,6 +30,11 @@ public class Client extends Socket implements Runnable {
 	private boolean isConect;
 	private static Client client;
 	
+	/**
+	 * Constructor que crea el cliente con una ip y puerto
+	 * @throws UnknownHostException u
+	 * @throws IOException ioe
+	 */
 	private Client() throws UnknownHostException, IOException {
 		super(Constants.ip, Constants.port);
 		dataIS = new DataInputStream(this.getInputStream());
@@ -34,6 +43,12 @@ public class Client extends Socket implements Runnable {
 		this.isConect = true;
 	}
 	
+	/**
+	 * Crea un unico cliente
+	 * @return client cliente
+	 * @throws UnknownHostException uhe
+	 * @throws IOException ioe
+	 */
 	public static Client getInstanceOf() throws UnknownHostException, IOException {
 		if (client == null) {
 			client = new Client();
@@ -41,11 +56,17 @@ public class Client extends Socket implements Runnable {
 		return client;
 	}
 	
+	/**
+	 * Inicia el hilo de cliente
+	 */
 	public void initClient() {
 		new Thread(this).start();
 	}
 
 	@Override
+	/**
+	 * Recibe comandos y objetos del servidor
+	 */
 	public void run() {
 		Commands command;
 		String jsonString;
@@ -63,7 +84,7 @@ public class Client extends Socket implements Runnable {
 	
 	/**
 	 * Recibe un arraylist con la ruta de las imagenes de la subasta/ hacer en vista/controlador
-	 * @throws IOException 
+	 * @throws IOException ioe
 	 */
 	public void sendImages(ArrayList<String> pathsImg, long bidId) throws IOException {
 		sendMessage(Commands.SENDIMG, pathsImg.size()+" "+bidId);
@@ -74,6 +95,11 @@ public class Client extends Socket implements Runnable {
 		}
 	}
 	
+	/**
+	 * Ejecuta una acción con un comando
+	 * @param command comando
+	 * @param json JsonString object
+	 */
 	private void excecuteAction(Commands command, String json) {
 		switch (command) {
 		case ERROR_SINGIN:
@@ -90,11 +116,16 @@ public class Client extends Socket implements Runnable {
 			}
 			break;
 		default:
-			System.out.println("n");
 			break;
 		}
 	}
 	
+	/**
+	 * Envia un mensaje al servidor
+	 * @param command comando
+	 * @param o objeto
+	 * @throws IOException ioe
+	 */
 	public void sendMessage(Commands command, Object o) throws IOException {
 		dataOS.writeUTF(gson.toJson(command));
 		if (o.getClass().equals(String.class)) {

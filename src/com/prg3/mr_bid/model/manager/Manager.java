@@ -10,15 +10,37 @@ import com.prg3.mr_bid.model.entity.TypeDocument;
 import com.prg3.mr_bid.model.entity.TypeProduct;
 import com.prg3.mr_bid.model.entity.User;
 
+/**
+ * Clase Manager - Maneja los datos del usuario - cliente
+ *
+ * @author Yohan Caro
+ * @version 1.0 - 2/06/2019
+ */
 public class Manager {
 	
 	private User user;
 	private static Manager manager;
 	
+	/**
+	 * Constructor vacio
+	 */
 	private Manager() {
 		
 	}
 	
+	/**
+	 * Crea un usuario
+	 * @param firstName nombre
+	 * @param lastName apellido
+	 * @param email correo
+	 * @param password contraseña
+	 * @param birthDate fecha de nacimiento
+	 * @param document num de documento
+	 * @param typeDocument tipo de documento
+	 * @param gender genero
+	 * @param creditCard tarjeta de credito
+	 * @return User u
+	 */
 	public User createUser(String firstName, String lastName, String email, String password, String birthDate,
 			String document, TypeDocument typeDocument, Gender gender, CreditCard creditCard) {
 		if (firstName != null && lastName != null && email != null && password != null && birthDate != null
@@ -29,6 +51,17 @@ public class Manager {
 		return null;
 	}
 	
+	/**
+	 * Añade una subasta al user
+	 * @param biddingName nombre de la subasta
+	 * @param typeProduct tipo de producto
+	 * @param product producto
+	 * @param publicationTime nombre de la publicacion
+	 * @param initTime tiempo de inicio
+	 * @param finishTime tiempo de finalizado
+	 * @param isAutomaticIncremet tipo de incremento
+	 * @param isPublic publico/no
+	 */
 	public void addBidding(String biddingName, TypeProduct typeProduct, Product product, BidTime publicationTime,
 			BidTime initTime, BidTime finishTime, boolean isAutomaticIncremet, boolean isPublic) {
 		
@@ -37,6 +70,10 @@ public class Manager {
 		user.getMyBiddings().add(bidding);
 	}
 	
+	/**
+	 * Convierte a los users en cadenas
+	 * @return string s
+	 */
 	public String showUserBiddings() {
 		StringBuilder builder = new StringBuilder();
 		for (int i = 0; i < user.getMyBiddings().size(); i++) {
@@ -47,6 +84,10 @@ public class Manager {
 		return builder.toString();
 	}
 	
+	/**
+	 * Instancia del manager
+	 * @return manager m
+	 */
 	public static Manager getInstanceOf() {
 		if (manager == null) {
 			manager = new Manager();
@@ -54,6 +95,10 @@ public class Manager {
 		return manager;
 	}
 	
+	/**
+	 * Obtiene el usuario
+	 * @return user
+	 */
 	public User getUser() {
 		return user;
 	}

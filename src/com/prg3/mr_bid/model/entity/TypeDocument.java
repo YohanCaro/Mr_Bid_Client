@@ -1,6 +1,6 @@
 package com.prg3.mr_bid.model.entity;
 
-/**Clase TypeDocument.java - 
+/** Enum TypeDocument - Enumerado con los tipos de documentos validos
  *
  * @author Yohan Caro
  * @version 1.0 - 26/05/2019
@@ -12,15 +12,16 @@ public enum TypeDocument {
 	private String value;
 
 	/**
-	 * @param value
+	 * Constructor
+	 * @param value valor
 	 */
 	private TypeDocument(String value) {
 		this.value = value;
 	}
 	
 	/**
-	 * Obtiene 
-	 * @return value
+	 * Obtiene el valor
+	 * @return value valor
 	 */
 	public String getValue() {
 		return value;
