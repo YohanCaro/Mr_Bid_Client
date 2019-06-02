@@ -80,6 +80,15 @@ public class Client extends Socket implements Runnable {
 			Utilities.showMessageWarning(json + "\nIntente con otra dirección o cargue su cuenta!",
 					"Correo no valido!");
 			break;
+		case ERROR_LOGIN:
+			if (json.charAt(1) == 't') {
+				//Cargó
+				System.out.println(":D");
+			} else {
+				Utilities.showMessageWarning("Correo o contraseña incorrectos\n"
+						+ "Por favor vuelva a intentarlo", "Datos no validos!");
+			}
+			break;
 		default:
 			System.out.println("n");
 			break;

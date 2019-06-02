@@ -20,6 +20,9 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import com.prg3.mr_bid.controller.ControlCommands;
+import com.prg3.mr_bid.controller.UserController;
+
 
 
 public class JPanelPrincipalLogin extends JPanel{
@@ -34,7 +37,7 @@ public class JPanelPrincipalLogin extends JPanel{
 	ImageIcon imageIcon;
 	Icon icon;
 
-	public JPanelPrincipalLogin() {
+	public JPanelPrincipalLogin(UserController controller) {
 		this.setOpaque(false);
 
 		jPanelCenter = new JPanel();
@@ -68,10 +71,10 @@ public class JPanelPrincipalLogin extends JPanel{
 		jPanelSout.setOpaque(false);
 		jPanelSout.setPreferredSize(new Dimension(100, 100));
 
-		init();
+		init(controller);
 	}
 
-	private void init() {
+	private void init(UserController controller) {
 
 		this.setLayout(new BorderLayout());
 		this.setSize(Toolkit.getDefaultToolkit().getScreenSize());
@@ -97,8 +100,8 @@ public class JPanelPrincipalLogin extends JPanel{
 		jPanelCenter.add(jPanelCenterCampos, BorderLayout.CENTER);
 		jPanelCenter.add(jPanelCenterImage, BorderLayout.NORTH);
 		jButton = new JButton("INGRESAR");
-//		jButton.setActionCommand(Commands.LOG_IN.name());
-//		jButton.addActionListener(control);
+		jButton.setActionCommand(ControlCommands.ACTION_LOGIN.name());
+		jButton.addActionListener(controller);
 		jPanelSout.add(jButton);
 
 		this.add(jPanelCenter, BorderLayout.CENTER);
@@ -142,7 +145,5 @@ public class JPanelPrincipalLogin extends JPanel{
 		super.paintComponent(g);
 	}
         
-        
-
 
 }

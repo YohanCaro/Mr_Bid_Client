@@ -85,13 +85,21 @@ public class UserController implements ActionListener {
 				Utilities.showMessageWarning("Por favor complete todos los campos correctamente!", "Datos no validos o vacios!");
 			}
 			break;
+		case ACTION_LOGIN:
+			this.sendDataLogin();
+			break;
 		}
 	}
 
 	private void addProduct() {
 		this.jPanelMainWindow = new JPanelMainWindow("Computador LG", "Publico", "No inicida", "7;80", "/images/lg.jpg",
 				this);
-
+	}
+	
+	private void sendDataLogin() {
+		String email = jFrameMain.getjPanelPrincipalLogin().getjTextFieldName();
+		String password = jFrameMain.getjPanelPrincipalLogin().getJpassword();
+		this.sendData(Commands.LOGIN, email + "," + password);
 	}
 
 	private void sendData(Commands command, Object data) {
@@ -145,8 +153,6 @@ public class UserController implements ActionListener {
 		jFrameMain.getjPanelMainProduct().sendComment(menssge);
 				
 	}
-
-	
 	
 	private void selectImagge() throws DOMException, TransformerFactoryConfigurationError,
 			ParserConfigurationException, TransformerException {

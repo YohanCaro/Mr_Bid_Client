@@ -4,7 +4,7 @@ public enum Commands {
 
 	SIGNIN("signin"), LOGIN("login"), UPBIDDING("up_bidding"), DELETE_USER("delete_user"),
 	CHANGE_BIDDING("change_bidding"), DELETE_BIDDING("delete_bidding"), SENDIMG("send_img"),
-	ERROR_SINGIN("error_sigin");
+	ERROR_SINGIN("error_sigin"), ERROR_LOGIN("error_login");
 	
 	private String value;
 	

@@ -27,15 +27,13 @@ public class JFrameMain extends JFrame {
 	public JFrameMain(UserController control) {
 		this.jScrollPane = new JScrollPane();
 		this.jPanelMain = new JPanelMainWindow(control);
-		this.jPanelPrincipalLogin = new JPanelPrincipalLogin();
+		this.jPanelPrincipalLogin = new JPanelPrincipalLogin(control);
 		this.jMainPanelHome = new MainPanelHome(control);
 		this.jPanelOptionMenu = new JPanelOptionMenu(control);
 		this.jPanelMainWindowCuenta = new JPanelMainWindowCuenta(control);
 		this.jPanelMainAddProduct = new JPanelMainAddProduct(control);
 		this.jPanelMainProduct = new JPanelMainProduct();
 		this.jPanelMainWindowMisSubastas = new JPanelMainWindowMisSubastas();
-
-
 
 		init();
 	}
@@ -98,5 +96,13 @@ public class JFrameMain extends JFrame {
 	
 	public JPanelMainProduct getjPanelMainProduct() {
 		return jPanelMainProduct;
+	}
+	
+	/**
+	 * Obtiene 
+	 * @return jPanelPrincipalLogin
+	 */
+	public JPanelPrincipalLogin getjPanelPrincipalLogin() {
+		return jPanelPrincipalLogin;
 	}
 }
