@@ -35,6 +35,7 @@ public class JPanelMainProduct extends JPanel {
 	private JLabel jLabel, jLabel2, jLabel3, jLabel4;
 	private ImageIcon imageIcon, imageIcon2;
 	private Icon icon, icon2;
+	private String text;
 
 	public JPanelMainProduct() {
 		this.setOpaque(false);
@@ -50,6 +51,7 @@ public class JPanelMainProduct extends JPanel {
 		this.jPanelCenter = new JPanel();
 		this.jPanelCard = new JPanel();
 		this.jPanelCard2 = new JPanel();
+		
 		jPanelCenter.setOpaque(false);
 		jPanelizqImage.setOpaque(false);
 		// jPanelizqInfo.setOpaque(false);
@@ -71,16 +73,15 @@ public class JPanelMainProduct extends JPanel {
 		character();
 		sizePanel();
 		card2();
-		getComment();
 		cardPublicaciones();
 		JpanelImage();
 		init();
 	}
 
-//	public JPanelMainProduct(String message) {
-//		sendComment(message);
-//	}
-	
+	// public JPanelMainProduct(String message) {
+	// sendComment(message);
+	// }
+
 	public JPanelMainProduct(ArrayList<String> message) {
 		sendComment(message);
 	}
@@ -260,7 +261,7 @@ public class JPanelMainProduct extends JPanel {
 		jTextAreaChat = new JTextArea();
 		jTextAreaChat.setEditable(false);
 		jTextAreaChat.setBackground(new Color(0, 0, 0, 94));
-		// jTextAreaChat.setText();
+		 jTextAreaChat.setText("Camilo");
 		jPanelNorth3 = new JPanel();
 		jPanelNorth3.setPreferredSize(new Dimension(50, 50));
 		jPanelNorth3.setOpaque(false);
@@ -410,17 +411,23 @@ public class JPanelMainProduct extends JPanel {
 		super.paintComponent(g);
 	}
 
-
-	public void sendComment(ArrayList<String> message) {
-		String text;
+	public ArrayList<String> sendComment(ArrayList<String> message) {
+		ArrayList<String> aux = new ArrayList<>();
 		for (int i = 0; i < message.size(); i++) {
-			text = message.get(i);
-			jTextAreaChat.append("\n"+"\n"+"    User: "+text);
-		}
+			this.text = message.get(i);
+			jTextAreaChat.append("\n" + "\n" + "    User: " + text);
+			
+		}		
+		aux.add(jTextAreaChat.getText());
+//		System.out.println(jTextAreaChat.getText());
+		return aux;
+	}
+	
+	
+	public void getComment(ArrayList<String> message) {
+		
 	}
 
-	public void getComment() {
-		System.out.println(jTextAreaChat.getText());
-	}
+	
 
 }

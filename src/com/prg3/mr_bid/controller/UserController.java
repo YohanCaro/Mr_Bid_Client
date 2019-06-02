@@ -133,7 +133,7 @@ public class UserController implements ActionListener {
 	
 	
 	/**
-	 * Metodo para mandar un array de string al panel de comentarios
+	 * Metodo para manda y recibe un array de string al panel de comentarios
 	 */
 	public void sendComment() {
 		ArrayList<String> menssge = new ArrayList<String>();
@@ -146,6 +146,8 @@ public class UserController implements ActionListener {
 				
 	}
 
+	
+	
 	private void selectImagge() throws DOMException, TransformerFactoryConfigurationError,
 			ParserConfigurationException, TransformerException {
 		JFileChooser ventanaG = new JFileChooser();
