@@ -156,6 +156,9 @@ public class JPanelMainWindowMisSubastas extends JPanel {
 		return jLabel;
 
 	}
+	
+	
+	
 
 	@Override
 	protected void paintComponent(Graphics g) {

@@ -95,4 +95,8 @@ public class JFrameMain extends JFrame {
 		repaint();
 		revalidate();
 	}
+	
+	public JPanelMainProduct getjPanelMainProduct() {
+		return jPanelMainProduct;
+	}
 }

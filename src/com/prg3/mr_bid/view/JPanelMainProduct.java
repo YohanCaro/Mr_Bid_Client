@@ -8,6 +8,7 @@ import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.util.ArrayList;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -17,6 +18,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+
+import com.prg3.mr_bid.controller.UserController;
 
 public class JPanelMainProduct extends JPanel {
 
@@ -49,19 +52,17 @@ public class JPanelMainProduct extends JPanel {
 		this.jPanelCard2 = new JPanel();
 		jPanelCenter.setOpaque(false);
 		jPanelizqImage.setOpaque(false);
-//		jPanelizqInfo.setOpaque(false);
+		// jPanelizqInfo.setOpaque(false);
 		jPanelderNorth.setOpaque(false);
 		jPanelderCenter.setOpaque(false);
 		jPanelWest.setOpaque(false);
 		jPanelDere.setOpaque(false);
 		jPanelizq.setOpaque(false);
 		jPanelEast.setOpaque(false);
-//		jPanelCard.setOpaque(false);
-//		jPanelCard2.setOpaque(false);
-	
+		// jPanelCard.setOpaque(false);
+		// jPanelCard2.setOpaque(false);
 
-
-//		this.jPanelOptionMenu = new JPanelOptionMenu();
+		// this.jPanelOptionMenu = new JPanelOptionMenu();
 		this.jTextArea = new JTextArea();
 		this.jLabel = new JLabel();
 		cardParticipantes();
@@ -70,19 +71,28 @@ public class JPanelMainProduct extends JPanel {
 		character();
 		sizePanel();
 		card2();
+		getComment();
 		cardPublicaciones();
 		JpanelImage();
 		init();
 	}
 
+//	public JPanelMainProduct(String message) {
+//		sendComment(message);
+//	}
+	
+	public JPanelMainProduct(ArrayList<String> message) {
+		sendComment(message);
+	}
+
 	private void character() {
-//		 jPanelSouth.setBackground(Color.GREEN);
-//		 jPanelCenter.setBackground(Color.black);
-//		 jPanelDere.setBackground(Color.YELLOW);
-//		 jPanelizq.setBackground(Color.BLUE);
-//		 jPanelizqInfo.setBackground(Color.GREEN);
-//		 jPanelderNorth.setBackground(Color.BLUE);
-//		 jPanelderCenter.setBackground(Color.ORANGE);
+		// jPanelSouth.setBackground(Color.GREEN);
+		// jPanelCenter.setBackground(Color.black);
+		// jPanelDere.setBackground(Color.YELLOW);
+		// jPanelizq.setBackground(Color.BLUE);
+		// jPanelizqInfo.setBackground(Color.GREEN);
+		// jPanelderNorth.setBackground(Color.BLUE);
+		// jPanelderCenter.setBackground(Color.ORANGE);
 
 	}
 
@@ -111,7 +121,7 @@ public class JPanelMainProduct extends JPanel {
 		jLabel.setBounds(20, 10, 300, 25);
 		jLabel.setFont(new Font("Andale Mono", 3, 15));
 		jLabel.setForeground(Color.WHITE);
-//		jLabel.setBackground(Color.BLUE);
+		// jLabel.setBackground(Color.BLUE);
 		jPanelCard.add(jLabel);
 
 		name = new JTextField("");
@@ -152,12 +162,11 @@ public class JPanelMainProduct extends JPanel {
 		this.jPanelCardSouth = new JPanel();
 		this.jPanelCardWest = new JPanel();
 		this.jPanelCardEast = new JPanel();
-		
+
 		jPanelCardnorth.setOpaque(false);
 		jPanelCardSouth.setOpaque(false);
 		jPanelCardWest.setOpaque(false);
 		jPanelCardEast.setOpaque(false);
-
 
 		jPanelCard.setBackground(new Color(0, 0, 0, 94));
 		jPanelderNorth.setLayout(new BorderLayout());
@@ -225,7 +234,7 @@ public class JPanelMainProduct extends JPanel {
 		this.jPanelCardWest4 = new JPanel();
 		this.jPanelCardEast4 = new JPanel();
 		this.jPanelNorth4 = new JPanel();
-		
+
 		jPanelCardnorth2.setOpaque(false);
 		jPanelCardSouth2.setOpaque(false);
 		jPanelCardWest2.setOpaque(false);
@@ -235,23 +244,23 @@ public class JPanelMainProduct extends JPanel {
 		jPanelCardWest4.setOpaque(false);
 		jPanelCardEast4.setOpaque(false);
 
-		
-
 		jPanelCard2.setBackground(new Color(0, 0, 0, 94));
 		jPanelCard2.setPreferredSize(new Dimension(500, 900));
 		jPanelderCenter.setLayout(new BorderLayout());
 
 		jPanelCardnorth2.setPreferredSize(new Dimension(50, 50));
-//		jPanelCardnorth2.setBackground(new Color(0, 0, 0, 94));
+		// jPanelCardnorth2.setBackground(new Color(0, 0, 0, 94));
 		jPanelCardSouth2.setPreferredSize(new Dimension(50, 500));
-//		jPanelCardSouth2.setBackground(new Color(0, 0, 0, 94));
+		// jPanelCardSouth2.setBackground(new Color(0, 0, 0, 94));
 		jPanelCardWest2.setPreferredSize(new Dimension(50, 50));
 		jPanelCardEast2.setPreferredSize(new Dimension(50, 50));
 		jPanelCardWest3.setPreferredSize(new Dimension(50, 100));
 		jPanelCardEast3.setPreferredSize(new Dimension(50, 200));
 
 		jTextAreaChat = new JTextArea();
-		jTextAreaChat.setText("CHAT");
+		jTextAreaChat.setEditable(false);
+		jTextAreaChat.setBackground(new Color(0, 0, 0, 94));
+		// jTextAreaChat.setText();
 		jPanelNorth3 = new JPanel();
 		jPanelNorth3.setPreferredSize(new Dimension(50, 50));
 		jPanelNorth3.setOpaque(false);
@@ -262,7 +271,7 @@ public class JPanelMainProduct extends JPanel {
 		jPanelCardSouth2.add(jPanelCardWest3, BorderLayout.WEST);
 		jPanelCardSouth2.add(jPanelCardEast3, BorderLayout.EAST);
 
-//		jPanelderCenter.setBackground(new Color(0, 0, 0, 94));
+		// jPanelderCenter.setBackground(new Color(0, 0, 0, 94));
 
 		jPanelderCenter.add(jPanelCard2, BorderLayout.CENTER);
 		jPanelderCenter.add(jPanelCardnorth2, BorderLayout.NORTH);
@@ -335,17 +344,9 @@ public class JPanelMainProduct extends JPanel {
 		jLabel4.setBackground(Color.BLUE);
 		cardParticipantes.add(jLabel4);
 
-		
 		jTextAreaParticipantes = new JTextArea("Participantes");
 		jTextAreaParticipantes.setBounds(20, 50, 400, 200);
 		cardParticipantes.add(jTextAreaParticipantes);
-
-		
-
-
-		
-
-	
 
 	}
 
@@ -366,19 +367,19 @@ public class JPanelMainProduct extends JPanel {
 		jPanelizqSouth = new JPanel();
 		jPanelizqSouth.setPreferredSize(new Dimension(0, 500));
 		jPanelizq.add(jPanelizqImage, BorderLayout.NORTH);
-//		jPanelizqInfo.setBackground(Color.red);
-//		jPanelizqSouth.setBackground(Color.blue);
+		// jPanelizqInfo.setBackground(Color.red);
+		// jPanelizqSouth.setBackground(Color.blue);
 		jPanelizqSouth.setLayout(new BorderLayout());
 		jPanelNorth4 = new JPanel();
 		jPanelNorth4.setPreferredSize(new Dimension(50, 50));
-//		jPanelNorth4.setBackground(new Color(0, 0, 0, 94));
+		// jPanelNorth4.setBackground(new Color(0, 0, 0, 94));
 		jPanelCardCenterIzquie = new JPanel();
 		jPanelCardCenterIzquie.setPreferredSize(new Dimension(50, 50));
-//		jPanelCardCenterIzquie.setBackground(new Color(0, 0, 0, 94));
+		// jPanelCardCenterIzquie.setBackground(new Color(0, 0, 0, 94));
 
 		jPanelCardSouthIzquie = new JPanel();
 		jPanelCardSouthIzquie.setPreferredSize(new Dimension(50, 300));
-//		jPanelCardSouthIzquie.setBackground(new Color(0, 0, 0, 94));
+		// jPanelCardSouthIzquie.setBackground(new Color(0, 0, 0, 94));
 
 		jPanelizqSouth.add(jPanelNorth4, BorderLayout.NORTH);
 		jPanelizqSouth.add(cardPublicaciones, BorderLayout.CENTER);
@@ -393,15 +394,14 @@ public class JPanelMainProduct extends JPanel {
 		jPanelCenter.add(jPanelDere, BorderLayout.CENTER);
 		jPanelCenter.add(jPanelizq, BorderLayout.WEST);
 
-//		this.add(jPanelOptionMenu, BorderLayout.NORTH);
+		// this.add(jPanelOptionMenu, BorderLayout.NORTH);
 		this.add(jPanelSouth, BorderLayout.SOUTH);
 		this.add(jPanelWest, BorderLayout.WEST);
 		this.add(jPanelEast, BorderLayout.EAST);
 		this.add(jPanelCenter, BorderLayout.CENTER);
 
 	}
-	
-	
+
 	@Override
 	protected void paintComponent(Graphics g) {
 		imageIcon = new ImageIcon(getClass().getResource("/images/fondoLogin.jpg"));
@@ -409,6 +409,18 @@ public class JPanelMainProduct extends JPanel {
 		setOpaque(false);
 		super.paintComponent(g);
 	}
-        
+
+
+	public void sendComment(ArrayList<String> message) {
+		String text;
+		for (int i = 0; i < message.size(); i++) {
+			text = message.get(i);
+			jTextAreaChat.append("\n"+"\n"+"    User: "+text);
+		}
+	}
+
+	public void getComment() {
+		System.out.println(jTextAreaChat.getText());
+	}
 
 }

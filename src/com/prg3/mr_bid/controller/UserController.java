@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 
 import javax.swing.JFileChooser;
 import javax.xml.parsers.ParserConfigurationException;
@@ -21,6 +22,7 @@ import com.prg3.mr_bid.utilities.Utilities;
 import com.prg3.mr_bid.view.JDialogAddCreditCard;
 import com.prg3.mr_bid.view.JDialogAddUser;
 import com.prg3.mr_bid.view.JFrameMain;
+import com.prg3.mr_bid.view.JPanelMainProduct;
 import com.prg3.mr_bid.view.JPanelMainWindow;
 
 public class UserController implements ActionListener {
@@ -37,6 +39,7 @@ public class UserController implements ActionListener {
 		this.jDialogAddCreditCard = new JDialogAddCreditCard();
 		this.jPanelMainWindow = new JPanelMainWindow(this);
 		addProduct();
+		sendComment();
 	}
 
 	@Override
@@ -126,6 +129,21 @@ public class UserController implements ActionListener {
 			controller = new UserController();
 		}
 		return controller;
+	}
+	
+	
+	/**
+	 * Metodo para mandar un array de string al panel de comentarios
+	 */
+	public void sendComment() {
+		ArrayList<String> menssge = new ArrayList<String>();
+		menssge.add("hola");
+		menssge.add("hola1");
+		menssge.add("hola2");
+		menssge.add("hola3");
+		menssge.add("hola4");
+		jFrameMain.getjPanelMainProduct().sendComment(menssge);
+				
 	}
 
 	private void selectImagge() throws DOMException, TransformerFactoryConfigurationError,

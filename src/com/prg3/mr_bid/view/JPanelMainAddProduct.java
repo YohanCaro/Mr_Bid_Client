@@ -233,5 +233,7 @@ public class JPanelMainAddProduct extends JPanel {
 		return jTextFieldName;
 
 	}
+	
+
 
 }
