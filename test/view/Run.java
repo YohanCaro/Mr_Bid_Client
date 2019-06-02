@@ -1,4 +1,4 @@
-package com.prg3.mr_bid.runner;
+package view;
 
 import java.io.IOException;
 import java.net.UnknownHostException;
@@ -20,7 +20,7 @@ public class Run {
 	 * @param args (ip, port) (localHost 12345)
 	 */
 	public static void main(String[] args) {
-		
+				
 		if (args.length == 2) {
 			try {
 				Constants.ip = args[0];
