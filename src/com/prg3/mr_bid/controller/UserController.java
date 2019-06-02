@@ -113,6 +113,16 @@ public class UserController implements ActionListener {
 		case ACTION_BIDDING:
 			Utilities.showMessageInfo("Si! :D", "Bien");
 			break;
+		case C_ENGLISH:
+			System.out.println("INGLES");
+			manageChangeLanguageUS();
+			break;
+		case C_SPANISH:
+			manageChangeLanguageES();
+			System.out.println("ESPAÑOL");
+
+		default:
+			break;
 		}
 	}
 

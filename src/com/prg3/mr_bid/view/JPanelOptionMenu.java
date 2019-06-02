@@ -21,14 +21,18 @@ import javax.swing.JPanel;
 
 import com.prg3.mr_bid.controller.ControlCommands;
 import com.prg3.mr_bid.controller.UserController;
+import com.prg3.mr_bid.model.entity.ConstantsBid;
+import com.prg3.mr_bid.utilities.HandlerLanguage;
+
+
 
 public class JPanelOptionMenu extends JPanel {
 
 	private JPanel jPanelWhite;
 	private JMenu jMenu, jMenu2, jMenu3, jMenu4, jMenu5;
-	private JButton jButtonEnglish, signin, jButtonLogin;
-	private JMenuItem jMenuItemHome, jMenuItemEstadisticas, jMenuItemLogin, jMenuItemAportesHis,
-			jMenuItemCreateBotanic, jMenuItemMyCount, jMenuItemMobile, jMenuItemDeleteBotanic;
+	private JButton jButtonCompras, signin, jButtonLogin;
+	private JMenuItem jMenuItemHome, jMenuItemEstadisticas, jMenuItemLogin, jMenuItemAportesHis, jMenuItemCreateBotanic,
+			jMenuItemMyCount, jMenuItemMobile, jMenuItemDeleteBotanic;
 	private JMenuBar jMenuBar;
 	ImageIcon imageIcon;
 	Icon icon;
@@ -48,13 +52,13 @@ public class JPanelOptionMenu extends JPanel {
 		jPanelWhite.setLayout(new GridLayout(1, 3));
 		jPanelWhite.setPreferredSize(new Dimension(400, 100));
 
-		jButtonEnglish = new JButton();
-		jButtonEnglish.setBackground(new Color(48, 48, 48));
+		jButtonCompras = new JButton();
+		jButtonCompras.setBackground(new Color(48, 48, 48));
 		// jButtonEnglish.setActionCommand(Commands.C_ENGLISH.name());
 		// jButtonEnglish.addActionListener(control);
 		imageIcon = new ImageIcon(getClass().getResource("/images/carro.png"));
 		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(70, 70, Image.SCALE_AREA_AVERAGING));
-		jButtonEnglish.setIcon(icon);
+		jButtonCompras.setIcon(icon);
 
 		signin = new JButton("Registrar");
 		signin.setForeground(Color.WHITE);
@@ -70,7 +74,7 @@ public class JPanelOptionMenu extends JPanel {
 		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(70, 70, Image.SCALE_AREA_AVERAGING));
 		jButtonLogin.setIcon(icon);
 
-		jPanelWhite.add(jButtonEnglish);
+		jPanelWhite.add(jButtonCompras);
 		jPanelWhite.add(signin);
 		jPanelWhite.add(jButtonLogin);
 
@@ -93,19 +97,19 @@ public class JPanelOptionMenu extends JPanel {
 		jMenu2.setForeground(Color.WHITE);
 		jMenuBar.add(jMenu2);
 
-		jMenu3 = new JMenu("OPTION");
+		jMenu3 = new JMenu("IDIOMA");
 		jMenu3.setFont(new Font("Arial", 1, 15));
 		jMenu3.setBackground(Color.BLACK);
 		jMenu3.setForeground(Color.WHITE);
 		jMenuBar.add(jMenu3);
 
-		jMenu4 = new JMenu("OPTION");
+		jMenu4 = new JMenu("OPTION2");
 		jMenu4.setFont(new Font("Arial", 1, 15));
 		jMenu4.setBackground(Color.BLACK);
 		jMenu4.setForeground(Color.WHITE);
 		jMenuBar.add(jMenu4);
 
-		jMenu5 = new JMenu("OPTION");
+		jMenu5 = new JMenu("OPTION4");
 		jMenu5.setFont(new Font("Arial", 1, 15));
 		jMenu5.setBackground(Color.BLACK);
 		jMenu5.setForeground(Color.WHITE);
@@ -121,33 +125,34 @@ public class JPanelOptionMenu extends JPanel {
 		jMenuItemMyCount.addActionListener(control);
 		jMenu2.add(jMenuItemMyCount);
 
-		jMenuItemEstadisticas = new JMenuItem("OPTION");
-		// jMenuItemEstadisticas.setActionCommand(Commands.SHOW_ESTADISTIC.name());
-		// jMenuItemEstadisticas.addActionListener(control);
-		jMenu4.add(jMenuItemEstadisticas);
-
-		jMenuItemAportesHis = new JMenuItem("OPTION");
-		// jMenuItemAportesHis.setActionCommand(Commands.SHOW_HISTORICALCONTRIBUTIONS.name());
-		// jMenuItemAportesHis.addActionListener(control);
+		jMenuItemAportesHis = new JMenuItem("ESPAÑOL");
+		jMenuItemAportesHis.setActionCommand(ControlCommands.C_SPANISH.name());
+		jMenuItemAportesHis.addActionListener(control);
 		jMenu3.add(jMenuItemAportesHis);
 
-		jMenuItemDeleteBotanic = new JMenuItem("OPTION");
-		// jMenuItemDeleteBotanic.setActionCommand(Commands.DELETE_BOTANIC.name());
-		// jMenuItemDeleteBotanic.addActionListener(control);
-		jMenu5.add(jMenuItemDeleteBotanic);
-
-		jMenuItemCreateBotanic = new JMenuItem("OPTION");
-		// jMenuItemCreateBotanic.setActionCommand(Commands.SHOW_CREATEBOTANICO.name());
-		// jMenuItemCreateBotanic.addActionListener(control);
-		jMenu5.add(jMenuItemCreateBotanic);
-
-		jMenuItemMobile = new JMenuItem("APP MOBILE");
-		// jMenuItemMobile.setActionCommand(Commands.SHOW_MOBILE.name());
-		// jMenuItemMobile.addActionListener(control);
-		jMenu5.add(jMenuItemMobile);
+		jMenuItemDeleteBotanic = new JMenuItem("INGLES");
+		jMenuItemDeleteBotanic.setActionCommand(ControlCommands.C_ENGLISH.name());
+		jMenuItemDeleteBotanic.addActionListener(control);
+		jMenu3.add(jMenuItemDeleteBotanic);
 
 		this.add(jMenuBar, BorderLayout.CENTER);
 		this.add(jPanelWhite, BorderLayout.EAST);
+
+	}
+	
+	
+	public void changeLanguage() {
+		jMenuItemHome.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_MENU_HOME));
+//		jMenu2.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBotanic.T_MENU_Plantlibrary));
+//		jMenu3.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBotanic.T_MENU_HistoricalContributions));
+//		jMenu4.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBotanic.T_MENU_STATISTICS));
+//		jMenu5.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBotanic.T_MENU_MORE));
+//		jMenuItemPlantLibrary.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBotanic.T_MENU_Plantlibrary));
+//		jMenuItemEstadisticas
+//				.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBotanic.T_MENU_STATISTICS));
+//		jMenuItemAportesHis
+		
+	
 
 	}
 
