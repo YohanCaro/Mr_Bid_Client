@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import javax.swing.JFileChooser;
 import javax.xml.parsers.ParserConfigurationException;
@@ -53,6 +54,8 @@ public class UserController implements ActionListener {
 		this.jPanelMainWindow = new JPanelMainWindow(this);
 		addProduct();
 		sendComment();
+		getLanguageDefault();
+		loadConfiguration();
 	}
 
 	/**
@@ -205,6 +208,85 @@ public class UserController implements ActionListener {
 			// se debe guardar la imagen
 		}
 
+	}
+	
+	/////////////////////////////////7
+	
+	
+	public String getLanguageDefault() {
+		languageDefault = Locale.getDefault().getLanguage();
+		switch (languageDefault) {
+		case "es":
+			return "Spanish";
+		case "us":
+			return "English";
+		}
+		return "Spanish";
+	}
+
+	public void loadLanguage() throws IOException {
+		try {
+			config.loadLanguage();
+		} catch (Exception e) {
+		}
+	}
+
+	public void saveConfig() throws IOException {
+		try {
+			new HandlerLanguage(NAME_FILE_CONFIG).saveLanguage();
+		} catch (Exception e) {
+		}
+	}
+
+	public void changeToEnglish() throws IOException {
+		HandlerLanguage.language = "language/languageUS.properties";
+		saveConfig();
+		loadLanguage();
+	}
+
+	public void changeToSpanish() throws IOException {
+		HandlerLanguage.language = "language/languageES.properties";
+		saveConfig();
+		loadLanguage();
+	}
+
+	public void loadConfiguration() {
+		if (config == null) {
+			config = new HandlerLanguage(NAME_FILE_CONFIG);
+		}
+		try {
+			config.loadLanguage();
+		} catch (IOException e) {
+			System.err.println("file not found : NAME_FILE_CONFIG");
+		}
+	}
+
+	private void manageChangeLanguageUS() {
+		try {
+			changeToEnglish();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		manageChangeLanguage();
+
+	}
+
+	private void manageChangeLanguageES() {
+		try {
+			changeToSpanish();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		manageChangeLanguage();
+
+	}
+
+	private void manageChangeLanguage() {
+//		jFrameMain.changeLanguage();
+		// jFramePrincipalMobile.changeLanguage();
+		// jDialogCreateBotanico.changeLanguage();
+		// jDialogDeleteBotanic.changeLanguage();
+		// jDialogCreatePlant.changeLanguage();
 	}
 
 }
