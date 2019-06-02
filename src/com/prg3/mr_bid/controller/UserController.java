@@ -88,6 +88,12 @@ public class UserController implements ActionListener {
 		case ACTION_LOGIN:
 			this.sendDataLogin();
 			break;
+		case CLOSE_PRODUCT:
+			jFrameMain.showMyCount();
+			break;
+		case ACTION_BIDDING:
+			Utilities.showMessageInfo("Si! :D", "Bien");
+			break;
 		}
 	}
 

@@ -4,13 +4,15 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.Image;
 import java.awt.Toolkit;
+import java.text.DateFormat;
+import java.util.Date;
 
 import javax.swing.ButtonGroup;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -18,9 +20,11 @@ import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.SpinnerNumberModel;
 
 import com.prg3.mr_bid.controller.ControlCommands;
 import com.prg3.mr_bid.controller.UserController;
+import com.prg3.mr_bid.model.entity.TypeProduct;
 import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
 
@@ -32,6 +36,7 @@ public class JPanelMainAddProduct extends JPanel {
 	private ImageIcon imageIcon;
 	private Icon icon;
 	private JLabel jLabelName;
+	private JComboBox<TypeProduct> typeJComboBox;
 	private JTextField jTextFieldName;
 	private JDateChooser jCalendar, jCalendar2, jCalendar3;
 	private JRadioButton jRadioButton, jRadioButton2, jRadioButtonPublic, jRadioButtonPrivate;
@@ -52,7 +57,7 @@ public class JPanelMainAddProduct extends JPanel {
 		sizePanel();
 		Card1(control);
 		Card2();
-		Card3();
+		Card3(control);
 
 		init();
 	}
@@ -88,10 +93,13 @@ public class JPanelMainAddProduct extends JPanel {
 		jPanelCard1.add(createLabel("DESCRIPCION", 600, 10, 200, 30));
 
 		jPanelCard1.add(createLabel("TIPO DE LA PUBLICACIONs", 20, 60, 200, 30));
-		jPanelCard1.add(createTextField("TIPO DE LA PUBLICACIONs", 200, 60, 200, 30));
+		jTextFieldName = createTextField("TIPO DE LA PUBLICACIONs", 200, 60, 200, 30);
+		jPanelCard1.add(jTextFieldName);
 		jPanelCard1.add(createLabel("TIPO DE PRODUCTO", 20, 120, 200, 30));
-		jPanelCard1.add(createTextField("TIPO DE  PRODUCTO", 200, 120, 200, 30));
-		jPanelCard1.add(createLabel("Agregar Imagen", 20, 180, 200, 30));
+//		jPanelCard1.add(createTextField("TIPO DE  PRODUCTO", 200, 120, 200, 30));
+		typeJComboBox = new JComboBox<>(TypeProduct.values());
+		typeJComboBox.setBounds(200, 120, 200, 30);
+		jPanelCard1.add(typeJComboBox);
 		jPanelCard1.add(jButton);
 		jPanelCard1.add(jTextArea);
 
@@ -126,23 +134,23 @@ public class JPanelMainAddProduct extends JPanel {
 		jPanelCard2.add(jCalendar3);
 
 		jPanelCard2.add(createLabel("HORA DE LA PUBLICACION", 600, 60, 200, 30));
-		jSpinnerPublicatedHour = new JSpinner();
+		jSpinnerPublicatedHour = new JSpinner(new SpinnerNumberModel(8, 0, 24, 1));
 		jSpinnerPublicatedHour.setBounds(790, 60, 200, 30);
 		jPanelCard2.add(jSpinnerPublicatedHour);
 
 		jPanelCard2.add(createLabel("HORA DE INICIO", 600, 120, 200, 30));
-		jSpinnerStartHour = new JSpinner();
+		jSpinnerStartHour = new JSpinner(new SpinnerNumberModel(8, 0, 24, 1));
 		jSpinnerStartHour.setBounds(790, 120, 200, 30);
 		jPanelCard2.add(jSpinnerStartHour);
 
 		jPanelCard2.add(createLabel("HORA DE CIERRE", 600, 180, 200, 30));
-		jSpinnerFinishHour = new JSpinner();
+		jSpinnerFinishHour = new JSpinner(new SpinnerNumberModel(8, 0, 24, 1));
 		jSpinnerFinishHour.setBounds(790, 180, 200, 30);
 		jPanelCard2.add(jSpinnerFinishHour);
 
 	}
 
-	private void Card3() {
+	private void Card3(UserController controller) {
 		this.jPanelCard3 = new JPanel();
 
 		JButton jButton = new JButton("Agregar imagen");
@@ -188,11 +196,15 @@ public class JPanelMainAddProduct extends JPanel {
 		
 		jButtoncreate = new JButton("Crear");
 		jButtoncreate.setBounds(400, 230, 100, 30);
+		jButtoncreate.setActionCommand(ControlCommands.ACTION_BIDDING.name());
+		jButtoncreate.addActionListener(controller);
 		jPanelCard3.add(jButtoncreate);
 		
 		
 		jButtonCancel = new JButton("Cancelar");
 		jButtonCancel.setBounds(600, 230, 100, 30);
+		jButtonCancel.setActionCommand(ControlCommands.CLOSE_PRODUCT.name());
+		jButtonCancel.addActionListener(controller);
 		jPanelCard3.add(jButtonCancel);
 
 	}
@@ -234,6 +246,72 @@ public class JPanelMainAddProduct extends JPanel {
 
 	}
 	
+	public String getJTextName() {
+		if (jTextFieldName.getText() != null && !jTextFieldName.getText().isEmpty()) {
+			return jTextFieldName.getText();
+		}
+		return null;
+	}
+	
+	public TypeProduct getTypeProduct() {
+		return (TypeProduct) typeJComboBox.getSelectedItem();
+	}
+	
+	/**
+	 * Metodo que verifica el campo de entrada de la fecha 
+	 * @return la cadena con el valor extraido del textfield si lo encuantra, sino 
+	 * devuelve un null!
+	 */
+	public String getDateP() {
+		if (jCalendar.getDate() != null) {
+			Date date = jCalendar.getDate();
+			DateFormat df = DateFormat.getDateInstance();
+			String date2 = df.format(date);
+			return date2; 
+		}
+		return null;
+	}
 
+	/**
+	 * Metodo que verifica el campo de entrada de la fecha 
+	 * @return la cadena con el valor extraido del textfield si lo encuantra, sino 
+	 * devuelve un null!
+	 */
+	public String getDateI() {
+		if (jCalendar.getDate() != null) {
+			Date date = jCalendar.getDate();
+			DateFormat df = DateFormat.getDateInstance();
+			String date2 = df.format(date);
+			return date2; 
+		}
+		return null;
+	}
+	
+	/**
+	 * Metodo que verifica el campo de entrada de la fecha 
+	 * @return la cadena con el valor extraido del textfield si lo encuantra, sino 
+	 * devuelve un null!
+	 */
+	public String getDateF() {
+		if (jCalendar.getDate() != null) {
+			Date date = jCalendar.getDate();
+			DateFormat df = DateFormat.getDateInstance();
+			String date2 = df.format(date);
+			return date2; 
+		}
+		return null;
+	}
+	
+	public byte hourP() {
+		return (byte) jSpinnerPublicatedHour.getModel().getValue();
+	}
+	
+	public byte hourI() {
+		return (byte) jSpinnerStartHour.getModel().getValue();
+	}
+	
+	public byte hourF() {
+		return (byte) jSpinnerFinishHour.getModel().getValue();
+	}
 
 }
