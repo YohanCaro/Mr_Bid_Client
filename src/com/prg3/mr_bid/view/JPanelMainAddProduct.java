@@ -38,6 +38,7 @@ public class JPanelMainAddProduct extends JPanel {
 	private ButtonGroup buttonGroup, buttonGroup2;
 	private JSpinner jSpinnerPublicatedHour, jSpinnerStartHour, jSpinnerFinishHour;
 	private JFileChooser jFileChooser;
+	private JButton jButtoncreate, jButtonCancel;
 
 	public JPanelMainAddProduct(UserController control) {
 		this.jPanelNorth = new JPanel();
@@ -154,9 +155,7 @@ public class JPanelMainAddProduct extends JPanel {
 		jPanelCard3.add(createLabel("SOBRE LA SUBASTA", 10, 10, 200, 30));
 
 		jPanelCard3.add(createLabel("VALOR MINIMO ACEPTADO", 20, 60, 200, 30));
-		// jPanelCard3.add(createTextField("VALOR MINIMO ACEPTADO", 200, 60, 200, 30));
 		jPanelCard3.add(createLabel("TIPO DE INCEMENTO ", 20, 120, 200, 30));
-		// jPanelCard3.add(createTextField("VIABILIDAD", 200, 180, 200, 30));
 		jPanelCard3.add(createLabel("VIABILIAD", 20, 180, 200, 30));
 		jPanelCard3.add(createTextField("TIPO DE INCREMENTO ", 200, 120, 200, 30));
 
@@ -185,6 +184,16 @@ public class JPanelMainAddProduct extends JPanel {
 		buttonGroup2 = new ButtonGroup();
 		buttonGroup2.add(jRadioButtonPublic);
 		buttonGroup2.add(jRadioButtonPrivate);
+		
+		
+		jButtoncreate = new JButton("Crear");
+		jButtoncreate.setBounds(400, 230, 100, 30);
+		jPanelCard3.add(jButtoncreate);
+		
+		
+		jButtonCancel = new JButton("Cancelar");
+		jButtonCancel.setBounds(600, 230, 100, 30);
+		jPanelCard3.add(jButtonCancel);
 
 	}
 
