@@ -292,7 +292,7 @@ public class UserController implements ActionListener {
 	}
 
 	private void manageChangeLanguage() {
-//		jFrameMain.changeLanguage();
+		jFrameMain.changeLanguage();
 		// jFramePrincipalMobile.changeLanguage();
 		// jDialogCreateBotanico.changeLanguage();
 		// jDialogDeleteBotanic.changeLanguage();
