@@ -103,22 +103,22 @@ public class JPanelOptionMenu extends JPanel {
 		jMenu3.setForeground(Color.WHITE);
 		jMenuBar.add(jMenu3);
 
-		jMenu4 = new JMenu("OPTION2");
-		jMenu4.setFont(new Font("Arial", 1, 15));
-		jMenu4.setBackground(Color.BLACK);
-		jMenu4.setForeground(Color.WHITE);
-		jMenuBar.add(jMenu4);
+//		jMenu4 = new JMenu("OPTION2");
+//		jMenu4.setFont(new Font("Arial", 1, 15));
+//		jMenu4.setBackground(Color.BLACK);
+//		jMenu4.setForeground(Color.WHITE);
+//		jMenuBar.add(jMenu4);
+//
+//		jMenu5 = new JMenu("OPTION4");
+//		jMenu5.setFont(new Font("Arial", 1, 15));
+//		jMenu5.setBackground(Color.BLACK);
+//		jMenu5.setForeground(Color.WHITE);
+//		jMenuBar.add(jMenu5);
 
-		jMenu5 = new JMenu("OPTION4");
-		jMenu5.setFont(new Font("Arial", 1, 15));
-		jMenu5.setBackground(Color.BLACK);
-		jMenu5.setForeground(Color.WHITE);
-		jMenuBar.add(jMenu5);
-
-		jMenuItemLogin = new JMenuItem("LOGIN");
-		jMenuItemLogin.setActionCommand(ControlCommands.SHOW_REGISTER_USER.name());
-		jMenuItemLogin.addActionListener(control);
-		jMenu2.add(jMenuItemLogin);
+//		jMenuItemLogin = new JMenuItem("LOGIN");
+//		jMenuItemLogin.setActionCommand(ControlCommands.SHOW_REGISTER_USER.name());
+//		jMenuItemLogin.addActionListener(control);
+//		jMenu2.add(jMenuItemLogin);
 
 		jMenuItemMyCount = new JMenuItem("Mi Cuenta");
 		jMenuItemMyCount.setActionCommand(ControlCommands.SHOW_MYCOUNT.name());
