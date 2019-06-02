@@ -4,6 +4,12 @@ import com.prg3.mr_bid.model.entity.BidTime;
 import com.prg3.mr_bid.model.entity.Product;
 import com.prg3.mr_bid.model.entity.User;
 
+/**
+ * Clase Constants - Constantes que se pueden usar 
+ *
+ * @author Yohan Caro
+ * @version 1.0 - 2/06/2019
+ */
 public class Constants {
 	
 	//Communications
@@ -13,8 +19,4 @@ public class Constants {
 	public static Product product = null;
 	public static BidTime bidTime = null;
 	
-	//View
-	public static final String SING_IN_BUTTON = "SING_IN_BUTTON";
-	public static final String LOGIN_BUTTON = "LOGIN_BUTTON";
-
 }

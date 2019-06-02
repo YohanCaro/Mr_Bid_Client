@@ -12,7 +12,7 @@ import javax.swing.JTextField;
 /**
  * Clase HintJTextField - Oculta el texto de un JTextField
  *
- * @author Andres Felipe Chaparro - Ohmio Mega
+ * @author Andres Felipe Chaparro - Ohmios Mega
  * @version 1.0 
  */
 public class HintJTextField extends JTextField implements FocusListener {
@@ -23,6 +23,10 @@ public class HintJTextField extends JTextField implements FocusListener {
 	private LinkedList<Character> requiredCharacters;
 	private LinkedList<Character> prohibitedCharacters;
 
+	/**
+	 * Constructor
+	 * @param hint cadena oculta
+	 */
 	public HintJTextField(String hint) {
 		super(hint);
 		this.setForeground(Color.gray);
@@ -33,11 +37,19 @@ public class HintJTextField extends JTextField implements FocusListener {
 		this.init();
 	}
 
+	/**
+	 * Oculta el texto del jtextfield y le pone un limite de caracteres
+	 * @param hint texto a ocultar
+	 * @param limit limite de caracteres
+	 */
 	public HintJTextField(String hint, int limit) {
 		this(hint);
 		this.limit = limit;
 	}
 
+	/**
+	 * Inicia
+	 */
 	private void init() {
 		super.addFocusListener(this);
 		super.addKeyListener(new KeyAdapter() {
@@ -52,6 +64,10 @@ public class HintJTextField extends JTextField implements FocusListener {
 		});
 	}
 
+	/**
+	 * Evalua 
+	 * @return false/true
+	 */
 	private boolean isCompliant() {
 		for (Character c : this.requiredCharacters) {
 			if (!this.getText().contains(c + ""))
@@ -60,12 +76,20 @@ public class HintJTextField extends JTextField implements FocusListener {
 		return true;
 	}
 
+	/**
+	 * Prohibe algunos caracteres
+	 * @param chars caracteres
+	 */
 	public void prohibitedCharacters(char... chars) {
 		for (int i = 0; i < chars.length; i++) {
 			this.prohibitedCharacters.add(chars[i]);
 		}
 	}
 
+	/**
+	 * Re
+	 * @param chars caracteres
+	 */
 	public void requiredCharacters(char... chars) {
 		for (int i = 0; i < chars.length; i++) {
 			this.requiredCharacters.add(chars[i]);
@@ -73,6 +97,9 @@ public class HintJTextField extends JTextField implements FocusListener {
 	}
 
 	@Override
+	/**
+	 * n
+	 */
 	public void focusGained(FocusEvent e) {
 		if (this.getText().isEmpty()) {
 			super.setText("");
@@ -82,6 +109,9 @@ public class HintJTextField extends JTextField implements FocusListener {
 	}
 
 	@Override
+	/**
+	 * n
+	 */
 	public void focusLost(FocusEvent e) {
 		if (this.getText().isEmpty()) {
 			super.setText(hint);
@@ -97,6 +127,9 @@ public class HintJTextField extends JTextField implements FocusListener {
 	}
 
 	@Override
+	/**
+	 * n
+	 */
 	public void setText(String t) {
 		super.setText(t);
 		showingHint = false;
@@ -107,6 +140,9 @@ public class HintJTextField extends JTextField implements FocusListener {
 	}
 
 	@Override
+	/**
+	 * n
+	 */
 	public String getText() {
 		return showingHint ? "" : super.getText();
 	}

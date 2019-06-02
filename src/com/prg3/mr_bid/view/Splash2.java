@@ -17,7 +17,13 @@ import javax.swing.JProgressBar;
 import com.prg3.mr_bid.communication.Client;
 import com.prg3.mr_bid.controller.UserController;
 
-
+/**
+ * Clase Splash2 - Primera ventana de la aplición, carga cuando se conecta con el servidor y 
+ * mientras carag la ventana principal
+ *
+ * @author Yohan Caro
+ * @version 1.0 - 2/06/2019
+ */
 public class Splash2 extends JDialog {
 
 	private JLabel jLabelSplash;
@@ -28,6 +34,9 @@ public class Splash2 extends JDialog {
 	ImageIcon imageIcon;
 	Icon icon;
 
+	/**
+	 * Constructor que crea el Splash
+	 */
 	public Splash2() {
 		init();
 		setSize(700, 600);
@@ -39,6 +48,9 @@ public class Splash2 extends JDialog {
 		initThread();
 	}
 
+	/**
+	 * Hilo de la barra de progreso
+	 */
 	private void initThread() {
 		Thread thread = new Thread(new Runnable() {
 			int x = 0;
@@ -78,6 +90,9 @@ public class Splash2 extends JDialog {
 		thread.start();
 	}
 
+	/**
+	 * Inicia los componentes de la ventana del splash
+	 */
 	private void init() {
 		jLabelSplash = new JLabel();
 		jLabelSplash.setFont(new Font("Tahoma", Font.PLAIN, 18));
