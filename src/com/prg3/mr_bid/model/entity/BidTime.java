@@ -23,7 +23,7 @@ public class BidTime {
 	
 	/**
 	 * Obtiene la fecha
-	 * @return
+	 * @return date
 	 */
 	public BidDate getDate() {
 		return date;
@@ -31,7 +31,7 @@ public class BidTime {
 	
 	/**
 	 * Obtiene la hora
-	 * @return
+	 * @return hour
 	 */
 	public short getHours() {
 		return hours;
