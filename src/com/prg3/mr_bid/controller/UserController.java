@@ -18,6 +18,7 @@ import com.prg3.mr_bid.communication.Commands;
 import com.prg3.mr_bid.model.entity.BidDate;
 import com.prg3.mr_bid.model.entity.User;
 import com.prg3.mr_bid.model.manager.Manager;
+import com.prg3.mr_bid.utilities.HandlerLanguage;
 import com.prg3.mr_bid.utilities.Utilities;
 import com.prg3.mr_bid.view.JDialogAddCreditCard;
 import com.prg3.mr_bid.view.JDialogAddUser;
@@ -33,13 +34,15 @@ import com.prg3.mr_bid.view.JPanelMainWindow;
  * @version 1.0 - 2/06/2019
  */
 public class UserController implements ActionListener {
+	private static final String NAME_FILE_CONFIG = "config.init";
 
 	private JFrameMain jFrameMain;
 	private JDialogAddUser jDialogAddUser;
 	private JDialogAddCreditCard jDialogAddCreditCard;
 	private JPanelMainWindow jPanelMainWindow;
 	private static UserController controller;
-
+	private HandlerLanguage config = null;
+	private String languageDefault;
 	/**
 	 * Construtor que inicia la app
 	 */
