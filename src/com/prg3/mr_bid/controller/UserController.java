@@ -92,6 +92,16 @@ public class UserController implements ActionListener, MouseListener {
 		case SHOW_REGISTER_USER:
 			jDialogAddUser.setVisible(true);
 			break;
+		case ACTION_SINGIN:
+
+			if (jDialogAddUser.isVisible() && this.createUser() != null) {
+				this.sendData(Commands.SIGNIN, this.createUser());
+				jDialogAddUser.setVisible(false);
+			} else {
+				Utilities.showMessageWarning("Por favor complete todos los campos correctamente!",
+						"Datos no validos o vacios!");
+			}
+			break;
 		case SHOW_ADD_CREDIT_CARD:
 			jDialogAddCreditCard.setVisible(true);
 			break;
@@ -126,16 +136,10 @@ public class UserController implements ActionListener, MouseListener {
 				e1.printStackTrace();
 			}
 			break;
-		case ACTION_SINGIN:
-			if (jDialogAddUser.isVisible() && this.createUser() != null) {
-				this.sendData(Commands.SIGNIN, this.createUser());
-			} else {
-				Utilities.showMessageWarning("Por favor complete todos los campos correctamente!",
-						"Datos no validos o vacios!");
-			}
-			break;
+
 		case ACTION_LOGIN:
 			this.sendDataLogin();
+			jFrameMain.showMyCount();
 			break;
 		case CLOSE_PRODUCT:
 			jFrameMain.showMyCount();
@@ -350,7 +354,7 @@ public class UserController implements ActionListener, MouseListener {
 
 	private void manageChangeLanguage() {
 		jFrameMain.changeLanguage();
-		
+
 		// jFramePrincipalMobile.changeLanguage();
 		// jDialogCreateBotanico.changeLanguage();
 		// jDialogDeleteBotanic.changeLanguage();

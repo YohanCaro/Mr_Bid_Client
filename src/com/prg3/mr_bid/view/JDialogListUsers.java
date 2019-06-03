@@ -26,7 +26,7 @@ public class JDialogListUsers extends JDialog {
 		this.add(jPanelForm, BorderLayout.CENTER);
 
 		// this.setVisible(true);
-		//this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 	}
 }
