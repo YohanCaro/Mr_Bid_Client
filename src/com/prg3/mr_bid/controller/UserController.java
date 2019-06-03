@@ -2,6 +2,8 @@ package com.prg3.mr_bid.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
@@ -26,6 +28,7 @@ import com.prg3.mr_bid.utilities.HandlerLanguage;
 import com.prg3.mr_bid.utilities.Utilities;
 import com.prg3.mr_bid.view.JDialogAddCreditCard;
 import com.prg3.mr_bid.view.JDialogAddUser;
+import com.prg3.mr_bid.view.JDialogListUsers;
 import com.prg3.mr_bid.view.JFrameMain;
 import com.prg3.mr_bid.view.JPanelMainProduct;
 import com.prg3.mr_bid.view.JPanelMainWindow;
@@ -37,13 +40,14 @@ import com.prg3.mr_bid.view.JPanelMainWindow;
  * @author Yohan Caro
  * @version 1.0 - 2/06/2019
  */
-public class UserController implements ActionListener {
+public class UserController implements ActionListener,MouseListener {
 	private static final String NAME_FILE_CONFIG = "config.init";
 
 	private JFrameMain jFrameMain;
 	private JDialogAddUser jDialogAddUser;
 	private JDialogAddCreditCard jDialogAddCreditCard;
 	private JPanelMainWindow jPanelMainWindow;
+	private JDialogListUsers jDialogListUsers;
 	private static UserController controller;
 	private HandlerLanguage config = null;
 	private String languageDefault;
@@ -58,9 +62,11 @@ public class UserController implements ActionListener {
 		Utilities.fillBiddings();
 //		myCaptcha.create();
 		this.jFrameMain = new JFrameMain(this);
+		this.jDialogListUsers = new JDialogListUsers(this);
 		this.jDialogAddUser = new JDialogAddUser(this);
 		this.jDialogAddCreditCard = new JDialogAddCreditCard();
 		this.jPanelMainWindow = new JPanelMainWindow(this);
+		
 		addProduct();
 		sendComment();
 		
@@ -97,7 +103,7 @@ public class UserController implements ActionListener {
 				JPanelMainProduct jPanelMainProduct = new JPanelMainProduct();
 				jFrameMain.setjPanelMainProduct(jPanelMainProduct);
 				jFrameMain.getjPanelMainProduct().setBidding(Manager.getInstanceOf().searchBiddingForID(Long.parseLong(com[1])));
-				jFrameMain.getjPanelMainProduct().start();
+				jFrameMain.getjPanelMainProduct().start(this);
 				jFrameMain.showPanelCardProduct();
 			} else {
 				Utilities.showMessageError("El id de la tarjeta es nulo", "Error");
@@ -131,6 +137,9 @@ public class UserController implements ActionListener {
 			break;
 		case ACTION_BIDDING:
 			Utilities.showMessageInfo("Si! :D", "Bien");
+			break;
+		case LIST_CONNECT:
+			jDialogListUsers.setVisible(true);
 			break;
 		case C_ENGLISH:
 			System.out.println("INGLES");
@@ -322,6 +331,36 @@ public class UserController implements ActionListener {
 		// jDialogCreateBotanico.changeLanguage();
 		// jDialogDeleteBotanic.changeLanguage();
 		// jDialogCreatePlant.changeLanguage();
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
