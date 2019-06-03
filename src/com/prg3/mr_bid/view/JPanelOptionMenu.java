@@ -30,7 +30,7 @@ public class JPanelOptionMenu extends JPanel {
 	private JMenu jMenu, jMenu2, jMenu3, jMenu4, jMenu5;
 	private JButton jButtonCompras, signin, jButtonLogin;
 	private JMenuItem jMenuItemHome, jMenuItemEstadisticas, jMenuItemLogin, jMenuItemESPANISH, jMenuItemCreateBotanic,
-			jMenuItemMyCount, jMenuItemMobile, jMenuItemENGLISH;
+			jMenuItemMyCount, jMenuItemMobile, jMenuItemENGLISH, jMenuItemABOUT;
 	private JMenuBar jMenuBar;
 	ImageIcon imageIcon;
 	Icon icon;
@@ -103,21 +103,18 @@ public class JPanelOptionMenu extends JPanel {
 		jMenuBar.add(jMenu3);
 
 		jMenu4 = new JMenu(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_ABOUT));
+		jMenu4.setActionCommand(ControlCommands.C_SHOWABOUT.name());
+		jMenu4.addActionListener(control);
 		jMenu4.setFont(new Font("Arial", 1, 15));
 		jMenu4.setBackground(Color.BLACK);
 		jMenu4.setForeground(Color.WHITE);
 		jMenuBar.add(jMenu4);
-		//
-		// jMenu5 = new JMenu("OPTION4");
-		// jMenu5.setFont(new Font("Arial", 1, 15));
-		// jMenu5.setBackground(Color.BLACK);
-		// jMenu5.setForeground(Color.WHITE);
-		// jMenuBar.add(jMenu5);
+	
 
-		// jMenuItemLogin = new JMenuItem("LOGIN");
-		// jMenuItemLogin.setActionCommand(ControlCommands.SHOW_REGISTER_USER.name());
-		// jMenuItemLogin.addActionListener(control);
-		// jMenu2.add(jMenuItemLogin);
+		jMenuItemABOUT = new JMenuItem(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_ABOUT));
+		jMenuItemABOUT.setActionCommand(ControlCommands.C_SHOWABOUT.name());
+		jMenuItemABOUT.addActionListener(control);
+		jMenu4.add(jMenuItemABOUT);
 
 		jMenuItemMyCount = new JMenuItem(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_ACCOUNT));
 		jMenuItemMyCount.setActionCommand(ControlCommands.SHOW_MYCOUNT.name());

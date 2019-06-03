@@ -17,7 +17,9 @@ import javax.swing.JPanel;
 
 import com.prg3.mr_bid.controller.ControlCommands;
 import com.prg3.mr_bid.controller.UserController;
+import com.prg3.mr_bid.model.entity.ConstantsBid;
 import com.prg3.mr_bid.model.entity.User;
+import com.prg3.mr_bid.utilities.HandlerLanguage;
 
 public class JPanelMainWindowCuenta extends JPanel {
 
@@ -99,10 +101,49 @@ public class JPanelMainWindowCuenta extends JPanel {
 
 		jPanelTools.setLayout(new GridLayout(4, 1));
 
-		jPanelTools.add(createJbuton("RESUMEN", 0, 0, jButton, "/images/compras.png", ControlCommands.SHOW_HISTORY.name(), control));
-		jPanelTools.add(createJbuton("CREAR SUBASTA", 0, 0, jButton2, "/images/venta.png", ControlCommands.SHOW_ADDPRODUCT.name(), control));
-		jPanelTools.add(createJbuton("PERFIL", 0, 0, jButton3, "/images/bloc.png", "", control));
-		jPanelTools.add(createJbuton("CONFIGURACION", 0, 0, jButton5, "/images/ajuste.png", "", control));
+		jButton = new JButton(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_SUMMARY));
+		jButton.setForeground(new Color(244, 244, 244));
+		jButton.setBackground(new Color(48, 48, 48));
+		jButton.setActionCommand(ControlCommands.SHOW_HISTORY.name());
+		jButton.addActionListener(control);
+		imageIcon = new ImageIcon(getClass().getResource("/images/bloc.png"));
+		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(70, 70, Image.SCALE_AREA_AVERAGING));
+		jButton.setIcon(icon);
+		jPanelTools.add(jButton);
+		
+		
+		jButton2 = new JButton(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_CREATEAUCTIONS));
+		jButton2.setForeground(new Color(244, 244, 244));
+		jButton2.setBackground(new Color(48, 48, 48));
+		jButton2.setActionCommand(ControlCommands.SHOW_ADDPRODUCT.name());
+		jButton2.addActionListener(control);
+		imageIcon = new ImageIcon(getClass().getResource("/images/venta.png"));
+		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(70, 70, Image.SCALE_AREA_AVERAGING));
+		jButton2.setIcon(icon);
+		jPanelTools.add(jButton2);
+		
+
+		jButton3 = new JButton(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_PROFILE));
+		jButton3.setForeground(new Color(244, 244, 244));
+		jButton3.setBackground(new Color(48, 48, 48));
+		jButton3.setActionCommand(ControlCommands.SHOW_ADDPRODUCT.name());
+		jButton3.addActionListener(control);
+		imageIcon = new ImageIcon(getClass().getResource("/images/bloc.png"));
+		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(70, 70, Image.SCALE_AREA_AVERAGING));
+		jButton3.setIcon(icon);
+		jPanelTools.add(jButton3);
+		
+		jButton5 = new JButton(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_CONFIGURATION));
+		jButton5.setForeground(new Color(244, 244, 244));
+		jButton5.setBackground(new Color(48, 48, 48));
+		jButton5.setActionCommand(ControlCommands.SHOW_ADDPRODUCT.name());
+		jButton5.addActionListener(control);
+		imageIcon = new ImageIcon(getClass().getResource("/images/ajuste.png"));
+		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(70, 70, Image.SCALE_AREA_AVERAGING));
+		jButton5.setIcon(icon);
+		jPanelTools.add(jButton5);
+		
+
 
 	}
 
@@ -117,15 +158,16 @@ public class JPanelMainWindowCuenta extends JPanel {
 		jPanelPhoto.add(jPanelMainImage, BorderLayout.CENTER);
 
 	}
-	
+
 	public void changeData(User user) {
 		System.out.println(user.toString());
 		jLabelName.setText(user.getFirstName() + " " + user.getLastName());
 		this.repaint();
 	}
 
-	public JButton createJbuton(String name, int x, int y, JButton atribute, String url, String commands, UserController control) {
-		atribute = new JButton(name);
+	public JButton createJbuton(String name, int x, int y, JButton atribute, String url, String commands,
+			UserController control) {
+		atribute = new JButton(HandlerLanguage.languageProperties.getProperty(name));
 		atribute.setForeground(new Color(244, 244, 244));
 		atribute.setBackground(new Color(48, 48, 48));
 		atribute.setActionCommand(commands);
@@ -160,7 +202,16 @@ public class JPanelMainWindowCuenta extends JPanel {
 		setOpaque(false);
 		super.paintComponent(g);
 	}
-	
 
+	public void changeLanguage() {
+		jButton.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_SUMMARY));
+		jButton2.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_CREATEAUCTIONS));
+		jButton3.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_PROFILE));
+		jButton5.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_CONFIGURATION));
+
+
+
+
+	}
 
 }

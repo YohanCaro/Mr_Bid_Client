@@ -111,9 +111,7 @@ public class JFrameMain extends JFrame {
 	
 	public void changeLanguage() {
 		jPanelOptionMenu.changeLanguage();
-//		jPanelPrincipalTable.getjPanelCenter().getjPanelTableMostrar().changeLanguageTable();
-//		jPanelPrincipalTable.getjPanelCenter().getjPanleFilterTable().changeLanguage();
-//		jPanelPrincipalTable.getjPanelCenter().getJPanelNorthButonTable().getJPanelNorthButonTable().changeLanguage();
+		jPanelMainWindowCuenta.changeLanguage();
 
 	}
 

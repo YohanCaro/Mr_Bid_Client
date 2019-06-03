@@ -13,7 +13,6 @@ import javax.swing.border.MatteBorder;
 
 public class ConstantsBid {
 
-
 	public static final String T_ENGLISH = "T_ENGLISH";
 	public static final String T_SPANISH = "T_SPANISH";
 	public static final String T_MENU_HOME = "T_MENU_HOME";
@@ -21,17 +20,9 @@ public class ConstantsBid {
 	public static final String T_ACCOUNT = "T_ACCOUNT";
 	public static final String T_SIGNIN = "T_SIGNIN";
 	public static final String T_ABOUT = "T_ABOUT";
-
-
-
-
-
-
-
-
-
-	
-	
-
+	public static final String T_SUMMARY = "T_SUMMARY";
+	public static final String T_CREATEAUCTIONS = "T_CREATEAUCTIONS";
+	public static final String T_PROFILE = "T_PROFILE";
+	public static final String T_CONFIGURATION = "T_CONFIGURATION";
 
 }

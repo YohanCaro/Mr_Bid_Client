@@ -26,6 +26,7 @@ import com.prg3.mr_bid.model.manager.Manager;
 import com.prg3.mr_bid.utilities.Constants;
 import com.prg3.mr_bid.utilities.HandlerLanguage;
 import com.prg3.mr_bid.utilities.Utilities;
+import com.prg3.mr_bid.view.JDialogAbout;
 import com.prg3.mr_bid.view.JDialogAddCreditCard;
 import com.prg3.mr_bid.view.JDialogAddUser;
 import com.prg3.mr_bid.view.JDialogListUsers;
@@ -34,24 +35,25 @@ import com.prg3.mr_bid.view.JPanelMainProduct;
 import com.prg3.mr_bid.view.JPanelMainWindow;
 
 /**
- * Clase UserController - Clase encaragda de manejar las acciones de las ventanas 
- *  y botones. 
+ * Clase UserController - Clase encaragda de manejar las acciones de las
+ * ventanas y botones.
  *
  * @author Yohan Caro
  * @version 1.0 - 2/06/2019
  */
-public class UserController implements ActionListener,MouseListener {
+public class UserController implements ActionListener, MouseListener {
 	private static final String NAME_FILE_CONFIG = "config.init";
 
 	private JFrameMain jFrameMain;
 	private JDialogAddUser jDialogAddUser;
 	private JDialogAddCreditCard jDialogAddCreditCard;
+	private JDialogAbout jDialogAbout;
 	private JPanelMainWindow jPanelMainWindow;
 	private JDialogListUsers jDialogListUsers;
 	private static UserController controller;
 	private HandlerLanguage config = null;
 	private String languageDefault;
-    private MyCaptcha myCaptcha;
+	private MyCaptcha myCaptcha;
 
 	/**
 	 * Construtor que inicia la app
@@ -60,16 +62,17 @@ public class UserController implements ActionListener,MouseListener {
 		getLanguageDefault();
 		loadConfiguration();
 		Utilities.fillBiddings();
-//		myCaptcha.create();
+		// myCaptcha.create();
 		this.jFrameMain = new JFrameMain(this);
 		this.jDialogListUsers = new JDialogListUsers(this);
 		this.jDialogAddUser = new JDialogAddUser(this);
+		this.jDialogAbout = new JDialogAbout();
 		this.jDialogAddCreditCard = new JDialogAddCreditCard();
 		this.jPanelMainWindow = new JPanelMainWindow(this);
-		
+
 		addProduct();
 		sendComment();
-		
+
 	}
 
 	/**
@@ -102,13 +105,14 @@ public class UserController implements ActionListener,MouseListener {
 			if (Manager.getInstanceOf().searchBiddingForID(Long.parseLong(com[1])) != null) {
 				JPanelMainProduct jPanelMainProduct = new JPanelMainProduct();
 				jFrameMain.setjPanelMainProduct(jPanelMainProduct);
-				jFrameMain.getjPanelMainProduct().setBidding(Manager.getInstanceOf().searchBiddingForID(Long.parseLong(com[1])));
+				jFrameMain.getjPanelMainProduct()
+						.setBidding(Manager.getInstanceOf().searchBiddingForID(Long.parseLong(com[1])));
 				jFrameMain.getjPanelMainProduct().start(this);
 				jFrameMain.showPanelCardProduct();
 			} else {
 				Utilities.showMessageError("El id de la tarjeta es nulo", "Error");
 			}
-			
+
 			break;
 		case SHOW_HISTORY:
 			jFrameMain.showMyHistory();
@@ -126,7 +130,8 @@ public class UserController implements ActionListener,MouseListener {
 			if (jDialogAddUser.isVisible() && this.createUser() != null) {
 				this.sendData(Commands.SIGNIN, this.createUser());
 			} else {
-				Utilities.showMessageWarning("Por favor complete todos los campos correctamente!", "Datos no validos o vacios!");
+				Utilities.showMessageWarning("Por favor complete todos los campos correctamente!",
+						"Datos no validos o vacios!");
 			}
 			break;
 		case ACTION_LOGIN:
@@ -144,9 +149,12 @@ public class UserController implements ActionListener,MouseListener {
 		case SEND_BID:
 			double value = jFrameMain.getjPanelMainProduct().getValuePuja();
 			double valueActually = jFrameMain.getjPanelMainProduct().getValueActually();
-			if(value >valueActually ) {
+			if (value > valueActually) {
 				jFrameMain.getjPanelMainProduct().setValueActually(value);
 			}
+			break;
+		case C_SHOWABOUT:
+			jDialogAbout.setVisible(true);
 			break;
 		case C_ENGLISH:
 			System.out.println("INGLES");
@@ -168,7 +176,7 @@ public class UserController implements ActionListener,MouseListener {
 		this.jPanelMainWindow = new JPanelMainWindow("Computador LG", "Publico", "No inicida", "7;80", "/images/lg.jpg",
 				this);
 	}
-	
+
 	/**
 	 * Envia los datos de legueo
 	 */
@@ -179,9 +187,12 @@ public class UserController implements ActionListener,MouseListener {
 	}
 
 	/**
-	 * Envia cualquier dato al servidor con 
-	 * @param command comando 
-	 * @param data objeto a enviar
+	 * Envia cualquier dato al servidor con
+	 * 
+	 * @param command
+	 *            comando
+	 * @param data
+	 *            objeto a enviar
 	 */
 	private void sendData(Commands command, Object data) {
 		try {
@@ -195,25 +206,27 @@ public class UserController implements ActionListener,MouseListener {
 
 	/**
 	 * Crea un usuario con los datos de la vista
+	 * 
 	 * @return user usuario
 	 */
 	private User createUser() {
 		return Manager.getInstanceOf().createUser(jDialogAddUser.getjPanelForm().getFirstName(),
 				jDialogAddUser.getjPanelForm().getLastName(), jDialogAddUser.getjPanelForm().getEmail(),
-				jDialogAddUser.getjPanelForm().getPassword(),
-				jDialogAddUser.getjPanelForm().getBirthDate(),
+				jDialogAddUser.getjPanelForm().getPassword(), jDialogAddUser.getjPanelForm().getBirthDate(),
 				jDialogAddUser.getjPanelForm().getDocument(), jDialogAddUser.getjPanelForm().getTypeDocument(),
 				jDialogAddUser.getjPanelForm().getGender(), null);
 	}
-	
-//	private void createBidding() {
-//	Product p = new Product(, description);
-//	Manager.getInstanceOf().addBidding(biddingName, typeProduct, product, publicationTime,
-//			initTime, finishTime, isAutomaticIncremet, isPublic);
-//}
+
+	// private void createBidding() {
+	// Product p = new Product(, description);
+	// Manager.getInstanceOf().addBidding(biddingName, typeProduct, product,
+	// publicationTime,
+	// initTime, finishTime, isAutomaticIncremet, isPublic);
+	// }
 
 	/**
 	 * Crea un unico controllador
+	 * 
 	 * @return controller controlador
 	 */
 	public static UserController getInstanceOf() {
@@ -222,8 +235,7 @@ public class UserController implements ActionListener,MouseListener {
 		}
 		return controller;
 	}
-	
-	
+
 	/**
 	 * Metodo para manda y recibe un array de string al panel de comentarios
 	 */
@@ -235,24 +247,29 @@ public class UserController implements ActionListener,MouseListener {
 		menssge.add("hola3");
 		menssge.add("hola4");
 		jFrameMain.getjPanelMainProduct().sendComment(menssge);
-				
+
 	}
-	
+
 	public void updateBiddings() {
 		for (Bidding b : Constants.biddingsList) {
-			
+
 		}
 	}
-	
+
 	/**
 	 * Selecciona una img
-	 * @throws DOMException e
-	 * @throws TransformerFactoryConfigurationError e
-	 * @throws ParserConfigurationException e
-	 * @throws TransformerException e
+	 * 
+	 * @throws DOMException
+	 *             e
+	 * @throws TransformerFactoryConfigurationError
+	 *             e
+	 * @throws ParserConfigurationException
+	 *             e
+	 * @throws TransformerException
+	 *             e
 	 */
-	private void selectImagge() throws DOMException, TransformerFactoryConfigurationError,
-			ParserConfigurationException, TransformerException {
+	private void selectImagge() throws DOMException, TransformerFactoryConfigurationError, ParserConfigurationException,
+			TransformerException {
 		JFileChooser ventanaG = new JFileChooser();
 		ventanaG.showSaveDialog(null);
 		if (ventanaG.getSelectedFile() != null) {
@@ -260,10 +277,9 @@ public class UserController implements ActionListener,MouseListener {
 		}
 
 	}
-	
-	/////////////////////////////////7
-	
-	
+
+	///////////////////////////////// 7
+
 	public String getLanguageDefault() {
 		languageDefault = Locale.getDefault().getLanguage();
 		switch (languageDefault) {
@@ -334,6 +350,7 @@ public class UserController implements ActionListener,MouseListener {
 
 	private void manageChangeLanguage() {
 		jFrameMain.changeLanguage();
+		
 		// jFramePrincipalMobile.changeLanguage();
 		// jDialogCreateBotanico.changeLanguage();
 		// jDialogDeleteBotanic.changeLanguage();
@@ -343,31 +360,31 @@ public class UserController implements ActionListener,MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseExited(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mousePressed(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
