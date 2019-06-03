@@ -13,7 +13,7 @@ import com.prg3.mr_bid.view.JPanelPrincipalLogin;
 public class Login {
 
 	public static void main(String[] args) {
-//
+
 //		JPanelPrincipalLogin jPanelPrincipalLogin;
 //		JPanelOptionMenu jPanelOptionMenu;
 //		JPanel jPanel;

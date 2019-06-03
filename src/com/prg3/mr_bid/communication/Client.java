@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 
 import com.google.gson.Gson;
+import com.prg3.mr_bid.controller.UserController;
+import com.prg3.mr_bid.model.entity.User;
 import com.prg3.mr_bid.utilities.Constants;
 import com.prg3.mr_bid.utilities.Utilities;
 
@@ -29,6 +31,7 @@ public class Client extends Socket implements Runnable {
 	private Gson gson;
 	private boolean isConect;
 	private static Client client;
+	private User user;
 	
 	/**
 	 * Constructor que crea el cliente con una ip y puerto
@@ -107,11 +110,12 @@ public class Client extends Socket implements Runnable {
 					"Correo no valido!");
 			break;
 		case ERROR_LOGIN:
-			if (json.charAt(1) == 't') {
-				Utilities.showMessageInfo("Si! :D", "Usuario logueado");
-			} else {
+			if (json.charAt(1) == 'f') {
 				Utilities.showMessageWarning("Correo o contraseña incorrectos\n"
-						+ "Por favor vuelva a intentarlo", "Datos no validos!");
+						+ "Por favor vuelva a intentarlo", "Datos no validos!");				
+			} else {
+				Utilities.showMessageInfo("Si! :D", "Usuario logueado");
+				user = gson.fromJson(json, User.class);
 			}
 			break;
 		case CHANGE_BIDDING:
@@ -134,7 +138,14 @@ public class Client extends Socket implements Runnable {
 		} else {
 			dataOS.writeUTF(gson.toJson(o));
 		}
-		
+	}
+	
+	/**
+	 * Obtiene 
+	 * @return user
+	 */
+	public User getUser() {
+		return user;
 	}
 
 }

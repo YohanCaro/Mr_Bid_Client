@@ -14,10 +14,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 import com.prg3.mr_bid.controller.ControlCommands;
 import com.prg3.mr_bid.controller.UserController;
+import com.prg3.mr_bid.model.entity.User;
 
 public class JPanelMainWindowCuenta extends JPanel {
 
@@ -117,6 +117,12 @@ public class JPanelMainWindowCuenta extends JPanel {
 		jPanelPhoto.add(jPanelMainImage, BorderLayout.CENTER);
 
 	}
+	
+	public void changeData(User user) {
+		System.out.println(user.toString());
+		jLabelName.setText(user.getFirstName() + " " + user.getLastName());
+		this.repaint();
+	}
 
 	public JButton createJbuton(String name, int x, int y, JButton atribute, String url, String commands, UserController control) {
 		atribute = new JButton(name);
@@ -154,5 +160,7 @@ public class JPanelMainWindowCuenta extends JPanel {
 		setOpaque(false);
 		super.paintComponent(g);
 	}
+	
+
 
 }

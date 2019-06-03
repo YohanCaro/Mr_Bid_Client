@@ -6,6 +6,7 @@ import java.net.UnknownHostException;
 import com.prg3.mr_bid.communication.Client;
 import com.prg3.mr_bid.controller.UserController;
 import com.prg3.mr_bid.utilities.Constants;
+import com.prg3.mr_bid.view.Splash;
 import com.prg3.mr_bid.view.Splash2;
 
 /**

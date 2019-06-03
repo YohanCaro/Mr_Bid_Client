@@ -125,5 +125,13 @@ public class JFrameMain extends JFrame {
 		this.jPanelMainProduct = jPanelMainProduct;
 	}
 	
+	/**
+	 * Obtiene 
+	 * @return jPanelMainWindowCuenta
+	 */
+	public JPanelMainWindowCuenta getjPanelMainWindowCuenta() {
+		return jPanelMainWindowCuenta;
+	}
+	
 	
 }

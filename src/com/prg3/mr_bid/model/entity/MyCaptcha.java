@@ -33,7 +33,7 @@ public class MyCaptcha {
 		Graphics2D g2d = image.createGraphics();
 		for (int i = 0; i < message.length(); i++) {
 			g2d.setColor(Color.WHITE);
-			g2d.setFont(new Font("Ravie", 1, 14));
+			g2d.setFont(new Font("Arial", 1, 14));
 			g2d.drawString(""+ message.charAt(i), i*25, 20);
 			g2d.fillOval(i*25, 17, 5, 5);	 
 	        AffineTransform at = new AffineTransform();
