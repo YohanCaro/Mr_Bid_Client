@@ -97,12 +97,11 @@ public class JPanelMainWindowCuenta extends JPanel {
 
 	private void myjButton(UserController control) {
 
-		jPanelTools.setLayout(new GridLayout(5, 1));
+		jPanelTools.setLayout(new GridLayout(4, 1));
 
-		jPanelTools.add(createJbuton("COMPRAS", 0, 0, jButton, "/images/compras.png", ControlCommands.SHOW_HISTORY.name(), control));
+		jPanelTools.add(createJbuton("RESUMEN", 0, 0, jButton, "/images/compras.png", ControlCommands.SHOW_HISTORY.name(), control));
 		jPanelTools.add(createJbuton("CREAR SUBASTA", 0, 0, jButton2, "/images/venta.png", ControlCommands.SHOW_ADDPRODUCT.name(), control));
-		jPanelTools.add(createJbuton("RESUMEN", 0, 0, jButton3, "/images/bloc.png", "", control));
-		jPanelTools.add(createJbuton("REPUTACION", 0, 0, jButton4, "/images/favoritos.png", "", control));
+		jPanelTools.add(createJbuton("PERFIL", 0, 0, jButton3, "/images/bloc.png", "", control));
 		jPanelTools.add(createJbuton("CONFIGURACION", 0, 0, jButton5, "/images/ajuste.png", "", control));
 
 	}
