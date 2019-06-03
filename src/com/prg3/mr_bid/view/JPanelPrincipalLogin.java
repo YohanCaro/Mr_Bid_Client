@@ -23,6 +23,7 @@ import javax.swing.JTextField;
 import com.prg3.mr_bid.controller.ControlCommands;
 import com.prg3.mr_bid.controller.UserController;
 import com.prg3.mr_bid.model.entity.MyCaptcha;
+import com.prg3.mr_bid.utilities.HintJTextField;
 
 
 
@@ -32,7 +33,7 @@ public class JPanelPrincipalLogin extends JPanel{
 	private JPanel jPanelNorth, jPanelWest, jPanelEast, jPanelSout, jPanelCenter, jPanelCenterImage, jPanelCenterCampos;
 	private JLabel jLabel;
 	private JButton jButton;
-	private JTextField jTextFieldName;
+	private HintJTextField jTextFieldName;
     private JPasswordField jpassword;
 
 
@@ -87,11 +88,16 @@ public class JPanelPrincipalLogin extends JPanel{
 		jLabel.setIcon(icon);
 		jPanelCenterImage.add(jLabel);
 		
-		jTextFieldName = new JTextField();
-		jTextFieldName.setPreferredSize(new Dimension(400, 30));
-		jTextFieldName.setBackground(new Color(244, 244, 244));
+//		jTextFieldName = new JTextField("HOLA");
+//		jTextFieldName.setPreferredSize(new Dimension(400, 30));
+//		jTextFieldName.setBackground(new Color(244, 244, 244));
+//		jPanelCenterCampos.add(jTextFieldName);
+//		jPanelCenterCampos.add(createEspacio());
+		
+		jTextFieldName = createTextField("name", 0, 0, jTextFieldName, 400);
 		jPanelCenterCampos.add(jTextFieldName);
-		jPanelCenterCampos.add(createEspacio());
+
+
 		
 //		jTextFieldName = new JTextField();
 //		jTextFieldName.setPreferredSize(new Dimension(400, 60));
@@ -101,11 +107,11 @@ public class JPanelPrincipalLogin extends JPanel{
 		
 //		jPanelCenterCampos.add(new CaptchaJPanel(myCaptcha));
 		
-		jTextFieldName = new JTextField();
-		jTextFieldName.setPreferredSize(new Dimension(400, 30));
-		jTextFieldName.setBackground(new Color(244, 244, 244));
-		jPanelCenterCampos.add(jTextFieldName);
-		jPanelCenterCampos.add(createEspacio());
+//		jTextFieldName = new JTextField();
+//		jTextFieldName.setPreferredSize(new Dimension(400, 30));
+//		jTextFieldName.setBackground(new Color(244, 244, 244));
+//		jPanelCenterCampos.add(jTextFieldName);
+//		jPanelCenterCampos.add(createEspacio());
 
 		jpassword = new JPasswordField();
 		jpassword.setPreferredSize(new Dimension(400, 30));
@@ -127,14 +133,14 @@ public class JPanelPrincipalLogin extends JPanel{
 
 	}
 
-	public JTextField createJTextField(String name, Color color, int largo, int ancho) {
-		jTextFieldName = new JTextField(name);
-		jTextFieldName.setBackground(color);
-		jTextFieldName.setPreferredSize(new Dimension(largo, ancho));
-		this.add(jTextFieldName);
-		return jTextFieldName;
-
-	}
+//	public JTextField createJTextField(String name, Color color, int largo, int ancho) {
+//		jTextFieldName = new JTextField(name);
+//		jTextFieldName.setBackground(color);
+//		jTextFieldName.setPreferredSize(new Dimension(largo, ancho));
+//		this.add(jTextFieldName);
+//		return jTextFieldName;
+//
+//	}
 
 	public JLabel createEspacio() {
 		jLabel = new JLabel();
@@ -151,6 +157,17 @@ public class JPanelPrincipalLogin extends JPanel{
     public String getJpassword() {
         return String.valueOf(jpassword.getPassword());
     }
+    
+    
+    public HintJTextField createTextField(String name, int x, int y, HintJTextField atribute, int xsize) {
+		atribute = new HintJTextField(name);
+		atribute.setBounds(x, y, xsize, 30);
+		atribute.setBackground(new Color(244, 244, 244));
+		atribute.setPreferredSize(new Dimension(400, 30));
+		add(atribute);
+		return atribute;
+
+	}
 	
 	@Override
 	protected void paintComponent(Graphics g) {

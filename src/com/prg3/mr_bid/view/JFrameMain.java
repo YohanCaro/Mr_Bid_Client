@@ -26,16 +26,19 @@ public class JFrameMain extends JFrame {
 	Icon icon;
 
 	public JFrameMain(UserController control) {
+		
 		this.jScrollPane = new JScrollPane();
+		jScrollPane.setOpaque(false);
 		this.jPanelMain = new JPanelMainWindow(control);
 		this.jPanelPrincipalLogin = new JPanelPrincipalLogin(control);
 		this.jMainPanelHome = new MainPanelHome(control);
+		jMainPanelHome.setOpaque(false);
 		this.jPanelOptionMenu = new JPanelOptionMenu(control);
 		this.jPanelMainWindowCuenta = new JPanelMainWindowCuenta(control);
 		this.jPanelMainAddProduct = new JPanelMainAddProduct(control);
 //		this.jPanelMainProduct = new JPanelMainProduct();//---------------
 		this.jPanelMainWindowMisSubastas = new JPanelMainWindowMisSubastas();
-
+		
 		init();
 	}
 
