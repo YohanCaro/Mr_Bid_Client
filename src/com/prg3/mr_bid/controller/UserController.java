@@ -17,8 +17,10 @@ import org.w3c.dom.DOMException;
 import com.prg3.mr_bid.communication.Client;
 import com.prg3.mr_bid.communication.Commands;
 import com.prg3.mr_bid.model.entity.BidDate;
+import com.prg3.mr_bid.model.entity.Bidding;
 import com.prg3.mr_bid.model.entity.User;
 import com.prg3.mr_bid.model.manager.Manager;
+import com.prg3.mr_bid.utilities.Constants;
 import com.prg3.mr_bid.utilities.HandlerLanguage;
 import com.prg3.mr_bid.utilities.Utilities;
 import com.prg3.mr_bid.view.JDialogAddCreditCard;
@@ -48,6 +50,7 @@ public class UserController implements ActionListener {
 	 * Construtor que inicia la app
 	 */
 	private UserController() {
+		Utilities.fillBiddings();
 		this.jFrameMain = new JFrameMain(this);
 		this.jDialogAddUser = new JDialogAddUser(this);
 		this.jDialogAddCreditCard = new JDialogAddCreditCard();
@@ -63,7 +66,9 @@ public class UserController implements ActionListener {
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		switch (ControlCommands.valueOf(e.getActionCommand())) {
+		String command = e.getActionCommand();
+		String[] com = command.split(",");
+		switch (ControlCommands.valueOf(com[0])) {
 		case SHOW_LOGIN:
 			jFrameMain.showLogin();
 			break;
@@ -83,7 +88,16 @@ public class UserController implements ActionListener {
 			jFrameMain.showPanelAddProduct();
 			break;
 		case SHOW_PRODUCT:
-			jFrameMain.showPanelCardProduct();
+			if (Manager.getInstanceOf().searchBiddingForID(Long.parseLong(com[1])) != null) {
+				JPanelMainProduct jPanelMainProduct = new JPanelMainProduct();
+				jFrameMain.setjPanelMainProduct(jPanelMainProduct);
+				jFrameMain.getjPanelMainProduct().setBidding(Manager.getInstanceOf().searchBiddingForID(Long.parseLong(com[1])));
+				jFrameMain.getjPanelMainProduct().start();
+				jFrameMain.showPanelCardProduct();
+			} else {
+				Utilities.showMessageError("El id de la tarjeta es nulo", "Error");
+			}
+			
 			break;
 		case SHOW_HISTORY:
 			jFrameMain.showMyHistory();
@@ -201,6 +215,12 @@ public class UserController implements ActionListener {
 		menssge.add("hola4");
 		jFrameMain.getjPanelMainProduct().sendComment(menssge);
 				
+	}
+	
+	public void updateBiddings() {
+		for (Bidding b : Constants.biddingsList) {
+			
+		}
 	}
 	
 	/**

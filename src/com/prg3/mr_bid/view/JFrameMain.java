@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 
 import com.prg3.mr_bid.controller.UserController;
+import com.prg3.mr_bid.utilities.Utilities;
 
 public class JFrameMain extends JFrame {
 
@@ -32,7 +33,7 @@ public class JFrameMain extends JFrame {
 		this.jPanelOptionMenu = new JPanelOptionMenu(control);
 		this.jPanelMainWindowCuenta = new JPanelMainWindowCuenta(control);
 		this.jPanelMainAddProduct = new JPanelMainAddProduct(control);
-		this.jPanelMainProduct = new JPanelMainProduct();
+//		this.jPanelMainProduct = new JPanelMainProduct();//---------------
 		this.jPanelMainWindowMisSubastas = new JPanelMainWindowMisSubastas();
 
 		init();
@@ -46,7 +47,7 @@ public class JFrameMain extends JFrame {
 		jScrollPane.setViewportView(jPanelMain);
 		this.add(jScrollPane, BorderLayout.CENTER);
 		this.add(jPanelOptionMenu, BorderLayout.NORTH);
-
+		Utilities.fillBiddings();
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -76,10 +77,11 @@ public class JFrameMain extends JFrame {
 	public void showPanelAddProduct() {
 		jPanelMain.removeAll();
 		jPanelMain.add(jPanelMainAddProduct, BorderLayout.CENTER);
-		repaint();
+//		repaint();
 		revalidate();
 	}
 	
+	//*******************************
 	public void showPanelCardProduct() {
 		jPanelMain.removeAll();
 		jPanelMain.add(jPanelMainProduct, BorderLayout.CENTER);
@@ -115,7 +117,13 @@ public class JFrameMain extends JFrame {
 
 	}
 
-	
+	/**
+	 * Cambia 
+	 * @param jPanelMainProduct the jPanelMainProduct to set
+	 */
+	public void setjPanelMainProduct(JPanelMainProduct jPanelMainProduct) {
+		this.jPanelMainProduct = jPanelMainProduct;
+	}
 	
 	
 }

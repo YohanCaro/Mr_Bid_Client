@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 
 import com.prg3.mr_bid.controller.ControlCommands;
 import com.prg3.mr_bid.controller.UserController;
+import com.prg3.mr_bid.model.entity.Bidding;
 
 public class JPanelCard extends JPanel {
 
@@ -25,6 +26,7 @@ public class JPanelCard extends JPanel {
 	private ImageIcon imageIcon;
 	private Icon icon;
 	private JButton jButton;
+	private String product;
 
 	public JPanelCard() {
 
@@ -46,6 +48,26 @@ public class JPanelCard extends JPanel {
 		character();
 		sizePanel();
 		JpanelImageProduct(url);
+		init();
+	}
+	
+	public JPanelCard(Bidding bid, UserController controller) {
+		this.jPanelNorth = new JPanel();
+		this.jPanelSouth = new JPanel();
+		this.jPanelWest = new JPanel();
+		this.jPanelEast = new JPanel();
+		this.jPanelCenter = new JPanel();
+		this.jPanelCenterWest = new JPanel();
+		this.jPanelCenterEast = new JPanel();
+		this.jpanelImageProduct = new JPanel();
+		this.jPanelNameProduct = new JPanel();
+		this.jPanelInfoProduct = new JPanel();
+		this.jLabel = new JLabel();
+//		informacion(name, type, staut, time,controller);
+		changeData(bid, controller);
+		character();
+		sizePanel();
+		JpanelImageProduct(bid.getProduct().getImages().get(0));
 		init();
 	}
 
@@ -97,6 +119,23 @@ public class JPanelCard extends JPanel {
 		jPanelInfoProduct.add(jButton);
 
 	}
+	
+	public void changeData(Bidding b, UserController control) {
+		jPanelNameProduct.add(createLabel(b.getBiddingName(), 10, 100, jLabelName, 30, 400));
+		jPanelInfoProduct.add(createLabel("TIPO", 10, 20, jLabelType, 20, 130));
+		jPanelInfoProduct.add(createLabel("ESTADO", 10, 70, jLabelSatus, 20, 130));
+		jPanelInfoProduct.add(createLabel("TIEMPO RESTANTE", 10, 120, jLabelTime, 20, 400));
+		
+		jPanelInfoProduct.add(createLabel(b.getTypeProduct().name(), 200, 20, jLabelType2, 20, 130));
+		jPanelInfoProduct.add(createLabel(b.toString(), 200, 70, jLabelSatus2, 20, 130));
+		jPanelInfoProduct.add(createLabel(b.getInitTime().toString(), 230, 120, jLabelTime2, 20, 130));
+		
+		jButton = new JButton("Ingresar");
+		jButton.setBounds(150, 200, 100, 30);
+		jButton.setActionCommand(ControlCommands.SHOW_PRODUCT.name() + "," + b.getId());
+		jButton.addActionListener(control);
+		jPanelInfoProduct.add(jButton);
+	}
 
 	private void init() {
 		this.setLayout(new BorderLayout());
@@ -131,6 +170,14 @@ public class JPanelCard extends JPanel {
 		add(jLabel);
 		return jLabel;
 
+	}
+	
+	/**
+	 * Cambia 
+	 * @param product the product to set
+	 */
+	public void setProduct(String product) {
+		this.product = product;
 	}
 
 }

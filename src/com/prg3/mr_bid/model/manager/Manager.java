@@ -9,6 +9,7 @@ import com.prg3.mr_bid.model.entity.Product;
 import com.prg3.mr_bid.model.entity.TypeDocument;
 import com.prg3.mr_bid.model.entity.TypeProduct;
 import com.prg3.mr_bid.model.entity.User;
+import com.prg3.mr_bid.utilities.Constants;
 
 /**
  * Clase Manager - Maneja los datos del usuario - cliente
@@ -82,6 +83,15 @@ public class Manager {
 			builder.append("\n");
 		}
 		return builder.toString();
+	}
+	
+	public Bidding searchBiddingForID(long id) {
+		for (int i = 0; i < Constants.biddingsList.size(); i++) {
+			if (Constants.biddingsList.get(i).getId() == id) {
+				return Constants.biddingsList.get(i);
+			}
+		}
+		return null;
 	}
 	
 	/**

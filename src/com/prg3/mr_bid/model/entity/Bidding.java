@@ -9,6 +9,7 @@ package com.prg3.mr_bid.model.entity;
 public class Bidding {
 	
 	private User owner;
+	private long id;
 	private String biddingName;
 	private TypeProduct typeProduct;
 	private Product product;
@@ -39,6 +40,18 @@ public class Bidding {
 		this.finishTime = finishTime;
 		this.isAutomaticIncremet = isAutomaticIncremet;
 		this.isPublic = isPublic;
+	}
+	
+	public long getId() {
+		return id;
+	}
+	
+	/**
+	 * Cambia 
+	 * @param id the id to set
+	 */
+	public void setId(long id) {
+		this.id = id;
 	}
 	
 	/**

@@ -20,6 +20,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import com.prg3.mr_bid.controller.UserController;
+import com.prg3.mr_bid.model.entity.Bidding;
 
 public class JPanelMainProduct extends JPanel {
 
@@ -36,8 +37,50 @@ public class JPanelMainProduct extends JPanel {
 	private ImageIcon imageIcon, imageIcon2;
 	private Icon icon, icon2;
 	private String text;
+	private Bidding bidding;
 
 	public JPanelMainProduct() {
+//		this.setOpaque(false);
+//		this.jPanelSouth = new JPanel();
+//		this.jPanelizqImage = new JPanel();
+//		this.jPanelizqInfo = new JPanel();
+//		this.jPanelderNorth = new JPanel();
+//		this.jPanelderCenter = new JPanel();
+//		this.jPanelWest = new JPanel();
+//		this.jPanelDere = new JPanel();
+//		this.jPanelizq = new JPanel();
+//		this.jPanelEast = new JPanel();
+//		this.jPanelCenter = new JPanel();
+//		this.jPanelCard = new JPanel();
+//		this.jPanelCard2 = new JPanel();
+//		
+//		jPanelCenter.setOpaque(false);
+//		jPanelizqImage.setOpaque(false);
+//		// jPanelizqInfo.setOpaque(false);
+//		jPanelderNorth.setOpaque(false);
+//		jPanelderCenter.setOpaque(false);
+//		jPanelWest.setOpaque(false);
+//		jPanelDere.setOpaque(false);
+//		jPanelizq.setOpaque(false);
+//		jPanelEast.setOpaque(false);
+//		// jPanelCard.setOpaque(false);
+//		// jPanelCard2.setOpaque(false);
+//
+//		// this.jPanelOptionMenu = new JPanelOptionMenu();
+//		this.jTextArea = new JTextArea();
+//		this.jLabel = new JLabel();
+//		cardParticipantes();
+//		card();
+//		jtextArea();
+//		character();
+//		sizePanel();
+//		card2();
+//		cardPublicaciones();
+//		JpanelImage();
+//		init();
+	}
+	
+	public void start() {
 		this.setOpaque(false);
 		this.jPanelSouth = new JPanel();
 		this.jPanelizqImage = new JPanel();
@@ -105,7 +148,6 @@ public class JPanelMainProduct extends JPanel {
 	}
 
 	private void jtextArea() {
-
 		jTextArea.setText("Descrpcion");
 		jTextArea.setPreferredSize(new Dimension(400, 300));
 		jPanelizqInfo.setBackground(new Color(0, 0, 0, 94));
@@ -114,7 +156,6 @@ public class JPanelMainProduct extends JPanel {
 
 	private void card() {
 		JLabel jLabel, jLabel2, jLabel3, jLabel4, jLabel5, jLabel6, jLabel7, jLabel8, jLabel9, foto;
-
 		jPanelCard.setLayout(null);
 		jPanelCard.setBackground(new Color(0, 0, 0, 94));
 
@@ -125,13 +166,14 @@ public class JPanelMainProduct extends JPanel {
 		// jLabel.setBackground(Color.BLUE);
 		jPanelCard.add(jLabel);
 
-		name = new JTextField("");
+		name = new JTextField(bidding.getBiddingName());
+		System.out.println(bidding.toString());
 		name.setBounds(20, 40, 320, 25);
 		name.setBackground(new java.awt.Color(224, 224, 224));
 		name.setFont(new java.awt.Font("Andale Mono", 1, 14));
 		name.setForeground(new java.awt.Color(255, 0, 0));
 		jPanelCard.add(name);
-
+		
 		jLabel2 = new JLabel("TIEMPO");
 		jLabel2.setBounds(20, 85, 200, 25);
 		jLabel2.setFont(new Font("Andale Mono", 3, 15));
@@ -139,7 +181,7 @@ public class JPanelMainProduct extends JPanel {
 		jLabel2.setBackground(Color.BLUE);
 		jPanelCard.add(jLabel2);
 
-		correo = new JTextField();
+		correo = new JTextField(bidding.getInitTime().toString());
 		correo.setBounds(20, 115, 320, 25);
 		correo.setBackground(new java.awt.Color(224, 224, 224));
 		correo.setFont(new java.awt.Font("Andale Mono", 1, 14));
@@ -153,7 +195,7 @@ public class JPanelMainProduct extends JPanel {
 		jLabel3.setBackground(Color.BLUE);
 		jPanelCard.add(jLabel3);
 
-		password = new JTextField();
+		password = new JTextField(bidding.getFinishTime().toString());
 		password.setBounds(20, 175, 320, 25);
 		password.setBackground(new java.awt.Color(224, 224, 224));
 		password.setFont(new java.awt.Font("Andale Mono", 1, 14));
@@ -201,7 +243,7 @@ public class JPanelMainProduct extends JPanel {
 		jLabel.setBackground(Color.BLUE);
 		jPanelCard2.add(jLabel);
 
-		name = new JTextField("");
+		name = new JTextField();
 		name.setBounds(20, 40, 320, 25);
 		name.setBackground(new java.awt.Color(224, 224, 224));
 		name.setFont(new java.awt.Font("Andale Mono", 1, 14));
@@ -428,6 +470,13 @@ public class JPanelMainProduct extends JPanel {
 		
 	}
 
+	/**
+	 * Cambia 
+	 * @param bidding the bidding to set
+	 */
+	public void setBidding(Bidding bidding) {
+		this.bidding = bidding;
+	}
 	
 
 }

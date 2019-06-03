@@ -15,6 +15,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import com.prg3.mr_bid.controller.UserController;
+import com.prg3.mr_bid.model.entity.Bidding;
+import com.prg3.mr_bid.utilities.Constants;
+import com.prg3.mr_bid.utilities.Utilities;
 
 public class JPanelMainWindow extends JPanel {
 
@@ -45,9 +48,6 @@ public class JPanelMainWindow extends JPanel {
 
 	}
 	
-	
-
-
 
 	public JPanelMainWindow(String name, String type, String staut, String time, String url, UserController control) {
 		addNewProduct(name, type, staut, time, url, control);
@@ -109,16 +109,18 @@ public class JPanelMainWindow extends JPanel {
 		
 		jPanelEspacio.setLayout(new GridLayout(0, 1));
 		
+		this.addAllCards(control);
+		
 //		jPanelEspacio.add(addNewProduct(this.getNames(), "Publico", "No inicida",
 //				 "7;80", "/images/lg.jpg"));
-		 jPanelEspacio.add(new JPanelCard("Computador LG", "Publico", "No inicida",
-		 "7;80", "/images/lg.jpg", control));
-		 jPanelEspacio.add(new JPanelCard("Iphone X", "Publico", " Inicida", "8;80",
-		 "/images/iphone.png",control));
-		 jPanelEspacio.add(new JPanelCard("Computador LG", "Publico", "No inicida",
-		 "7;80", "/images/lg.jpg",control));
+//		 jPanelEspacio.add(new JPanelCard("Computador LG", "Publico", "No inicida",
+//		 "7;80", "/images/lg.jpg", control));
 //		 jPanelEspacio.add(new JPanelCard("Iphone X", "Publico", " Inicida", "8;80",
-//		 "/images/iphone.png"));
+//		 "/images/iphone.png",control));
+//		 jPanelEspacio.add(new JPanelCard("Computador LG", "Publico", "No inicida",
+//		 "7;80", "/images/lg.jpg",control));
+//		 jPanelEspacio.add(new JPanelCard("Iphone X", "Publico", " Inicida", "8;80",
+//		 "/images/iphone.png",control));
 //		 jPanelEspacio.add(new JPanelCard("Computador LG", "Publico", "No inicida",
 //		 "7;80", "/images/lg.jpg"));
 //		 jPanelEspacio.add(new JPanelCard("Iphone X", "Publico", " Inicida", "8;80",
@@ -132,7 +134,13 @@ public class JPanelMainWindow extends JPanel {
 		this.add(jPanelWest, BorderLayout.WEST);
 		this.add(jPanelEast, BorderLayout.EAST);
 		this.add(jPanelCenter, BorderLayout.CENTER);
-
+	}
+	
+	public void addAllCards(UserController control) {
+		System.out.println(Constants.biddingsList.size());
+		for (Bidding bid : Constants.biddingsList) {
+			jPanelEspacio.add(new JPanelCard(bid, control));
+		}
 	}
 
 }

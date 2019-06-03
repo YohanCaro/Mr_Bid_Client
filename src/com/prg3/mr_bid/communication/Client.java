@@ -108,13 +108,14 @@ public class Client extends Socket implements Runnable {
 			break;
 		case ERROR_LOGIN:
 			if (json.charAt(1) == 't') {
-				//Cargó
-				System.out.println(":D");
+				Utilities.showMessageInfo("Si! :D", "Usuario logueado");
 			} else {
 				Utilities.showMessageWarning("Correo o contraseña incorrectos\n"
 						+ "Por favor vuelva a intentarlo", "Datos no validos!");
 			}
 			break;
+		case CHANGE_BIDDING:
+			Constants.biddingsList = gson.fromJson(json, ArrayList.class);
 		default:
 			break;
 		}
