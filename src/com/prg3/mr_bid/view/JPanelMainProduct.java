@@ -33,7 +33,7 @@ public class JPanelMainProduct extends JPanel {
 			cardParticipantes;
 	private JPanelOptionMenu jPanelOptionMenu;
 	private JTextArea jTextArea, jTextAreaChat, jTextAreaParticipantes;
-	private JTextField name, correo,password, offer, publicaciones;
+	private JTextField name, correo,password, offer, publicaciones,valuePuja,valueActually;
 	private JLabel jLabel, jLabel2, jLabel3, jLabel4;
 	private ImageIcon imageIcon, imageIcon2;
 	private Icon icon, icon2;
@@ -205,12 +205,12 @@ public class JPanelMainProduct extends JPanel {
 		jLabel.setBackground(Color.BLUE);
 		jPanelCard2.add(jLabel);
 
-		name = new JTextField();
-		name.setBounds(20, 40, 320, 25);
-		name.setBackground(new java.awt.Color(224, 224, 224));
-		name.setFont(new java.awt.Font("Andale Mono", 1, 14));
-		name.setForeground(new java.awt.Color(255, 0, 0));
-		jPanelCard2.add(name);
+		valueActually = new JTextField();
+		valueActually.setBounds(20, 40, 320, 25);
+		valueActually.setBackground(new java.awt.Color(224, 224, 224));
+		valueActually.setFont(new java.awt.Font("Andale Mono", 1, 14));
+		valueActually.setForeground(new java.awt.Color(255, 0, 0));
+		jPanelCard2.add(valueActually);
 
 		jLabel2 = new JLabel("VALOR DE LA PUJA");
 		jLabel2.setBounds(20, 85, 200, 25);
@@ -219,15 +219,17 @@ public class JPanelMainProduct extends JPanel {
 		jLabel2.setBackground(new Color(0, 0, 0, 94));
 		jPanelCard2.add(jLabel2);
 
-		correo = new JTextField();
-		correo.setBounds(20, 115, 320, 25);
-		correo.setBackground(new java.awt.Color(224, 224, 224));
-		correo.setFont(new java.awt.Font("Andale Mono", 1, 14));
-		correo.setForeground(new java.awt.Color(255, 0, 0));
-		jPanelCard2.add(correo);
+		valuePuja = new JTextField();
+		valuePuja.setBounds(20, 115, 320, 25);
+		valuePuja.setBackground(new java.awt.Color(224, 224, 224));
+		valuePuja.setFont(new java.awt.Font("Andale Mono", 1, 14));
+		valuePuja.setForeground(new java.awt.Color(255, 0, 0));
+		jPanelCard2.add(valuePuja);
 
 		jButton = new JButton("Pujar");
 		jButton.setBounds(20, 150, 320, 50);
+		jButton.setActionCommand(ControlCommands.SEND_BID.name());
+		jButton.addActionListener(userController);
 		jPanelCard2.add(jButton);
 
 		this.jPanelCardnorth2 = new JPanel();
@@ -447,6 +449,16 @@ public class JPanelMainProduct extends JPanel {
 	 */
 	public void setBidding(Bidding bidding) {
 		this.bidding = bidding;
+	}
+	public Double getValuePuja() {
+		return Double.parseDouble(valuePuja.getText());
+	}
+	
+	public Double getValueActually() {
+		return Double.parseDouble(valueActually.getText());
+	}
+	public void setValueActually(Double value) {
+		valueActually.setText(String.valueOf(value));
 	}
 	
 
