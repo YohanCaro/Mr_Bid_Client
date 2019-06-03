@@ -22,6 +22,8 @@ import javax.swing.JTextField;
 
 import com.prg3.mr_bid.controller.ControlCommands;
 import com.prg3.mr_bid.controller.UserController;
+import com.prg3.mr_bid.model.entity.MyCaptcha;
+
 
 
 
@@ -39,7 +41,6 @@ public class JPanelPrincipalLogin extends JPanel{
 
 	public JPanelPrincipalLogin(UserController controller) {
 		this.setOpaque(false);
-
 		jPanelCenter = new JPanel();
 		jPanelCenter.setOpaque(false);
 		jPanelCenter.setLayout(new BorderLayout());
@@ -87,13 +88,27 @@ public class JPanelPrincipalLogin extends JPanel{
 		jPanelCenterImage.add(jLabel);
 		
 		jTextFieldName = new JTextField();
-		jTextFieldName.setPreferredSize(new Dimension(400, 60));
+		jTextFieldName.setPreferredSize(new Dimension(400, 30));
+		jTextFieldName.setBackground(new Color(244, 244, 244));
+		jPanelCenterCampos.add(jTextFieldName);
+		jPanelCenterCampos.add(createEspacio());
+		
+//		jTextFieldName = new JTextField();
+//		jTextFieldName.setPreferredSize(new Dimension(400, 60));
+//		jTextFieldName.setBackground(new Color(244, 244, 244));
+//		jPanelCenterCampos.add(jTextFieldName);
+//		jPanelCenterCampos.add(createEspacio());
+		
+//		jPanelCenterCampos.add(new CaptchaJPanel(myCaptcha));
+		
+		jTextFieldName = new JTextField();
+		jTextFieldName.setPreferredSize(new Dimension(400, 30));
 		jTextFieldName.setBackground(new Color(244, 244, 244));
 		jPanelCenterCampos.add(jTextFieldName);
 		jPanelCenterCampos.add(createEspacio());
 
 		jpassword = new JPasswordField();
-		jpassword.setPreferredSize(new Dimension(400, 60));
+		jpassword.setPreferredSize(new Dimension(400, 30));
 		jpassword.setBackground(new Color(244, 244, 244));
 		jPanelCenterCampos.add(jpassword);
 

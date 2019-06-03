@@ -17,6 +17,14 @@ public class ConstantsBid {
 	public static final String T_ENGLISH = "T_ENGLISH";
 	public static final String T_SPANISH = "T_SPANISH";
 	public static final String T_MENU_HOME = "T_MENU_HOME";
+	public static final String T_LENGUAGE = "T_LENGUAGE";
+	public static final String T_ACCOUNT = "T_ACCOUNT";
+	public static final String T_SIGNIN = "T_SIGNIN";
+	public static final String T_ABOUT = "T_ABOUT";
+
+
+
+
 
 
 

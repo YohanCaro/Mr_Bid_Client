@@ -24,15 +24,13 @@ import com.prg3.mr_bid.controller.UserController;
 import com.prg3.mr_bid.model.entity.ConstantsBid;
 import com.prg3.mr_bid.utilities.HandlerLanguage;
 
-
-
 public class JPanelOptionMenu extends JPanel {
 
 	private JPanel jPanelWhite;
 	private JMenu jMenu, jMenu2, jMenu3, jMenu4, jMenu5;
 	private JButton jButtonCompras, signin, jButtonLogin;
-	private JMenuItem jMenuItemHome, jMenuItemEstadisticas, jMenuItemLogin, jMenuItemAportesHis, jMenuItemCreateBotanic,
-			jMenuItemMyCount, jMenuItemMobile, jMenuItemDeleteBotanic;
+	private JMenuItem jMenuItemHome, jMenuItemEstadisticas, jMenuItemLogin, jMenuItemESPANISH, jMenuItemCreateBotanic,
+			jMenuItemMyCount, jMenuItemMobile, jMenuItemENGLISH;
 	private JMenuBar jMenuBar;
 	ImageIcon imageIcon;
 	Icon icon;
@@ -60,7 +58,8 @@ public class JPanelOptionMenu extends JPanel {
 		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(70, 70, Image.SCALE_AREA_AVERAGING));
 		jButtonCompras.setIcon(icon);
 
-		signin = new JButton("Registrar");
+		signin = new JButton(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_SIGNIN));
+		signin.setFont(new Font("Arial", 1, 13));
 		signin.setForeground(Color.WHITE);
 		signin.setBackground(new Color(48, 48, 48));
 		signin.setActionCommand(ControlCommands.SHOW_REGISTER_USER.name());
@@ -82,7 +81,7 @@ public class JPanelOptionMenu extends JPanel {
 		jMenuBar.setLayout(new FlowLayout());
 		jMenuBar.setOpaque(false);
 
-		jMenuItemHome = new JMenuItem("HOME");
+		jMenuItemHome = new JMenuItem(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_MENU_HOME));
 		jMenuItemHome.setActionCommand(ControlCommands.SHOW_HOME.name());
 		jMenuItemHome.setPreferredSize(new Dimension(100, 100));
 		jMenuItemHome.setFont(new Font("Arial", 1, 15));
@@ -91,68 +90,65 @@ public class JPanelOptionMenu extends JPanel {
 		jMenuItemHome.addActionListener(control);
 		jMenuBar.add(jMenuItemHome);
 
-		jMenu2 = new JMenu("CUENTA");
+		jMenu2 = new JMenu(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_ACCOUNT));
 		jMenu2.setFont(new Font("Arial", 1, 15));
 		jMenu2.setBackground(Color.BLACK);
 		jMenu2.setForeground(Color.WHITE);
 		jMenuBar.add(jMenu2);
 
-		jMenu3 = new JMenu("IDIOMA");
+		jMenu3 = new JMenu(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_LENGUAGE));
 		jMenu3.setFont(new Font("Arial", 1, 15));
 		jMenu3.setBackground(Color.BLACK);
 		jMenu3.setForeground(Color.WHITE);
 		jMenuBar.add(jMenu3);
 
-//		jMenu4 = new JMenu("OPTION2");
-//		jMenu4.setFont(new Font("Arial", 1, 15));
-//		jMenu4.setBackground(Color.BLACK);
-//		jMenu4.setForeground(Color.WHITE);
-//		jMenuBar.add(jMenu4);
-//
-//		jMenu5 = new JMenu("OPTION4");
-//		jMenu5.setFont(new Font("Arial", 1, 15));
-//		jMenu5.setBackground(Color.BLACK);
-//		jMenu5.setForeground(Color.WHITE);
-//		jMenuBar.add(jMenu5);
+		jMenu4 = new JMenu(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_ABOUT));
+		jMenu4.setFont(new Font("Arial", 1, 15));
+		jMenu4.setBackground(Color.BLACK);
+		jMenu4.setForeground(Color.WHITE);
+		jMenuBar.add(jMenu4);
+		//
+		// jMenu5 = new JMenu("OPTION4");
+		// jMenu5.setFont(new Font("Arial", 1, 15));
+		// jMenu5.setBackground(Color.BLACK);
+		// jMenu5.setForeground(Color.WHITE);
+		// jMenuBar.add(jMenu5);
 
-//		jMenuItemLogin = new JMenuItem("LOGIN");
-//		jMenuItemLogin.setActionCommand(ControlCommands.SHOW_REGISTER_USER.name());
-//		jMenuItemLogin.addActionListener(control);
-//		jMenu2.add(jMenuItemLogin);
+		// jMenuItemLogin = new JMenuItem("LOGIN");
+		// jMenuItemLogin.setActionCommand(ControlCommands.SHOW_REGISTER_USER.name());
+		// jMenuItemLogin.addActionListener(control);
+		// jMenu2.add(jMenuItemLogin);
 
-		jMenuItemMyCount = new JMenuItem("Mi Cuenta");
+		jMenuItemMyCount = new JMenuItem(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_ACCOUNT));
 		jMenuItemMyCount.setActionCommand(ControlCommands.SHOW_MYCOUNT.name());
 		jMenuItemMyCount.addActionListener(control);
 		jMenu2.add(jMenuItemMyCount);
 
-		jMenuItemAportesHis = new JMenuItem("ESPAÑOL");
-		jMenuItemAportesHis.setActionCommand(ControlCommands.C_SPANISH.name());
-		jMenuItemAportesHis.addActionListener(control);
-		jMenu3.add(jMenuItemAportesHis);
+		jMenuItemESPANISH = new JMenuItem(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_SPANISH));
+		jMenuItemESPANISH.setActionCommand(ControlCommands.C_SPANISH.name());
+		jMenuItemESPANISH.addActionListener(control);
+		jMenu3.add(jMenuItemESPANISH);
 
-		jMenuItemDeleteBotanic = new JMenuItem("INGLES");
-		jMenuItemDeleteBotanic.setActionCommand(ControlCommands.C_ENGLISH.name());
-		jMenuItemDeleteBotanic.addActionListener(control);
-		jMenu3.add(jMenuItemDeleteBotanic);
+		jMenuItemENGLISH = new JMenuItem(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_ENGLISH));
+		jMenuItemENGLISH.setActionCommand(ControlCommands.C_ENGLISH.name());
+		jMenuItemENGLISH.addActionListener(control);
+		jMenu3.add(jMenuItemENGLISH);
 
 		this.add(jMenuBar, BorderLayout.CENTER);
 		this.add(jPanelWhite, BorderLayout.EAST);
 
 	}
-	
-	
+
 	public void changeLanguage() {
 		jMenuItemHome.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_MENU_HOME));
-//		jMenu2.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBotanic.T_MENU_Plantlibrary));
-//		jMenu3.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBotanic.T_MENU_HistoricalContributions));
-//		jMenu4.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBotanic.T_MENU_STATISTICS));
-//		jMenu5.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBotanic.T_MENU_MORE));
-//		jMenuItemPlantLibrary.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBotanic.T_MENU_Plantlibrary));
-//		jMenuItemEstadisticas
-//				.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBotanic.T_MENU_STATISTICS));
-//		jMenuItemAportesHis
-		
-	
+		jMenuItemESPANISH.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_SPANISH));
+		jMenuItemENGLISH.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_ENGLISH));
+		jMenuItemENGLISH.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_ENGLISH));
+		jMenu3.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_LENGUAGE));
+		jMenu4.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_ABOUT));
+		jMenu2.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_ACCOUNT));
+		signin.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_SIGNIN));
+		jMenuItemMyCount.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_ACCOUNT));
 
 	}
 

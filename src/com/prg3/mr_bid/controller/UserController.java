@@ -18,6 +18,7 @@ import com.prg3.mr_bid.communication.Client;
 import com.prg3.mr_bid.communication.Commands;
 import com.prg3.mr_bid.model.entity.BidDate;
 import com.prg3.mr_bid.model.entity.Bidding;
+import com.prg3.mr_bid.model.entity.MyCaptcha;
 import com.prg3.mr_bid.model.entity.User;
 import com.prg3.mr_bid.model.manager.Manager;
 import com.prg3.mr_bid.utilities.Constants;
@@ -46,19 +47,23 @@ public class UserController implements ActionListener {
 	private static UserController controller;
 	private HandlerLanguage config = null;
 	private String languageDefault;
+    private MyCaptcha myCaptcha;
+
 	/**
 	 * Construtor que inicia la app
 	 */
 	private UserController() {
+		getLanguageDefault();
+		loadConfiguration();
 		Utilities.fillBiddings();
+//		myCaptcha.create();
 		this.jFrameMain = new JFrameMain(this);
 		this.jDialogAddUser = new JDialogAddUser(this);
 		this.jDialogAddCreditCard = new JDialogAddCreditCard();
 		this.jPanelMainWindow = new JPanelMainWindow(this);
 		addProduct();
 		sendComment();
-		getLanguageDefault();
-		loadConfiguration();
+		
 	}
 
 	/**
