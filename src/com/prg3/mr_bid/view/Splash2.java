@@ -79,8 +79,8 @@ public class Splash2 extends JDialog {
 						Thread.sleep(70*rnd.nextInt(7));
 					}
 					if (isConect) {
-						UserController.getInstanceOf();
 						dispose();
+						UserController.getInstanceOf();
 					}
 				} catch (Exception e) {
 					// TODO: handle exception

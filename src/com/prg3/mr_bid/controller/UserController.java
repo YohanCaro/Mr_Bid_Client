@@ -93,6 +93,7 @@ public class UserController implements ActionListener,MouseListener {
 			jDialogAddCreditCard.setVisible(true);
 			break;
 		case SHOW_MYCOUNT:
+			this.changeDataAcc();
 			jFrameMain.showMyCount();
 			break;
 		case SHOW_ADDPRODUCT:
@@ -199,11 +200,19 @@ public class UserController implements ActionListener,MouseListener {
 				jDialogAddUser.getjPanelForm().getGender(), null);
 	}
 	
-//	private void createBidding() {
-//	Product p = new Product(, description);
-//	Manager.getInstanceOf().addBidding(biddingName, typeProduct, product, publicationTime,
-//			initTime, finishTime, isAutomaticIncremet, isPublic);
-//}
+	
+	public void changeDataAcc() {
+		try {
+			Manager.getInstanceOf().setUser(Client.getInstanceOf().getUser());
+			this.jFrameMain.getjPanelMainWindowCuenta().changeData(Client.getInstanceOf().getUser());
+			this.jFrameMain.getjPanelMainWindowCuenta().repaint();
+			this.jFrameMain.repaint();
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	/**
 	 * Crea un unico controllador

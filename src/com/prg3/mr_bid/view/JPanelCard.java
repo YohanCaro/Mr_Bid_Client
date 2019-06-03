@@ -169,7 +169,6 @@ public class JPanelCard extends JPanel {
 		jLabel.setPreferredSize(new Dimension(200, 60));
 		add(jLabel);
 		return jLabel;
-
 	}
 	
 	/**

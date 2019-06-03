@@ -113,4 +113,12 @@ public class Manager {
 		return user;
 	}
 	
+	/**
+	 * Cambia 
+	 * @param user the user to set
+	 */
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
 }
