@@ -50,6 +50,10 @@ public class ConstantsBid {
 	public static final String T_CARDNUMBER = "T_CARDNUMBER";
 	public static final String T_CODE = "T_CODE";
 	public static final String T_ACCEPT = "T_ACCEPT";
+	public static final String T_DESCRIPTION = "T_DESCRIPTION";
+
+	
+	
 	
 	
 

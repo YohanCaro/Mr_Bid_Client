@@ -117,6 +117,7 @@ public class JFrameMain extends JFrame {
 		jPanelMainWindowCuenta.changeLanguage();
 		jPanelMain.getjPanelMainWindowProduct().changeLanguage();
 		jPanelMainProduct.changeLanguage();
+		jPanelMainAddProduct.changeLanguage();
 
 	}
 
