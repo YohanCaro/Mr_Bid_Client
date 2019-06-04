@@ -24,7 +24,9 @@ import javax.swing.SpinnerNumberModel;
 
 import com.prg3.mr_bid.controller.ControlCommands;
 import com.prg3.mr_bid.controller.UserController;
+import com.prg3.mr_bid.model.entity.ConstantsBid;
 import com.prg3.mr_bid.model.entity.TypeProduct;
+import com.prg3.mr_bid.utilities.HandlerLanguage;
 import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
 
@@ -40,7 +42,7 @@ public class JPanelMainAddProduct extends JPanel {
 	private JLabel jLabel;
 	private ImageIcon imageIcon;
 	private Icon icon;
-	private JLabel jLabelName;
+	private JLabel jLabelName,jLabelDescription;
 	private JComboBox<TypeProduct> typeJComboBox;
 	private JTextField jTextFieldName;
 	private JDateChooser jCalendar, jCalendar2, jCalendar3;
@@ -95,7 +97,17 @@ public class JPanelMainAddProduct extends JPanel {
 		jPanelCard1.setBackground(Color.LIGHT_GRAY);
 
 		jPanelCard1.add(createLabel("DATOS DEL PRODUCTO", 10, 10, 200, 30));
-		jPanelCard1.add(createLabel("DESCRIPCION", 600, 10, 200, 30));
+		
+		
+//		jPanelCard1.add(createLabel("DESCRIPCION", 600, 10, 200, 30));
+		jLabelDescription = new JLabel(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_DESCRIPTION));
+		jLabelDescription.setBounds(600, 10, 200, 30);
+		jLabelDescription.setBackground(new Color(244, 244, 244));
+		jLabelDescription.setPreferredSize(new Dimension(200, 60));
+		jPanelCard1.add(jLabelDescription);
+		
+		
+		
 
 		jPanelCard1.add(createLabel("TIPO DE LA PUBLICACIONs", 20, 60, 200, 30));
 		jTextFieldName = createTextField("TIPO DE LA PUBLICACIONs", 200, 60, 200, 30);
@@ -169,7 +181,7 @@ public class JPanelMainAddProduct extends JPanel {
 
 		jPanelCard3.add(createLabel("VALOR MINIMO ACEPTADO", 20, 60, 200, 30));
 		jPanelCard3.add(createLabel("TIPO DE INCEMENTO ", 20, 120, 200, 30));
-		jPanelCard3.add(createLabel("VIABILIAD", 20, 180, 200, 30));
+		jPanelCard3.add(createLabel("TIPO DE SUBASTA", 20, 180, 200, 30));
 		jPanelCard3.add(createTextField("TIPO DE INCREMENTO ", 200, 120, 200, 30));
 
 		jRadioButton = new JRadioButton("FEMALE");
@@ -199,14 +211,14 @@ public class JPanelMainAddProduct extends JPanel {
 		buttonGroup2.add(jRadioButtonPrivate);
 		
 		
-		jButtoncreate = new JButton("Crear");
+		jButtoncreate = new JButton("CREAR");
 		jButtoncreate.setBounds(400, 230, 100, 30);
 		jButtoncreate.setActionCommand(ControlCommands.ACTION_BIDDING.name());
 		jButtoncreate.addActionListener(controller);
 		jPanelCard3.add(jButtoncreate);
 		
 		
-		jButtonCancel = new JButton("Cancelar");
+		jButtonCancel = new JButton("CANCELAR");
 		jButtonCancel.setBounds(600, 230, 100, 30);
 		jButtonCancel.setActionCommand(ControlCommands.CLOSE_PRODUCT.name());
 		jButtonCancel.addActionListener(controller);
@@ -319,6 +331,10 @@ public class JPanelMainAddProduct extends JPanel {
 		return (byte) jSpinnerFinishHour.getModel().getValue();
 	}
 	
-	
+	public void changeLanguage() {
+//		jRadioButton.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_ENGLISH));
+
+
+	}
 
 }

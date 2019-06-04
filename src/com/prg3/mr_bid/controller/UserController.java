@@ -106,6 +106,7 @@ public class UserController implements ActionListener, MouseListener {
 			jDialogAddCreditCard.setVisible(true);
 			break;
 		case SHOW_MYCOUNT:
+			this.changeDataAcc();
 			jFrameMain.showMyCount();
 			break;
 		case SHOW_ADDPRODUCT:
@@ -219,6 +220,19 @@ public class UserController implements ActionListener, MouseListener {
 				jDialogAddUser.getjPanelForm().getPassword(), jDialogAddUser.getjPanelForm().getBirthDate(),
 				jDialogAddUser.getjPanelForm().getDocument(), jDialogAddUser.getjPanelForm().getTypeDocument(),
 				jDialogAddUser.getjPanelForm().getGender(), null);
+	}
+	
+	public void changeDataAcc() {
+		try {
+			Manager.getInstanceOf().setUser(Client.getInstanceOf().getUser());
+			this.jFrameMain.getjPanelMainWindowCuenta().changeData(Client.getInstanceOf().getUser());
+			this.jFrameMain.getjPanelMainWindowCuenta().repaint();
+			this.jFrameMain.repaint();
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	// private void createBidding() {
@@ -355,10 +369,6 @@ public class UserController implements ActionListener, MouseListener {
 	private void manageChangeLanguage() {
 		jFrameMain.changeLanguage();
 
-		// jFramePrincipalMobile.changeLanguage();
-		// jDialogCreateBotanico.changeLanguage();
-		// jDialogDeleteBotanic.changeLanguage();
-		// jDialogCreatePlant.changeLanguage();
 	}
 
 	@Override

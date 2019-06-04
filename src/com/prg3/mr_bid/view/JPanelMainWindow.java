@@ -142,5 +142,9 @@ public class JPanelMainWindow extends JPanel {
 			jPanelEspacio.add(new JPanelCard(bid, control));
 		}
 	}
+	
+	public JPanelCard getjPanelMainWindowProduct() {
+		return jPanelMainWindowProduct;
+	}
 
 }
