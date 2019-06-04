@@ -22,6 +22,8 @@ import javax.swing.JTextField;
 import com.prg3.mr_bid.controller.ControlCommands;
 import com.prg3.mr_bid.controller.UserController;
 import com.prg3.mr_bid.model.entity.Bidding;
+import com.prg3.mr_bid.model.entity.ConstantsBid;
+import com.prg3.mr_bid.utilities.HandlerLanguage;
 
 public class JPanelMainProduct extends JPanel {
 
@@ -34,12 +36,14 @@ public class JPanelMainProduct extends JPanel {
 	private JPanelOptionMenu jPanelOptionMenu;
 	private JTextArea jTextArea, jTextAreaChat, jTextAreaParticipantes;
 	private JTextField name, correo,password, offer, publicaciones,valuePuja,valueActually;
-	private JLabel jLabel, jLabel2, jLabel3, jLabel4;
+	private JLabel jLabel, jLabel2, jLabel3, jLabel4,jLabelState,jLabelTime,jLabelFinish,jLabelCurrenntValue,jLabelVauleBid;
 	private ImageIcon imageIcon, imageIcon2;
 	private Icon icon, icon2;
 	private String text;
 	private Bidding bidding;
 	private JButton jButtonListConnect;
+	JButton jButton;
+
 
 	public JPanelMainProduct() {
 
@@ -121,12 +125,12 @@ public class JPanelMainProduct extends JPanel {
 		jPanelCard.setLayout(null);
 		jPanelCard.setBackground(new Color(0, 0, 0, 94));
 
-		jLabel = new JLabel("ESTADO");
-		jLabel.setBounds(20, 10, 300, 25);
-		jLabel.setFont(new Font("Andale Mono", 3, 15));
-		jLabel.setForeground(Color.WHITE);
+		jLabelState = new JLabel(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_STATE));
+		jLabelState.setBounds(20, 10, 300, 25);
+		jLabelState.setFont(new Font("Andale Mono", 3, 15));
+		jLabelState.setForeground(Color.WHITE);
 		// jLabel.setBackground(Color.BLUE);
-		jPanelCard.add(jLabel);
+		jPanelCard.add(jLabelState);
 
 		name = new JTextField(bidding.getBiddingName());
 		System.out.println(bidding.toString());
@@ -136,12 +140,12 @@ public class JPanelMainProduct extends JPanel {
 		name.setForeground(new java.awt.Color(255, 0, 0));
 		jPanelCard.add(name);
 		
-		jLabel2 = new JLabel("TIEMPO");
-		jLabel2.setBounds(20, 85, 200, 25);
-		jLabel2.setFont(new Font("Andale Mono", 3, 15));
-		jLabel2.setForeground(Color.WHITE);
-		jLabel2.setBackground(Color.BLUE);
-		jPanelCard.add(jLabel2);
+		jLabelTime = new JLabel(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_TIME));
+		jLabelTime.setBounds(20, 85, 200, 25);
+		jLabelTime.setFont(new Font("Andale Mono", 3, 15));
+		jLabelTime.setForeground(Color.WHITE);
+		jLabelTime.setBackground(Color.BLUE);
+		jPanelCard.add(jLabelTime);
 
 		correo = new JTextField(bidding.getInitTime().toString());
 		correo.setBounds(20, 115, 320, 25);
@@ -150,12 +154,12 @@ public class JPanelMainProduct extends JPanel {
 		correo.setForeground(new java.awt.Color(255, 0, 0));
 		jPanelCard.add(correo);
 
-		jLabel3 = new JLabel("FINALIZA");
-		jLabel3.setBounds(20, 150, 200, 25);
-		jLabel3.setFont(new Font("Andale Mono", 3, 15));
-		jLabel3.setForeground(Color.WHITE);
-		jLabel3.setBackground(Color.BLUE);
-		jPanelCard.add(jLabel3);
+		jLabelFinish = new JLabel(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_FINISH));
+		jLabelFinish.setBounds(20, 150, 200, 25);
+		jLabelFinish.setFont(new Font("Andale Mono", 3, 15));
+		jLabelFinish.setForeground(Color.WHITE);
+		jLabelFinish.setBackground(Color.BLUE);
+		jPanelCard.add(jLabelFinish);
 
 		password = new JTextField(bidding.getFinishTime().toString());
 		password.setBounds(20, 175, 320, 25);
@@ -193,17 +197,16 @@ public class JPanelMainProduct extends JPanel {
 	private void card2(UserController userController) {
 		JLabel jLabel, jLabel2;
 		JTextField name, correo;
-		JButton jButton;
 
 		jPanelCard2.setLayout(null);
 		jPanelCard2.setBackground(new Color(0, 0, 0, 94));
 
-		jLabel = new JLabel("VALOR ACTUAL");
-		jLabel.setBounds(20, 10, 300, 25);
-		jLabel.setFont(new Font("Andale Mono", 3, 15));
-		jLabel.setForeground(Color.WHITE);
-		jLabel.setBackground(Color.BLUE);
-		jPanelCard2.add(jLabel);
+		jLabelCurrenntValue = new JLabel(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_CURRENTVALUE));
+		jLabelCurrenntValue.setBounds(20, 10, 300, 25);
+		jLabelCurrenntValue.setFont(new Font("Andale Mono", 3, 15));
+		jLabelCurrenntValue.setForeground(Color.WHITE);
+		jLabelCurrenntValue.setBackground(Color.BLUE);
+		jPanelCard2.add(jLabelCurrenntValue);
 
 		valueActually = new JTextField();
 		valueActually.setBounds(20, 40, 320, 25);
@@ -212,12 +215,12 @@ public class JPanelMainProduct extends JPanel {
 		valueActually.setForeground(new java.awt.Color(255, 0, 0));
 		jPanelCard2.add(valueActually);
 
-		jLabel2 = new JLabel("VALOR DE LA PUJA");
-		jLabel2.setBounds(20, 85, 200, 25);
-		jLabel2.setFont(new Font("Andale Mono", 3, 15));
-		jLabel2.setForeground(new Color(0, 0, 0, 94));
-		jLabel2.setBackground(new Color(0, 0, 0, 94));
-		jPanelCard2.add(jLabel2);
+		jLabelVauleBid = new JLabel(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_VALUEBID));
+		jLabelVauleBid.setBounds(20, 85, 200, 25);
+		jLabelVauleBid.setFont(new Font("Andale Mono", 3, 15));
+		jLabelVauleBid.setForeground(new Color(0, 0, 0, 94));
+		jLabelVauleBid.setBackground(new Color(0, 0, 0, 94));
+		jPanelCard2.add(jLabelVauleBid);
 
 		valuePuja = new JTextField();
 		valuePuja.setBounds(20, 115, 320, 25);
@@ -226,7 +229,7 @@ public class JPanelMainProduct extends JPanel {
 		valuePuja.setForeground(new java.awt.Color(255, 0, 0));
 		jPanelCard2.add(valuePuja);
 
-		jButton = new JButton("Pujar");
+		jButton = new JButton(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_BID));
 		jButton.setBounds(20, 150, 320, 50);
 		jButton.setActionCommand(ControlCommands.SEND_BID.name());
 		jButton.addActionListener(userController);
@@ -316,7 +319,7 @@ public class JPanelMainProduct extends JPanel {
 		cardPublicaciones.setLayout(null);
 		cardPublicaciones.setBackground(new Color(0, 0, 0, 94));
 
-		jLabel3 = new JLabel("OFRECIDO POR");
+		jLabel3 = new JLabel(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_OFFEREDBY));
 		jLabel3.setBounds(20, 10, 300, 25);
 		jLabel3.setFont(new Font("Andale Mono", 3, 15));
 		jLabel3.setForeground(Color.WHITE);
@@ -330,7 +333,7 @@ public class JPanelMainProduct extends JPanel {
 		offer.setForeground(new java.awt.Color(255, 0, 0));
 		cardPublicaciones.add(offer);
 
-		jLabel2 = new JLabel("NUMERO DE PUBLICACIONES");
+		jLabel2 = new JLabel(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_NUMBEROFPUBLICATIONS));
 		jLabel2.setBounds(20, 85, 200, 25);
 		jLabel2.setFont(new Font("Andale Mono", 3, 15));
 		jLabel2.setForeground(Color.WHITE);
@@ -353,7 +356,7 @@ public class JPanelMainProduct extends JPanel {
 		cardParticipantes.setBackground(new Color(0, 0, 0, 94));
 		cardParticipantes.setPreferredSize(new Dimension(10, 300));
 
-		jLabel4 = new JLabel("PARTICIPANTES");
+		jLabel4 = new JLabel(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_PARTICIPANTS));
 		jLabel4.setBounds(20, 10, 300, 25);
 		jLabel4.setFont(new Font("Andale Mono", 3, 15));
 		jLabel4.setForeground(Color.WHITE);
@@ -461,5 +464,19 @@ public class JPanelMainProduct extends JPanel {
 		valueActually.setText(String.valueOf(value));
 	}
 	
+	public void changeLanguage() {
+		jLabelState.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_STATE));
+		jLabelTime.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_TIME));
+		jLabelFinish.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_FINISH));
+		jLabelCurrenntValue.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_CURRENTVALUE));
+		jLabelVauleBid.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_VALUEBID));
+		jButton.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_BID));
+		jLabel2.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_NUMBEROFPUBLICATIONS));
+		jLabel3.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_OFFEREDBY));
+		jLabel4.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_PARTICIPANTS));
+
+		
+	}
+
 
 }

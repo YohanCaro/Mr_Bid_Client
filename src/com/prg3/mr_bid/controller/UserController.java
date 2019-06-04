@@ -369,10 +369,6 @@ public class UserController implements ActionListener, MouseListener {
 	private void manageChangeLanguage() {
 		jFrameMain.changeLanguage();
 
-		// jFramePrincipalMobile.changeLanguage();
-		// jDialogCreateBotanico.changeLanguage();
-		// jDialogDeleteBotanic.changeLanguage();
-		// jDialogCreatePlant.changeLanguage();
 	}
 
 	@Override

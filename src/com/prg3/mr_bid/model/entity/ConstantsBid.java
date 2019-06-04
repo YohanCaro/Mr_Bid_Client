@@ -29,7 +29,7 @@ public class ConstantsBid {
 	public static final String T_TIMEREAMING = "T_TIMEREAMING";
 	public static final String T_ENTER = "T_ENTER";
 	public static final String T_TIME = "T_TIME";
-	public static final String T_FINISH = "FINISH";
+	public static final String T_FINISH = "T_FINISH";
 	public static final String T_CURRENTVALUE = "T_CURRENTVALUE";
 	public static final String T_VALUEBID = "T_VALUEBID";
 	public static final String T_BID = "T_BID";

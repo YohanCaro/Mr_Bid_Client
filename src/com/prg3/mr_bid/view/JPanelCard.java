@@ -17,6 +17,8 @@ import javax.swing.JTextField;
 import com.prg3.mr_bid.controller.ControlCommands;
 import com.prg3.mr_bid.controller.UserController;
 import com.prg3.mr_bid.model.entity.Bidding;
+import com.prg3.mr_bid.model.entity.ConstantsBid;
+import com.prg3.mr_bid.utilities.HandlerLanguage;
 
 public class JPanelCard extends JPanel {
 
@@ -49,6 +51,7 @@ public class JPanelCard extends JPanel {
 		sizePanel();
 		JpanelImageProduct(url);
 		init();
+		changeLanguage();
 	}
 	
 	public JPanelCard(Bidding bid, UserController controller) {
@@ -69,6 +72,8 @@ public class JPanelCard extends JPanel {
 		sizePanel();
 		JpanelImageProduct(bid.getProduct().getImages().get(0));
 		init();
+		this.repaint();
+
 	}
 
 	private void character() {
@@ -103,26 +108,46 @@ public class JPanelCard extends JPanel {
 	}
 
 	private void informacion(String name, String type, String status, String time, UserController control) {
-		jPanelNameProduct.add(createLabel(name, 10, 100, jLabelName, 30, 400));
-		jPanelInfoProduct.add(createLabel("TIPO", 10, 20, jLabelType, 20, 130));
-		jPanelInfoProduct.add(createLabel("ESTADO", 10, 70, jLabelSatus, 20, 130));
-		jPanelInfoProduct.add(createLabel("TIEMPO RESTANTE", 10, 120, jLabelTime, 20, 400));
-
-		jPanelInfoProduct.add(createLabel(type, 200, 20, jLabelType2, 20, 130));
-		jPanelInfoProduct.add(createLabel(status, 200, 70, jLabelSatus2, 20, 130));
-		jPanelInfoProduct.add(createLabel(time, 230, 120, jLabelTime2, 20, 130));
-
-		jButton = new JButton("Ingresar");
-		jButton.setBounds(150, 200, 100, 30);
-		jButton.setActionCommand(ControlCommands.SHOW_PRODUCT.name());
-		jButton.addActionListener(control);
-		jPanelInfoProduct.add(jButton);
+////		jPanelNameProduct.add(createLabel(name, 10, 100, jLabelName, 30, 400));
+////		jPanelInfoProduct.add(createLabel("TIPO", 10, 20, jLabelType, 20, 130));
+//		
+//		
+		jLabelType = new JLabel("JAJAJ");
+		jLabelType.setFont(new Font("Arial", 1, 20));
+		jLabelType.setBounds(10, 20, 130, 50);
+		jLabelType.setBackground(new Color(244, 244, 244));
+		jLabelType.setPreferredSize(new Dimension(200, 60));
+		jPanelInfoProduct.add(jLabelType);
+		
+		
+//		
+////		jPanelInfoProduct.add(createLabel("ESTADO", 10, 70, jLabelSatus, 20, 130));
+////		jPanelInfoProduct.add(createLabel("TIEMPO RESTANTE", 10, 120, jLabelTime, 20, 400));
+//
+//		jPanelInfoProduct.add(createLabel(type, 200, 20, jLabelType2, 20, 130));
+//		jPanelInfoProduct.add(createLabel(status, 200, 70, jLabelSatus2, 20, 130));
+//		jPanelInfoProduct.add(createLabel(time, 230, 120, jLabelTime2, 20, 130));
+//
+//		jButton = new JButton("Ingresar");
+//		jButton.setBounds(150, 200, 100, 30);
+//		jButton.setActionCommand(ControlCommands.SHOW_PRODUCT.name());
+//		jButton.addActionListener(control);
+//		jPanelInfoProduct.add(jButton);
 
 	}
 	
 	public void changeData(Bidding b, UserController control) {
 		jPanelNameProduct.add(createLabel(b.getBiddingName(), 10, 100, jLabelName, 30, 400));
-		jPanelInfoProduct.add(createLabel("TIPO", 10, 20, jLabelType, 20, 130));
+		
+		jLabelType = new JLabel(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_KIND));
+		jLabelType.setFont(new Font("Arial", 1, 20));
+		jLabelType.setBounds(10, 20, 130, 50);
+		jLabelType.setBackground(new Color(244, 244, 244));
+		jLabelType.setPreferredSize(new Dimension(200, 60));
+		jPanelInfoProduct.add(jLabelType);
+	
+		
+//		jPanelInfoProduct.add(createLabel(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_ENGLISH), 10, 20, jLabelType, 20, 130));
 		jPanelInfoProduct.add(createLabel("ESTADO", 10, 70, jLabelSatus, 20, 130));
 		jPanelInfoProduct.add(createLabel("TIEMPO RESTANTE", 10, 120, jLabelTime, 20, 400));
 		
@@ -178,5 +203,11 @@ public class JPanelCard extends JPanel {
 	public void setProduct(String product) {
 		this.product = product;
 	}
+	
+	public void changeLanguage() {
+//		jLabelType.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_MENU_HOME));
+
+	}
+
 
 }
