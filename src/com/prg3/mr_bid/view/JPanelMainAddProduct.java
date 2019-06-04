@@ -44,7 +44,8 @@ public class JPanelMainAddProduct extends JPanel {
 	private Icon icon;
 	private JLabel jLabelName,jLabelDescription;
 	private JComboBox<TypeProduct> typeJComboBox;
-	private JTextField jTextFieldName;
+	private JTextField jTextFieldName, jTextFieldTy;
+	private JTextArea descriptionJTextArea;
 	private JDateChooser jCalendar, jCalendar2, jCalendar3;
 	private JRadioButton jRadioButton, jRadioButton2, jRadioButtonPublic, jRadioButtonPrivate;
 	private ButtonGroup buttonGroup, buttonGroup2;
@@ -182,7 +183,8 @@ public class JPanelMainAddProduct extends JPanel {
 		jPanelCard3.add(createLabel("VALOR MINIMO ACEPTADO", 20, 60, 200, 30));
 		jPanelCard3.add(createLabel("TIPO DE INCEMENTO ", 20, 120, 200, 30));
 		jPanelCard3.add(createLabel("TIPO DE SUBASTA", 20, 180, 200, 30));
-		jPanelCard3.add(createTextField("TIPO DE INCREMENTO ", 200, 120, 200, 30));
+		jTextFieldTy = createTextField("TIPO DE INCREMENTO ", 200, 120, 200, 30);
+		jPanelCard3.add(jTextFieldTy);
 
 		jRadioButton = new JRadioButton("FEMALE");
 		jRadioButton.setBounds(200, 60, 100, 30);
@@ -270,6 +272,13 @@ public class JPanelMainAddProduct extends JPanel {
 		return null;
 	}
 	
+	public String getDescription() {
+		if (descriptionJTextArea.getText() != null && !descriptionJTextArea.getText().isEmpty()) {
+			return descriptionJTextArea.getText();
+		}
+		return null;
+	}
+	
 	public TypeProduct getTypeProduct() {
 		return (TypeProduct) typeJComboBox.getSelectedItem();
 	}
@@ -320,15 +329,15 @@ public class JPanelMainAddProduct extends JPanel {
 	}
 	
 	public byte hourP() {
-		return (byte) jSpinnerPublicatedHour.getModel().getValue();
+		return (byte)((int) jSpinnerPublicatedHour.getModel().getValue());
 	}
 	
 	public byte hourI() {
-		return (byte) jSpinnerStartHour.getModel().getValue();
+		return (byte)((int) jSpinnerStartHour.getModel().getValue());
 	}
 	
 	public byte hourF() {
-		return (byte) jSpinnerFinishHour.getModel().getValue();
+		return (byte)((int) jSpinnerFinishHour.getModel().getValue());
 	}
 	
 	public void changeLanguage() {

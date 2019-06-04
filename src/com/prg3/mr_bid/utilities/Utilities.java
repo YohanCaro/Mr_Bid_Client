@@ -71,7 +71,7 @@ public class Utilities {
 					new BidTime(new BidDate("5/10/2019"), (short) 10), 
 					new BidTime(new BidDate("5/10/2019"), (short) 10), 
 					true, true));
-			Constants.biddingsList.get(i).setId(i+100);
+			Constants.biddingsList.get(i).setId(i+10000);
 		}
 	}
 

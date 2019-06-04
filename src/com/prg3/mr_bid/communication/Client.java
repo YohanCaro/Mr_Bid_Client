@@ -5,14 +5,18 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.prg3.mr_bid.controller.UserController;
+import com.prg3.mr_bid.model.entity.Bidding;
 import com.prg3.mr_bid.model.entity.User;
 import com.prg3.mr_bid.utilities.Constants;
 import com.prg3.mr_bid.utilities.Utilities;
@@ -118,8 +122,9 @@ public class Client extends Socket implements Runnable {
 				user = gson.fromJson(json, User.class);
 			}
 			break;
-		case CHANGE_BIDDING:
-			Constants.biddingsList = gson.fromJson(json, ArrayList.class);
+		case UPDATE_BID:
+			Type listType = new TypeToken<List<Bidding>>(){}.getType();
+			Constants.biddingsList = gson.fromJson(json, listType);
 		default:
 			break;
 		}

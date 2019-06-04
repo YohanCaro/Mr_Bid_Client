@@ -63,12 +63,15 @@ public class Manager {
 	 * @param isAutomaticIncremet tipo de incremento
 	 * @param isPublic publico/no
 	 */
-	public void addBidding(String biddingName, TypeProduct typeProduct, Product product, BidTime publicationTime,
+	public Bidding addBidding(String biddingName, TypeProduct typeProduct, Product product, BidTime publicationTime,
 			BidTime initTime, BidTime finishTime, boolean isAutomaticIncremet, boolean isPublic) {
-		
-		Bidding bidding = new Bidding(biddingName, typeProduct, product, publicationTime, initTime,
-				finishTime, isAutomaticIncremet, isPublic);
-		user.getMyBiddings().add(bidding);
+		if (user != null) {
+			Bidding bidding = new Bidding(biddingName, typeProduct, product, publicationTime, initTime,
+					finishTime, isAutomaticIncremet, isPublic);
+			user.getMyBiddings().add(bidding);
+			return bidding;
+		}
+		return null;
 	}
 	
 	/**

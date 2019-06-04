@@ -19,8 +19,10 @@ import org.w3c.dom.DOMException;
 import com.prg3.mr_bid.communication.Client;
 import com.prg3.mr_bid.communication.Commands;
 import com.prg3.mr_bid.model.entity.BidDate;
+import com.prg3.mr_bid.model.entity.BidTime;
 import com.prg3.mr_bid.model.entity.Bidding;
 import com.prg3.mr_bid.model.entity.MyCaptcha;
+import com.prg3.mr_bid.model.entity.Product;
 import com.prg3.mr_bid.model.entity.User;
 import com.prg3.mr_bid.model.manager.Manager;
 import com.prg3.mr_bid.utilities.Constants;
@@ -87,6 +89,7 @@ public class UserController implements ActionListener, MouseListener {
 			jFrameMain.showLogin();
 			break;
 		case SHOW_HOME:
+			this.updateBiddings();
 			jFrameMain.showHome();
 			break;
 		case SHOW_REGISTER_USER:
@@ -235,12 +238,30 @@ public class UserController implements ActionListener, MouseListener {
 		}
 	}
 
-	// private void createBidding() {
-	// Product p = new Product(, description);
-	// Manager.getInstanceOf().addBidding(biddingName, typeProduct, product,
-	// publicationTime,
-	// initTime, finishTime, isAutomaticIncremet, isPublic);
-	// }
+	 private Bidding createBidding() {
+		 if (jFrameMain.getjPanelMainAddProduct().getJTextName() != null &&
+				 jFrameMain.getjPanelMainAddProduct().getDescription() != null && jFrameMain.getjPanelMainAddProduct().getDateP() 
+				 != null  && jFrameMain.getjPanelMainAddProduct().getDateI() != null && 
+				 jFrameMain.getjPanelMainAddProduct().getDateF() != null) {
+				ArrayList<String> list = new ArrayList<>();
+				list.add("/images/iphone.png");
+			 Product p = new Product(jFrameMain.getjPanelMainAddProduct().getJTextName(),
+					 jFrameMain.getjPanelMainAddProduct().getDescription(), list);
+			 return Manager.getInstanceOf().addBidding(jFrameMain.getjPanelMainAddProduct().getJTextName(),
+					 jFrameMain.getjPanelMainAddProduct().getTypeProduct(), p,
+					 new BidTime(new BidDate(jFrameMain.getjPanelMainAddProduct().getDateP()), 
+							 jFrameMain.getjPanelMainAddProduct().hourP()),
+					 new BidTime(new BidDate(jFrameMain.getjPanelMainAddProduct().getDateI()), 
+							 jFrameMain.getjPanelMainAddProduct().hourI()),
+					 new BidTime(new BidDate(jFrameMain.getjPanelMainAddProduct().getDateF()), 
+							 jFrameMain.getjPanelMainAddProduct().hourF()), true, true);
+		 } else {
+			 Utilities.showMessageWarning("Por favor, llene todos los campos para\n"
+			 		+ "poder realizar la subasta", "Campos no llenados");
+			 return null;
+		 }
+		
+	 }
 
 	/**
 	 * Crea un unico controllador
@@ -269,9 +290,9 @@ public class UserController implements ActionListener, MouseListener {
 	}
 
 	public void updateBiddings() {
-		for (Bidding b : Constants.biddingsList) {
-
-		}
+		this.jFrameMain.getjPanelMain().addCard(Constants.biddingsList.get(Constants.biddingsList.size()-1), this);
+		this.jFrameMain.getjPanelMain().repaint();
+		this.jFrameMain.repaint();
 	}
 
 	/**

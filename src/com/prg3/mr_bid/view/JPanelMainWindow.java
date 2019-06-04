@@ -143,6 +143,15 @@ public class JPanelMainWindow extends JPanel {
 		}
 	}
 	
+	public void addCard(Bidding bid, UserController control) {
+		if (bid != null) {
+			jPanelEspacio.add(new JPanelCard(bid, control));
+			jPanelEspacio.repaint();
+		}
+		this.init(control);
+		this.repaint();
+	}
+	
 	public JPanelCard getjPanelMainWindowProduct() {
 		return jPanelMainWindowProduct;
 	}

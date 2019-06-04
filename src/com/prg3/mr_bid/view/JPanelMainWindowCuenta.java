@@ -160,9 +160,10 @@ public class JPanelMainWindowCuenta extends JPanel {
 	}
 
 	public void changeData(User user) {
-		System.out.println(user.toString());
-		jLabelName.setText(user.getFirstName() + " " + user.getLastName());
-		this.repaint();
+		if (user != null) {
+			jLabelName.setText(user.getFirstName() + " " + user.getLastName());
+			this.repaint();
+		}
 	}
 
 	public JButton createJbuton(String name, int x, int y, JButton atribute, String url, String commands,

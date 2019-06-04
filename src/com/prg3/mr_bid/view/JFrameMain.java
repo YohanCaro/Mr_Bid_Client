@@ -137,5 +137,20 @@ public class JFrameMain extends JFrame {
 		return jPanelMainWindowCuenta;
 	}
 	
+	/**
+	 * Obtiene 
+	 * @return jPanelMain
+	 */
+	public JPanelMainWindow getjPanelMain() {
+		return jPanelMain;
+	}
+	
+	/**
+	 * Obtiene 
+	 * @return jPanelMainAddProduct
+	 */
+	public JPanelMainAddProduct getjPanelMainAddProduct() {
+		return jPanelMainAddProduct;
+	}
 	
 }
