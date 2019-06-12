@@ -130,6 +130,10 @@ public class Client extends Socket implements Runnable {
 		}
 	}
 	
+	public void sendNewBidding(Bidding bidding) throws IOException {
+		sendMessage(Commands.UPBIDDING, bidding);
+	}
+	
 	/**
 	 * Envia un mensaje al servidor
 	 * @param command comando

@@ -149,6 +149,12 @@ public class UserController implements ActionListener, MouseListener {
 			jFrameMain.showMyCount();
 			break;
 		case ACTION_BIDDING:
+			try {
+				Client.getInstanceOf().sendNewBidding(null); //metodo de vista que retorne un objeto bidding con los datos recolectados
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			Utilities.showMessageInfo("Si! :D", "Bien");
 			break;
 		case LIST_CONNECT:
