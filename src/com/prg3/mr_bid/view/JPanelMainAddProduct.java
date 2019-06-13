@@ -24,6 +24,7 @@ import javax.swing.SpinnerNumberModel;
 
 import com.prg3.mr_bid.controller.ControlCommands;
 import com.prg3.mr_bid.controller.UserController;
+import com.prg3.mr_bid.model.entity.Bidding;
 import com.prg3.mr_bid.model.entity.ConstantsBid;
 import com.prg3.mr_bid.model.entity.Gender;
 import com.prg3.mr_bid.model.entity.TypeProduct;
@@ -32,7 +33,7 @@ import com.prg3.mr_bid.utilities.HintJTextField;
 import com.toedter.calendar.JDateChooser;
 
 /**
- * Clase JPanelMainAddProduct - 
+ * Clase JPanelMainAddProduct -
  *
  * @version 1.0 - 2/06/2019
  */
@@ -43,7 +44,7 @@ public class JPanelMainAddProduct extends JPanel {
 	private JLabel jLabel;
 	private ImageIcon imageIcon;
 	private Icon icon;
-	private JLabel jLabelName,jLabelDescription;
+	private JLabel jLabelName, jLabelDescription;
 	private JComboBox<TypeProduct> typeJComboBox;
 	private HintJTextField jTextFieldName, jTextFieldTy;
 	private JTextArea descriptionJTextArea;
@@ -99,8 +100,8 @@ public class JPanelMainAddProduct extends JPanel {
 		jPanelCard1.setBackground(Color.LIGHT_GRAY);
 
 		jPanelCard1.add(createLabel("DATOS DEL PRODUCTO", 10, 10, 200, 30));
-		
-//		jPanelCard1.add(createLabel("DESCRIPCION", 600, 10, 200, 30));
+
+		// jPanelCard1.add(createLabel("DESCRIPCION", 600, 10, 200, 30));
 		jLabelDescription = new JLabel(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_DESCRIPTION));
 		jLabelDescription.setBounds(600, 10, 200, 30);
 		jLabelDescription.setBackground(new Color(244, 244, 244));
@@ -111,7 +112,7 @@ public class JPanelMainAddProduct extends JPanel {
 		jTextFieldName = createTextField("TIPO DE LA PUBLICACIONs", 200, 60, 200, 30);
 		jPanelCard1.add(jTextFieldName);
 		jPanelCard1.add(createLabel("TIPO DE PRODUCTO", 20, 120, 200, 30));
-//		jPanelCard1.add(createTextField("TIPO DE  PRODUCTO", 200, 120, 200, 30));
+		// jPanelCard1.add(createTextField("TIPO DE PRODUCTO", 200, 120, 200, 30));
 		typeJComboBox = new JComboBox<>(TypeProduct.values());
 		typeJComboBox.setBounds(200, 120, 200, 30);
 		jPanelCard1.add(typeJComboBox);
@@ -177,10 +178,10 @@ public class JPanelMainAddProduct extends JPanel {
 
 		jPanelCard3.add(createLabel("SOBRE LA SUBASTA", 10, 10, 200, 30));
 
-		jPanelCard3.add(createLabel("VALOR MINIMO ACEPTADO", 20, 60, 200, 30));
-		jPanelCard3.add(createLabel("TIPO DE INCEMENTO ", 20, 120, 200, 30));
+		jPanelCard3.add(createLabel("TIPO DE INCEMENTO", 20, 60, 200, 30));
+		jPanelCard3.add(createLabel("VALOR MINIMO ", 20, 120, 200, 30));
 		jPanelCard3.add(createLabel("TIPO DE SUBASTA", 20, 180, 200, 30));
-		jTextFieldTy = createTextField2("TIPO DE INCREMENTO ", 200, 120, 200, 30);
+		jTextFieldTy = createTextField2("VALOR MINIMO  ", 200, 120, 200, 30);
 		jPanelCard3.add(jTextFieldTy);
 
 		jRadioButton = new JRadioButton("Automatico");
@@ -208,15 +209,13 @@ public class JPanelMainAddProduct extends JPanel {
 		buttonGroup2 = new ButtonGroup();
 		buttonGroup2.add(jRadioButtonPublic);
 		buttonGroup2.add(jRadioButtonPrivate);
-		
-		
+
 		jButtoncreate = new JButton("CREAR");
 		jButtoncreate.setBounds(400, 230, 100, 30);
 		jButtoncreate.setActionCommand(ControlCommands.ACTION_BIDDING.name());
 		jButtoncreate.addActionListener(controller);
 		jPanelCard3.add(jButtoncreate);
-		
-		
+
 		jButtonCancel = new JButton("CANCELAR");
 		jButtonCancel.setBounds(600, 230, 100, 30);
 		jButtonCancel.setActionCommand(ControlCommands.CLOSE_PRODUCT.name());
@@ -261,7 +260,7 @@ public class JPanelMainAddProduct extends JPanel {
 		return jTextFieldName;
 
 	}
-	
+
 	public HintJTextField createTextField2(String name, int x, int y, int sisex, int sizey) {
 		jTextFieldTy = new HintJTextField(name);
 		jTextFieldTy.setBounds(x, y, sisex, sizey);
@@ -270,92 +269,103 @@ public class JPanelMainAddProduct extends JPanel {
 		return jTextFieldTy;
 
 	}
-	
+
 	public String getJTextName() {
 		if (jTextFieldName.getText() != null && !jTextFieldName.getText().isEmpty()) {
 			return jTextFieldName.getText();
 		}
 		return null;
 	}
-	
+
 	public String getDescription() {
 		if (descriptionJTextArea.getText() != null && !descriptionJTextArea.getText().isEmpty()) {
 			return descriptionJTextArea.getText();
 		}
 		return null;
 	}
-	
+
 	public TypeProduct getTypeProduct() {
 		return (TypeProduct) typeJComboBox.getSelectedItem();
 	}
-	
+
 	/**
-	 * Metodo que verifica el campo de entrada de la fecha 
-	 * @return la cadena con el valor extraido del textfield si lo encuantra, sino 
-	 * devuelve un null!
+	 * Metodo que verifica el campo de entrada de la fecha
+	 * 
+	 * @return la cadena con el valor extraido del textfield si lo encuantra, sino
+	 *         devuelve un null!
 	 */
 	public String getDateP() {
 		if (jCalendar.getDate() != null) {
 			Date date = jCalendar.getDate();
 			DateFormat df = DateFormat.getDateInstance();
 			String date2 = df.format(date);
-			return date2; 
+			return date2;
 		}
 		return null;
 	}
 
 	/**
-	 * Metodo que verifica el campo de entrada de la fecha 
-	 * @return la cadena con el valor extraido del textfield si lo encuantra, sino 
-	 * devuelve un null!
+	 * Metodo que verifica el campo de entrada de la fecha
+	 * 
+	 * @return la cadena con el valor extraido del textfield si lo encuantra, sino
+	 *         devuelve un null!
 	 */
 	public String getDateI() {
 		if (jCalendar2.getDate() != null) {
 			Date date = jCalendar2.getDate();
 			DateFormat df = DateFormat.getDateInstance();
 			String date2 = df.format(date);
-			return date2; 
+			return date2;
 		}
 		return null;
 	}
-	
+
 	/**
-	 * Metodo que verifica el campo de entrada de la fecha 
-	 * @return la cadena con el valor extraido del textfield si lo encuantra, sino 
-	 * devuelve un null!
+	 * Metodo que verifica el campo de entrada de la fecha
+	 * 
+	 * @return la cadena con el valor extraido del textfield si lo encuantra, sino
+	 *         devuelve un null!
 	 */
 	public String getDateF() {
 		if (jCalendar3.getDate() != null) {
 			Date date = jCalendar3.getDate();
 			DateFormat df = DateFormat.getDateInstance();
 			String date2 = df.format(date);
-			return date2; 
+			return date2;
 		}
 		return null;
 	}
-	
+
 	public byte hourP() {
-		return (byte)((int) jSpinnerPublicatedHour.getModel().getValue());
+		return (byte) ((int) jSpinnerPublicatedHour.getModel().getValue());
 	}
-	
+
 	public byte hourI() {
-		return (byte)((int) jSpinnerStartHour.getModel().getValue());
+		return (byte) ((int) jSpinnerStartHour.getModel().getValue());
 	}
-	
+
 	public byte hourF() {
-		return (byte)((int) jSpinnerFinishHour.getModel().getValue());
+		return (byte) ((int) jSpinnerFinishHour.getModel().getValue());
 	}
-	
+
 	public boolean isAutomatic() {
-		return (jRadioButton.isSelected()?true:false);
+		return (jRadioButton.isSelected() ? true : false);
 	}
-	
+
 	public boolean isPublic() {
-		return (jRadioButtonPublic.isSelected()?true:false);
+		return (jRadioButtonPublic.isSelected() ? true : false);
 	}
-	
+
+	// public Bidding createBid() {
+	// return new Bidding(jTextFieldName.getText(), (TypeProduct)
+	// typeJComboBox.getSelectedItem(), jTextFieldName.getText(),
+	// DateFormat.getDateInstance(), initTime, finishTime, isAutomaticIncremet,
+	// isPublic, user, value, increment);
+	//
+	// }
+
 	public void changeLanguage() {
-//		jRadioButton.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_ENGLISH));
+		// jRadioButton.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_ENGLISH));
 
 	}
 
