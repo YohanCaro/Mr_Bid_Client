@@ -30,7 +30,7 @@ public class BidTime {
 	 * Obtiene el tiempo en dias
 	 * @return t d
 	 */
-	public short getTimeOnDays() {
+	public float getTimeOnDays() {
 		if (calendar == null) {
 			calendar = new GregorianCalendar();
 		}
@@ -54,8 +54,8 @@ public class BidTime {
 	 * @return t h
 	 */
 	public float getActualHour() {
-		System.out.println(calendar.get(calendar.HOUR_OF_DAY) + " : " + this.hours);
-		return this.hours - calendar.get(calendar.HOUR_OF_DAY);
+		System.out.println("F: " + ((float)calendar.get(calendar.MINUTE)/60));
+		return this.hours - calendar.get(calendar.HOUR_OF_DAY) - ((float)calendar.get(calendar.MINUTE)/60);
 	}
 	
 	/**

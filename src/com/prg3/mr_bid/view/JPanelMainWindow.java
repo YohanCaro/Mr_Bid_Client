@@ -47,6 +47,9 @@ public class JPanelMainWindow extends JPanel {
 		init(controller);
 
 	}
+	public void repaints() {
+		this.repaint();
+	}
 	
 
 	public JPanelMainWindow(String name, String type, String staut, String time, String url, UserController control) {
@@ -116,9 +119,10 @@ public class JPanelMainWindow extends JPanel {
 	}
 	
 	public void addAllCards(UserController control) {
-		for (Bidding bid : Constants.biddingsList) {
-			jPanelEspacio.add(new JPanelCard(bid, control));
-		}
+		System.out.println(Constants.biddingsList.size());
+		for (int i = 0; i < Constants.biddingsList.size(); i++) {
+			jPanelEspacio.add(new JPanelCard(Constants.biddingsList.get(i),control));
+		}		
 	}
 	
 	public void addCard(Bidding bid, UserController control) {

@@ -78,7 +78,7 @@ public class Splash2 extends JDialog {
 						x += rnd.nextInt(5);
 						Thread.sleep(70*rnd.nextInt(7));
 						repaint();
-						if (isConect && x > 95 && !iswait) {
+						if (isConect && x > 50 && !iswait) {
 							UserController.getInstanceOf();
 							iswait = true;
 						}
