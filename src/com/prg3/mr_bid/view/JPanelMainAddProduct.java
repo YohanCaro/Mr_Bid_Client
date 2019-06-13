@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
+import java.io.File;
 import java.text.DateFormat;
 import java.util.Date;
 
@@ -357,6 +358,15 @@ public class JPanelMainAddProduct extends JPanel {
 	public void changeLanguage() {
 //		jRadioButton.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_ENGLISH));
 
+	}
+	public File getFile() throws Exception{
+		jFileChooser = new JFileChooser();
+		jFileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+		int option = jFileChooser.showOpenDialog(this);
+		if (option == JFileChooser.APPROVE_OPTION) {
+			return jFileChooser.getSelectedFile();
+		}
+		throw new Exception();
 	}
 
 }
