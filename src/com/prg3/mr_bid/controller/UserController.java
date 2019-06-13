@@ -158,6 +158,8 @@ public class UserController implements ActionListener, MouseListener {
 				this.sendData(Commands.UPBIDDING, this.createBidding());
 				this.jFrameMain.showMain(this);
 				Utilities.showMessageInfo("Si! :D", "Bien");
+				this.jFrameMain.getrepaint();
+				
 			}
 			break;
 		case LIST_CONNECT:
