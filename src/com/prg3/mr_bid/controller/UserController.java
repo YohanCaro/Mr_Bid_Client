@@ -71,7 +71,7 @@ public class UserController implements ActionListener, MouseListener {
 		this.jDialogAbout = new JDialogAbout();
 		this.jDialogAddCreditCard = new JDialogAddCreditCard();
 		this.jPanelMainWindow = new JPanelMainWindow(this);
-
+		System.out.println("mostrando");
 		addProduct();
 		sendComment();
 	}
@@ -145,16 +145,11 @@ public class UserController implements ActionListener, MouseListener {
 			jFrameMain.showMyCount();
 			break;
 		case ACTION_BIDDING:
-//			try {
-//				Client.getInstanceOf().sendNewBidding(null); //metodo de vista que retorne un objeto bidding con los datos recolectados
-//			} catch (IOException e1) {
-//				// TODO Auto-generated catch block
-//				e1.printStackTrace();
-//			}
 			if (this.createBidding() != null) {
 				this.sendData(Commands.UPBIDDING, this.createBidding());
 				this.jFrameMain.showMain(this);
 				Utilities.showMessageInfo("Si! :D", "Bien");
+				this.jFrameMain.repaint();
 			}
 			break;
 		case LIST_CONNECT:

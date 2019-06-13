@@ -26,8 +26,6 @@ import com.prg3.mr_bid.model.entity.MyCaptcha;
 import com.prg3.mr_bid.utilities.HintJTextField;
 
 
-
-
 public class JPanelPrincipalLogin extends JPanel{
 
 	private JPanel jPanelNorth, jPanelWest, jPanelEast, jPanelSout, jPanelCenter, jPanelCenterImage, jPanelCenterCampos;
@@ -87,31 +85,9 @@ public class JPanelPrincipalLogin extends JPanel{
 		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(250, 250, Image.SCALE_AREA_AVERAGING));
 		jLabel.setIcon(icon);
 		jPanelCenterImage.add(jLabel);
-		
-//		jTextFieldName = new JTextField("HOLA");
-//		jTextFieldName.setPreferredSize(new Dimension(400, 30));
-//		jTextFieldName.setBackground(new Color(244, 244, 244));
-//		jPanelCenterCampos.add(jTextFieldName);
-//		jPanelCenterCampos.add(createEspacio());
-		
+				
 		jTextFieldName = createTextField("name", 0, 0, jTextFieldName, 400);
 		jPanelCenterCampos.add(jTextFieldName);
-
-
-		
-//		jTextFieldName = new JTextField();
-//		jTextFieldName.setPreferredSize(new Dimension(400, 60));
-//		jTextFieldName.setBackground(new Color(244, 244, 244));
-//		jPanelCenterCampos.add(jTextFieldName);
-//		jPanelCenterCampos.add(createEspacio());
-		
-//		jPanelCenterCampos.add(new CaptchaJPanel(myCaptcha));
-		
-//		jTextFieldName = new JTextField();
-//		jTextFieldName.setPreferredSize(new Dimension(400, 30));
-//		jTextFieldName.setBackground(new Color(244, 244, 244));
-//		jPanelCenterCampos.add(jTextFieldName);
-//		jPanelCenterCampos.add(createEspacio());
 
 		jpassword = new JPasswordField();
 		jpassword.setPreferredSize(new Dimension(400, 30));
@@ -132,15 +108,6 @@ public class JPanelPrincipalLogin extends JPanel{
 		this.add(jPanelSout, BorderLayout.SOUTH);
 
 	}
-
-//	public JTextField createJTextField(String name, Color color, int largo, int ancho) {
-//		jTextFieldName = new JTextField(name);
-//		jTextFieldName.setBackground(color);
-//		jTextFieldName.setPreferredSize(new Dimension(largo, ancho));
-//		this.add(jTextFieldName);
-//		return jTextFieldName;
-//
-//	}
 
 	public JLabel createEspacio() {
 		jLabel = new JLabel();

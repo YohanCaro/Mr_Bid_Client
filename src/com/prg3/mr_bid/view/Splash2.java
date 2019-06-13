@@ -52,9 +52,9 @@ public class Splash2 extends JDialog {
 	 * Hilo de la barra de progreso
 	 */
 	private void initThread() {
-		Thread thread = new Thread(new Runnable() {
+		new Thread(new Runnable() {
 			int x = 0;
-			boolean isConect = false;
+			boolean isConect = false, iswait = false;
 			@Override
 			public void run() {
 				Random rnd = new Random();
@@ -77,17 +77,18 @@ public class Splash2 extends JDialog {
 						porcentaje1.setText("  " + x + "%");
 						x += rnd.nextInt(5);
 						Thread.sleep(70*rnd.nextInt(7));
+						repaint();
+						if (isConect && x > 50 && !iswait) {
+							UserController.getInstanceOf();
+							iswait = true;
+						}
 					}
-					if (isConect) {
-						dispose();
-						UserController.getInstanceOf();
-					}
+					dispose();
 				} catch (Exception e) {
-					// TODO: handle exception
+					dispose();
 				}
 			}
-		});
-		thread.start();
+		}).start();
 	}
 
 	/**
