@@ -138,11 +138,9 @@ public class UserController implements ActionListener, MouseListener {
 			jFrameMain.showMyHistory();
 			break;
 		case ADD_PHOTO:
-			try {
-				
+			try {				
 				fileImage = jFrameMain.getjPanelMainAddProduct().getFile();
 			} catch (Exception e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			break;
@@ -154,15 +152,20 @@ public class UserController implements ActionListener, MouseListener {
 			jFrameMain.showMyCount();
 			break;
 		case ACTION_BIDDING:
-			if (this.createBidding() != null) {
-				this.sendData(Commands.UPBIDDING, this.createBidding());
+			Bidding bidding = this.createBidding();
+			if (bidding != null) {
+				this.sendData(Commands.UPBIDDING, bidding);
 				this.jFrameMain.showMain(this);
 				Utilities.showMessageInfo("Si! :D", "Bien");
-
 				this.jFrameMain.repaint();
-
-				this.jFrameMain.getrepaint();
-				
+				ArrayList<String> paths = new ArrayList<>();
+				paths.add(fileImage.getPath());
+				try {
+					Client.getInstanceOf().sendImages(paths, bidding.getId());
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 			break;
 		case LIST_CONNECT:
