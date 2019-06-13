@@ -53,8 +53,6 @@ public class JPanelMainWindow extends JPanel {
 		addNewProduct(name, type, staut, time, url, control);
 		
 		names = name;
-		System.out.println(names);
-//		System.out.println(name+ type+ staut+ time+ url);
 
 	}
 	
@@ -118,7 +116,6 @@ public class JPanelMainWindow extends JPanel {
 	}
 	
 	public void addAllCards(UserController control) {
-		System.out.println(Constants.biddingsList.size());
 		for (Bidding bid : Constants.biddingsList) {
 			jPanelEspacio.add(new JPanelCard(bid, control));
 		}

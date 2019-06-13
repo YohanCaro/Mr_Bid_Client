@@ -68,23 +68,17 @@ public class JPanelMainProduct extends JPanel {
 		
 		jPanelCenter.setOpaque(false);
 		jPanelizqImage.setOpaque(false);
-		// jPanelizqInfo.setOpaque(false);
 		jPanelderNorth.setOpaque(false);
 		jPanelderCenter.setOpaque(false);
 		jPanelWest.setOpaque(false);
 		jPanelDere.setOpaque(false);
 		jPanelizq.setOpaque(false);
 		jPanelEast.setOpaque(false);
-		// jPanelCard.setOpaque(false);
-		// jPanelCard2.setOpaque(false);
-
-		// this.jPanelOptionMenu = new JPanelOptionMenu();
 		this.jTextArea = new JTextArea();
 		this.jLabel = new JLabel();
 		cardParticipantes();
 		card();
 		jtextArea();
-		character();
 		sizePanel();
 		card2(userController);
 		cardPublicaciones();
@@ -98,17 +92,6 @@ public class JPanelMainProduct extends JPanel {
 		sendComment(message);
 	}
 
-	private void character() {
-		// jPanelSouth.setBackground(Color.GREEN);
-		// jPanelCenter.setBackground(Color.black);
-		// jPanelDere.setBackground(Color.YELLOW);
-		// jPanelizq.setBackground(Color.BLUE);
-		// jPanelizqInfo.setBackground(Color.GREEN);
-		// jPanelderNorth.setBackground(Color.BLUE);
-		// jPanelderCenter.setBackground(Color.ORANGE);
-
-	}
-
 	private void JpanelImage() {
 		imageIcon = new ImageIcon(getClass().getResource("/images/tv.jpg"));
 		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(350, 350, Image.SCALE_AREA_AVERAGING));
@@ -117,7 +100,7 @@ public class JPanelMainProduct extends JPanel {
 	}
 
 	private void jtextArea() {
-		jTextArea.setText("Descrpcion");
+		jTextArea.setText(bidding.getProduct().getDescription());
 		jTextArea.setPreferredSize(new Dimension(400, 300));
 		jPanelizqInfo.setBackground(new Color(0, 0, 0, 94));
 		jPanelizqInfo.add(jTextArea);
@@ -463,7 +446,6 @@ public class JPanelMainProduct extends JPanel {
 			
 		}		
 		aux.add(jTextAreaChat.getText());
-//		System.out.println(jTextAreaChat.getText());
 		return aux;
 	}
 	

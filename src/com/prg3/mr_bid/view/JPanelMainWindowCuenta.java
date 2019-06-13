@@ -149,7 +149,7 @@ public class JPanelMainWindowCuenta extends JPanel {
 
 	private void panelPhoto() {
 
-		jLabelName = new JLabel("DANIEL FELIPE GARCIA LOPEZ");
+		jLabelName = new JLabel("Not login yet");
 		jLabelName.setFont(new Font("Arian", 1, 30));
 		jPanelSouth2.add(jLabelName);
 		jPanelPhoto.setLayout(new BorderLayout());
@@ -209,9 +209,6 @@ public class JPanelMainWindowCuenta extends JPanel {
 		jButton2.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_CREATEAUCTIONS));
 		jButton3.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_PROFILE));
 		jButton5.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_CONFIGURATION));
-
-
-
 
 	}
 
