@@ -19,6 +19,7 @@ import com.prg3.mr_bid.controller.UserController;
 import com.prg3.mr_bid.model.entity.Bidding;
 import com.prg3.mr_bid.model.entity.ConstantsBid;
 import com.prg3.mr_bid.utilities.HandlerLanguage;
+import com.prg3.mr_bid.utilities.Utilities;
 
 public class JPanelCard extends JPanel {
 
@@ -152,7 +153,7 @@ public class JPanelCard extends JPanel {
 		jPanelInfoProduct.add(createLabel("TIEMPO RESTANTE", 10, 120, jLabelTime, 20, 400));
 		
 		jPanelInfoProduct.add(createLabel(b.getTypeProduct().name(), 200, 20, jLabelType2, 20, 130));
-		jPanelInfoProduct.add(createLabel(b.toString(), 200, 70, jLabelSatus2, 20, 130));
+		jPanelInfoProduct.add(createLabel(Utilities.getState(b).toString(), 200, 70, jLabelSatus2, 20, 130));
 		jPanelInfoProduct.add(createLabel(b.getInitTime().toString(), 230, 120, jLabelTime2, 20, 130));
 		
 		jButton = new JButton("Ingresar");

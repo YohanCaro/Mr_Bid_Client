@@ -24,6 +24,7 @@ import com.prg3.mr_bid.controller.UserController;
 import com.prg3.mr_bid.model.entity.Bidding;
 import com.prg3.mr_bid.model.entity.ConstantsBid;
 import com.prg3.mr_bid.utilities.HandlerLanguage;
+import com.prg3.mr_bid.utilities.Utilities;
 
 public class JPanelMainProduct extends JPanel {
 
@@ -88,6 +89,7 @@ public class JPanelMainProduct extends JPanel {
 		cardPublicaciones();
 		JpanelImage();
 		init();
+		this.blockJTextField();
 	}
 
 
@@ -132,7 +134,7 @@ public class JPanelMainProduct extends JPanel {
 		// jLabel.setBackground(Color.BLUE);
 		jPanelCard.add(jLabelState);
 
-		name = new JTextField(bidding.getBiddingName());
+		name = new JTextField(Utilities.getState(bidding).toString());
 		System.out.println(bidding.toString());
 		name.setBounds(20, 40, 320, 25);
 		name.setBackground(new java.awt.Color(224, 224, 224));
@@ -147,7 +149,7 @@ public class JPanelMainProduct extends JPanel {
 		jLabelTime.setBackground(Color.BLUE);
 		jPanelCard.add(jLabelTime);
 
-		correo = new JTextField(bidding.getInitTime().toString());
+		correo = new JTextField(bidding.getBiddingName());
 		correo.setBounds(20, 115, 320, 25);
 		correo.setBackground(new java.awt.Color(224, 224, 224));
 		correo.setFont(new java.awt.Font("Andale Mono", 1, 14));
@@ -160,8 +162,8 @@ public class JPanelMainProduct extends JPanel {
 		jLabelFinish.setForeground(Color.WHITE);
 		jLabelFinish.setBackground(Color.BLUE);
 		jPanelCard.add(jLabelFinish);
-
-		password = new JTextField(bidding.getFinishTime().toString());
+		
+		password = new JTextField(bidding.getFinishTime().toString() + " horas");
 		password.setBounds(20, 175, 320, 25);
 		password.setBackground(new java.awt.Color(224, 224, 224));
 		password.setFont(new java.awt.Font("Andale Mono", 1, 14));
@@ -326,7 +328,10 @@ public class JPanelMainProduct extends JPanel {
 		jLabel3.setBackground(Color.BLUE);
 		cardPublicaciones.add(jLabel3);
 
-		offer = new JTextField("");
+		offer = new JTextField("PRIVATE");
+		if (bidding.isPublic()) {
+			offer = new JTextField(bidding.getOwner());
+		}
 		offer.setBounds(20, 40, 320, 25);
 		offer.setBackground(new java.awt.Color(224, 224, 224));
 		offer.setFont(new java.awt.Font("Andale Mono", 1, 14));
@@ -340,7 +345,10 @@ public class JPanelMainProduct extends JPanel {
 		jLabel2.setBackground(Color.BLUE);
 		cardPublicaciones.add(jLabel2);
 
-		publicaciones = new JTextField();
+		publicaciones = new JTextField("PRIVATE");
+		if (bidding.isPublic()) {
+			publicaciones = new JTextField(bidding.getOwner());
+		}
 		publicaciones.setBounds(20, 115, 320, 25);
 		publicaciones.setBackground(new java.awt.Color(224, 224, 224));
 		publicaciones.setFont(new java.awt.Font("Andale Mono", 1, 14));
@@ -420,6 +428,19 @@ public class JPanelMainProduct extends JPanel {
 		this.add(jPanelCenter, BorderLayout.CENTER);
 
 	}
+	
+	public void blockJTextField() {
+		this.jTextArea.setEditable(false);
+		this.name.setEditable(false);
+		this.correo.setEditable(false);
+		this.offer.setEditable(false);
+		this.password.setEditable(false);
+		this.publicaciones.setEditable(false);
+		this.valueActually.setEditable(false);
+		if (bidding.isAutomaticIncremet()) {
+			this.valuePuja.setEditable(false);
+		}
+	}
 
 	@Override
 	protected void paintComponent(Graphics g) {
@@ -454,11 +475,21 @@ public class JPanelMainProduct extends JPanel {
 		this.bidding = bidding;
 	}
 	public Double getValuePuja() {
-		return Double.parseDouble(valuePuja.getText());
+		try {
+			return Double.parseDouble(valuePuja.getText());
+		} catch (NumberFormatException e) {
+			Utilities.showMessageWarning("El valor de la puja debe ser numerico!", "Valor no valido");
+		}
+		return 0.0;
 	}
 	
 	public Double getValueActually() {
-		return Double.parseDouble(valueActually.getText());
+		try {
+			return Double.parseDouble(valueActually.getText());
+		} catch (NumberFormatException e) {
+			Utilities.showMessageWarning("El valor debe ser numerico!", "Valor no valido");
+		}
+		return 0.0;
 	}
 	public void setValueActually(Double value) {
 		valueActually.setText(String.valueOf(value));

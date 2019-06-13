@@ -25,9 +25,10 @@ import javax.swing.SpinnerNumberModel;
 import com.prg3.mr_bid.controller.ControlCommands;
 import com.prg3.mr_bid.controller.UserController;
 import com.prg3.mr_bid.model.entity.ConstantsBid;
+import com.prg3.mr_bid.model.entity.Gender;
 import com.prg3.mr_bid.model.entity.TypeProduct;
 import com.prg3.mr_bid.utilities.HandlerLanguage;
-import com.toedter.calendar.JCalendar;
+import com.prg3.mr_bid.utilities.HintJTextField;
 import com.toedter.calendar.JDateChooser;
 
 /**
@@ -44,7 +45,7 @@ public class JPanelMainAddProduct extends JPanel {
 	private Icon icon;
 	private JLabel jLabelName,jLabelDescription;
 	private JComboBox<TypeProduct> typeJComboBox;
-	private JTextField jTextFieldName, jTextFieldTy;
+	private HintJTextField jTextFieldName, jTextFieldTy;
 	private JTextArea descriptionJTextArea;
 	private JDateChooser jCalendar, jCalendar2, jCalendar3;
 	private JRadioButton jRadioButton, jRadioButton2, jRadioButtonPublic, jRadioButtonPrivate;
@@ -99,16 +100,12 @@ public class JPanelMainAddProduct extends JPanel {
 
 		jPanelCard1.add(createLabel("DATOS DEL PRODUCTO", 10, 10, 200, 30));
 		
-		
 //		jPanelCard1.add(createLabel("DESCRIPCION", 600, 10, 200, 30));
 		jLabelDescription = new JLabel(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_DESCRIPTION));
 		jLabelDescription.setBounds(600, 10, 200, 30);
 		jLabelDescription.setBackground(new Color(244, 244, 244));
 		jLabelDescription.setPreferredSize(new Dimension(200, 60));
 		jPanelCard1.add(jLabelDescription);
-		
-		
-		
 
 		jPanelCard1.add(createLabel("TIPO DE LA PUBLICACIONs", 20, 60, 200, 30));
 		jTextFieldName = createTextField("TIPO DE LA PUBLICACIONs", 200, 60, 200, 30);
@@ -186,12 +183,12 @@ public class JPanelMainAddProduct extends JPanel {
 		jTextFieldTy = createTextField2("TIPO DE INCREMENTO ", 200, 120, 200, 30);
 		jPanelCard3.add(jTextFieldTy);
 
-		jRadioButton = new JRadioButton("FEMALE");
+		jRadioButton = new JRadioButton("Automatico");
 		jRadioButton.setBounds(200, 60, 100, 30);
 		jRadioButton.setSelected(true);
 		jPanelCard3.add(jRadioButton);
 
-		jRadioButton2 = new JRadioButton("MALE");
+		jRadioButton2 = new JRadioButton("Dadopor el usuario");
 		jRadioButton2.setBounds(300, 60, 100, 30);
 		jPanelCard3.add(jRadioButton2);
 
@@ -256,8 +253,8 @@ public class JPanelMainAddProduct extends JPanel {
 
 	}
 
-	public JTextField createTextField(String name, int x, int y, int sisex, int sizey) {
-		jTextFieldName = new JTextField(name);
+	public HintJTextField createTextField(String name, int x, int y, int sisex, int sizey) {
+		jTextFieldName = new HintJTextField(name);
 		jTextFieldName.setBounds(x, y, sisex, sizey);
 		jTextFieldName.setBackground(new Color(244, 244, 244));
 		add(jTextFieldName);
@@ -265,8 +262,8 @@ public class JPanelMainAddProduct extends JPanel {
 
 	}
 	
-	public JTextField createTextField2(String name, int x, int y, int sisex, int sizey) {
-		jTextFieldTy = new JTextField(name);
+	public HintJTextField createTextField2(String name, int x, int y, int sisex, int sizey) {
+		jTextFieldTy = new HintJTextField(name);
 		jTextFieldTy.setBounds(x, y, sisex, sizey);
 		jTextFieldTy.setBackground(new Color(244, 244, 244));
 		add(jTextFieldTy);
@@ -313,8 +310,8 @@ public class JPanelMainAddProduct extends JPanel {
 	 * devuelve un null!
 	 */
 	public String getDateI() {
-		if (jCalendar.getDate() != null) {
-			Date date = jCalendar.getDate();
+		if (jCalendar2.getDate() != null) {
+			Date date = jCalendar2.getDate();
 			DateFormat df = DateFormat.getDateInstance();
 			String date2 = df.format(date);
 			return date2; 
@@ -328,8 +325,8 @@ public class JPanelMainAddProduct extends JPanel {
 	 * devuelve un null!
 	 */
 	public String getDateF() {
-		if (jCalendar.getDate() != null) {
-			Date date = jCalendar.getDate();
+		if (jCalendar3.getDate() != null) {
+			Date date = jCalendar3.getDate();
 			DateFormat df = DateFormat.getDateInstance();
 			String date2 = df.format(date);
 			return date2; 
@@ -349,9 +346,16 @@ public class JPanelMainAddProduct extends JPanel {
 		return (byte)((int) jSpinnerFinishHour.getModel().getValue());
 	}
 	
+	public boolean isAutomatic() {
+		return (jRadioButton.isSelected()?true:false);
+	}
+	
+	public boolean isPublic() {
+		return (jRadioButtonPublic.isSelected()?true:false);
+	}
+	
 	public void changeLanguage() {
 //		jRadioButton.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_ENGLISH));
-
 
 	}
 
