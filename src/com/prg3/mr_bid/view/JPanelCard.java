@@ -159,7 +159,7 @@ public class JPanelCard extends JPanel {
 		
 		jPanelInfoProduct.add(createLabel(b.getTypeProduct().name(), 200, 20, jLabelType2, 20, 130));
 		jPanelInfoProduct.add(createLabel(Utilities.getState(b).toString(), 200, 70, jLabelSatus2, 20, 130));
-		jPanelInfoProduct.add(createLabel(b.getInitTime().toString(), 230, 120, jLabelTime2, 20, 130));
+		jPanelInfoProduct.add(createLabel(Utilities.getTimeRemaining(b), 230, 120, jLabelTime2, 20, 130));
 		
 		jButton = new JButton("Ingresar");
 		jButton.setBounds(150, 200, 100, 30);

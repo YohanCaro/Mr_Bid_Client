@@ -1,12 +1,6 @@
 package com.prg3.mr_bid.runner;
 
-import java.io.IOException;
-import java.net.UnknownHostException;
-
-import com.prg3.mr_bid.communication.Client;
-import com.prg3.mr_bid.controller.UserController;
 import com.prg3.mr_bid.utilities.Constants;
-import com.prg3.mr_bid.view.Splash;
 import com.prg3.mr_bid.view.Splash2;
 
 /**
@@ -19,8 +13,7 @@ public class Run {
 	/**
 	 * Main
 	 * 
-	 * @param args
-	 *            (ip, port) (localHost 12345)
+	 * @param args (ip, port) (localHost 12345)
 	 */
 	public static void main(String[] args) {
 
@@ -36,7 +29,6 @@ public class Run {
 			System.out.println("Debe ingresar la ip y el puerto");
 		}
 		
-
 	}
 
 }

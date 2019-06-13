@@ -101,10 +101,8 @@ public class Utilities {
 	
 	public static String getTimeRemaining(Bidding bidding) {
 		if (isAfterOfToDay(bidding.getInitTime())) {
-			System.out.println("1");
 			return convertTime(bidding.getInitTime());
 		} else if (isAfterOfToDay(bidding.getFinishTime())) {
-			System.out.println("2");
 			return convertTime(bidding.getFinishTime());
 		} else {
 			return "0";
@@ -113,7 +111,6 @@ public class Utilities {
 	
 	public static String convertTime(BidTime bt) {
 		float time = hoursToSeconds(bt.getTime());
-		System.out.println("T: " + time);
 		String out = "";
 		if (time < 60) {
 			out = time + " s";
@@ -137,7 +134,6 @@ public class Utilities {
 	public static int hours(float s) {
 		float h = (s/3600);
 		int d = ((int) (s/86400)*24);
-		System.out.println(h + " " + d);
 		return (int)(h - d);
 	}
 
