@@ -1,16 +1,16 @@
 package com.prg3.mr_bid.utilities;
 
-import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.swing.JOptionPane;
 
 import com.prg3.mr_bid.model.entity.BidDate;
+import com.prg3.mr_bid.model.entity.BidState;
 import com.prg3.mr_bid.model.entity.BidTime;
 import com.prg3.mr_bid.model.entity.Bidding;
-import com.prg3.mr_bid.model.entity.Product;
-import com.prg3.mr_bid.model.entity.TypeProduct;
 
 /** Clase Utilities - Utilidades de la apicación
  *
@@ -61,18 +61,43 @@ public class Utilities {
 		return false;
 	}
 	
-//	public static void fillBiddings() {
-//		ArrayList<String> list = new ArrayList<>();
-//		list.add("/images/iphone.png");
-//		for (int i = 0; i < 5; i++) {
-//			Constants.biddingsList.add(new Bidding("Car " + i, TypeProduct.VEHICLES,
-//					new Product("Carrito", "Un carro comun y corriente jajajaja", list), 
-//					new BidTime(new BidDate("5/10/2019"), (short) 10), 
-//					new BidTime(new BidDate("5/10/2019"), (short) 10), 
-//					new BidTime(new BidDate("5/10/2019"), (short) 10), 
-//					true, true));
-//			Constants.biddingsList.get(i).setId(i+10000);
-//		}
-//	}
+	/**
+	 * Verifica que la fecha sea mayor a la actual
+	 * @param time tiempo
+	 * @return true / false
+	 */
+	public static boolean isAfterOfToDay(BidTime time) {
+		return (time.getTime() > 0)?true:false;
+	}
+	
+	/**
+	 * Verifica que la fecha sea mayor a la actual
+	 * @param time tiempo
+	 * @return true / false
+	 */
+	public static boolean isAfterOfToDay(String time, float hours) {
+		BidTime t = new BidTime(new BidDate(time), hours);
+		return (t.getTime() > 0)?true:false;
+	}
+	
+	/**
+	 * Convierte las horas a segundos
+	 * @param hours
+	 * @return
+	 */
+	public static float hoursToSeconds(int hours) {
+		return hours*3600;
+	}
+	
+	public static BidState getState(Bidding bidding) {
+		System.out.println("B: " + bidding.getBiddingName());
+		if (isAfterOfToDay(bidding.getInitTime())) {
+			return BidState.INICIADA;
+		} 
+		if (!isAfterOfToDay(bidding.getFinishTime())) {
+			return BidState.FINALIZADA;
+		} 
+		return BidState.NO_INICIADA;
+	}
 
 }
