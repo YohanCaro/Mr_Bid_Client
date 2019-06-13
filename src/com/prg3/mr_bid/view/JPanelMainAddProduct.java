@@ -277,6 +277,14 @@ public class JPanelMainAddProduct extends JPanel {
 		}
 		return null;
 	}
+	
+	
+	public String getValueMin() {
+		if (jTextFieldTy.getText() != null && !jTextFieldTy.getText().isEmpty()) {
+			return jTextFieldName.getText();
+		}
+		return null;
+	}
 
 	public String getDescription() {
 		if (descriptionJTextArea.getText() != null && !descriptionJTextArea.getText().isEmpty()) {

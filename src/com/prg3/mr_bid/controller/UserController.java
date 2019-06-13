@@ -22,6 +22,7 @@ import com.prg3.mr_bid.communication.Commands;
 import com.prg3.mr_bid.model.entity.BidDate;
 import com.prg3.mr_bid.model.entity.BidTime;
 import com.prg3.mr_bid.model.entity.Bidding;
+import com.prg3.mr_bid.model.entity.ConstantsBid;
 import com.prg3.mr_bid.model.entity.MyCaptcha;
 import com.prg3.mr_bid.model.entity.Product;
 import com.prg3.mr_bid.model.entity.User;
@@ -74,7 +75,6 @@ public class UserController implements ActionListener, MouseListener {
 		this.jDialogAddCreditCard = new JDialogAddCreditCard();
 		this.jPanelMainWindow = new JPanelMainWindow(this);
 		System.out.println("mostrando");
-		addProduct();
 		sendComment();
 	}
 
@@ -101,8 +101,7 @@ public class UserController implements ActionListener, MouseListener {
 				this.sendData(Commands.SIGNIN, this.createUser());
 				jDialogAddUser.setVisible(false);
 			} else {
-				Utilities.showMessageWarning("Por favor complete todos los campos correctamente!",
-						"Datos no validos o vacios!");
+				Utilities.showMessageWarning(ConstantsBid.TXT_COMPLETE,null);
 			}
 			break;
 		case SHOW_ADD_CREDIT_CARD:
@@ -120,12 +119,11 @@ public class UserController implements ActionListener, MouseListener {
 			if (manager.searchBiddingForID(Long.parseLong(com[1])) != null) {
 				JPanelMainProduct jPanelMainProduct = new JPanelMainProduct();
 				jFrameMain.setjPanelMainProduct(jPanelMainProduct);
-				jFrameMain.getjPanelMainProduct()
-						.setBidding(manager.searchBiddingForID(Long.parseLong(com[1])));
+				jFrameMain.getjPanelMainProduct().setBidding(manager.searchBiddingForID(Long.parseLong(com[1])));
 				jFrameMain.getjPanelMainProduct().start(this);
 				jFrameMain.showPanelCardProduct();
 			} else {
-				Utilities.showMessageError("El id de la tarjeta es nulo", "Error");
+				Utilities.showMessageError(ConstantsBid.TXT_NULL, ConstantsBid.TXT_ERROR);
 			}
 			break;
 		case SHOW_HISTORY:
@@ -133,7 +131,7 @@ public class UserController implements ActionListener, MouseListener {
 			break;
 		case ADD_PHOTO:
 			try {
-				
+
 				fileImage = jFrameMain.getjPanelMainAddProduct().getFile();
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
@@ -151,12 +149,12 @@ public class UserController implements ActionListener, MouseListener {
 			if (this.createBidding() != null) {
 				this.sendData(Commands.UPBIDDING, this.createBidding());
 				this.jFrameMain.showMain(this);
-				Utilities.showMessageInfo("Si! :D", "Bien");
+				Utilities.showMessageInfo(ConstantsBid.TXT_CRATE, null);
 
 				this.jFrameMain.repaint();
 
 				this.jFrameMain.getrepaint();
-				
+
 			}
 			break;
 		case LIST_CONNECT:
@@ -185,14 +183,6 @@ public class UserController implements ActionListener, MouseListener {
 	}
 
 	/**
-	 * Añade un producto
-	 */
-	private void addProduct() {
-		this.jPanelMainWindow = new JPanelMainWindow("Computador LG", "Publico", "No inicida", "7;80", "/images/lg.jpg",
-				this);
-	}
-
-	/**
 	 * Envia los datos de legueo
 	 */
 	private void sendDataLogin() {
@@ -213,9 +203,9 @@ public class UserController implements ActionListener, MouseListener {
 		try {
 			Client.getInstanceOf().sendMessage(command, data);
 		} catch (UnknownHostException e) {
-			System.out.println("No se ha encontrado el servidor");
+			System.out.println(ConstantsBid.TXT_NOFOUND);
 		} catch (IOException e) {
-			System.out.println("Error al enviar el dato");
+			System.out.println(ConstantsBid.TXT_ERRORSENDDATE);
 		}
 	}
 
@@ -231,7 +221,7 @@ public class UserController implements ActionListener, MouseListener {
 				jDialogAddUser.getjPanelForm().getDocument(), jDialogAddUser.getjPanelForm().getTypeDocument(),
 				jDialogAddUser.getjPanelForm().getGender(), null);
 	}
-	
+
 	public void changeDataAcc() {
 		try {
 			manager.setUser(Client.getInstanceOf().getUser());
@@ -245,31 +235,34 @@ public class UserController implements ActionListener, MouseListener {
 		}
 	}
 
-	 private Bidding createBidding() {
-		 if (jFrameMain.getjPanelMainAddProduct().getJTextName() != null &&
-				 jFrameMain.getjPanelMainAddProduct().getDescription() != null && jFrameMain.getjPanelMainAddProduct().getDateP() 
-				 != null  && jFrameMain.getjPanelMainAddProduct().getDateI() != null && 
-				 jFrameMain.getjPanelMainAddProduct().getDateF() != null) {
-				ArrayList<String> list = new ArrayList<>();
-				list.add(fileImage.getPath());
-			 Product p = new Product(jFrameMain.getjPanelMainAddProduct().getJTextName(),
-					 jFrameMain.getjPanelMainAddProduct().getDescription(), list);
-			 System.out.println(p.toString());
-			 return manager.addBidding(jFrameMain.getjPanelMainAddProduct().getJTextName(),
-					 jFrameMain.getjPanelMainAddProduct().getTypeProduct(), p,
-					 new BidTime(new BidDate(jFrameMain.getjPanelMainAddProduct().getDateP()), 
-							 jFrameMain.getjPanelMainAddProduct().hourP()),
-					 new BidTime(new BidDate(jFrameMain.getjPanelMainAddProduct().getDateI()), 
-							 jFrameMain.getjPanelMainAddProduct().hourI()),
-					 new BidTime(new BidDate(jFrameMain.getjPanelMainAddProduct().getDateF()), 
-							 jFrameMain.getjPanelMainAddProduct().hourF()),
-					 jFrameMain.getjPanelMainAddProduct().isAutomatic(), jFrameMain.getjPanelMainAddProduct().isPublic());
-		 } else {
-			 Utilities.showMessageWarning("Por favor, llene todos los campos para\n"
-			 		+ "poder realizar la subasta", "Campos vacios!");
-			 return null;
-		 }
-	 }
+	private Bidding createBidding() {
+
+		if (jFrameMain.getjPanelMainAddProduct().getJTextName() != null
+				&& jFrameMain.getjPanelMainAddProduct().getDescription() != null
+				&& jFrameMain.getjPanelMainAddProduct().getDateP() != null
+				&& jFrameMain.getjPanelMainAddProduct().getDateI() != null
+				&& jFrameMain.getjPanelMainAddProduct().getDateF() != null) {
+			ArrayList<String> list = new ArrayList<>();
+			list.add(fileImage.getPath());
+			Product p = new Product(jFrameMain.getjPanelMainAddProduct().getJTextName(),
+					jFrameMain.getjPanelMainAddProduct().getDescription(), list);
+			System.out.println(p.toString());
+			return manager.addBidding(jFrameMain.getjPanelMainAddProduct().getJTextName(),
+					jFrameMain.getjPanelMainAddProduct().getTypeProduct(), p,
+					new BidTime(new BidDate(jFrameMain.getjPanelMainAddProduct().getDateP()),
+							jFrameMain.getjPanelMainAddProduct().hourP()),
+					new BidTime(new BidDate(jFrameMain.getjPanelMainAddProduct().getDateI()),
+							jFrameMain.getjPanelMainAddProduct().hourI()),
+					new BidTime(new BidDate(jFrameMain.getjPanelMainAddProduct().getDateF()),
+							jFrameMain.getjPanelMainAddProduct().hourF()),
+					jFrameMain.getjPanelMainAddProduct().isAutomatic(),
+					jFrameMain.getjPanelMainAddProduct().isPublic());
+		} else {
+			Utilities.showMessageWarning(ConstantsBid.TXT_COMPLETE,
+					null);
+			return null;
+		}
+	}
 
 	/**
 	 * Crea un unico controllador
@@ -288,15 +281,8 @@ public class UserController implements ActionListener, MouseListener {
 	 */
 	public void sendComment() {
 		ArrayList<String> menssge = new ArrayList<String>();
-		menssge.add("hola");
-		menssge.add("hola1");
-		menssge.add("hola2");
-		menssge.add("hola3");
-		menssge.add("hola4");
 		jFrameMain.getjPanelMainProduct().sendComment(menssge);
 	}
-	
-
 
 	public String getLanguageDefault() {
 		languageDefault = Locale.getDefault().getLanguage();

@@ -37,8 +37,9 @@ public class JPanelMainProduct extends JPanel {
 			cardParticipantes;
 	private JPanelOptionMenu jPanelOptionMenu;
 	private JTextArea jTextArea, jTextAreaChat, jTextAreaParticipantes;
-	private JTextField name, correo,password, offer, publicaciones,valuePuja,valueActually;
-	private JLabel jLabel, jLabel2, jLabel3, jLabel4,jLabelState,jLabelTime,jLabelFinish,jLabelCurrenntValue,jLabelVauleBid;
+	private JTextField name, correo, password, offer, publicaciones, valuePuja, valueActually;
+	private JLabel jLabel, jLabel2, jLabel3, jLabel4, jLabelState, jLabelTime, jLabelFinish, jLabelCurrenntValue,
+			jLabelVauleBid;
 	private ImageIcon imageIcon, imageIcon2;
 	private Icon icon, icon2;
 	private String text;
@@ -46,11 +47,10 @@ public class JPanelMainProduct extends JPanel {
 	private JButton jButtonListConnect;
 	JButton jButton;
 
-
 	public JPanelMainProduct() {
 
 	}
-	
+
 	public void start(UserController userController) {
 		this.setOpaque(false);
 		this.jPanelSouth = new JPanel();
@@ -65,7 +65,7 @@ public class JPanelMainProduct extends JPanel {
 		this.jPanelCenter = new JPanel();
 		this.jPanelCard = new JPanel();
 		this.jPanelCard2 = new JPanel();
-		
+
 		jPanelCenter.setOpaque(false);
 		jPanelizqImage.setOpaque(false);
 		jPanelderNorth.setOpaque(false);
@@ -76,6 +76,7 @@ public class JPanelMainProduct extends JPanel {
 		jPanelEast.setOpaque(false);
 		this.jTextArea = new JTextArea();
 		this.jLabel = new JLabel();
+//		getValueActually();
 		cardParticipantes();
 		card();
 		jtextArea();
@@ -86,7 +87,6 @@ public class JPanelMainProduct extends JPanel {
 		init();
 		this.blockJTextField();
 	}
-
 
 	public JPanelMainProduct(ArrayList<String> message) {
 		sendComment(message);
@@ -125,7 +125,7 @@ public class JPanelMainProduct extends JPanel {
 		name.setFont(new java.awt.Font("Andale Mono", 1, 14));
 		name.setForeground(new java.awt.Color(255, 0, 0));
 		jPanelCard.add(name);
-		
+
 		jLabelTime = new JLabel(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_TIME));
 		jLabelTime.setBounds(20, 85, 200, 25);
 		jLabelTime.setFont(new Font("Andale Mono", 3, 15));
@@ -146,7 +146,7 @@ public class JPanelMainProduct extends JPanel {
 		jLabelFinish.setForeground(Color.WHITE);
 		jLabelFinish.setBackground(Color.BLUE);
 		jPanelCard.add(jLabelFinish);
-		
+
 		password = new JTextField(bidding.getFinishTime().toString() + " horas");
 		password.setBounds(20, 175, 320, 25);
 		password.setBackground(new java.awt.Color(224, 224, 224));
@@ -208,7 +208,7 @@ public class JPanelMainProduct extends JPanel {
 		jLabelVauleBid.setBackground(new Color(0, 0, 0, 94));
 		jPanelCard2.add(jLabelVauleBid);
 
-		valuePuja = new JTextField("HOLAAAAA");
+		valuePuja = new JTextField("VALUE");
 		valuePuja.setBounds(20, 115, 320, 25);
 		valuePuja.setBackground(new java.awt.Color(224, 224, 224));
 		valuePuja.setFont(new java.awt.Font("Andale Mono", 1, 14));
@@ -260,19 +260,19 @@ public class JPanelMainProduct extends JPanel {
 		jTextAreaChat = new JTextArea();
 		jTextAreaChat.setEditable(false);
 		jTextAreaChat.setBackground(new Color(0, 0, 0, 94));
-		 jTextAreaChat.setText("Camilo");
-		 
+		jTextAreaChat.setText("Camilo");
+
 		jButtonListConnect = new JButton("Conectados");
 		jButtonListConnect.setFocusable(false);
 		jButtonListConnect.setBackground(Color.RED);
 		jButtonListConnect.setActionCommand(ControlCommands.LIST_CONNECT.name());
 		jButtonListConnect.addActionListener(userController);
-		
+
 		jPanelNorth3 = new JPanel();
 		jPanelNorth3.setPreferredSize(new Dimension(50, 50));
 		jPanelNorth3.setOpaque(false);
 		jTextAreaChat.setPreferredSize(new Dimension(400, 300));
-		jButtonListConnect.setPreferredSize(new Dimension(20,20));
+		jButtonListConnect.setPreferredSize(new Dimension(20, 20));
 		jPanelCardSouth2.setLayout(new BorderLayout());
 		jPanelCardSouth2.add(jPanelNorth3, BorderLayout.NORTH);
 		jPanelCardSouth2.add(jTextAreaChat, BorderLayout.CENTER);
@@ -416,7 +416,7 @@ public class JPanelMainProduct extends JPanel {
 		this.add(jPanelCenter, BorderLayout.CENTER);
 
 	}
-	
+
 	public void blockJTextField() {
 		this.jTextArea.setEditable(false);
 		this.name.setEditable(false);
@@ -442,46 +442,54 @@ public class JPanelMainProduct extends JPanel {
 		ArrayList<String> aux = new ArrayList<>();
 		for (int i = 0; i < message.size(); i++) {
 			this.text = message.get(i);
-			jTextAreaChat.append("\n" + "\n" + "    User: " + text);                                                
-			
-		}		
+			jTextAreaChat.append("\n" + "\n" + "    User: " + text);
+
+		}
 		aux.add(jTextAreaChat.getText());
 		return aux;
 	}
-	
-	
+
 	public void getComment(ArrayList<String> message) {
-		
+
 	}
 
 	/**
-	 * Cambia 
-	 * @param bidding the bidding to set
+	 * Cambia
+	 * 
+	 * @param bidding
+	 *            the bidding to set
 	 */
 	public void setBidding(Bidding bidding) {
 		this.bidding = bidding;
 	}
-	public Double getValuePuja() {
-		try {
-			return Double.parseDouble(valuePuja.getText());
-		} catch (NumberFormatException e) {
-			Utilities.showMessageWarning("El valor de la puja debe ser numerico!", "Valor no valido");
-		}
-		return 0.0;
-	}
-	
+	 public Double getValuePuja() {
+	 try {
+	 return Double.parseDouble(valuePuja.getText());
+	 } catch (NumberFormatException e) {
+	 Utilities.showMessageWarning("El valor de la puja debe ser numerico!", "Valorno valido");
+	 }
+	 return 0.0;
+	 }
+
 	public Double getValueActually() {
+
+		System.out.println(valueActually.getText());
+
 		try {
 			return Double.parseDouble(valueActually.getText());
+
 		} catch (NumberFormatException e) {
 			Utilities.showMessageWarning("El valor debe ser numerico!", "Valor no valido");
 		}
+		System.out.println("final"+valueActually.getText());
+
 		return 0.0;
 	}
+
 	public void setValueActually(Double value) {
 		valueActually.setText(String.valueOf(value));
 	}
-	
+
 	public void changeLanguage() {
 		jLabelState.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_STATE));
 		jLabelTime.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_TIME));
@@ -493,8 +501,6 @@ public class JPanelMainProduct extends JPanel {
 		jLabel3.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_OFFEREDBY));
 		jLabel4.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_PARTICIPANTS));
 
-		
 	}
-
 
 }
