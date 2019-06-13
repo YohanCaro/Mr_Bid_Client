@@ -159,4 +159,8 @@ public class JFrameMain extends JFrame {
 		return jPanelMainAddProduct;
 	}
 	
+	public void getrepaint() {
+		jPanelMain.repaints();
+	}
+	
 }
