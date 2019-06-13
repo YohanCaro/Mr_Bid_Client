@@ -137,6 +137,7 @@ public class Client extends Socket implements Runnable {
 	
 	public void updateBiddings() throws IOException {
 		dataOS.writeUTF(gson.toJson(Commands.UPDATE_BID));
+		dataOS.writeUTF(gson.toJson(Commands.GETIMG));
 	}
 	
 	public void sendNewBidding(Bidding bidding) throws IOException {
