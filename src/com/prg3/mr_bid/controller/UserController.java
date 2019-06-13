@@ -90,6 +90,12 @@ public class UserController implements ActionListener, MouseListener {
 			jFrameMain.showLogin();
 			break;
 		case SHOW_HOME:
+			try {
+				if(Client.getInstanceOf().isConnected()) {
+					Client.getInstanceOf().updateBiddings();
+				}
+			} catch (IOException e2) {
+			}
 			this.jFrameMain.showMain(this);
 			jFrameMain.showHome();
 			break;

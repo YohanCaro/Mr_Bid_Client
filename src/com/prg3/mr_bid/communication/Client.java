@@ -126,9 +126,17 @@ public class Client extends Socket implements Runnable {
 			Type listType = new TypeToken<List<Bidding>>(){}.getType();
 			Constants.biddingsList = gson.fromJson(json, listType);
 			System.out.println("Tamaño de subastas: "+ Constants.biddingsList.size());
+		case UPDATE_BID:
+			Type listType2 = new TypeToken<List<Bidding>>(){}.getType();
+			Constants.biddingsList = gson.fromJson(json, listType2);
+			break;
 		default:
 			break;
 		}
+	}
+	
+	public void updateBiddings() throws IOException {
+		dataOS.writeUTF(gson.toJson(Commands.UPDATE_BID));
 	}
 	
 	public void sendNewBidding(Bidding bidding) throws IOException {
