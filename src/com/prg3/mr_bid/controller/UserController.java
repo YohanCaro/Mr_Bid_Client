@@ -88,6 +88,7 @@ public class UserController implements ActionListener, MouseListener {
 			jFrameMain.showLogin();
 			break;
 		case SHOW_HOME:
+			this.jFrameMain.showMain(this);
 			jFrameMain.showHome();
 			break;
 		case SHOW_REGISTER_USER:
