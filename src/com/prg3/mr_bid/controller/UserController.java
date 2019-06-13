@@ -171,12 +171,10 @@ public class UserController implements ActionListener, MouseListener {
 			jDialogAbout.setVisible(true);
 			break;
 		case C_ENGLISH:
-			System.out.println("INGLES");
 			manageChangeLanguageUS();
 			break;
 		case C_SPANISH:
 			manageChangeLanguageES();
-			System.out.println("ESPAÑOL");
 		default:
 			break;
 		}
