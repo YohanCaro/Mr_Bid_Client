@@ -67,5 +67,9 @@ public class Product {
 	public String toString() {
 		return "Nombre: " + nameProduct + ", descripcion: " + description;
 	}
+
+	public void setImages(ArrayList<String> paths) {
+		this.images = paths;		
+	}
 	
 }

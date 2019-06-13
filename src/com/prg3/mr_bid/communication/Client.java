@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.net.Socket;
@@ -15,7 +16,6 @@ import javax.imageio.ImageIO;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.prg3.mr_bid.controller.UserController;
 import com.prg3.mr_bid.model.entity.Bidding;
 import com.prg3.mr_bid.model.entity.User;
 import com.prg3.mr_bid.utilities.Constants;
@@ -102,6 +102,19 @@ public class Client extends Socket implements Runnable {
 		}
 	}
 	
+	public ArrayList<String> getImages(int numImgs, long id) throws IOException {
+		ArrayList<String> paths = new ArrayList<>();
+		BufferedImage bufferedImage;
+		for (int i = 1; i <= numImgs; i++) {
+			bufferedImage = ImageIO.read(this.getInputStream());
+			String imagePath = "data/biddingImages/bidding"+id+"_"+i+".png";
+			ImageIO.write(bufferedImage, "png", new FileOutputStream(imagePath));
+			bufferedImage.flush();
+			paths.add(imagePath);
+		}		
+		return paths;
+	}
+	
 	/**
 	 * Ejecuta una acción con un comando
 	 * @param command comando
@@ -129,6 +142,16 @@ public class Client extends Socket implements Runnable {
 		case UPDATE_BID:
 			Type listType2 = new TypeToken<List<Bidding>>(){}.getType();
 			Constants.biddingsList = gson.fromJson(json, listType2);
+			break;
+		case GETIMG:
+			String datas[] = json.split(" ");
+			long id = Long.parseLong(datas[1]);
+			try {
+				ArrayList<String> paths = this.getImages(Integer.parseInt(datas[0]), (int) id);
+				Constants.biddingsList.get((int) id).getProduct().setImages(paths);
+			} catch (NumberFormatException | IOException e) {
+				e.printStackTrace();
+			}
 			break;
 		default:
 			break;
