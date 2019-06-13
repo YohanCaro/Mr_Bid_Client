@@ -6,7 +6,11 @@ import java.awt.Toolkit;
 
 import javax.swing.JDialog;
 import javax.swing.JFrame;
-
+/**
+ * Clase que crea un dailogo para los datos de tarjeta de credito
+ * @author Daniel Garcia
+ * fecha 13/06/2019
+ */
 public class JDialogAddCreditCard extends JDialog {
 	JPanelFormCreditCard jPanelForm;
 	// JpanelNorte jpanelNorte;

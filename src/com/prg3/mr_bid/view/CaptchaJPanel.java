@@ -6,7 +6,11 @@ import javax.swing.JPanel;
 
 import com.prg3.mr_bid.model.entity.MyCaptcha;
 
-
+/**
+ * clase que creal Captcha
+ * @author Daniel Garcia
+ * fecha 13/06/2019
+ */
 public class CaptchaJPanel extends JPanel {
 	
 	private MyCaptcha captcha;

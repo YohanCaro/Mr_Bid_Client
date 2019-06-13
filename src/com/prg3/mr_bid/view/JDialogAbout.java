@@ -5,6 +5,12 @@ import javax.swing.event.*;
 import java.awt.*;
 import java.awt.event.*;
 
+/**
+ * Clase que crea un dialogo Del acerca de
+ * 
+ * @author Daniel Garcia fecha 13/06/2019
+ */
+
 public class JDialogAbout extends JDialog {
 
 	private JLabel label1, label2;
@@ -19,7 +25,6 @@ public class JDialogAbout extends JDialog {
 		this.setResizable(false);
 		setSize(600, 400);
 		this.setLocationRelativeTo(null);
-
 
 		label1 = new JLabel("ACERCA DE");
 		label1.setBounds(215, 5, 200, 30);
@@ -41,33 +46,12 @@ public class JDialogAbout extends JDialog {
 				+ "\n            BUSINESS@GMAIL.COM. LA EMPRESA BUSINESS NO SE HACE RESPONSABLE DEL MAL USO DE ESTE SOFTWARE."
 				+ "\n\n          LOS ACUERDOS LEGALES EXPUESTOS ACONTINUACIÓN RIGEN EL USO QUE USTED HAGA DE ESTE SOFTWARE"
 				+ "\n          LA EMPRESA BUSINESS NAME, NO SE RESPONSABILIZAN DEL USO QUE USTED"
-				+ "\n          HAGA CON ESTE SOFTWARE Y SUS SERVICIOS. AL HACER USO DE ESTE SOFTWARE USTED ESTA ACEPTANDO \n" 
-				+   "          LOS TERMINOS PROPUESTOS ANTERIORMENTE."
-				+ "\n          ");
+				+ "\n          HAGA CON ESTE SOFTWARE Y SUS SERVICIOS. AL HACER USO DE ESTE SOFTWARE USTED ESTA ACEPTANDO \n"
+				+ "          LOS TERMINOS PROPUESTOS ANTERIORMENTE." + "\n          ");
 		scrollpane1 = new JScrollPane(textarea1);
 		scrollpane1.setBounds(10, 40, 575, 270);
 		add(scrollpane1);
 
-	
-
-		ImageIcon imagen = new ImageIcon("images/coca-cola.png");
-		label2 = new JLabel(imagen);
-		label2.setBounds(315, 135, 300, 300);
-		add(label2);
 	}
-
-	public void stateChanged(ChangeEvent e) {
-		if (check1.isSelected() == true) {
-			boton1.setEnabled(false);
-			boton1.setEnabled(true);
-
-		} else {
-			boton1.setEnabled(true);
-			boton1.setEnabled(false);
-
-		}
-
-	}
-
 
 }
