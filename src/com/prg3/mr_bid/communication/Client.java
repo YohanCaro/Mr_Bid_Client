@@ -125,7 +125,7 @@ public class Client extends Socket implements Runnable {
 		case UPBIDDING:
 			Type listType = new TypeToken<List<Bidding>>(){}.getType();
 			Constants.biddingsList = gson.fromJson(json, listType);
-			System.out.println("L: "+ Constants.biddingsList.size());
+			System.out.println("Tamaño de subastas: "+ Constants.biddingsList.size());
 		default:
 			break;
 		}
