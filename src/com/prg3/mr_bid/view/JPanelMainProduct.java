@@ -133,7 +133,7 @@ public class JPanelMainProduct extends JPanel {
 		jLabelTime.setBackground(Color.BLUE);
 		jPanelCard.add(jLabelTime);
 
-		correo = new JTextField(bidding.getBiddingName());
+		correo = new JTextField(Utilities.getTimeRemaining(bidding));
 		correo.setBounds(20, 115, 320, 25);
 		correo.setBackground(new java.awt.Color(224, 224, 224));
 		correo.setFont(new java.awt.Font("Andale Mono", 1, 14));

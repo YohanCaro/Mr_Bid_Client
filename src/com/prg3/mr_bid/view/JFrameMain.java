@@ -11,7 +11,11 @@ import javax.swing.JScrollPane;
 
 import com.prg3.mr_bid.controller.UserController;
 import com.prg3.mr_bid.utilities.Utilities;
-
+/**
+ * CLASE QUE CONTIENE TODOS LOS PANELES DE LA VISTA
+ * @author Daniel Garcia
+ * fecha 13/06/2019
+ */
 public class JFrameMain extends JFrame {
 
 	private JScrollPane jScrollPane;

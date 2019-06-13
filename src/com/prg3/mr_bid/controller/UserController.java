@@ -90,6 +90,12 @@ public class UserController implements ActionListener, MouseListener {
 			jFrameMain.showLogin();
 			break;
 		case SHOW_HOME:
+			try {
+				if(Client.getInstanceOf().isConnected()) {
+					Client.getInstanceOf().updateBiddings();
+				}
+			} catch (IOException e2) {
+			}
 			this.jFrameMain.showMain(this);
 			jFrameMain.showHome();
 			break;
@@ -130,11 +136,9 @@ public class UserController implements ActionListener, MouseListener {
 			jFrameMain.showMyHistory();
 			break;
 		case ADD_PHOTO:
-			try {
-
+			try {				
 				fileImage = jFrameMain.getjPanelMainAddProduct().getFile();
 			} catch (Exception e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			break;
@@ -146,15 +150,22 @@ public class UserController implements ActionListener, MouseListener {
 			jFrameMain.showMyCount();
 			break;
 		case ACTION_BIDDING:
-			if (this.createBidding() != null) {
-				this.sendData(Commands.UPBIDDING, this.createBidding());
+			Bidding bidding = this.createBidding();
+			if (bidding != null) {
+				this.sendData(Commands.UPBIDDING, bidding);
 				this.jFrameMain.showMain(this);
+				Utilities.showMessageInfo("Si! :D", "Bien");
 				Utilities.showMessageInfo(ConstantsBid.TXT_CRATE, null);
-
 				this.jFrameMain.repaint();
-
+				ArrayList<String> paths = new ArrayList<>();
+				paths.add(fileImage.getPath());
+				try {
+					Client.getInstanceOf().sendImages(paths, bidding.getId());
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				this.jFrameMain.getrepaint();
-
 			}
 			break;
 		case LIST_CONNECT:

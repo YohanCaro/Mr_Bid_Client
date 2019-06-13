@@ -6,7 +6,11 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 
 import com.prg3.mr_bid.controller.UserController;
-
+/**
+ * DIALOGO QUE MUESTRA LAS LISTA DE USUARIOS CONECTADOS
+ * @author Daniel Garcia
+ * fecha 13/06/2019
+ */
 public class JDialogListUsers extends JDialog {
 	JPListUsers jPanelForm;
 	// JpanelNorte jpanelNorte;

@@ -8,7 +8,11 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 
 import com.prg3.mr_bid.controller.UserController;
-
+/**
+ * DIALOGO PARA AGRERAR UN USUARIO NUEVO
+ * @author Daniel Garcia
+ * fecha 13/06/2019
+ */
 public class JDialogAddUser extends JDialog {
 	JPanelForm jPanelForm;
 	// JpanelNorte jpanelNorte;
