@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.File;
 import java.io.IOException;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
@@ -57,6 +58,7 @@ public class UserController implements ActionListener, MouseListener {
 	private String languageDefault;
 	private MyCaptcha myCaptcha;
 	private Manager manager;
+	private File fileImage;
 
 	/**
 	 * Construtor que inicia la app
@@ -71,7 +73,7 @@ public class UserController implements ActionListener, MouseListener {
 		this.jDialogAbout = new JDialogAbout();
 		this.jDialogAddCreditCard = new JDialogAddCreditCard();
 		this.jPanelMainWindow = new JPanelMainWindow(this);
-
+		System.out.println("mostrando");
 		addProduct();
 		sendComment();
 	}
@@ -88,6 +90,7 @@ public class UserController implements ActionListener, MouseListener {
 			jFrameMain.showLogin();
 			break;
 		case SHOW_HOME:
+			this.jFrameMain.showMain(this);
 			jFrameMain.showHome();
 			break;
 		case SHOW_REGISTER_USER:
@@ -130,9 +133,10 @@ public class UserController implements ActionListener, MouseListener {
 			break;
 		case ADD_PHOTO:
 			try {
-				selectImagge();
-			} catch (DOMException | TransformerFactoryConfigurationError | ParserConfigurationException
-					| TransformerException e1) {
+				
+				fileImage = jFrameMain.getjPanelMainAddProduct().getFile();
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			break;
@@ -144,16 +148,15 @@ public class UserController implements ActionListener, MouseListener {
 			jFrameMain.showMyCount();
 			break;
 		case ACTION_BIDDING:
-//			try {
-//				Client.getInstanceOf().sendNewBidding(null); //metodo de vista que retorne un objeto bidding con los datos recolectados
-//			} catch (IOException e1) {
-//				// TODO Auto-generated catch block
-//				e1.printStackTrace();
-//			}
 			if (this.createBidding() != null) {
 				this.sendData(Commands.UPBIDDING, this.createBidding());
 				this.jFrameMain.showMain(this);
 				Utilities.showMessageInfo("Si! :D", "Bien");
+
+				this.jFrameMain.repaint();
+
+				this.jFrameMain.getrepaint();
+				
 			}
 			break;
 		case LIST_CONNECT:
@@ -248,7 +251,7 @@ public class UserController implements ActionListener, MouseListener {
 				 != null  && jFrameMain.getjPanelMainAddProduct().getDateI() != null && 
 				 jFrameMain.getjPanelMainAddProduct().getDateF() != null) {
 				ArrayList<String> list = new ArrayList<>();
-				list.add("/images/iphone.png");
+				list.add(fileImage.getPath());
 			 Product p = new Product(jFrameMain.getjPanelMainAddProduct().getJTextName(),
 					 jFrameMain.getjPanelMainAddProduct().getDescription(), list);
 			 System.out.println(p.toString());
@@ -293,29 +296,7 @@ public class UserController implements ActionListener, MouseListener {
 		jFrameMain.getjPanelMainProduct().sendComment(menssge);
 	}
 	
-	/**
-	 * Selecciona una img
-	 * 
-	 * @throws DOMException
-	 *             e
-	 * @throws TransformerFactoryConfigurationError
-	 *             e
-	 * @throws ParserConfigurationException
-	 *             e
-	 * @throws TransformerException
-	 *             e
-	 */
-	private void selectImagge() throws DOMException, TransformerFactoryConfigurationError, ParserConfigurationException,
-			TransformerException {
-		JFileChooser ventanaG = new JFileChooser();
-		ventanaG.showSaveDialog(null);
-		if (ventanaG.getSelectedFile() != null) {
-			// se debe guardar la imagen
-		}
 
-	}
-
-	///////////////////////////////// 7
 
 	public String getLanguageDefault() {
 		languageDefault = Locale.getDefault().getLanguage();
