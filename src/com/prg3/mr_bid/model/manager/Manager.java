@@ -10,6 +10,7 @@ import com.prg3.mr_bid.model.entity.TypeDocument;
 import com.prg3.mr_bid.model.entity.TypeProduct;
 import com.prg3.mr_bid.model.entity.User;
 import com.prg3.mr_bid.utilities.Constants;
+import com.prg3.mr_bid.utilities.Utilities;
 
 /**
  * Clase Manager - Maneja los datos del usuario - cliente
@@ -66,11 +67,19 @@ public class Manager {
 	public Bidding addBidding(String biddingName, TypeProduct typeProduct, Product product, BidTime publicationTime,
 			BidTime initTime, BidTime finishTime, boolean isAutomaticIncremet, boolean isPublic) {
 		if (user != null) {
-			Bidding bidding = new Bidding(biddingName, typeProduct, product, publicationTime, initTime,
-					finishTime, isAutomaticIncremet, isPublic, user);
-			user.getMyBiddings().add(bidding);
-			System.out.println("Maneger: " + bidding.toString());
-			return bidding;
+			if (Utilities.isAfterOfToDay(initTime) && Utilities.isAfterOfToDay(finishTime)) {
+				Bidding bidding = new Bidding(biddingName, typeProduct, product, publicationTime, initTime,
+						finishTime, isAutomaticIncremet, isPublic, user.getEmail());
+				user.getMyBiddings().add(bidding);
+				System.out.println("Maneger: " + bidding.toString());
+				return bidding;
+			} else {
+				Utilities.showMessageError("Las fechas de inicio y fin deben ser mayores a hoy\n"
+						+ "Las hora también", "Fechas no validas");
+			}
+		} else {
+			Utilities.showMessageWarning("Por favor cargue su cuenta para poder realizar\n"
+					+ "Subasta", "Acción no valida");
 		}
 		return null;
 	}

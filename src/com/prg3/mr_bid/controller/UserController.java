@@ -65,8 +65,6 @@ public class UserController implements ActionListener, MouseListener {
 		manager = new Manager();
 		getLanguageDefault();
 		loadConfiguration();
-//		Utilities.fillBiddings();
-		// myCaptcha.create();
 		this.jFrameMain = new JFrameMain(this);
 		this.jDialogListUsers = new JDialogListUsers(this);
 		this.jDialogAddUser = new JDialogAddUser(this);
@@ -76,7 +74,6 @@ public class UserController implements ActionListener, MouseListener {
 
 		addProduct();
 		sendComment();
-
 	}
 
 	/**
@@ -91,14 +88,12 @@ public class UserController implements ActionListener, MouseListener {
 			jFrameMain.showLogin();
 			break;
 		case SHOW_HOME:
-			this.updateBiddings();
 			jFrameMain.showHome();
 			break;
 		case SHOW_REGISTER_USER:
 			jDialogAddUser.setVisible(true);
 			break;
 		case ACTION_SINGIN:
-
 			if (jDialogAddUser.isVisible() && this.createUser() != null) {
 				this.sendData(Commands.SIGNIN, this.createUser());
 				jDialogAddUser.setVisible(false);
@@ -129,7 +124,6 @@ public class UserController implements ActionListener, MouseListener {
 			} else {
 				Utilities.showMessageError("El id de la tarjeta es nulo", "Error");
 			}
-
 			break;
 		case SHOW_HISTORY:
 			jFrameMain.showMyHistory();
@@ -139,11 +133,9 @@ public class UserController implements ActionListener, MouseListener {
 				selectImagge();
 			} catch (DOMException | TransformerFactoryConfigurationError | ParserConfigurationException
 					| TransformerException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			break;
-
 		case ACTION_LOGIN:
 			this.sendDataLogin();
 			jFrameMain.showMyCount();
@@ -162,10 +154,7 @@ public class UserController implements ActionListener, MouseListener {
 				this.sendData(Commands.UPBIDDING, this.createBidding());
 				this.jFrameMain.showMain(this);
 				Utilities.showMessageInfo("Si! :D", "Bien");
-			} else {
-				Utilities.showMessageWarning("Error al enviar la subasta", "Datos incompletos!");
 			}
-			
 			break;
 		case LIST_CONNECT:
 			jDialogListUsers.setVisible(true);
@@ -187,7 +176,6 @@ public class UserController implements ActionListener, MouseListener {
 		case C_SPANISH:
 			manageChangeLanguageES();
 			System.out.println("ESPAÑOL");
-
 		default:
 			break;
 		}
@@ -271,13 +259,13 @@ public class UserController implements ActionListener, MouseListener {
 					 new BidTime(new BidDate(jFrameMain.getjPanelMainAddProduct().getDateI()), 
 							 jFrameMain.getjPanelMainAddProduct().hourI()),
 					 new BidTime(new BidDate(jFrameMain.getjPanelMainAddProduct().getDateF()), 
-							 jFrameMain.getjPanelMainAddProduct().hourF()), true, true);
+							 jFrameMain.getjPanelMainAddProduct().hourF()),
+					 jFrameMain.getjPanelMainAddProduct().isAutomatic(), jFrameMain.getjPanelMainAddProduct().isPublic());
 		 } else {
 			 Utilities.showMessageWarning("Por favor, llene todos los campos para\n"
-			 		+ "poder realizar la subasta", "Campos no llenados");
+			 		+ "poder realizar la subasta", "Campos vacios!");
 			 return null;
 		 }
-		
 	 }
 
 	/**
@@ -303,15 +291,8 @@ public class UserController implements ActionListener, MouseListener {
 		menssge.add("hola3");
 		menssge.add("hola4");
 		jFrameMain.getjPanelMainProduct().sendComment(menssge);
-
 	}
-
-	public void updateBiddings() {
-		this.jFrameMain.getjPanelMain().addCard(Constants.biddingsList.get(Constants.biddingsList.size()-1), this);
-		this.jFrameMain.getjPanelMain().repaint();
-		this.jFrameMain.repaint();
-	}
-
+	
 	/**
 	 * Selecciona una img
 	 * 
