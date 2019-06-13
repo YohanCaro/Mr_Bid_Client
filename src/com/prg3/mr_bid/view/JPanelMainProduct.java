@@ -21,6 +21,7 @@ import javax.swing.JTextField;
 
 import com.prg3.mr_bid.controller.ControlCommands;
 import com.prg3.mr_bid.controller.UserController;
+import com.prg3.mr_bid.model.entity.BidState;
 import com.prg3.mr_bid.model.entity.Bidding;
 import com.prg3.mr_bid.model.entity.ConstantsBid;
 import com.prg3.mr_bid.utilities.HandlerLanguage;
@@ -210,7 +211,7 @@ public class JPanelMainProduct extends JPanel {
 		jLabelCurrenntValue.setBackground(Color.BLUE);
 		jPanelCard2.add(jLabelCurrenntValue);
 
-		valueActually = new JTextField();
+		valueActually = new JTextField(bidding.getValue());
 		valueActually.setBounds(20, 40, 320, 25);
 		valueActually.setBackground(new java.awt.Color(224, 224, 224));
 		valueActually.setFont(new java.awt.Font("Andale Mono", 1, 14));
@@ -224,7 +225,7 @@ public class JPanelMainProduct extends JPanel {
 		jLabelVauleBid.setBackground(new Color(0, 0, 0, 94));
 		jPanelCard2.add(jLabelVauleBid);
 
-		valuePuja = new JTextField();
+		valuePuja = new JTextField(bidding.getIncrement());
 		valuePuja.setBounds(20, 115, 320, 25);
 		valuePuja.setBackground(new java.awt.Color(224, 224, 224));
 		valuePuja.setFont(new java.awt.Font("Andale Mono", 1, 14));
@@ -235,6 +236,10 @@ public class JPanelMainProduct extends JPanel {
 		jButton.setBounds(20, 150, 320, 50);
 		jButton.setActionCommand(ControlCommands.SEND_BID.name());
 		jButton.addActionListener(userController);
+		jButton.setEnabled(false);
+		if (Utilities.getState(bidding).equals(BidState.INICIADA)) {
+			jButton.setEnabled(true);
+		}
 		jPanelCard2.add(jButton);
 
 		this.jPanelCardnorth2 = new JPanel();

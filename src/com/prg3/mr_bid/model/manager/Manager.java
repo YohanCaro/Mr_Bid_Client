@@ -69,7 +69,7 @@ public class Manager {
 		if (user != null) {
 			if (Utilities.isAfterOfToDay(initTime) && Utilities.isAfterOfToDay(finishTime)) {
 				Bidding bidding = new Bidding(biddingName, typeProduct, product, publicationTime, initTime,
-						finishTime, isAutomaticIncremet, isPublic, user.getEmail());
+						finishTime, isAutomaticIncremet, isPublic, user.getEmail(), 1000, 0);
 				user.getMyBiddings().add(bidding);
 				System.out.println("Maneger: " + bidding.toString());
 				return bidding;
@@ -133,5 +133,9 @@ public class Manager {
 	public void setUser(User user) {
 		this.user = user;
 	}
+	
+	/*
+	 * Estaba haciendo lo del incremento!
+	 */
 	
 }

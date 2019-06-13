@@ -18,6 +18,8 @@ public class Bidding {
 	private boolean isAutomaticIncremet;
 	private boolean isPublic;
 	private String owner;
+	private int value;
+	private int increment;
 	
 	/**
 	 * Contruye una subasta con los siguientes datos
@@ -30,8 +32,8 @@ public class Bidding {
 	 * @param isAutomaticIncremet define el tipo de incremento
 	 * @param isPublic define si es publica
 	 */
-	public Bidding(String biddingName, TypeProduct typeProduct, Product product, BidTime publicationTime,
-			BidTime initTime, BidTime finishTime, boolean isAutomaticIncremet, boolean isPublic, String user) {
+	public Bidding(String biddingName, TypeProduct typeProduct, Product product, BidTime publicationTime, BidTime initTime,
+			BidTime finishTime, boolean isAutomaticIncremet, boolean isPublic, String user, int value, int increment) {
 		this.biddingName = biddingName;
 		this.typeProduct = typeProduct;
 		this.product = product;
@@ -41,6 +43,8 @@ public class Bidding {
 		this.isAutomaticIncremet = isAutomaticIncremet;
 		this.isPublic = isPublic;
 		this.owner = user;
+		this.value = value;
+		this.increment = increment;
 	}
 	
 	public long getId() {
@@ -133,6 +137,38 @@ public class Bidding {
 	 */
 	public String getOwner() {
 		return owner;
+	}
+	
+	/**
+	 * Obtiene 
+	 * @return value
+	 */
+	public int getValue() {
+		return value;
+	}
+	
+	/**
+	 * Cambia 
+	 * @param value the value to set
+	 */
+	public void setValue(int value) {
+		this.value = value;
+	}
+	
+	/**
+	 * Obtiene 
+	 * @return increment
+	 */
+	public int getIncrement() {
+		return increment;
+	}
+	
+	/**
+	 * Cambia 
+	 * @param increment the increment to set
+	 */
+	public void setIncrement(int increment) {
+		this.increment = increment;
 	}
 	
 	@Override
