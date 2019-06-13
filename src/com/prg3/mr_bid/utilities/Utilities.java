@@ -85,12 +85,11 @@ public class Utilities {
 	 * @param hours
 	 * @return
 	 */
-	public static float hoursToSeconds(int hours) {
+	public static float hoursToSeconds(float hours) {
 		return hours*3600;
 	}
 	
 	public static BidState getState(Bidding bidding) {
-		System.out.println("B: " + bidding.getBiddingName());
 		if (isAfterOfToDay(bidding.getInitTime())) {
 			return BidState.INICIADA;
 		} 
@@ -98,6 +97,48 @@ public class Utilities {
 			return BidState.FINALIZADA;
 		} 
 		return BidState.NO_INICIADA;
+	}
+	
+	public static String getTimeRemaining(Bidding bidding) {
+		if (isAfterOfToDay(bidding.getInitTime())) {
+			System.out.println("1");
+			return convertTime(bidding.getInitTime());
+		} else if (isAfterOfToDay(bidding.getFinishTime())) {
+			System.out.println("2");
+			return convertTime(bidding.getFinishTime());
+		} else {
+			return "0";
+		}
+	}
+	
+	public static String convertTime(BidTime bt) {
+		float time = hoursToSeconds(bt.getTime());
+		System.out.println("T: " + time);
+		String out = "";
+		if (time < 60) {
+			out = time + " s";
+		} else if (time < 3600) {
+			out = minutes(time) + " min";
+		} else if (time < 86400) {
+			out = (int)(time/3600) + " h " + minutes(time) + " min";
+		} else {
+			out = (int)(time/86400) + " d " + hours(time) + " h " + minutes(time) + " min";
+		}
+		
+		return out;
+	}
+	
+	public static int minutes(float s) {
+		float i = (s/60);
+		int h = ((int) (s/3600)*60);
+		return (int)(i - h);
+	}
+	
+	public static int hours(float s) {
+		float h = (s/3600);
+		int d = ((int) (s/86400)*24);
+		System.out.println(h + " " + d);
+		return (int)(h - d);
 	}
 
 }

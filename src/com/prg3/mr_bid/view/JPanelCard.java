@@ -21,6 +21,7 @@ import com.prg3.mr_bid.model.entity.ConstantsBid;
 import com.prg3.mr_bid.utilities.HandlerLanguage;
 import com.prg3.mr_bid.utilities.Utilities;
 
+
 public class JPanelCard extends JPanel {
 
 	private JPanel jPanelNorth, jPanelSouth, jPanelWest, jPanelEast, jPanelCenter, jPanelCenterEast, jPanelCenterWest,
@@ -50,7 +51,6 @@ public class JPanelCard extends JPanel {
 		informacion(name, type, staut, time,controller);
 		character();
 		sizePanel();
-		JpanelImageProduct(url);
 		init();
 		changeLanguage();
 	}
@@ -71,7 +71,7 @@ public class JPanelCard extends JPanel {
 		changeData(bid, controller);
 		character();
 		sizePanel();
-		JpanelImageProduct(bid.getProduct().getImages().get(0));
+		myJButton(bid.getProduct().getImages().get(0), bid.getId());
 		init();
 		this.repaint();
 
@@ -92,12 +92,17 @@ public class JPanelCard extends JPanel {
 
 	}
 
-	private void JpanelImageProduct(String url) {
-		imageIcon = new ImageIcon(getClass().getResource(url));
-		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(250, 250, Image.SCALE_AREA_AVERAGING));
-		jLabel.setIcon(icon);
-		jpanelImageProduct.setOpaque(false);
-		jpanelImageProduct.add(jLabel);
+	private JButton myJButton(String url,long  id) {
+		jButton = new JButton(String.valueOf(id));
+		 
+		jButton.setBounds(0, 0, 200, 200);
+		jButton.setBackground(new Color(2, 41, 48));
+		jButton.setForeground(new Color(255, 255, 255));// blanco
+		imageIcon = new ImageIcon(url);
+		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(50, 50,Image.SCALE_AREA_AVERAGING));
+		jButton.setIcon(icon);
+		this.add(jButton);
+		return jButton;
 	}
 
 	private void sizePanel() {
