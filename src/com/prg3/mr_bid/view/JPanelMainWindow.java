@@ -111,25 +111,6 @@ public class JPanelMainWindow extends JPanel {
 		
 		this.addAllCards(control);
 		
-//		jPanelEspacio.add(addNewProduct(this.getNames(), "Publico", "No inicida",
-//				 "7;80", "/images/lg.jpg"));
-//		 jPanelEspacio.add(new JPanelCard("Computador LG", "Publico", "No inicida",
-//		 "7;80", "/images/lg.jpg", control));
-//		 jPanelEspacio.add(new JPanelCard("Iphone X", "Publico", " Inicida", "8;80",
-//		 "/images/iphone.png",control));
-//		 jPanelEspacio.add(new JPanelCard("Computador LG", "Publico", "No inicida",
-//		 "7;80", "/images/lg.jpg",control));
-//		 jPanelEspacio.add(new JPanelCard("Iphone X", "Publico", " Inicida", "8;80",
-//		 "/images/iphone.png",control));
-//		 jPanelEspacio.add(new JPanelCard("Computador LG", "Publico", "No inicida",
-//		 "7;80", "/images/lg.jpg"));
-//		 jPanelEspacio.add(new JPanelCard("Iphone X", "Publico", " Inicida", "8;80",
-//		 "/images/iphone.png"));
-//		 jPanelEspacio.add(new JPanelCard("Computador LG", "Publico", "No inicida",
-//		 "7;80", "/images/lg.jpg"));
-//		 jPanelEspacio.add(new JPanelCard("Iphone X", "Publico", " Inicida", "8;80",
-//		 "/images/iphone.png"));
-
 		this.add(jPanelSouth, BorderLayout.SOUTH);
 		this.add(jPanelWest, BorderLayout.WEST);
 		this.add(jPanelEast, BorderLayout.EAST);

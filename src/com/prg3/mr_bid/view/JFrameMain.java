@@ -50,7 +50,6 @@ public class JFrameMain extends JFrame {
 		jScrollPane.setViewportView(jPanelMain);
 		this.add(jScrollPane, BorderLayout.CENTER);
 		this.add(jPanelOptionMenu, BorderLayout.NORTH);
-		Utilities.fillBiddings();
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -61,6 +60,13 @@ public class JFrameMain extends JFrame {
 		jPanelMain.add(jMainPanelHome, BorderLayout.CENTER);
 		repaint();
 		revalidate();
+	}
+	
+	public void showMain(UserController controller) {
+		this.jPanelMain = new JPanelMainWindow(controller);
+		jScrollPane.setViewportView(jPanelMain);
+		jScrollPane.repaint();
+		this.repaint();
 	}
 
 	public void showLogin() {

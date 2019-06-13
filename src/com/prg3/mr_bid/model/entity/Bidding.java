@@ -8,7 +8,6 @@ package com.prg3.mr_bid.model.entity;
  */
 public class Bidding {
 	
-	private User owner;
 	private long id;
 	private String biddingName;
 	private TypeProduct typeProduct;
@@ -18,6 +17,7 @@ public class Bidding {
 	private BidTime finishTime;
 	private boolean isAutomaticIncremet;
 	private boolean isPublic;
+	private transient User owner;
 	
 	/**
 	 * Contruye una subasta con los siguientes datos
@@ -31,7 +31,7 @@ public class Bidding {
 	 * @param isPublic define si es publica
 	 */
 	public Bidding(String biddingName, TypeProduct typeProduct, Product product, BidTime publicationTime,
-			BidTime initTime, BidTime finishTime, boolean isAutomaticIncremet, boolean isPublic) {
+			BidTime initTime, BidTime finishTime, boolean isAutomaticIncremet, boolean isPublic, User user) {
 		this.biddingName = biddingName;
 		this.typeProduct = typeProduct;
 		this.product = product;
@@ -40,6 +40,7 @@ public class Bidding {
 		this.finishTime = finishTime;
 		this.isAutomaticIncremet = isAutomaticIncremet;
 		this.isPublic = isPublic;
+		this.owner = user;
 	}
 	
 	public long getId() {

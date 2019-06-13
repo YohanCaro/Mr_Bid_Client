@@ -91,8 +91,8 @@ public class JPanelMainAddProduct extends JPanel {
 		JButton jButton = new JButton("Agregar imagen");
 		jButton.setActionCommand(ControlCommands.ADD_PHOTO.name());
 		jButton.addActionListener(control);
-		JTextArea jTextArea = new JTextArea();
-		jTextArea.setBounds(600, 60, 500, 200);
+		descriptionJTextArea = new JTextArea();
+		descriptionJTextArea.setBounds(600, 60, 500, 200);
 		jButton.setBounds(200, 180, 200, 30);
 		jPanelCard1.setLayout(null);
 		jPanelCard1.setBackground(Color.LIGHT_GRAY);
@@ -119,7 +119,7 @@ public class JPanelMainAddProduct extends JPanel {
 		typeJComboBox.setBounds(200, 120, 200, 30);
 		jPanelCard1.add(typeJComboBox);
 		jPanelCard1.add(jButton);
-		jPanelCard1.add(jTextArea);
+		jPanelCard1.add(descriptionJTextArea);
 
 	}
 
@@ -183,7 +183,7 @@ public class JPanelMainAddProduct extends JPanel {
 		jPanelCard3.add(createLabel("VALOR MINIMO ACEPTADO", 20, 60, 200, 30));
 		jPanelCard3.add(createLabel("TIPO DE INCEMENTO ", 20, 120, 200, 30));
 		jPanelCard3.add(createLabel("TIPO DE SUBASTA", 20, 180, 200, 30));
-		jTextFieldTy = createTextField("TIPO DE INCREMENTO ", 200, 120, 200, 30);
+		jTextFieldTy = createTextField2("TIPO DE INCREMENTO ", 200, 120, 200, 30);
 		jPanelCard3.add(jTextFieldTy);
 
 		jRadioButton = new JRadioButton("FEMALE");
@@ -262,6 +262,15 @@ public class JPanelMainAddProduct extends JPanel {
 		jTextFieldName.setBackground(new Color(244, 244, 244));
 		add(jTextFieldName);
 		return jTextFieldName;
+
+	}
+	
+	public JTextField createTextField2(String name, int x, int y, int sisex, int sizey) {
+		jTextFieldTy = new JTextField(name);
+		jTextFieldTy.setBounds(x, y, sisex, sizey);
+		jTextFieldTy.setBackground(new Color(244, 244, 244));
+		add(jTextFieldTy);
+		return jTextFieldTy;
 
 	}
 	

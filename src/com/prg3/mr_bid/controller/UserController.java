@@ -56,14 +56,16 @@ public class UserController implements ActionListener, MouseListener {
 	private HandlerLanguage config = null;
 	private String languageDefault;
 	private MyCaptcha myCaptcha;
+	private Manager manager;
 
 	/**
 	 * Construtor que inicia la app
 	 */
 	private UserController() {
+		manager = new Manager();
 		getLanguageDefault();
 		loadConfiguration();
-		Utilities.fillBiddings();
+//		Utilities.fillBiddings();
 		// myCaptcha.create();
 		this.jFrameMain = new JFrameMain(this);
 		this.jDialogListUsers = new JDialogListUsers(this);
@@ -113,14 +115,15 @@ public class UserController implements ActionListener, MouseListener {
 			jFrameMain.showMyCount();
 			break;
 		case SHOW_ADDPRODUCT:
+			this.changeDataAcc();
 			jFrameMain.showPanelAddProduct();
 			break;
 		case SHOW_PRODUCT:
-			if (Manager.getInstanceOf().searchBiddingForID(Long.parseLong(com[1])) != null) {
+			if (manager.searchBiddingForID(Long.parseLong(com[1])) != null) {
 				JPanelMainProduct jPanelMainProduct = new JPanelMainProduct();
 				jFrameMain.setjPanelMainProduct(jPanelMainProduct);
 				jFrameMain.getjPanelMainProduct()
-						.setBidding(Manager.getInstanceOf().searchBiddingForID(Long.parseLong(com[1])));
+						.setBidding(manager.searchBiddingForID(Long.parseLong(com[1])));
 				jFrameMain.getjPanelMainProduct().start(this);
 				jFrameMain.showPanelCardProduct();
 			} else {
@@ -149,13 +152,20 @@ public class UserController implements ActionListener, MouseListener {
 			jFrameMain.showMyCount();
 			break;
 		case ACTION_BIDDING:
-			try {
-				Client.getInstanceOf().sendNewBidding(null); //metodo de vista que retorne un objeto bidding con los datos recolectados
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+//			try {
+//				Client.getInstanceOf().sendNewBidding(null); //metodo de vista que retorne un objeto bidding con los datos recolectados
+//			} catch (IOException e1) {
+//				// TODO Auto-generated catch block
+//				e1.printStackTrace();
+//			}
+			if (this.createBidding() != null) {
+				this.sendData(Commands.UPBIDDING, this.createBidding());
+				this.jFrameMain.showMain(this);
+				Utilities.showMessageInfo("Si! :D", "Bien");
+			} else {
+				Utilities.showMessageWarning("Error al enviar la subasta", "Datos incompletos!");
 			}
-			Utilities.showMessageInfo("Si! :D", "Bien");
+			
 			break;
 		case LIST_CONNECT:
 			jDialogListUsers.setVisible(true);
@@ -224,7 +234,7 @@ public class UserController implements ActionListener, MouseListener {
 	 * @return user usuario
 	 */
 	private User createUser() {
-		return Manager.getInstanceOf().createUser(jDialogAddUser.getjPanelForm().getFirstName(),
+		return manager.createUser(jDialogAddUser.getjPanelForm().getFirstName(),
 				jDialogAddUser.getjPanelForm().getLastName(), jDialogAddUser.getjPanelForm().getEmail(),
 				jDialogAddUser.getjPanelForm().getPassword(), jDialogAddUser.getjPanelForm().getBirthDate(),
 				jDialogAddUser.getjPanelForm().getDocument(), jDialogAddUser.getjPanelForm().getTypeDocument(),
@@ -233,7 +243,7 @@ public class UserController implements ActionListener, MouseListener {
 	
 	public void changeDataAcc() {
 		try {
-			Manager.getInstanceOf().setUser(Client.getInstanceOf().getUser());
+			manager.setUser(Client.getInstanceOf().getUser());
 			this.jFrameMain.getjPanelMainWindowCuenta().changeData(Client.getInstanceOf().getUser());
 			this.jFrameMain.getjPanelMainWindowCuenta().repaint();
 			this.jFrameMain.repaint();
@@ -253,7 +263,8 @@ public class UserController implements ActionListener, MouseListener {
 				list.add("/images/iphone.png");
 			 Product p = new Product(jFrameMain.getjPanelMainAddProduct().getJTextName(),
 					 jFrameMain.getjPanelMainAddProduct().getDescription(), list);
-			 return Manager.getInstanceOf().addBidding(jFrameMain.getjPanelMainAddProduct().getJTextName(),
+			 System.out.println(p.toString());
+			 return manager.addBidding(jFrameMain.getjPanelMainAddProduct().getJTextName(),
 					 jFrameMain.getjPanelMainAddProduct().getTypeProduct(), p,
 					 new BidTime(new BidDate(jFrameMain.getjPanelMainAddProduct().getDateP()), 
 							 jFrameMain.getjPanelMainAddProduct().hourP()),

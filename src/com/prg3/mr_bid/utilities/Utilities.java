@@ -61,18 +61,18 @@ public class Utilities {
 		return false;
 	}
 	
-	public static void fillBiddings() {
-		ArrayList<String> list = new ArrayList<>();
-		list.add("/images/iphone.png");
-		for (int i = 0; i < 5; i++) {
-			Constants.biddingsList.add(new Bidding("Car " + i, TypeProduct.VEHICLES,
-					new Product("Carrito", "Un carro comun y corriente jajajaja", list), 
-					new BidTime(new BidDate("5/10/2019"), (short) 10), 
-					new BidTime(new BidDate("5/10/2019"), (short) 10), 
-					new BidTime(new BidDate("5/10/2019"), (short) 10), 
-					true, true));
-			Constants.biddingsList.get(i).setId(i+10000);
-		}
-	}
+//	public static void fillBiddings() {
+//		ArrayList<String> list = new ArrayList<>();
+//		list.add("/images/iphone.png");
+//		for (int i = 0; i < 5; i++) {
+//			Constants.biddingsList.add(new Bidding("Car " + i, TypeProduct.VEHICLES,
+//					new Product("Carrito", "Un carro comun y corriente jajajaja", list), 
+//					new BidTime(new BidDate("5/10/2019"), (short) 10), 
+//					new BidTime(new BidDate("5/10/2019"), (short) 10), 
+//					new BidTime(new BidDate("5/10/2019"), (short) 10), 
+//					true, true));
+//			Constants.biddingsList.get(i).setId(i+10000);
+//		}
+//	}
 
 }

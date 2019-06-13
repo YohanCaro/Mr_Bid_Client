@@ -25,7 +25,7 @@ public class Manager {
 	/**
 	 * Constructor vacio
 	 */
-	private Manager() {
+	public Manager() {
 		
 	}
 	
@@ -67,8 +67,9 @@ public class Manager {
 			BidTime initTime, BidTime finishTime, boolean isAutomaticIncremet, boolean isPublic) {
 		if (user != null) {
 			Bidding bidding = new Bidding(biddingName, typeProduct, product, publicationTime, initTime,
-					finishTime, isAutomaticIncremet, isPublic);
+					finishTime, isAutomaticIncremet, isPublic, user);
 			user.getMyBiddings().add(bidding);
+			System.out.println("Maneger: " + bidding.toString());
 			return bidding;
 		}
 		return null;
@@ -101,12 +102,12 @@ public class Manager {
 	 * Instancia del manager
 	 * @return manager m
 	 */
-	public static Manager getInstanceOf() {
-		if (manager == null) {
-			manager = new Manager();
-		}
-		return manager;
-	}
+//	public static Manager getInstanceOf() {
+//		if (manager == null) {
+//			manager = new Manager();
+//		}
+//		return manager;
+//	}
 	
 	/**
 	 * Obtiene el usuario

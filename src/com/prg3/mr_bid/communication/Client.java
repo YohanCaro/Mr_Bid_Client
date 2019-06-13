@@ -122,9 +122,10 @@ public class Client extends Socket implements Runnable {
 				user = gson.fromJson(json, User.class);
 			}
 			break;
-		case UPDATE_BID:
+		case UPBIDDING:
 			Type listType = new TypeToken<List<Bidding>>(){}.getType();
 			Constants.biddingsList = gson.fromJson(json, listType);
+			System.out.println("L: "+ Constants.biddingsList.size());
 		default:
 			break;
 		}
