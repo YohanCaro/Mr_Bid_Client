@@ -153,7 +153,7 @@ public class UserController implements ActionListener, MouseListener {
 				ArrayList<String> paths = new ArrayList<>();
 				paths.add(fileImage.getPath());
 				try {
-					Client.getInstanceOf().sendImages(paths, bidding.getId());
+					Client.getInstanceOf().sendImages(paths, bidding.getId() +Constants.biddingsList.size());
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

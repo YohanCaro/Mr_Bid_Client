@@ -146,6 +146,8 @@ public class Client extends Socket implements Runnable {
 			break;
 		case GETIMG:
 			String datas[] = json.split(" ");
+			System.out.println("json: " + json);
+			System.out.println("Datas: " + datas[1]);
 			long id = Long.parseLong(datas[1]);
 			try {
 				ArrayList<String> paths = this.getImages(Integer.parseInt(datas[0]), (int) id);
