@@ -119,7 +119,7 @@ public class JPanelMainProduct extends JPanel {
 		jPanelCard.add(jLabelState);
 
 		name = new JTextField(Utilities.getState(bidding).toString());
-		System.out.println(bidding.toString());
+		System.out.println(bidding.getBiddingName());
 		name.setBounds(20, 40, 320, 25);
 		name.setBackground(new java.awt.Color(224, 224, 224));
 		name.setFont(new java.awt.Font("Andale Mono", 1, 14));
@@ -208,7 +208,7 @@ public class JPanelMainProduct extends JPanel {
 		jLabelVauleBid.setBackground(new Color(0, 0, 0, 94));
 		jPanelCard2.add(jLabelVauleBid);
 
-		valuePuja = new JTextField("VALUE");
+		valuePuja = new JTextField(bidding.getIncrement());
 		valuePuja.setBounds(20, 115, 320, 25);
 		valuePuja.setBackground(new java.awt.Color(224, 224, 224));
 		valuePuja.setFont(new java.awt.Font("Andale Mono", 1, 14));
@@ -249,9 +249,7 @@ public class JPanelMainProduct extends JPanel {
 		jPanelderCenter.setLayout(new BorderLayout());
 
 		jPanelCardnorth2.setPreferredSize(new Dimension(50, 50));
-		// jPanelCardnorth2.setBackground(new Color(0, 0, 0, 94));
 		jPanelCardSouth2.setPreferredSize(new Dimension(50, 500));
-		// jPanelCardSouth2.setBackground(new Color(0, 0, 0, 94));
 		jPanelCardWest2.setPreferredSize(new Dimension(50, 50));
 		jPanelCardEast2.setPreferredSize(new Dimension(50, 50));
 		jPanelCardWest3.setPreferredSize(new Dimension(50, 100));
@@ -279,8 +277,6 @@ public class JPanelMainProduct extends JPanel {
 		jPanelCardSouth2.add(jButtonListConnect, BorderLayout.SOUTH);
 		jPanelCardSouth2.add(jPanelCardWest3, BorderLayout.WEST);
 		jPanelCardSouth2.add(jPanelCardEast3, BorderLayout.EAST);
-
-		// jPanelderCenter.setBackground(new Color(0, 0, 0, 94));
 
 		jPanelderCenter.add(jPanelCard2, BorderLayout.CENTER);
 		jPanelderCenter.add(jPanelCardnorth2, BorderLayout.NORTH);
@@ -377,24 +373,19 @@ public class JPanelMainProduct extends JPanel {
 
 		jPanelDere.add(jPanelderNorth, BorderLayout.NORTH);
 		jPanelDere.add(jPanelderCenter, BorderLayout.CENTER);
-		//
+		
 		jPanelizq.setLayout(new BorderLayout());
 		jPanelizqSouth = new JPanel();
 		jPanelizqSouth.setPreferredSize(new Dimension(0, 500));
 		jPanelizq.add(jPanelizqImage, BorderLayout.NORTH);
-		// jPanelizqInfo.setBackground(Color.red);
-		// jPanelizqSouth.setBackground(Color.blue);
 		jPanelizqSouth.setLayout(new BorderLayout());
 		jPanelNorth4 = new JPanel();
 		jPanelNorth4.setPreferredSize(new Dimension(50, 50));
-		// jPanelNorth4.setBackground(new Color(0, 0, 0, 94));
 		jPanelCardCenterIzquie = new JPanel();
 		jPanelCardCenterIzquie.setPreferredSize(new Dimension(50, 50));
-		// jPanelCardCenterIzquie.setBackground(new Color(0, 0, 0, 94));
 
 		jPanelCardSouthIzquie = new JPanel();
 		jPanelCardSouthIzquie.setPreferredSize(new Dimension(50, 300));
-		// jPanelCardSouthIzquie.setBackground(new Color(0, 0, 0, 94));
 
 		jPanelizqSouth.add(jPanelNorth4, BorderLayout.NORTH);
 		jPanelizqSouth.add(cardPublicaciones, BorderLayout.CENTER);
@@ -403,13 +394,11 @@ public class JPanelMainProduct extends JPanel {
 		jPanelizq.add(jPanelizqInfo, BorderLayout.CENTER);
 		jPanelizq.add(jPanelizqSouth, BorderLayout.SOUTH);
 
-		//
 		jPanelCenter.setLayout(new BorderLayout());
 		jPanelCenter.setOpaque(false);
 		jPanelCenter.add(jPanelDere, BorderLayout.CENTER);
 		jPanelCenter.add(jPanelizq, BorderLayout.WEST);
 
-		// this.add(jPanelOptionMenu, BorderLayout.NORTH);
 		this.add(jPanelSouth, BorderLayout.SOUTH);
 		this.add(jPanelWest, BorderLayout.WEST);
 		this.add(jPanelEast, BorderLayout.EAST);
@@ -463,12 +452,12 @@ public class JPanelMainProduct extends JPanel {
 		this.bidding = bidding;
 	}
 	 public Double getValuePuja() {
-	 try {
-	 return Double.parseDouble(valuePuja.getText());
-	 } catch (NumberFormatException e) {
-	 Utilities.showMessageWarning("El valor de la puja debe ser numerico!", "Valorno valido");
-	 }
-	 return 0.0;
+		 try {
+			 return Double.parseDouble(valuePuja.getText());
+		 } catch (NumberFormatException e) {
+			 Utilities.showMessageWarning("El valor de la puja debe ser numerico!", "Valorno valido");
+		 }
+		 return 0.0;
 	 }
 
 	public Double getValueActually() {

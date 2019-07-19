@@ -138,10 +138,12 @@ public class Client extends Socket implements Runnable {
 		case UPBIDDING:
 			Type listType = new TypeToken<List<Bidding>>(){}.getType();
 			Constants.biddingsList = gson.fromJson(json, listType);
-			System.out.println("Tamaño de subastas: "+ Constants.biddingsList.size());
 		case UPDATE_BID:
 			Type listType2 = new TypeToken<List<Bidding>>(){}.getType();
-			Constants.biddingsList = gson.fromJson(json, listType2);
+			try {
+				Constants.biddingsList = gson.fromJson(json, listType2);
+			} catch (IllegalStateException e) {
+			}
 			break;
 		case GETIMG:
 			String datas[] = json.split(" ");

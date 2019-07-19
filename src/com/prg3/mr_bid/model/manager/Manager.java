@@ -71,7 +71,6 @@ public class Manager {
 				Bidding bidding = new Bidding(biddingName, typeProduct, product, publicationTime, initTime,
 						finishTime, isAutomaticIncremet, isPublic, user.getEmail(), 1000, 0);
 				user.getMyBiddings().add(bidding);
-				System.out.println("Maneger: " + bidding.toString());
 				return bidding;
 			} else {
 				Utilities.showMessageError("Las fechas de inicio y fin deben ser mayores a hoy\n"
@@ -106,18 +105,7 @@ public class Manager {
 		}
 		return null;
 	}
-	
-	/**
-	 * Instancia del manager
-	 * @return manager m
-	 */
-//	public static Manager getInstanceOf() {
-//		if (manager == null) {
-//			manager = new Manager();
-//		}
-//		return manager;
-//	}
-	
+		
 	/**
 	 * Obtiene el usuario
 	 * @return user

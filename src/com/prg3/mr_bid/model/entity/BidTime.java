@@ -54,7 +54,6 @@ public class BidTime {
 	 * @return t h
 	 */
 	public float getActualHour() {
-		System.out.println("F: " + ((float)calendar.get(calendar.MINUTE)/60));
 		return this.hours - calendar.get(calendar.HOUR_OF_DAY) - ((float)calendar.get(calendar.MINUTE)/60);
 	}
 	

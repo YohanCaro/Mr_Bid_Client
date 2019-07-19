@@ -10,13 +10,6 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Locale;
 
-import javax.swing.JFileChooser;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactoryConfigurationError;
-
-import org.w3c.dom.DOMException;
-
 import com.prg3.mr_bid.communication.Client;
 import com.prg3.mr_bid.communication.Commands;
 import com.prg3.mr_bid.model.entity.BidDate;
@@ -284,6 +277,12 @@ public class UserController implements ActionListener, MouseListener {
 		}
 		return controller;
 	}
+	
+//	public void updateBid() {
+//		int id = 0;
+//		int value = 0;
+//		this.sendData(Com, data);
+//	}
 
 	/**
 	 * Metodo para manda y recibe un array de string al panel de comentarios
