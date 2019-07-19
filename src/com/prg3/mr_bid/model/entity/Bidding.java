@@ -57,7 +57,7 @@ public class Bidding {
 	 * @param isPublic define si es publica
 	 * Dueño de la subasta
 	 */
-	public Bidding(long id,String biddingName, TypeProduct typeProduct, Product product, BidTime publicationTime,
+	public Bidding(String biddingName, TypeProduct typeProduct, Product product, BidTime publicationTime,
 			BidTime initTime, BidTime finishTime, boolean isAutomaticIncremet, boolean isPublic, String emailUser) {
 		this.id = id;
 		this.biddingName = biddingName;
