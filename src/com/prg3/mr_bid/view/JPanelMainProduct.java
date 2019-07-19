@@ -208,7 +208,8 @@ public class JPanelMainProduct extends JPanel {
 		jLabelVauleBid.setBackground(new Color(0, 0, 0, 94));
 		jPanelCard2.add(jLabelVauleBid);
 
-		valuePuja = new JTextField(bidding.getIncrement());
+//		valuePuja = new JTextField(bidding.getIncrement());
+		valuePuja = new JTextField("0");
 		valuePuja.setBounds(20, 115, 320, 25);
 		valuePuja.setBackground(new java.awt.Color(224, 224, 224));
 		valuePuja.setFont(new java.awt.Font("Andale Mono", 1, 14));

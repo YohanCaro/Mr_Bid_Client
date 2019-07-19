@@ -19,7 +19,6 @@ public class Bidding {
 	private boolean isPublic;
 	private String owner;
 	private int value;
-	private int increment;
 	
 	/**
 	 * Contruye una subasta con los siguientes datos
@@ -32,8 +31,9 @@ public class Bidding {
 	 * @param isAutomaticIncremet define el tipo de incremento
 	 * @param isPublic define si es publica
 	 */
-	public Bidding(String biddingName, TypeProduct typeProduct, Product product, BidTime publicationTime, BidTime initTime,
-			BidTime finishTime, boolean isAutomaticIncremet, boolean isPublic, String user, int value, int increment) {
+	public Bidding(long id,String biddingName, TypeProduct typeProduct, Product product, BidTime publicationTime,
+			BidTime initTime, BidTime finishTime, boolean isAutomaticIncremet, boolean isPublic, int value) {
+		this.id = id;
 		this.biddingName = biddingName;
 		this.typeProduct = typeProduct;
 		this.product = product;
@@ -42,21 +42,33 @@ public class Bidding {
 		this.finishTime = finishTime;
 		this.isAutomaticIncremet = isAutomaticIncremet;
 		this.isPublic = isPublic;
-		this.owner = user;
 		this.value = value;
-		this.increment = increment;
-	}
-	
-	public long getId() {
-		return id;
 	}
 	
 	/**
-	 * Cambia 
-	 * @param id the id to set
+	 * Contruye una subasta con los siguientes datos
+	 * @param biddingName nombre de la subasta
+	 * @param typeProduct tipo de susbasta 
+	 * @param product producto
+	 * @param publicationTime tiempo de publicación
+	 * @param initTime tiempo de inicio
+	 * @param finishTime teiempo de finalizado
+	 * @param isAutomaticIncremet define el tipo de incremento
+	 * @param isPublic define si es publica
+	 * Dueño de la subasta
 	 */
-	public void setId(long id) {
+	public Bidding(long id,String biddingName, TypeProduct typeProduct, Product product, BidTime publicationTime,
+			BidTime initTime, BidTime finishTime, boolean isAutomaticIncremet, boolean isPublic, String emailUser) {
 		this.id = id;
+		this.biddingName = biddingName;
+		this.typeProduct = typeProduct;
+		this.product = product;
+		this.publicationTime = publicationTime;
+		this.initTime = initTime;
+		this.finishTime = finishTime;
+		this.isAutomaticIncremet = isAutomaticIncremet;
+		this.isPublic = isPublic;
+		this.owner = emailUser;
 	}
 	
 	/**
@@ -116,6 +128,22 @@ public class Bidding {
 	}
 	
 	/**
+	 * Obtiene 
+	 * @return value
+	 */
+	public int getValue() {
+		return value;
+	}
+	
+	/**
+	 * Cambia 
+	 * @param value the value to set
+	 */
+	public void setValue(int value) {
+		this.value = value;
+	}
+	
+	/**
 	 * Verifica si la susbasta es automatica
 	 * @return isAutomaticIncremet ia
 	 */
@@ -139,38 +167,17 @@ public class Bidding {
 		return owner;
 	}
 	
-	/**
-	 * Obtiene 
-	 * @return value
-	 */
-	public int getValue() {
-		return value;
+	public long getId() {
+		return id;
 	}
-	
 	/**
 	 * Cambia 
-	 * @param value the value to set
+	 * @param id the id to set
 	 */
-	public void setValue(int value) {
-		this.value = value;
+	public void setId(long id) {
+		this.id = id;
 	}
-	
-	/**
-	 * Obtiene 
-	 * @return increment
-	 */
-	public int getIncrement() {
-		return increment;
-	}
-	
-	/**
-	 * Cambia 
-	 * @param increment the increment to set
-	 */
-	public void setIncrement(int increment) {
-		this.increment = increment;
-	}
-	
+
 	@Override
 	/**
 	 * Convierte la subasta en un cadena

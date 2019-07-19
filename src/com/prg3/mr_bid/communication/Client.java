@@ -103,9 +103,11 @@ public class Client extends Socket implements Runnable {
 	}
 	
 	public ArrayList<String> getImages(int numImgs, long id) throws IOException {
+		System.out.println("Id: " + id);
 		ArrayList<String> paths = new ArrayList<>();
 		BufferedImage bufferedImage;
 		for (int i = 1; i <= numImgs; i++) {
+			System.out.println("...");
 			bufferedImage = ImageIO.read(this.getInputStream());
 			String imagePath = "data/biddingImages/bidding"+id+"_"+i+".png";
 			ImageIO.write(bufferedImage, "png", new FileOutputStream(imagePath));
@@ -140,10 +142,7 @@ public class Client extends Socket implements Runnable {
 			Constants.biddingsList = gson.fromJson(json, listType);
 		case UPDATE_BID:
 			Type listType2 = new TypeToken<List<Bidding>>(){}.getType();
-			try {
-				Constants.biddingsList = gson.fromJson(json, listType2);
-			} catch (IllegalStateException e) {
-			}
+			Constants.biddingsList = gson.fromJson(json, listType2);
 			break;
 		case GETIMG:
 			String datas[] = json.split(" ");

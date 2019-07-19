@@ -68,8 +68,8 @@ public class Manager {
 			BidTime initTime, BidTime finishTime, boolean isAutomaticIncremet, boolean isPublic) {
 		if (user != null) {
 			if (Utilities.isAfterOfToDay(initTime) && Utilities.isAfterOfToDay(finishTime)) {
-				Bidding bidding = new Bidding(biddingName, typeProduct, product, publicationTime, initTime,
-						finishTime, isAutomaticIncremet, isPublic, user.getEmail(), 1000, 0);
+				Bidding bidding = new Bidding(100, biddingName, typeProduct, product, publicationTime, initTime,
+						finishTime, isAutomaticIncremet, isPublic, user.getEmail());
 				user.getMyBiddings().add(bidding);
 				return bidding;
 			} else {
