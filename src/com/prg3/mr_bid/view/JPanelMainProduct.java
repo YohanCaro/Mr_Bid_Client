@@ -29,6 +29,7 @@ import com.prg3.mr_bid.utilities.Utilities;
 
 public class JPanelMainProduct extends JPanel {
 
+	private JpanelChat jpanelChat;
 	private JPanel jPanelSouth, jPanelWest, jPanelEast, jPanelCenter, jPanelDere, jPanelizq, jPanelizqImage,
 			jPanelizqInfo, jPanelderNorth, jPanelderCenter, jPanelCard, jPanelCardnorth, jPanelCardSouth,
 			jPanelCardWest, jPanelCardEast, jPanelCard2, jPanelCardnorth2, jPanelCardSouth2, jPanelCardWest2,
@@ -53,6 +54,7 @@ public class JPanelMainProduct extends JPanel {
 
 	public void start(UserController userController) {
 		this.setOpaque(false);
+		this.jpanelChat = new JpanelChat();
 		this.jPanelSouth = new JPanel();
 		this.jPanelizqImage = new JPanel();
 		this.jPanelizqInfo = new JPanel();
@@ -256,10 +258,13 @@ public class JPanelMainProduct extends JPanel {
 		jPanelCardWest3.setPreferredSize(new Dimension(50, 100));
 		jPanelCardEast3.setPreferredSize(new Dimension(50, 200));
 
-		jTextAreaChat = new JTextArea();
-		jTextAreaChat.setEditable(false);
-		jTextAreaChat.setBackground(new Color(0, 0, 0, 94));
-		jTextAreaChat.setText("Camilo");
+//		jTextAreaChat = new JTextArea();
+//		jTextAreaChat.setEditable(false);
+//		jTextAreaChat.setBackground(new Color(0, 0, 0, 94));
+//		jTextAreaChat.setText("Camilo");
+		
+		
+		
 
 		jButtonListConnect = new JButton("Conectados");
 		jButtonListConnect.setFocusable(false);
@@ -270,11 +275,12 @@ public class JPanelMainProduct extends JPanel {
 		jPanelNorth3 = new JPanel();
 		jPanelNorth3.setPreferredSize(new Dimension(50, 50));
 		jPanelNorth3.setOpaque(false);
-		jTextAreaChat.setPreferredSize(new Dimension(400, 300));
+//		jTextAreaChat.setPreferredSize(new Dimension(400, 300));
+		jpanelChat.setPreferredSize(new Dimension(400, 300));
 		jButtonListConnect.setPreferredSize(new Dimension(20, 20));
 		jPanelCardSouth2.setLayout(new BorderLayout());
 		jPanelCardSouth2.add(jPanelNorth3, BorderLayout.NORTH);
-		jPanelCardSouth2.add(jTextAreaChat, BorderLayout.CENTER);
+		jPanelCardSouth2.add(jpanelChat, BorderLayout.CENTER);
 		jPanelCardSouth2.add(jButtonListConnect, BorderLayout.SOUTH);
 		jPanelCardSouth2.add(jPanelCardWest3, BorderLayout.WEST);
 		jPanelCardSouth2.add(jPanelCardEast3, BorderLayout.EAST);
