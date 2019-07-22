@@ -75,7 +75,7 @@ public class JPanelMainWindow extends JPanel {
 	}
 
 	private void JpanelImage() {
-		imageIcon = new ImageIcon(getClass().getResource("/images/publicidad1.png"));
+		imageIcon = new ImageIcon("data/images/publicidad1.png");
 		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(1150, 300, Image.SCALE_AREA_AVERAGING));
 		jLabel.setIcon(icon);
 		jPanelMainImage.add(jLabel);
