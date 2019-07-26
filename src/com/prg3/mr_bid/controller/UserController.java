@@ -26,7 +26,6 @@ import com.prg3.mr_bid.utilities.Utilities;
 import com.prg3.mr_bid.view.JDialogAbout;
 import com.prg3.mr_bid.view.JDialogAddCreditCard;
 import com.prg3.mr_bid.view.JDialogAddUser;
-import com.prg3.mr_bid.view.JDialogListUsers;
 import com.prg3.mr_bid.view.JFrameMain;
 import com.prg3.mr_bid.view.JPanelMainProduct;
 import com.prg3.mr_bid.view.JPanelMainWindow;
@@ -46,7 +45,7 @@ public class UserController implements ActionListener, MouseListener {
 	private JDialogAddCreditCard jDialogAddCreditCard;
 	private JDialogAbout jDialogAbout;
 	private JPanelMainWindow jPanelMainWindow;
-	private JDialogListUsers jDialogListUsers;
+//	private JDialogListUsers jDialogListUsers;
 	private static UserController controller;
 	private HandlerLanguage config = null;
 	private String languageDefault;
@@ -62,7 +61,7 @@ public class UserController implements ActionListener, MouseListener {
 		getLanguageDefault();
 		loadConfiguration();
 		this.jFrameMain = new JFrameMain(this);
-		this.jDialogListUsers = new JDialogListUsers(this);
+//		this.jDialogListUsers = new JDialogListUsers(this);
 		this.jDialogAddUser = new JDialogAddUser(this);
 		this.jDialogAbout = new JDialogAbout();
 		this.jDialogAddCreditCard = new JDialogAddCreditCard();
@@ -162,7 +161,7 @@ public class UserController implements ActionListener, MouseListener {
 			}
 			break;
 		case LIST_CONNECT:
-			jDialogListUsers.setVisible(true);
+//			jDialogListUsers.setVisible(true);
 			break;
 		case SEND_BID:
 			double value = jFrameMain.getjPanelMainProduct().getValuePuja();

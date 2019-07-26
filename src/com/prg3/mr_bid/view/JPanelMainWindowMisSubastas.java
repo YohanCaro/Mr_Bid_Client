@@ -70,7 +70,7 @@ public class JPanelMainWindowMisSubastas extends JPanel {
 	}
 
 	private void JpanelImage() {
-		imageIcon = new ImageIcon(getClass().getResource("/images/usuario.png"));
+		imageIcon = new ImageIcon("data/images/usuario.png");
 		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(300, 300, Image.SCALE_AREA_AVERAGING));
 		jLabel.setIcon(icon);
 		jPanelMainImage.setOpaque(false);
@@ -162,7 +162,7 @@ public class JPanelMainWindowMisSubastas extends JPanel {
 
 	@Override
 	protected void paintComponent(Graphics g) {
-		imageIcon = new ImageIcon(getClass().getResource("/images/fondoLogin.jpg"));
+		imageIcon = new ImageIcon("data/images/fondoLogin.jpg");
 		g.drawImage(imageIcon.getImage(), 0, 0, getWidth(), getHeight(), this);
 		setOpaque(false);
 		super.paintComponent(g);

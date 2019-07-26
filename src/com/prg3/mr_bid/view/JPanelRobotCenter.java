@@ -40,7 +40,7 @@ public class JPanelRobotCenter extends JPanel {
 		jLabel = new JLabel();
 //		jLabel.setAlignmentX(CENTER_ALIGNMENT);
 		jLabel.setBorder(BorderFactory.createEmptyBorder(0,80,0,0));
-		imageIcon = new ImageIcon(getClass().getResource("/images/reCaptcha.png"));
+		imageIcon = new ImageIcon("data/images/reCaptcha.png");
 		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(60, 60,
 				Image.SCALE_AREA_AVERAGING));
 		jLabel.setIcon(icon);

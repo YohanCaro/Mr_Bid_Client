@@ -75,7 +75,7 @@ public class JPanelMainWindowCuenta extends JPanel {
 	}
 
 	private void JpanelImage() {
-		imageIcon = new ImageIcon(getClass().getResource("/images/usuario.png"));
+		imageIcon = new ImageIcon("data/images/usuario.png");
 		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(300, 300, Image.SCALE_AREA_AVERAGING));
 		jLabel.setIcon(icon);
 		jPanelMainImage.setOpaque(false);
@@ -106,7 +106,7 @@ public class JPanelMainWindowCuenta extends JPanel {
 		jButton.setBackground(new Color(48, 48, 48));
 		jButton.setActionCommand(ControlCommands.SHOW_HISTORY.name());
 		jButton.addActionListener(control);
-		imageIcon = new ImageIcon(getClass().getResource("/images/bloc.png"));
+		imageIcon = new ImageIcon("data/images/bloc.png");
 		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(70, 70, Image.SCALE_AREA_AVERAGING));
 		jButton.setIcon(icon);
 		jPanelTools.add(jButton);
@@ -117,7 +117,7 @@ public class JPanelMainWindowCuenta extends JPanel {
 		jButton2.setBackground(new Color(48, 48, 48));
 		jButton2.setActionCommand(ControlCommands.SHOW_ADDPRODUCT.name());
 		jButton2.addActionListener(control);
-		imageIcon = new ImageIcon(getClass().getResource("/images/venta.png"));
+		imageIcon = new ImageIcon("data/images/venta.png");
 		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(70, 70, Image.SCALE_AREA_AVERAGING));
 		jButton2.setIcon(icon);
 		jPanelTools.add(jButton2);
@@ -128,7 +128,7 @@ public class JPanelMainWindowCuenta extends JPanel {
 		jButton3.setBackground(new Color(48, 48, 48));
 		jButton3.setActionCommand(ControlCommands.SHOW_ADDPRODUCT.name());
 		jButton3.addActionListener(control);
-		imageIcon = new ImageIcon(getClass().getResource("/images/bloc.png"));
+		imageIcon = new ImageIcon("data/images/bloc.png");
 		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(70, 70, Image.SCALE_AREA_AVERAGING));
 		jButton3.setIcon(icon);
 		jPanelTools.add(jButton3);
@@ -138,7 +138,7 @@ public class JPanelMainWindowCuenta extends JPanel {
 		jButton5.setBackground(new Color(48, 48, 48));
 		jButton5.setActionCommand(ControlCommands.SHOW_ADDPRODUCT.name());
 		jButton5.addActionListener(control);
-		imageIcon = new ImageIcon(getClass().getResource("/images/ajuste.png"));
+		imageIcon = new ImageIcon("data/images/ajuste.png");
 		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(70, 70, Image.SCALE_AREA_AVERAGING));
 		jButton5.setIcon(icon);
 		jPanelTools.add(jButton5);
@@ -198,7 +198,7 @@ public class JPanelMainWindowCuenta extends JPanel {
 
 	@Override
 	protected void paintComponent(Graphics g) {
-		imageIcon = new ImageIcon(getClass().getResource("/images/fondoLogin.jpg"));
+		imageIcon = new ImageIcon("data/images/fondoLogin.jpg");
 		g.drawImage(imageIcon.getImage(), 0, 0, getWidth(), getHeight(), this);
 		setOpaque(false);
 		super.paintComponent(g);

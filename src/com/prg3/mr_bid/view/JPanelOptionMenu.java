@@ -54,7 +54,7 @@ public class JPanelOptionMenu extends JPanel {
 		jButtonCompras.setBackground(new Color(48, 48, 48));
 		// jButtonEnglish.setActionCommand(Commands.C_ENGLISH.name());
 		// jButtonEnglish.addActionListener(control);
-		imageIcon = new ImageIcon(getClass().getResource("/images/carro.png"));
+		imageIcon = new ImageIcon("data/images/carro.png");
 		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(70, 70, Image.SCALE_AREA_AVERAGING));
 		jButtonCompras.setIcon(icon);
 
@@ -69,7 +69,7 @@ public class JPanelOptionMenu extends JPanel {
 		jButtonLogin.setActionCommand(ControlCommands.SHOW_LOGIN.name());
 		jButtonLogin.addActionListener(control);
 		jButtonLogin.setBackground(new Color(48, 48, 48));
-		imageIcon = new ImageIcon(getClass().getResource("/images/usuario.png"));
+		imageIcon = new ImageIcon("data/images/usuario.png");
 		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(70, 70, Image.SCALE_AREA_AVERAGING));
 		jButtonLogin.setIcon(icon);
 

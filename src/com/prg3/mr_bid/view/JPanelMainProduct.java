@@ -95,7 +95,7 @@ public class JPanelMainProduct extends JPanel {
 	}
 
 	private void JpanelImage() {
-		imageIcon = new ImageIcon(getClass().getResource("/images/tv.jpg"));
+		imageIcon = new ImageIcon("data/images/tv.jpg");
 		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(350, 350, Image.SCALE_AREA_AVERAGING));
 		jLabel.setIcon(icon);
 		jPanelizqImage.add(jLabel);
@@ -428,7 +428,7 @@ public class JPanelMainProduct extends JPanel {
 
 	@Override
 	protected void paintComponent(Graphics g) {
-		imageIcon = new ImageIcon(getClass().getResource("/images/fondoLogin.jpg"));
+		imageIcon = new ImageIcon("data/images/fondoLogin.jpg");
 		g.drawImage(imageIcon.getImage(), 0, 0, getWidth(), getHeight(), this);
 		setOpaque(false);
 		super.paintComponent(g);

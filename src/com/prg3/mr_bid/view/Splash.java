@@ -64,7 +64,7 @@ public class Splash extends JDialog {
 		jLabelSplash = new JLabel();
 		jLabelSplash.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		jLabelSplash.setBounds(0, 50, 700, 400);
-		imageIcon = new ImageIcon("src/Images/logo.jpg");
+		imageIcon = new ImageIcon("data/images/logo.jpg");
 		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(jLabelSplash.getWidth(), jLabelSplash.getHeight(),
 				Image.SCALE_AREA_AVERAGING));
 		jLabelSplash.setIcon(icon);

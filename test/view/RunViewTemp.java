@@ -1,4 +1,4 @@
-package com.prg3.mr_bid.runner;
+package view;
 
 import com.prg3.mr_bid.view.Splash;
 
