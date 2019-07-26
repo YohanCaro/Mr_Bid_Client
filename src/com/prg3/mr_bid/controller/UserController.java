@@ -37,7 +37,7 @@ import com.prg3.mr_bid.view.JPanelMainWindow;
  * @author Yohan Caro
  * @version 1.0 - 2/06/2019
  */
-public class UserController implements ActionListener, MouseListener {
+public class UserController implements ActionListener {
 	private static final String NAME_FILE_CONFIG = "config.init";
 
 	private JFrameMain jFrameMain;
@@ -364,34 +364,6 @@ public class UserController implements ActionListener, MouseListener {
 
 	}
 
-	@Override
-	public void mouseClicked(MouseEvent arg0) {
-		// TODO Auto-generated method stub
 
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mousePressed(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-
-	}
 
 }
