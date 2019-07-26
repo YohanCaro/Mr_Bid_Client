@@ -21,6 +21,7 @@ import com.prg3.mr_bid.communication.Client;
 import com.prg3.mr_bid.controller.ControlCommands;
 import com.prg3.mr_bid.model.entity.User;
 import com.prg3.mr_bid.model.manager.Manager;
+import com.prg3.mr_bid.utilities.Constants;
 
 public class JpanelChat extends JPanel implements ActionListener {
 
@@ -30,7 +31,7 @@ public class JpanelChat extends JPanel implements ActionListener {
 	private Manager manager;
 	String username, address;
 	ArrayList<String> users = new ArrayList();
-	int port = 2222;
+	// int port = 12345;
 	Boolean isConnected = false;
 	Socket sock;
 	BufferedReader reader;
@@ -40,8 +41,7 @@ public class JpanelChat extends JPanel implements ActionListener {
 		jButton = new JButton("SEND");
 		jButton.setActionCommand(ControlCommands.C_CONECT_CHAT.name());
 		jButton.addActionListener(this);
-		
-		
+
 		jTextField = new JTextField("Escriba su mensaje");
 		jTextArea = new JTextArea();
 		init();
@@ -55,9 +55,6 @@ public class JpanelChat extends JPanel implements ActionListener {
 	public void userAdd(String data) {
 		users.add(data);
 	}
-	
-	
-
 
 	public void userRemove(String data) {
 		jTextArea.append(data + " is now offline.\n");
@@ -128,9 +125,10 @@ public class JpanelChat extends JPanel implements ActionListener {
 
 	private void b_connectActionPerformed() {// GEN-FIRST:event_b_connectActionPerformed
 		if (isConnected == false) {
-
+			System.out.println("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+			System.out.println("la ip es " + Constants.port + "El ´puerto es " + Constants.ip);
 			try {
-				sock = new Socket(address, port);
+				sock = new Socket(Constants.ip, 2222);// debe ser el puesto y la ip del servidor
 				InputStreamReader streamreader = new InputStreamReader(sock.getInputStream());
 				reader = new BufferedReader(streamreader);
 				writer = new PrintWriter(sock.getOutputStream());
@@ -155,7 +153,8 @@ public class JpanelChat extends JPanel implements ActionListener {
 			jTextField.requestFocus();
 		} else {
 			try {
-				writer.println(Client.getInstanceOf().getUser().getFirstName() + ":" + jTextField.getText() + ":" + "Chat");
+				writer.println(
+						Client.getInstanceOf().getUser().getFirstName() + ":" + jTextField.getText() + ":" + "Chat");
 				writer.flush(); // flushes the jTextField
 			} catch (Exception ex) {
 				jTextArea.append("Message was not sent. \n");
@@ -187,12 +186,12 @@ public class JpanelChat extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		String command = e.getActionCommand();
 		String[] com = command.split(",");
-		
+
 		switch (ControlCommands.valueOf(com[0])) {
 		case C_CONECT_CHAT:
 			System.out.println("jajajaja funciono");
-			 b_sendActionPerformed() ;
-			
+			b_sendActionPerformed();
+
 			break;
 
 		default:
