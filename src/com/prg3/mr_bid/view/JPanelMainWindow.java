@@ -66,11 +66,8 @@ public class JPanelMainWindow extends JPanel {
 	private void character() {
 		jPanelNorth.setBackground(Color.RED);
 		jPanelSouth.setBackground(Color.GREEN);
-		// jPanelWest.setBackground(Color.YELLOW);
-		// jPanelEast.setBackground(Color.BLUE);
 		jPanelCenter.setBackground(Color.black);
-		// jPanelMainImage.setBackground(Color.cyan);
-		jPanelEspacio.setBackground(Color.ORANGE);
+		jPanelEspacio.setBackground(Color.WHITE);//este panes es donde se cargan las imagenes
 
 	}
 
