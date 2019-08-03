@@ -18,6 +18,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.prg3.mr_bid.model.entity.Bidding;
 import com.prg3.mr_bid.model.entity.User;
+import com.prg3.mr_bid.structures.simple_list.SimpleList;
 import com.prg3.mr_bid.utilities.Constants;
 import com.prg3.mr_bid.utilities.Utilities;
 
@@ -93,27 +94,24 @@ public class Client extends Socket implements Runnable {
 	 * Recibe un arraylist con la ruta de las imagenes de la subasta/ hacer en vista/controlador
 	 * @throws IOException ioe
 	 */
-	public void sendImages(ArrayList<String> pathsImg, long bidId) throws IOException {
-		sendMessage(Commands.SENDIMG, pathsImg.size()+" "+bidId);
-		for (int i = 0; i < pathsImg.size(); i++) {
-			BufferedImage bufferedImage = ImageIO.read(new File(pathsImg.get(i)));
+	public void sendImages(String pathsImg, long bidId) throws IOException {
+		sendMessage(Commands.SENDIMG, pathsImg+" "+bidId);
+			BufferedImage bufferedImage = ImageIO.read(new File(pathsImg));
 			ImageIO.write(bufferedImage, "png", dataOS);
 			bufferedImage.flush();
-		}
+		
 	}
 	
-	public ArrayList<String> getImages(int numImgs, long id) throws IOException {
+	public String getImages( long id) throws IOException {
 		System.out.println("Id: " + id);
-		ArrayList<String> paths = new ArrayList<>();
+		String paths = "";
 		BufferedImage bufferedImage;
-		for (int i = 1; i <= numImgs; i++) {
-			System.out.println("...");
-			bufferedImage = ImageIO.read(this.getInputStream());
-			String imagePath = "data/biddingImages/bidding"+id+"_"+i+".png";
-			ImageIO.write(bufferedImage, "png", new FileOutputStream(imagePath));
-			bufferedImage.flush();
-			paths.add(imagePath);
-		}		
+		System.out.println("...");
+		bufferedImage = ImageIO.read(this.getInputStream());
+		String imagePath = "data/biddingImages/bidding"+id+"_"+".png";
+		ImageIO.write(bufferedImage, "png", new FileOutputStream(imagePath));
+		bufferedImage.flush();
+		paths.equals(imagePath);	
 		return paths;
 	}
 	
@@ -138,19 +136,17 @@ public class Client extends Socket implements Runnable {
 			}
 			break;
 		case UPBIDDING:
-			Type listType = new TypeToken<List<Bidding>>(){}.getType();
+			Type listType = new TypeToken<SimpleList<Bidding>>(){}.getType();
 			Constants.biddingsList = gson.fromJson(json, listType);
 		case UPDATE_BID:
-			Type listType2 = new TypeToken<List<Bidding>>(){}.getType();
+			Type listType2 = new TypeToken<SimpleList<Bidding>>(){}.getType();
 			Constants.biddingsList = gson.fromJson(json, listType2);
 			break;
 		case GETIMG:
 			String datas[] = json.split(" ");
-			System.out.println("json: " + json);
-			System.out.println("Datas: " + datas[1]);
 			long id = Long.parseLong(datas[1]);
 			try {
-				ArrayList<String> paths = this.getImages(Integer.parseInt(datas[0]), (int) id);
+				String paths = this.getImages( (int) id);
 				Constants.biddingsList.get((int) id).getProduct().setImages(paths);
 			} catch (NumberFormatException | IOException e) {
 				e.printStackTrace();

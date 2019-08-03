@@ -2,6 +2,8 @@ package com.prg3.mr_bid.model.entity;
 
 import java.util.ArrayList;
 
+import com.prg3.mr_bid.structures.simple_list.SimpleList;
+
 /**
  * Clase User - Clase que crea un usuario
  *
@@ -19,8 +21,8 @@ public class User {
 	private TypeDocument typeDocument;
 	private Gender gender;
 	private CreditCard creditCard;
-	private ArrayList<Bidding> myBiddings;
-	private ArrayList<Bidding> myParcitipations;
+	private SimpleList<Bidding> myBiddings;
+	private SimpleList<Bidding> myParcitipations;
 	
 	/**
 	 * Crea un usuario con los siguientes datos
@@ -48,8 +50,8 @@ public class User {
 		this.gender = gender;
 		this.creditCard = creditCard;
 		
-		myBiddings = new ArrayList<>();
-		myParcitipations = new ArrayList<>();
+		myBiddings = new SimpleList<>();
+		myParcitipations = new SimpleList<>();
 	}
 
 	/**
@@ -128,7 +130,7 @@ public class User {
 	 * Obtiene las subastas 
 	 * @return myBiddings mb
 	 */
-	public ArrayList<Bidding> getMyBiddings() {
+	public SimpleList<Bidding> getMyBiddings() {
 		return myBiddings;
 	}
 
@@ -136,7 +138,7 @@ public class User {
 	 * Obtiene las participaciones 
 	 * @return myParcitipations mp
 	 */
-	public ArrayList<Bidding> getMyParcitipations() {
+	public SimpleList<Bidding> getMyParcitipations() {
 		return myParcitipations;
 	}
 

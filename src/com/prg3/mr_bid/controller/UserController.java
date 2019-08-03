@@ -20,6 +20,7 @@ import com.prg3.mr_bid.model.entity.MyCaptcha;
 import com.prg3.mr_bid.model.entity.Product;
 import com.prg3.mr_bid.model.entity.User;
 import com.prg3.mr_bid.model.manager.Manager;
+import com.prg3.mr_bid.structures.simple_list.SimpleList;
 import com.prg3.mr_bid.utilities.Constants;
 import com.prg3.mr_bid.utilities.HandlerLanguage;
 import com.prg3.mr_bid.utilities.Utilities;
@@ -149,8 +150,8 @@ public class UserController implements ActionListener {
 				Utilities.showMessageInfo("Si! :D", "Bien");
 				Utilities.showMessageInfo(ConstantsBid.TXT_CRATE, null);
 				this.jFrameMain.repaint();
-				ArrayList<String> paths = new ArrayList<>();
-				paths.add(fileImage.getPath());
+				String paths = "";
+				paths.equals(fileImage.getPath());
 				try {
 					Client.getInstanceOf().sendImages(paths, bidding.getId() +Constants.biddingsList.size());
 				} catch (IOException e1) {
@@ -243,8 +244,8 @@ public class UserController implements ActionListener {
 				&& jFrameMain.getjPanelMainAddProduct().getDateP() != null
 				&& jFrameMain.getjPanelMainAddProduct().getDateI() != null
 				&& jFrameMain.getjPanelMainAddProduct().getDateF() != null) {
-			ArrayList<String> list = new ArrayList<>();
-			list.add(fileImage.getPath());
+			String list = "";
+			list.equals(fileImage.getPath());
 			Product p = new Product(jFrameMain.getjPanelMainAddProduct().getJTextName(),
 					jFrameMain.getjPanelMainAddProduct().getDescription(), list);
 			System.out.println(p.toString());
@@ -287,7 +288,7 @@ public class UserController implements ActionListener {
 	 * Metodo para manda y recibe un array de string al panel de comentarios
 	 */
 	public void sendComment() {
-		ArrayList<String> menssge = new ArrayList<String>();
+		SimpleList<String> menssge = new SimpleList<String>();
 		jFrameMain.getjPanelMainProduct().sendComment(menssge);
 	}
 

@@ -12,7 +12,7 @@ public class Product {
 	
 	private String nameProduct;
 	private String description;
-	private ArrayList<String> images;
+	private String images;
 	
 	/**
 	 * Crea un producto con los siguientes datos
@@ -20,7 +20,7 @@ public class Product {
 	 * @param description descripción del producto
 	 * @param images imagenes del producto
 	 */
-	public Product(String nameProduct, String description, ArrayList<String> images) {
+	public Product(String nameProduct, String description, String images) {
 		this.nameProduct = nameProduct;
 		this.description = description;
 		this.images = images;
@@ -56,7 +56,7 @@ public class Product {
 	 * Obtiene unalista con la ruta de las imagenes
 	 * @return images imagenes
 	 */
-	public ArrayList<String> getImages() {
+	public String getImages() {
 		return images;
 	}
 	
@@ -68,7 +68,7 @@ public class Product {
 		return "Nombre: " + nameProduct + ", descripcion: " + description;
 	}
 
-	public void setImages(ArrayList<String> paths) {
+	public void setImages(String paths) {
 		this.images = paths;		
 	}
 	

@@ -24,6 +24,7 @@ import com.prg3.mr_bid.controller.UserController;
 import com.prg3.mr_bid.model.entity.BidState;
 import com.prg3.mr_bid.model.entity.Bidding;
 import com.prg3.mr_bid.model.entity.ConstantsBid;
+import com.prg3.mr_bid.structures.simple_list.SimpleList;
 import com.prg3.mr_bid.utilities.HandlerLanguage;
 import com.prg3.mr_bid.utilities.Utilities;
 
@@ -90,7 +91,7 @@ public class JPanelMainProduct extends JPanel {
 		this.blockJTextField();
 	}
 
-	public JPanelMainProduct(ArrayList<String> message) {
+	public JPanelMainProduct(SimpleList<String> message) {
 		sendComment(message);
 	}
 
@@ -434,8 +435,8 @@ public class JPanelMainProduct extends JPanel {
 		super.paintComponent(g);
 	}
 
-	public ArrayList<String> sendComment(ArrayList<String> message) {
-		ArrayList<String> aux = new ArrayList<>();
+	public SimpleList<String> sendComment(SimpleList<String> message) {
+		SimpleList<String> aux = new SimpleList<>();
 		for (int i = 0; i < message.size(); i++) {
 			this.text = message.get(i);
 			jTextAreaChat.append("\n" + "\n" + "    User: " + text);

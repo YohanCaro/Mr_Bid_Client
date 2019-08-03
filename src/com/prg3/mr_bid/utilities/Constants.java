@@ -6,6 +6,7 @@ import com.prg3.mr_bid.model.entity.BidTime;
 import com.prg3.mr_bid.model.entity.Bidding;
 import com.prg3.mr_bid.model.entity.Product;
 import com.prg3.mr_bid.model.entity.User;
+import com.prg3.mr_bid.structures.simple_list.SimpleList;
 
 /**
  * Clase Constants - Constantes que se pueden usar 
@@ -21,6 +22,6 @@ public class Constants {
 	public static User user = null;
 	public static Product product = null;
 	public static BidTime bidTime = null;
-	public static ArrayList<Bidding> biddingsList = new ArrayList<>();
+	public static SimpleList<Bidding> biddingsList = new SimpleList<>();
 	
 }

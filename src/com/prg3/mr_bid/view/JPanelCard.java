@@ -12,7 +12,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 import com.prg3.mr_bid.controller.ControlCommands;
 import com.prg3.mr_bid.controller.UserController;
@@ -71,7 +70,7 @@ public class JPanelCard extends JPanel {
 		changeData(bid, controller);
 		character();
 		sizePanel();
-		myJButton(bid.getProduct().getImages().get(0), bid.getId());
+		myJButton(bid.getProduct().getImages(), bid.getId());
 		init();
 		this.repaint();
 
