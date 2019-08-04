@@ -234,7 +234,6 @@ public class UserController implements ActionListener {
 	}
 
 	private Bidding createBidding() {
-
 		if (jFrameMain.getjPanelMainAddProduct().getJTextName() != null
 				&& jFrameMain.getjPanelMainAddProduct().getDescription() != null
 				&& jFrameMain.getjPanelMainAddProduct().getDateP() != null
@@ -243,7 +242,6 @@ public class UserController implements ActionListener {
 			String list = (fileImage==null)?"":fileImage.getPath();
 			Product p = new Product(jFrameMain.getjPanelMainAddProduct().getJTextName(),
 					jFrameMain.getjPanelMainAddProduct().getDescription(), list);
-			System.out.println(p.toString());
 			return manager.addBidding(jFrameMain.getjPanelMainAddProduct().getJTextName(),
 					jFrameMain.getjPanelMainAddProduct().getTypeProduct(), p,
 					new BidTime(new BidDate(jFrameMain.getjPanelMainAddProduct().getDateP()),

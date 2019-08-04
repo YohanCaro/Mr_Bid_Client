@@ -97,10 +97,8 @@ public class Client extends Socket implements Runnable {
 	}
 	
 	public String getImages( long id) throws IOException {
-		System.out.println("Id: " + id);
 		String paths = "";
 		BufferedImage bufferedImage;
-		System.out.println("...");
 		bufferedImage = ImageIO.read(this.getInputStream());
 		String imagePath = "data/biddingImages/bidding"+id+"_"+".png";
 		ImageIO.write(bufferedImage, "png", new FileOutputStream(imagePath));
@@ -126,7 +124,6 @@ public class Client extends Socket implements Runnable {
 						+ "Por favor vuelva a intentarlo", "Datos no validos!");				
 			} else {
 				Utilities.showMessageInfo("Si! :D", "Usuario logueado");
-				System.out.println(json);
 				user = gson.fromJson(json, User.class);
 			}
 			break;
