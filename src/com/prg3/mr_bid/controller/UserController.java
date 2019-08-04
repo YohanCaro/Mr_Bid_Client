@@ -148,13 +148,10 @@ public class UserController implements ActionListener {
 				Utilities.showMessageInfo("Si! :D", "Bien");
 				Utilities.showMessageInfo(ConstantsBid.TXT_CREATE, null);
 				this.jFrameMain.repaint();
-				String paths = "";
-				paths.equals(fileImage.getPath());
+				String paths = (fileImage==null)?"":fileImage.getPath();
 				try {
 					Client.getInstanceOf().sendImages(paths, bidding.getId() +Constants.biddingsList.size());
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
 				}
 				this.jFrameMain.getrepaint();
 			}
