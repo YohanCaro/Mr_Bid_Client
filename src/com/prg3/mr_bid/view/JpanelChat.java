@@ -17,23 +17,17 @@ import javax.swing.JTextField;
 
 import com.prg3.mr_bid.communication.Client;
 import com.prg3.mr_bid.controller.ControlCommands;
+import com.prg3.mr_bid.model.entity.User;
 import com.prg3.mr_bid.model.manager.Manager;
 import com.prg3.mr_bid.structures.simple_list.SimpleList;
 import com.prg3.mr_bid.utilities.Constants;
 
-/**
- * Clase JpanelChat - Crea el panel de la zona de comentarios de las subastas
- *
- * @version 1.0 - 4/08/2019
- * @author Daniel García
- */
 public class JpanelChat extends JPanel implements ActionListener {
 
 	private JButton jButton;
 	private JTextField jTextField;
 	private JTextArea jTextArea;
 	private Manager manager;
-<<<<<<< HEAD
 	String username, address;
 	SimpleList<String> users = new SimpleList<>();
 //	 int port = 12345;
@@ -41,58 +35,30 @@ public class JpanelChat extends JPanel implements ActionListener {
 	Socket sock;
 	BufferedReader reader;
 	PrintWriter writer;
-=======
-	private String username, address;
-	private SimpleList<String> users;
-	private Boolean isConnected;
-	private Socket sock;
-	private BufferedReader reader;
-	private PrintWriter writer;
->>>>>>> branch 'master' of https://github.com/YohanCaro/Mr_Bid_Client.git
 
-	/**
-	 * Constructor que crea los componentes del chat
-	 */
 	public JpanelChat() {
 		jButton = new JButton("SEND");
 		jButton.setActionCommand(ControlCommands.C_CONECT_CHAT.name());
 		jButton.addActionListener(this);
-		
-		users = new SimpleList<>();
-		isConnected = false;
 
 		jTextField = new JTextField("Escriba su mensaje");
 		jTextArea = new JTextArea();
 		init();
 	}
 
-	/**
-	 * Inicializa un hilo
-	 */
-	public void listenThread() {
+	public void ListenThread() {
 		Thread IncomingReader = new Thread(new IncomingReader());
 		IncomingReader.start();
 	}
 
-	/**
-	 * Agrega un usuario al chat
-	 * @param data dato
-	 */
 	public void userAdd(String data) {
 		users.add(data);
 	}
 
-	/**
-	 * Remueve un usuario 
-	 * @param data dato
-	 */
 	public void userRemove(String data) {
 		jTextArea.append(data + " is now offline.\n");
 	}
 
-	/**
-	 * Escribe los usuarios
-	 */
 	public void writeUsers() {
 		String[] tempList = new String[(users.size())];
 //		users.toArray(tempList);
@@ -101,11 +67,8 @@ public class JpanelChat extends JPanel implements ActionListener {
 		}
 	}
 
-	/**
-	 * Enevia mesaje de desconexión
-	 * @throws UnknownHostException no host
-	 * @throws IOException io e
-	 */
+	// --------------------------//
+
 	public void sendDisconnect() throws UnknownHostException, IOException {
 		String bye = (Client.getInstanceOf().getUser().getFirstName() + ": :Disconnect");
 		try {
@@ -116,9 +79,8 @@ public class JpanelChat extends JPanel implements ActionListener {
 		}
 	}
 
-	/**
-	 * Desconecta
-	 */
+	// --------------------------//
+
 	public void Disconnect() {
 		try {
 			jTextArea.append("Disconnected.\n");
@@ -131,12 +93,6 @@ public class JpanelChat extends JPanel implements ActionListener {
 
 	}
 
-	/**
-	 * Clase IncomingReader - Clase envoltoria
-	 *
-	 * @version 1.0 - 4/08/2019
-	 * @author Daniel García
-	 */
 	public class IncomingReader implements Runnable {
 		@Override
 		public void run() {
@@ -166,11 +122,10 @@ public class JpanelChat extends JPanel implements ActionListener {
 		}
 	}
 
-	/**
-	 * Acción de conectar
-	 */
-	private void bConnectActionPerformed() {// GEN-FIRST:event_b_connectActionPerformed
+	private void b_connectActionPerformed() {// GEN-FIRST:event_b_connectActionPerformed
 		if (isConnected == false) {
+			System.out.println("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+			System.out.println("la ip es " + Constants.port + "El ´puerto es " + Constants.ip);
 			try {
 				sock = new Socket(Constants.ip, 2222);// debe ser el puesto y la ip del servidor
 				InputStreamReader streamreader = new InputStreamReader(sock.getInputStream());
@@ -183,16 +138,14 @@ public class JpanelChat extends JPanel implements ActionListener {
 				jTextArea.append("Cannot Connect! Try Again. \n");
 			}
 
-			listenThread();
+			ListenThread();
+
 		} else if (isConnected == true) {
 			jTextArea.append("You are already connected. \n");
 		}
 	}
 
-	/**
-	 * Acción de enviar
-	 */
-	private void bSendActionPerformed() {
+	private void b_sendActionPerformed() {
 		String nothing = "";
 		if ((jTextField.getText()).equals(nothing)) {
 			jTextField.setText("");
@@ -212,9 +165,6 @@ public class JpanelChat extends JPanel implements ActionListener {
 		jTextField.requestFocus();
 	}
 
-	/**
-	 * Acción de iniciar
-	 */
 	public void init() {
 		manager = new Manager();
 		this.setLayout(null);
@@ -225,7 +175,9 @@ public class JpanelChat extends JPanel implements ActionListener {
 		this.add(jButton);
 		this.add(jTextField);
 		this.add(jTextArea);
-		bConnectActionPerformed();
+		b_connectActionPerformed();
+		// this.setPreferredSize(new Dimension(100, 100));
+
 	}
 
 	@Override
@@ -235,8 +187,11 @@ public class JpanelChat extends JPanel implements ActionListener {
 
 		switch (ControlCommands.valueOf(com[0])) {
 		case C_CONECT_CHAT:
-			bSendActionPerformed();
+			System.out.println("jajajaja funciono");
+			b_sendActionPerformed();
+
 			break;
+
 		default:
 			break;
 		}
