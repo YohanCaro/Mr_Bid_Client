@@ -2,12 +2,9 @@ package com.prg3.mr_bid.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.IOException;
 import java.net.UnknownHostException;
-import java.util.ArrayList;
 import java.util.Locale;
 
 import com.prg3.mr_bid.communication.Client;
@@ -67,7 +64,6 @@ public class UserController implements ActionListener {
 		this.jDialogAbout = new JDialogAbout();
 		this.jDialogAddCreditCard = new JDialogAddCreditCard();
 		this.jPanelMainWindow = new JPanelMainWindow(this);
-		System.out.println("mostrando");
 		sendComment();
 	}
 
@@ -89,6 +85,8 @@ public class UserController implements ActionListener {
 				}
 			} catch (IOException e2) {
 			}
+			this.jPanelMainWindow = new JPanelMainWindow(this);
+			this.jFrameMain.setjPanelMain(jPanelMainWindow);
 			this.jFrameMain.showMain(this);
 			jFrameMain.showHome();
 			break;

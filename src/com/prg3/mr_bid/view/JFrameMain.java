@@ -94,7 +94,6 @@ public class JFrameMain extends JFrame {
 		revalidate();
 	}
 	
-	//*******************************
 	public void showPanelCardProduct() {
 		jPanelMain.removeAll();
 		jPanelMain.add(jPanelMainProduct, BorderLayout.CENTER);
@@ -153,6 +152,14 @@ public class JFrameMain extends JFrame {
 	 */
 	public JPanelMainWindow getjPanelMain() {
 		return jPanelMain;
+	}
+	
+	/**
+	 * Cambia 
+	 * @param jPanelMain a jPanelMain 
+	 */
+	public void setjPanelMain(JPanelMainWindow jPanelMain) {
+		this.jPanelMain = jPanelMain;
 	}
 	
 	/**

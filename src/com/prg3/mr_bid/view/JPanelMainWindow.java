@@ -116,7 +116,6 @@ public class JPanelMainWindow extends JPanel {
 	}
 	
 	public void addAllCards(UserController control) {
-		System.out.println(Constants.biddingsList.size());
 		for (int i = 0; i < Constants.biddingsList.size(); i++) {
 			jPanelEspacio.add(new JPanelCard(Constants.biddingsList.get(i),control));
 		}		

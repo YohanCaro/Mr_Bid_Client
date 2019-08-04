@@ -6,11 +6,8 @@ import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.lang.reflect.Type;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.imageio.ImageIO;
 
@@ -91,7 +88,7 @@ public class Client extends Socket implements Runnable {
 	}
 	
 	/**
-	 * Recibe un arraylist con la ruta de las imagenes de la subasta/ hacer en vista/controlador
+	 * Recibe un string con la ruta de las imagenes de la subasta/ hacer en vista/controlador
 	 * @throws IOException ioe
 	 */
 	public void sendImages(String pathsImg, long bidId) throws IOException {

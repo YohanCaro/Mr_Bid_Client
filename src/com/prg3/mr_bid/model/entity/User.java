@@ -1,9 +1,5 @@
 package com.prg3.mr_bid.model.entity;
 
-import java.util.ArrayList;
-
-import com.prg3.mr_bid.structures.simple_list.SimpleList;
-
 /**
  * Clase User - Clase que crea un usuario
  *

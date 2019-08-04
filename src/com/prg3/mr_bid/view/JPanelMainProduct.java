@@ -5,10 +5,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
-import java.util.ArrayList;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -444,9 +442,9 @@ public class JPanelMainProduct extends JPanel {
 		aux.add(jTextAreaChat.getText());
 		return aux;
 	}
-
-	public void getComment(ArrayList<String> message) {
-
+	
+	public void getComment(SimpleList<String> message) {
+		
 	}
 
 	/**

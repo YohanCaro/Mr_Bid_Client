@@ -1,7 +1,6 @@
 package com.prg3.mr_bid.view;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -10,7 +9,6 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -21,6 +19,7 @@ import com.prg3.mr_bid.communication.Client;
 import com.prg3.mr_bid.controller.ControlCommands;
 import com.prg3.mr_bid.model.entity.User;
 import com.prg3.mr_bid.model.manager.Manager;
+import com.prg3.mr_bid.structures.simple_list.SimpleList;
 import com.prg3.mr_bid.utilities.Constants;
 
 public class JpanelChat extends JPanel implements ActionListener {
@@ -30,7 +29,7 @@ public class JpanelChat extends JPanel implements ActionListener {
 	private JTextArea jTextArea;
 	private Manager manager;
 	String username, address;
-	ArrayList<String> users = new ArrayList();
+	SimpleList<String> users = new SimpleList<>();
 	// int port = 12345;
 	Boolean isConnected = false;
 	Socket sock;
@@ -62,7 +61,7 @@ public class JpanelChat extends JPanel implements ActionListener {
 
 	public void writeUsers() {
 		String[] tempList = new String[(users.size())];
-		users.toArray(tempList);
+//		users.toArray(tempList);
 		for (String token : tempList) {
 			// users.append(token + "\n");
 		}
@@ -115,7 +114,7 @@ public class JpanelChat extends JPanel implements ActionListener {
 					} else if (data[2].equals(done)) {
 						// users.setText("");
 						writeUsers();
-						users.clear();
+//						users.clear();
 					}
 				}
 			} catch (Exception ex) {

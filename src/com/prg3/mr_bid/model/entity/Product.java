@@ -1,7 +1,5 @@
 package com.prg3.mr_bid.model.entity;
 
-import java.util.ArrayList;
-
 /**
  * Clase Product - Crea un producto para subastar
  *

@@ -1,7 +1,5 @@
 package com.prg3.mr_bid.utilities;
 
-import java.util.ArrayList;
-
 import com.prg3.mr_bid.model.entity.BidTime;
 import com.prg3.mr_bid.model.entity.Bidding;
 import com.prg3.mr_bid.model.entity.Product;
