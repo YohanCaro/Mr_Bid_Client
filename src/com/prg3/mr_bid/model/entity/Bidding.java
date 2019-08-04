@@ -32,7 +32,8 @@ public class Bidding {
 	 * @param isPublic define si es publica
 	 */
 	public Bidding(long id,String biddingName, TypeProduct typeProduct, Product product, BidTime publicationTime,
-			BidTime initTime, BidTime finishTime, boolean isAutomaticIncremet, boolean isPublic, int value) {
+			BidTime initTime, BidTime finishTime, boolean isAutomaticIncremet, boolean isPublic, String emailUser,
+			int value) {
 		this.id = id;
 		this.biddingName = biddingName;
 		this.typeProduct = typeProduct;
@@ -42,6 +43,7 @@ public class Bidding {
 		this.finishTime = finishTime;
 		this.isAutomaticIncremet = isAutomaticIncremet;
 		this.isPublic = isPublic;
+		this.owner = emailUser;
 		this.value = value;
 	}
 	
@@ -58,8 +60,8 @@ public class Bidding {
 	 * Dueño de la subasta
 	 */
 	public Bidding(String biddingName, TypeProduct typeProduct, Product product, BidTime publicationTime,
-			BidTime initTime, BidTime finishTime, boolean isAutomaticIncremet, boolean isPublic, String emailUser) {
-		this.id = id;
+			BidTime initTime, BidTime finishTime, boolean isAutomaticIncremet, boolean isPublic, 
+			String emailUser, int value) {
 		this.biddingName = biddingName;
 		this.typeProduct = typeProduct;
 		this.product = product;
@@ -69,8 +71,9 @@ public class Bidding {
 		this.isAutomaticIncremet = isAutomaticIncremet;
 		this.isPublic = isPublic;
 		this.owner = emailUser;
+		this.value = value;
 	}
-	
+		
 	/**
 	 * Cambia el propietario
 	 * @param owner pripietario
@@ -177,16 +180,24 @@ public class Bidding {
 	public void setId(long id) {
 		this.id = id;
 	}
-
+	
+	public static Bidding stringToBidding(String bid) {
+		String[] array = bid.split("-");
+		
+		return new Bidding(Long.parseLong(array[0]), array[1], TypeProduct.values()[Integer.parseInt(array[2])],
+				new Product(array[3], array[4], array[5]), 
+				new BidTime(new BidDate(array[6]), Float.parseFloat(array[7])),
+				new BidTime(new BidDate(array[8]), Float.parseFloat(array[9])),
+				new BidTime(new BidDate(array[10]), Float.parseFloat(array[11])),
+				(array[12].equals("1")), (array[13].equals("1")), array[14],Integer.parseInt(array[15]));
+	}
+	
 	@Override
-	/**
-	 * Convierte la subasta en un cadena
-	 * @return string c
-	 */
 	public String toString() {
-		return "Nombre de publicacion: " + biddingName + ", tipo: " + typeProduct.name() + 
-				"\nProducto: " + product.toString() + "\nTiempo de publicacion: " + publicationTime.toString() 
-				+ "\nTiempo de inico: " + initTime.toString() + "\nTiempo final: " + finishTime.toString();
+		return id + "-" + biddingName + "-" + typeProduct.ordinal() + "-" + product.toString()
+				+ "-" + publicationTime.toString() + "-" + initTime.toString() + "-"
+				+ finishTime.toString() + "-" + (isAutomaticIncremet?1:0) + "-" 
+				+ (isPublic?1:0) + "-" + owner + "-" + value;
 	}
 
 }

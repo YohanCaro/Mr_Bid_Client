@@ -136,11 +136,13 @@ public class Client extends Socket implements Runnable {
 			}
 			break;
 		case UPBIDDING:
-			Type listType = new TypeToken<SimpleList<Bidding>>(){}.getType();
-			Constants.biddingsList = gson.fromJson(json, listType);
+//			Type listType = new TypeToken<SimpleList<Bidding>>(){}.getType();
+//			Constants.biddingsList = gson.fromJson(json, listType);
+			Constants.biddingsList = Utilities.stringToBiddings(json);
 		case UPDATE_BID:
-			Type listType2 = new TypeToken<SimpleList<Bidding>>(){}.getType();
-			Constants.biddingsList = gson.fromJson(json, listType2);
+//			Type listType2 = new TypeToken<SimpleList<Bidding>>(){}.getType();
+//			Constants.biddingsList = gson.fromJson(json, listType2);
+			Constants.biddingsList = Utilities.stringToBiddings(json);
 			break;
 		case GETIMG:
 			String datas[] = json.split(" ");

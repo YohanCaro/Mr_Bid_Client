@@ -11,6 +11,7 @@ import com.prg3.mr_bid.model.entity.BidDate;
 import com.prg3.mr_bid.model.entity.BidState;
 import com.prg3.mr_bid.model.entity.BidTime;
 import com.prg3.mr_bid.model.entity.Bidding;
+import com.prg3.mr_bid.structures.simple_list.SimpleList;
 
 /** Clase Utilities - Utilidades de la apicación
  *
@@ -44,6 +45,15 @@ public class Utilities {
 	 */
 	public static void showMessageInfo(String menssage, String title) {
 		JOptionPane.showMessageDialog(null, menssage, title, JOptionPane.INFORMATION_MESSAGE);
+	}
+	
+	public static SimpleList<Bidding> stringToBiddings(String stringList) {
+		SimpleList<Bidding> list = new SimpleList<>();
+		String[] array = stringList.split("#");
+		for (int i = 0; i < array.length; i++) {
+			list.add(Bidding.stringToBidding(array[i]));
+		}
+		return list;
 	}
 	
 	/**

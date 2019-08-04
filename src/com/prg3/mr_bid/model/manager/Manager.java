@@ -69,7 +69,7 @@ public class Manager {
 		if (user != null) {
 			if (Utilities.isAfterOfToDay(initTime) && Utilities.isAfterOfToDay(finishTime)) {
 				Bidding bidding = new Bidding(biddingName, typeProduct, product, publicationTime, initTime,
-						finishTime, isAutomaticIncremet, isPublic, user.getEmail());
+						finishTime, isAutomaticIncremet, isPublic, user.getEmail(), 0);
 				user.getMyBiddings().add(bidding);
 				return bidding;
 			} else {
