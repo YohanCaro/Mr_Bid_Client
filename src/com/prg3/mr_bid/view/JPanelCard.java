@@ -93,6 +93,7 @@ public class JPanelCard extends JPanel {
 
 	private JButton myJButton(String url,long  id) {
 		jButton = new JButton(String.valueOf(id));
+		System.out.println("EL IDENTIFICADOR DEL BOTON ES "+ String.valueOf(id));
 		 
 		jButton.setBounds(0, 0, 200, 200);
 		jButton.setBackground(new Color(2, 41, 48));

@@ -30,7 +30,7 @@ public class JpanelChat extends JPanel implements ActionListener {
 	private Manager manager;
 	String username, address;
 	SimpleList<String> users = new SimpleList<>();
-	// int port = 12345;
+//	 int port = 12345;
 	Boolean isConnected = false;
 	Socket sock;
 	BufferedReader reader;
@@ -152,8 +152,7 @@ public class JpanelChat extends JPanel implements ActionListener {
 			jTextField.requestFocus();
 		} else {
 			try {
-				writer.println(
-						Client.getInstanceOf().getUser().getFirstName() + ":" + jTextField.getText() + ":" + "Chat");
+				writer.println(Client.getInstanceOf().getUser().getFirstName() + ":" + jTextField.getText() + ":" + "Chat de prueba");
 				writer.flush(); // flushes the jTextField
 			} catch (Exception ex) {
 				jTextArea.append("Message was not sent. \n");
@@ -169,7 +168,7 @@ public class JpanelChat extends JPanel implements ActionListener {
 	public void init() {
 		manager = new Manager();
 		this.setLayout(null);
-		this.setBackground(Color.RED);
+		this.setBackground(Color.LIGHT_GRAY);
 		jTextField.setBounds(20, 370, 300, 30);
 		jTextArea.setBounds(20, 20, 490, 320);
 		jButton.setBounds(400, 370, 100, 30);
