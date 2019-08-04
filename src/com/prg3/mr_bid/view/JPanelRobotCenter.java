@@ -1,8 +1,5 @@
 package com.prg3.mr_bid.view;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 
@@ -14,38 +11,47 @@ import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.prg3.mr_bid.utilities.ConstantsView;
+
+/**
+ * Clase JPanelRobotCenter - Crea el panel robot de la aplicación
+ *
+ * @version 1.0 - 4/08/2019
+ * @author Bid Team
+ */
 public class JPanelRobotCenter extends JPanel {
 
+	/**
+	 * Seral por defecto
+	 */
 	private static final long serialVersionUID = 1L;
 
 	private JCheckBox jCheckBox;
-	private JLabel jLabel,jLabel2;
-	ImageIcon imageIcon;
-	Icon icon;
+	private JLabel jLabel;
+	private ImageIcon imageIcon;
+	private Icon icon;
 
 	public JPanelRobotCenter() {
+		this.jCheckBox = new JCheckBox (ConstantsView.TEXT_NO_ROBOT);
+		this.jLabel = new JLabel();
+		this.imageIcon = new ImageIcon(ConstantsView.PATH_RECAPTCHA_ROBOT);
+		
 		init();
 	}
 
 	private void init() {
 		this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
-		this.setBackground(Color.WHITE);
-		jCheckBox = new JCheckBox ("  No soy un robot");
+		this.setBackground(ConstantsView.COLOR_BACKGROUD_ROBOT);
+		
 		jCheckBox.setMnemonic (KeyEvent.VK_C); 
 		jCheckBox.setSelected (true);
-//		jCheckBox.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
-		jCheckBox.setFont(new Font("Nunito Sams",0,20));
+		jCheckBox.setFont(ConstantsView.FONT_CHECK_ROBOT);
 		this.add(jCheckBox);
 		
-		jLabel = new JLabel();
-//		jLabel.setAlignmentX(CENTER_ALIGNMENT);
 		jLabel.setBorder(BorderFactory.createEmptyBorder(0,80,0,0));
-		imageIcon = new ImageIcon("data/images/reCaptcha.png");
 		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(60, 60,
 				Image.SCALE_AREA_AVERAGING));
 		jLabel.setIcon(icon);
 		this.add(jLabel);
-
-
 	}
 }

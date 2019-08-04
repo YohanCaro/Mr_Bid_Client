@@ -1,7 +1,7 @@
 package com.prg3.mr_bid.runner;
 
 import com.prg3.mr_bid.utilities.Constants;
-import com.prg3.mr_bid.view.Splash2;
+import com.prg3.mr_bid.view.Splash;
 
 /**
  * Clase Run - Inicia la aplicaión del cliente
@@ -20,7 +20,7 @@ public class Run {
 			try {
 				Constants.ip = args[0];
 				Constants.port = Integer.parseInt(args[1]);
-				Splash2 splash = new Splash2();
+				new Splash();
 			} catch (NumberFormatException e) {
 				System.out.println("El parametro del puerto debe ser numerico! (EJM: 12345)");
 			}

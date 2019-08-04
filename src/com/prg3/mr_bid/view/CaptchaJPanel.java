@@ -7,14 +7,24 @@ import javax.swing.JPanel;
 import com.prg3.mr_bid.model.entity.MyCaptcha;
 
 /**
- * clase que creal Captcha
- * @author Daniel Garcia
- * fecha 13/06/2019
+ * Clase CaptchaJPanel - Crea el captcha
+ *
+ * @version 1.0 - 13/06/2019
+ * @author Daniel García
  */
 public class CaptchaJPanel extends JPanel {
 	
+	/**
+	 * Serial por defecto
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private MyCaptcha captcha;
 	
+	/**
+	 * Constructor con un captcha que llega
+	 * @param captcha
+	 */
 	public CaptchaJPanel(MyCaptcha captcha) {
 		this.captcha = captcha;
 	}

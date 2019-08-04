@@ -1,37 +1,47 @@
 package com.prg3.mr_bid.view;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.Toolkit;
 
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+
+import com.prg3.mr_bid.utilities.ConstantsView;
+
 /**
- * Clase que crea un dailogo para los datos de tarjeta de credito
- * @author Daniel Garcia
- * fecha 13/06/2019
+ * Clase JDialogAddCreditCard - Clase que crea un dailogo para los datos de
+ *  tarjeta de credito
+ *
+ * @version 1.0 - 13/06/2019
+ * @author Daniel García
  */
 public class JDialogAddCreditCard extends JDialog {
-	JPanelFormCreditCard jPanelForm;
-	// JpanelNorte jpanelNorte;
+	
+	/**
+	 * Serial por defecto
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private JPanelFormCreditCard jPanelForm;
 
+	/**
+	 * Constructor que inicializa el panel de la la tarjeta
+	 */
 	public JDialogAddCreditCard() {
 		this.jPanelForm = new JPanelFormCreditCard();
-		// this.jpanelNorte = new JpanelNorte();
 		init();
 	}
 
+	/**
+	 * Inicializa los componentes
+	 */
 	private void init() {
 		this.setResizable(false);
-		setSize(500, 350);
+		setSize(ConstantsView.SIZE_DIALOG_CREDIT_CARD);
 		this.setLocationRelativeTo(null);
 
-		// this.add(jpanelNorte, BorderLayout.NORTH);
 		this.add(jPanelForm, BorderLayout.CENTER);
 
-		// this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
 	}
 
 }
