@@ -1,5 +1,6 @@
 package com.prg3.mr_bid.utilities;
 
+import java.awt.Dimension;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -45,6 +46,11 @@ public class Utilities {
 		JOptionPane.showMessageDialog(null, menssage, title, JOptionPane.INFORMATION_MESSAGE);
 	}
 	
+	/**
+	 * Convierte una cadena en una lista simple de subatas
+	 * @param stringList lista
+	 * @return lista de subastas
+	 */
 	public static SimpleList<Bidding> stringToBiddings(String stringList) {
 		SimpleList<Bidding> list = new SimpleList<>();
 		String[] array = stringList.split("#");
@@ -90,13 +96,18 @@ public class Utilities {
 	
 	/**
 	 * Convierte las horas a segundos
-	 * @param hours
-	 * @return
+	 * @param hours horas
+	 * @return tiempo en segundos
 	 */
 	public static float hoursToSeconds(float hours) {
 		return hours*3600;
 	}
 	
+	/**
+	 * Verifica el estado actual de una subasta
+	 * @param bidding subasta
+	 * @return estado actual de las subasta
+	 */
 	public static BidState getState(Bidding bidding) {
 		if (!isAfterOfToDay(bidding.getFinishTime())) {
 			return BidState.FINALIZADA;
@@ -107,6 +118,12 @@ public class Utilities {
 		return BidState.NO_INICIADA;
 	}
 	
+	/**
+	 * Verifica cual es la fecha más cercana en tiempo y verifica el estado
+	 * actual de la subasta
+	 * @param bidding subasta
+	 * @return cadena con el tiempo
+	 */
 	public static String getTimeRemaining(Bidding bidding) {
 		if (isAfterOfToDay(bidding.getInitTime())) {
 			return convertTime(bidding.getInitTime());
@@ -117,6 +134,12 @@ public class Utilities {
 		}
 	}
 	
+	/**
+	 * Conviete una fecha de subasta a una cadena con la inofrmación del 
+	 * teimp restante para ser iniciada o finalizada
+	 * @param bt fecha de subasta
+	 * @return cadena con el tiempo restante
+	 */
 	public static String convertTime(BidTime bt) {
 		float time = hoursToSeconds(bt.getTime());
 		String out = "";
@@ -133,16 +156,36 @@ public class Utilities {
 		return out;
 	}
 	
+	/**
+	 * Convierte segundos en minutos
+	 * @param s segundos
+	 * @return int con los minutos
+	 */
 	public static int minutes(float s) {
 		float i = (s/60);
 		int h = ((int) (s/3600)*60);
 		return (int)(i - h);
 	}
 	
+	/**
+	 * Convierte segundos en horas
+	 * @param s segundos
+	 * @return int con las horas
+	 */
 	public static int hours(float s) {
 		float h = (s/3600);
 		int d = ((int) (s/86400)*24);
 		return (int)(h - d);
+	}
+	
+	/**
+	 * Setea una dimension para un componente de una ventana o panel
+	 * @param x pos x
+	 * @param y pos y
+	 * @return la dimension
+	 */
+	public static Dimension setDimension(int x, int y) {
+		return new Dimension(x, y);
 	}
 
 }

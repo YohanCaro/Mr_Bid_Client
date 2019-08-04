@@ -2,7 +2,6 @@ package com.prg3.mr_bid.view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.io.File;
@@ -10,8 +9,6 @@ import java.text.DateFormat;
 import java.util.Date;
 
 import javax.swing.ButtonGroup;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
@@ -20,31 +17,33 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 
 import com.prg3.mr_bid.controller.ControlCommands;
 import com.prg3.mr_bid.controller.UserController;
-import com.prg3.mr_bid.model.entity.Bidding;
 import com.prg3.mr_bid.model.entity.ConstantsBid;
-import com.prg3.mr_bid.model.entity.Gender;
 import com.prg3.mr_bid.model.entity.TypeProduct;
+import com.prg3.mr_bid.utilities.ConstantsView;
 import com.prg3.mr_bid.utilities.HandlerLanguage;
 import com.prg3.mr_bid.utilities.HintJTextField;
+import com.prg3.mr_bid.utilities.Utilities;
 import com.toedter.calendar.JDateChooser;
 
 /**
- * Clase JPanelMainAddProduct -
+ * Clase JPanelMainAddProduct - Se encarag de añadir una nuevo producto (vista)
  *
- * @version 1.0 - 2/06/2019
+ * @version 1.0 - 4/06/2019
+ * @author Bid Team
  */
 public class JPanelMainAddProduct extends JPanel {
 
+	/**
+	 * Serial por defecto
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private JPanel jPanelNorth, jPanelSouth, jPanelWest, jPanelEast, jPanelCenter, jPanelCard1, jPanelCard2,
 			jPanelCard3;
-	private JLabel jLabel;
-	private ImageIcon imageIcon;
-	private Icon icon;
 	private JLabel jLabelName, jLabelDescription;
 	private JComboBox<TypeProduct> typeJComboBox;
 	private HintJTextField jTextFieldName, jTextFieldTy;
@@ -56,6 +55,10 @@ public class JPanelMainAddProduct extends JPanel {
 	private JFileChooser jFileChooser;
 	private JButton jButtoncreate, jButtonCancel;
 
+	/**
+	 * Constructor que crea los paneles del panel
+	 * @param control controlador
+	 */
 	public JPanelMainAddProduct(UserController control) {
 		this.jPanelNorth = new JPanel();
 		this.jPanelSouth = new JPanel();
@@ -63,35 +66,40 @@ public class JPanelMainAddProduct extends JPanel {
 		this.jPanelEast = new JPanel();
 		this.jPanelCenter = new JPanel();
 
-		this.jLabel = new JLabel();
 		character();
 		sizePanel();
 		Card1(control);
 		Card2();
 		Card3(control);
-
 		init();
 	}
 
+	/**
+	 * Colorea los paneles
+	 */
 	private void character() {
-		// jPanelNorth.setBackground(Color.RED);
 		jPanelSouth.setBackground(Color.GREEN);
 		jPanelCenter.setBackground(Color.black);
-
 	}
 
+	/**
+	 * Le da tamaño a los paneles
+	 */
 	private void sizePanel() {
-
-		jPanelWest.setPreferredSize(new Dimension(100, 0));
-		jPanelEast.setPreferredSize(new Dimension(100, 0));
-		jPanelNorth.setPreferredSize(new Dimension(0, 100));
-		jPanelCenter.setPreferredSize(new Dimension(0, 1000));// tamaño del panel central
-
+		jPanelWest.setPreferredSize(Utilities.setDimension(100, 0));
+		jPanelEast.setPreferredSize(Utilities.setDimension(100, 0));
+		jPanelNorth.setPreferredSize(Utilities.setDimension(0, 100));
+		jPanelCenter.setPreferredSize(Utilities.setDimension(0, 1000));
 	}
 
+	/**
+	 * Se dividen la secciones del panel por tarjetas
+	 * Tarjeta 1
+	 * @param control controlador
+	 */
 	private void Card1(UserController control) {
 		this.jPanelCard1 = new JPanel();
-		JButton jButton = new JButton("Agregar imagen");
+		JButton jButton = new JButton(ConstantsView.BT_ADD_IMG_MAP);
 		jButton.setActionCommand(ControlCommands.ADD_PHOTO.name());
 		jButton.addActionListener(control);
 		descriptionJTextArea = new JTextArea();
@@ -100,43 +108,45 @@ public class JPanelMainAddProduct extends JPanel {
 		jPanelCard1.setLayout(null);
 		jPanelCard1.setBackground(Color.LIGHT_GRAY);
 
-		jPanelCard1.add(createLabel("DATOS DEL PRODUCTO", 10, 10, 200, 30));
+		jPanelCard1.add(createLabel(ConstantsView.TEXT_DATA_PRODUCT, 10, 10, 200, 30));
 
-		// jPanelCard1.add(createLabel("DESCRIPCION", 600, 10, 200, 30));
+		jPanelCard1.add(createLabel(ConstantsView.TEXT_DESCRIPTION, 600, 10, 200, 30));
 		jLabelDescription = new JLabel(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_DESCRIPTION));
 		jLabelDescription.setBounds(600, 10, 200, 30);
 		jLabelDescription.setBackground(new Color(244, 244, 244));
-		jLabelDescription.setPreferredSize(new Dimension(200, 60));
+		jLabelDescription.setPreferredSize(Utilities.setDimension(200, 60));
 		jPanelCard1.add(jLabelDescription);
 
-		jPanelCard1.add(createLabel("TIPO DE LA PUBLICACIONs", 20, 60, 200, 30));
-		jTextFieldName = createTextField("TIPO DE LA PUBLICACIONs", 200, 60, 200, 30);
+		jPanelCard1.add(createLabel(ConstantsView.TEXT_TYPE_PUB, 20, 60, 200, 30));
+		jTextFieldName = createTextField(ConstantsView.TEXT_TYPE_PUB, 200, 60, 200, 30);
 		jPanelCard1.add(jTextFieldName);
-		jPanelCard1.add(createLabel("TIPO DE PRODUCTO", 20, 120, 200, 30));
-		// jPanelCard1.add(createTextField("TIPO DE PRODUCTO", 200, 120, 200, 30));
+		jPanelCard1.add(createLabel(ConstantsView.TEXT_TYPE_PRO, 20, 120, 200, 30));
 		typeJComboBox = new JComboBox<>(TypeProduct.values());
 		typeJComboBox.setBounds(200, 120, 200, 30);
 		jPanelCard1.add(typeJComboBox);
 		jPanelCard1.add(jButton);
 		jPanelCard1.add(descriptionJTextArea);
-
 	}
 
+	/**
+	 * Se dividen la secciones del panel por tarjetas
+	 * Tarjeta 2
+	 */
 	private void Card2() {
 		this.jPanelCard2 = new JPanel();
 
-		JButton jButton = new JButton("Agregar imagen");
+		JButton jButton = new JButton(ConstantsView.BT_ADD_IMG_MAP);
 		JTextArea jTextArea = new JTextArea();
 		jTextArea.setBounds(600, 60, 500, 200);
 		jButton.setBounds(200, 180, 200, 30);
 		jPanelCard2.setLayout(null);
 		jPanelCard2.setBackground(Color.LIGHT_GRAY);
 
-		jPanelCard2.add(createLabel("TIEMPO DE LA SUBASTA", 10, 10, 200, 30));
+		jPanelCard2.add(createLabel(ConstantsView.TEXT_TIME_BID, 10, 10, 200, 30));
 
-		jPanelCard2.add(createLabel("FECHA DE LA PUBLICACION", 20, 60, 200, 30));
-		jPanelCard2.add(createLabel("FECHA DE INICIO", 20, 120, 200, 30));
-		jPanelCard2.add(createLabel("FECHA DE CIERRE", 20, 180, 200, 30));
+		jPanelCard2.add(createLabel(ConstantsView.TEXT_DATE_PUB, 20, 60, 200, 30));
+		jPanelCard2.add(createLabel(ConstantsView.TEXT_DATE_INI, 20, 120, 200, 30));
+		jPanelCard2.add(createLabel(ConstantsView.TEXT_DATE_FIN, 20, 180, 200, 30));
 
 		jCalendar = new JDateChooser();
 		jCalendar.setBounds(200, 60, 200, 30);
@@ -150,60 +160,64 @@ public class JPanelMainAddProduct extends JPanel {
 		jCalendar3.setBounds(200, 180, 200, 30);
 		jPanelCard2.add(jCalendar3);
 
-		jPanelCard2.add(createLabel("HORA DE LA PUBLICACION", 600, 60, 200, 30));
+		jPanelCard2.add(createLabel(ConstantsView.TEXT_HOUR_PUB, 600, 60, 200, 30));
 		jSpinnerPublicatedHour = new JSpinner(new SpinnerNumberModel(8, 0, 24, 1));
 		jSpinnerPublicatedHour.setBounds(790, 60, 200, 30);
 		jPanelCard2.add(jSpinnerPublicatedHour);
 
-		jPanelCard2.add(createLabel("HORA DE INICIO", 600, 120, 200, 30));
+		jPanelCard2.add(createLabel(ConstantsView.TEXT_HOUR_INI, 600, 120, 200, 30));
 		jSpinnerStartHour = new JSpinner(new SpinnerNumberModel(8, 0, 24, 1));
 		jSpinnerStartHour.setBounds(790, 120, 200, 30);
 		jPanelCard2.add(jSpinnerStartHour);
 
-		jPanelCard2.add(createLabel("HORA DE CIERRE", 600, 180, 200, 30));
+		jPanelCard2.add(createLabel(ConstantsView.TEXT_HOUR_FIN, 600, 180, 200, 30));
 		jSpinnerFinishHour = new JSpinner(new SpinnerNumberModel(8, 0, 24, 1));
 		jSpinnerFinishHour.setBounds(790, 180, 200, 30);
 		jPanelCard2.add(jSpinnerFinishHour);
-
 	}
 
+	/**
+	 * Se dividen la secciones del panel por tarjetas
+	 * Tarjeta 3
+	 * @param control controlador
+	 */
 	private void Card3(UserController controller) {
 		this.jPanelCard3 = new JPanel();
 
-		JButton jButton = new JButton("Agregar imagen");
+		JButton jButton = new JButton(ConstantsView.BT_ADD_IMG_MAP);
 		JTextArea jTextArea = new JTextArea();
 		jTextArea.setBounds(600, 60, 500, 200);
 		jButton.setBounds(200, 180, 200, 30);
 		jPanelCard3.setLayout(null);
 		jPanelCard3.setBackground(Color.LIGHT_GRAY);
 
-		jPanelCard3.add(createLabel("SOBRE LA SUBASTA", 10, 10, 200, 30));
+		jPanelCard3.add(createLabel(ConstantsView.TEXT_ABOUT_BID, 10, 10, 200, 30));
 
-		jPanelCard3.add(createLabel("TIPO DE INCEMENTO", 20, 60, 200, 30));
-		jPanelCard3.add(createLabel("VALOR MINIMO ", 20, 120, 200, 30));
-		jPanelCard3.add(createLabel("TIPO DE SUBASTA", 20, 180, 200, 30));
-		jTextFieldTy = createTextField2("VALOR MINIMO  ", 200, 120, 200, 30);
+		jPanelCard3.add(createLabel(ConstantsView.TEXT_TYPE_INCREMENT, 20, 60, 200, 30));
+		jPanelCard3.add(createLabel(ConstantsView.TEXT_MIN_VALUE, 20, 120, 200, 30));
+		jPanelCard3.add(createLabel(ConstantsView.TEXT_TYPE_BID, 20, 180, 200, 30));
+		jTextFieldTy = createTextField2(ConstantsView.TEXT_MIN_VALUE, 200, 120, 200, 30);
 		jPanelCard3.add(jTextFieldTy);
 
-		jRadioButton = new JRadioButton("Automatico");
+		jRadioButton = new JRadioButton(ConstantsView.TEXT_AUTOMATIC);
 		jRadioButton.setBounds(200, 60, 100, 30);
 		jRadioButton.setSelected(true);
 		jPanelCard3.add(jRadioButton);
 
-		jRadioButton2 = new JRadioButton("Dadopor el usuario");
-		jRadioButton2.setBounds(300, 60, 100, 30);
+		jRadioButton2 = new JRadioButton(ConstantsView.TEXT_FOR_USER);
+		jRadioButton2.setBounds(300, 60, 150, 30);
 		jPanelCard3.add(jRadioButton2);
 
 		buttonGroup = new ButtonGroup();
 		buttonGroup.add(jRadioButton);
 		buttonGroup.add(jRadioButton2);
 
-		jRadioButtonPublic = new JRadioButton("PUBLIC");
+		jRadioButtonPublic = new JRadioButton(ConstantsView.TEXT_PUBLIC);
 		jRadioButtonPublic.setBounds(200, 180, 100, 30);
 		jRadioButtonPublic.setSelected(true);
 		jPanelCard3.add(jRadioButtonPublic);
 
-		jRadioButtonPrivate = new JRadioButton("PRIVATE");
+		jRadioButtonPrivate = new JRadioButton(ConstantsView.TEXT_PRIVATE);
 		jRadioButtonPrivate.setBounds(300, 180, 100, 30);
 		jPanelCard3.add(jRadioButtonPrivate);
 
@@ -211,22 +225,23 @@ public class JPanelMainAddProduct extends JPanel {
 		buttonGroup2.add(jRadioButtonPublic);
 		buttonGroup2.add(jRadioButtonPrivate);
 
-		jButtoncreate = new JButton("CREAR");
+		jButtoncreate = new JButton(ConstantsView.BT_CREATE_MAP);
 		jButtoncreate.setBounds(400, 230, 100, 30);
 		jButtoncreate.setActionCommand(ControlCommands.ACTION_BIDDING.name());
 		jButtoncreate.addActionListener(controller);
 		jPanelCard3.add(jButtoncreate);
 
-		jButtonCancel = new JButton("CANCELAR");
+		jButtonCancel = new JButton(ConstantsView.BT_CANCEL_MAP);
 		jButtonCancel.setBounds(600, 230, 100, 30);
 		jButtonCancel.setActionCommand(ControlCommands.CLOSE_PRODUCT.name());
 		jButtonCancel.addActionListener(controller);
 		jPanelCard3.add(jButtonCancel);
-
 	}
 
+	/**
+	 * Inicia los componentes del panel
+	 */
 	private void init() {
-
 		this.setLayout(new BorderLayout());
 		this.setSize(Toolkit.getDefaultToolkit().getScreenSize());
 
@@ -240,37 +255,64 @@ public class JPanelMainAddProduct extends JPanel {
 		this.add(jPanelWest, BorderLayout.WEST);
 		this.add(jPanelEast, BorderLayout.EAST);
 		this.add(jPanelCenter, BorderLayout.CENTER);
-
 	}
 
+	/**
+	 * Crea e instancia un label
+	 * @param name nombre
+	 * @param x posX
+	 * @param y posY
+	 * @param sisex tamaño x
+	 * @param sizey tamaño y
+	 * @return jLabelName label con el nombre
+	 */
 	public JLabel createLabel(String name, int x, int y, int sisex, int sizey) {
 		jLabelName = new JLabel(name);
 		jLabelName.setBounds(x, y, sisex, sizey);
-		jLabelName.setBackground(new Color(244, 244, 244));
-		jLabelName.setPreferredSize(new Dimension(200, 60));
+		jLabelName.setBackground(ConstantsView.COLOR__FORE_WD);
+		jLabelName.setPreferredSize(Utilities.setDimension(200, 60));
 		add(jLabelName);
 		return jLabelName;
-
 	}
 
+	/**
+	 * Crea un HintTextField para los campos de texto
+	 * @param name nombre
+	 * @param x posX
+	 * @param y posY
+	 * @param sisex tamaño X
+	 * @param sizey tamañoY
+	 * @return jTextFieldName tf
+	 */
 	public HintJTextField createTextField(String name, int x, int y, int sisex, int sizey) {
 		jTextFieldName = new HintJTextField(name);
 		jTextFieldName.setBounds(x, y, sisex, sizey);
-		jTextFieldName.setBackground(new Color(244, 244, 244));
+		jTextFieldName.setBackground(ConstantsView.COLOR__FORE_WD);
 		add(jTextFieldName);
 		return jTextFieldName;
-
 	}
 
+	/**
+	 * Crea un HintTextField para los campos de texto
+	 * @param name nombre
+	 * @param x posX
+	 * @param y posY
+	 * @param sisex tamaño X
+	 * @param sizey tamañoY
+	 * @return jTextFieldName tf
+	 */
 	public HintJTextField createTextField2(String name, int x, int y, int sisex, int sizey) {
 		jTextFieldTy = new HintJTextField(name);
 		jTextFieldTy.setBounds(x, y, sisex, sizey);
-		jTextFieldTy.setBackground(new Color(244, 244, 244));
+		jTextFieldTy.setBackground(ConstantsView.COLOR__FORE_WD);
 		add(jTextFieldTy);
 		return jTextFieldTy;
-
 	}
 
+	/**
+	 * Obtiene el valor del nombre
+	 * @return jTextFieldName name
+	 */
 	public String getJTextName() {
 		if (jTextFieldName.getText() != null && !jTextFieldName.getText().isEmpty()) {
 			return jTextFieldName.getText();
@@ -278,7 +320,10 @@ public class JPanelMainAddProduct extends JPanel {
 		return null;
 	}
 	
-	
+	/**
+	 * Obtien el valor de la puja
+	 * @return
+	 */
 	public String getValueMin() {
 		if (jTextFieldTy.getText() != null && !jTextFieldTy.getText().isEmpty()) {
 			return jTextFieldName.getText();
@@ -286,6 +331,10 @@ public class JPanelMainAddProduct extends JPanel {
 		return null;
 	}
 
+	/**
+	 * Obtiene el valor de la descripción
+	 * @return descriptionJTextArea textArea
+	 */
 	public String getDescription() {
 		if (descriptionJTextArea.getText() != null && !descriptionJTextArea.getText().isEmpty()) {
 			return descriptionJTextArea.getText();
@@ -293,6 +342,10 @@ public class JPanelMainAddProduct extends JPanel {
 		return null;
 	}
 
+	/**
+	 * Obtiene le tipo de producto
+	 * @return typeJComboBox combo
+	 */
 	public TypeProduct getTypeProduct() {
 		return (TypeProduct) typeJComboBox.getSelectedItem();
 	}
@@ -345,38 +398,58 @@ public class JPanelMainAddProduct extends JPanel {
 		return null;
 	}
 
+	/**
+	 * Obtien la hora de publicación
+	 * @return hora byte
+	 */
 	public byte hourP() {
 		return (byte) ((int) jSpinnerPublicatedHour.getModel().getValue());
 	}
 
+	/**
+	 * Obtien la hora de inicio
+	 * @return hora byte
+	 */
 	public byte hourI() {
 		return (byte) ((int) jSpinnerStartHour.getModel().getValue());
 	}
 
+	/**
+	 * Obtien la hora de finalizacion
+	 * @return hora byte
+	 */
 	public byte hourF() {
 		return (byte) ((int) jSpinnerFinishHour.getModel().getValue());
 	}
 
+	/**
+	 * Verifica si la subasta es automatica
+	 * @return jRadioButton auto
+	 */
 	public boolean isAutomatic() {
 		return (jRadioButton.isSelected() ? true : false);
 	}
 
+	/**
+	 * Verifica si la subasta es publica
+	 * @return jRadioButtonPublic public
+	 */
 	public boolean isPublic() {
 		return (jRadioButtonPublic.isSelected() ? true : false);
 	}
 
-	// public Bidding createBid() {
-	// return new Bidding(jTextFieldName.getText(), (TypeProduct)
-	// typeJComboBox.getSelectedItem(), jTextFieldName.getText(),
-	// DateFormat.getDateInstance(), initTime, finishTime, isAutomaticIncremet,
-	// isPublic, user, value, increment);
-	//
-	// }
-
+	/**
+	 * Cambia el idioma :/
+	 */
 	public void changeLanguage() {
-		// jRadioButton.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_ENGLISH));
-
+		
 	}
+	
+	/**
+	 * JFileChooser para cargar la imagen de la subasta o publicacion
+	 * @return jFileChooser chooser
+	 * @throws Exception exception con el archivo
+	 */
 	public File getFile() throws Exception{
 		jFileChooser = new JFileChooser();
 		jFileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);

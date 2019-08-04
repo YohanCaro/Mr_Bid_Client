@@ -1,34 +1,41 @@
 package com.prg3.mr_bid.view;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Toolkit;
 
-import javax.swing.Icon;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 
 import com.prg3.mr_bid.controller.UserController;
-import com.prg3.mr_bid.utilities.Utilities;
+import com.prg3.mr_bid.utilities.ConstantsView;
+
 /**
- * CLASE QUE CONTIENE TODOS LOS PANELES DE LA VISTA
- * @author Daniel Garcia
- * fecha 13/06/2019
+ * Clase JFrameMain - CLASE QUE CONTIENE TODOS LOS PANELES DE LA VISTA y crea
+ * la ventana principal de la aplicación
+ *
+ * @version 1.2 - 4/08/2019
+ * @author Daniel García
  */
 public class JFrameMain extends JFrame {
 
+	/**
+	 * Serial del panel
+	 */
+	private static final long serialVersionUID = -6364867265927971657L;
+	
 	private JScrollPane jScrollPane;
 	private JPanelMainWindow jPanelMain;
 	private JPanelPrincipalLogin jPanelPrincipalLogin;
 	private JPanelOptionMenu jPanelOptionMenu;
-	private JPanelMainWindowCuenta jPanelMainWindowCuenta;
+	private JPanelMainWindowAccount jPanelMainWindowAccount;
 	private JPanelMainAddProduct jPanelMainAddProduct;
 	private MainPanelHome jMainPanelHome;
 	private JPanelMainProduct jPanelMainProduct;
-	private JPanelMainWindowMisSubastas jPanelMainWindowMisSubastas;
-	Icon icon;
+	private JPanelMainWindowMyBiddings jPanelMainWindowMyBiddings;
 
+	/**
+	 * Constructor que crea los paneles de la aplicación
+	 * @param control controlador
+	 */
 	public JFrameMain(UserController control) {
 		this.jScrollPane = new JScrollPane();
 		jScrollPane.setOpaque(false);
@@ -37,27 +44,31 @@ public class JFrameMain extends JFrame {
 		this.jMainPanelHome = new MainPanelHome(control);
 		jMainPanelHome.setOpaque(false);
 		this.jPanelOptionMenu = new JPanelOptionMenu(control);
-		this.jPanelMainWindowCuenta = new JPanelMainWindowCuenta(control);
+		this.jPanelMainWindowAccount = new JPanelMainWindowAccount(control);
 		this.jPanelMainAddProduct = new JPanelMainAddProduct(control);
-		this.jPanelMainWindowMisSubastas = new JPanelMainWindowMisSubastas();
+		this.jPanelMainWindowMyBiddings = new JPanelMainWindowMyBiddings();
 		
 		init();
 	}
 
+	/**
+	 * Inicia y añade los componentes del frame
+	 */
 	private void init() {
 		this.setResizable(true);
 		this.setLayout(new BorderLayout());
-//		this.setSize(Toolkit.getDefaultToolkit().getScreenSize());
 		this.setExtendedState(MAXIMIZED_BOTH);
-		this.setTitle("MR BID");
+		this.setTitle(ConstantsView.TITLE_APP);
 		jScrollPane.setViewportView(jPanelMain);
 		this.add(jScrollPane, BorderLayout.CENTER);
 		this.add(jPanelOptionMenu, BorderLayout.NORTH);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 	}
 
+	/**
+	 * Muestra el panel Home
+	 */
 	public void showHome() {
 		jPanelMain.removeAll();
 		jPanelMain.add(jMainPanelHome, BorderLayout.CENTER);
@@ -65,6 +76,10 @@ public class JFrameMain extends JFrame {
 		revalidate();
 	}
 	
+	/**
+	 * Muestra el panel principal
+	 * @param controller controlador
+	 */
 	public void showMain(UserController controller) {
 		this.jPanelMain = new JPanelMainWindow(controller);
 		jScrollPane.setViewportView(jPanelMain);
@@ -72,6 +87,9 @@ public class JFrameMain extends JFrame {
 		this.repaint();
 	}
 
+	/**
+	 * Muestra el panel del login
+	 */
 	public void showLogin() {
 		jPanelMain.removeAll();
 		jPanelMain.add(jPanelPrincipalLogin, BorderLayout.CENTER);
@@ -79,20 +97,28 @@ public class JFrameMain extends JFrame {
 		revalidate();
 	}
 	
+	/**
+	 * Muestra el panel de la cuenta del usuario
+	 */
 	public void showMyCount() {
 		jPanelMain.removeAll();
-		jPanelMain.add(jPanelMainWindowCuenta, BorderLayout.CENTER);
+		jPanelMain.add(jPanelMainWindowAccount, BorderLayout.CENTER);
 		repaint();
 		revalidate();
 	}
 	
+	/**
+	 * Muestra el panel para añadir producto
+	 */
 	public void showPanelAddProduct() {
 		jPanelMain.removeAll();
 		jPanelMain.add(jPanelMainAddProduct, BorderLayout.CENTER);
-//		repaint();
 		revalidate();
 	}
 	
+	/**
+	 * Muestra los paneles de las tarjetas de los productos
+	 */
 	public void showPanelCardProduct() {
 		jPanelMain.removeAll();
 		jPanelMain.add(jPanelMainProduct, BorderLayout.CENTER);
@@ -100,37 +126,50 @@ public class JFrameMain extends JFrame {
 		revalidate();
 	}
 	
+	/**
+	 * Muestra el panel de historias
+	 */
 	public void showMyHistory() {
 		jPanelMain.removeAll();
-		jPanelMain.add(jPanelMainWindowMisSubastas, BorderLayout.CENTER);
+		jPanelMain.add(jPanelMainWindowMyBiddings, BorderLayout.CENTER);
 		repaint();
 		revalidate();
 	}
 	
+	/**
+	 * Obtiene el panel del producto
+	 * @return jPanelMainProduct panel
+	 */
 	public JPanelMainProduct getjPanelMainProduct() {
 		return jPanelMainProduct;
 	}
 	
 	/**
-	 * Obtiene 
-	 * @return jPanelPrincipalLogin
+	 * Obtiene el panel del login
+	 * @return jPanelPrincipalLogin panel
 	 */
 	public JPanelPrincipalLogin getjPanelPrincipalLogin() {
 		return jPanelPrincipalLogin;
 	}
 	
-	
+	/**
+	 * Cambia el lenguaje de los paneles de la aplicación
+	 */
 	public void changeLanguage() {
 		jPanelOptionMenu.changeLanguage();
-		jPanelMainWindowCuenta.changeLanguage();
+		jPanelMainWindowAccount.changeLanguage();
 		jPanelMain.getjPanelMainWindowProduct().changeLanguage();
-		jPanelMainProduct.changeLanguage();
-		jPanelMainAddProduct.changeLanguage();
-
+		if (jPanelMainProduct != null) {
+			jPanelMainProduct.changeLanguage();
+		}
+		
+		if (jPanelMainAddProduct != null) {
+			jPanelMainAddProduct.changeLanguage();
+		}
 	}
 
 	/**
-	 * Cambia 
+	 * Cambia el panel de principal del producto
 	 * @param jPanelMainProduct the jPanelMainProduct to set
 	 */
 	public void setjPanelMainProduct(JPanelMainProduct jPanelMainProduct) {
@@ -138,16 +177,16 @@ public class JFrameMain extends JFrame {
 	}
 	
 	/**
-	 * Obtiene 
-	 * @return jPanelMainWindowCuenta
+	 * Obtiene el pandel de la ventana de cuenta de usuario
+	 * @return jPanelMainWindowCuenta jpanel
 	 */
-	public JPanelMainWindowCuenta getjPanelMainWindowCuenta() {
-		return jPanelMainWindowCuenta;
+	public JPanelMainWindowAccount getjPanelMainWindowCuenta() {
+		return jPanelMainWindowAccount;
 	}
 	
 	/**
-	 * Obtiene 
-	 * @return jPanelMain
+	 * Obtiene el panel principal
+	 * @return jPanelMain jpanel
 	 */
 	public JPanelMainWindow getjPanelMain() {
 		return jPanelMain;
@@ -162,13 +201,16 @@ public class JFrameMain extends JFrame {
 	}
 	
 	/**
-	 * Obtiene 
-	 * @return jPanelMainAddProduct
+	 * Obtiene el panel de añadir productos de la app
+	 * @return jPanelMainAddProduct jpanel
 	 */
 	public JPanelMainAddProduct getjPanelMainAddProduct() {
 		return jPanelMainAddProduct;
 	}
 	
+	/**
+	 * Redibuja el panel principal
+	 */
 	public void getrepaint() {
 		jPanelMain.repaints();
 	}
