@@ -98,7 +98,7 @@ public class JPanelCard extends JPanel {
 		jButton.setBackground(new Color(2, 41, 48));
 		jButton.setForeground(new Color(255, 255, 255));// blanco
 		imageIcon = new ImageIcon(url);
-		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(50, 50,Image.SCALE_AREA_AVERAGING));
+		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(100, 100,Image.SCALE_AREA_AVERAGING));
 		jButton.setIcon(icon);
 		this.add(jButton);
 		return jButton;
@@ -124,21 +124,6 @@ public class JPanelCard extends JPanel {
 		jLabelType.setPreferredSize(new Dimension(200, 60));
 		jPanelInfoProduct.add(jLabelType);
 		
-		
-//		
-////		jPanelInfoProduct.add(createLabel("ESTADO", 10, 70, jLabelSatus, 20, 130));
-////		jPanelInfoProduct.add(createLabel("TIEMPO RESTANTE", 10, 120, jLabelTime, 20, 400));
-//
-//		jPanelInfoProduct.add(createLabel(type, 200, 20, jLabelType2, 20, 130));
-//		jPanelInfoProduct.add(createLabel(status, 200, 70, jLabelSatus2, 20, 130));
-//		jPanelInfoProduct.add(createLabel(time, 230, 120, jLabelTime2, 20, 130));
-//
-//		jButton = new JButton("Ingresar");
-//		jButton.setBounds(150, 200, 100, 30);
-//		jButton.setActionCommand(ControlCommands.SHOW_PRODUCT.name());
-//		jButton.addActionListener(control);
-//		jPanelInfoProduct.add(jButton);
-
 	}
 	
 	public void changeData(Bidding b, UserController control) {
@@ -151,7 +136,6 @@ public class JPanelCard extends JPanel {
 		jLabelType.setPreferredSize(new Dimension(200, 60));
 		jPanelInfoProduct.add(jLabelType);
 	
-		
 //		jPanelInfoProduct.add(createLabel(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_ENGLISH), 10, 20, jLabelType, 20, 130));
 		jPanelInfoProduct.add(createLabel("ESTADO", 10, 70, jLabelSatus, 20, 130));
 		jPanelInfoProduct.add(createLabel("TIEMPO RESTANTE", 10, 120, jLabelTime, 20, 400));

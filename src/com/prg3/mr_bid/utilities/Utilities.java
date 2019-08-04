@@ -1,7 +1,5 @@
 package com.prg3.mr_bid.utilities;
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -100,11 +98,11 @@ public class Utilities {
 	}
 	
 	public static BidState getState(Bidding bidding) {
-		if (isAfterOfToDay(bidding.getInitTime())) {
-			return BidState.INICIADA;
-		} 
 		if (!isAfterOfToDay(bidding.getFinishTime())) {
 			return BidState.FINALIZADA;
+		} 
+		if (!isAfterOfToDay(bidding.getInitTime())) {
+			return BidState.INICIADA;
 		} 
 		return BidState.NO_INICIADA;
 	}

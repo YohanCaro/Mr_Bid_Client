@@ -70,7 +70,6 @@ public class Manager {
 			if (Utilities.isAfterOfToDay(initTime) && Utilities.isAfterOfToDay(finishTime)) {
 				Bidding bidding = new Bidding(biddingName, typeProduct, product, publicationTime, initTime,
 						finishTime, isAutomaticIncremet, isPublic, user.getEmail(), 0);
-				user.getMyBiddings().add(bidding);
 				return bidding;
 			} else {
 				Utilities.showMessageError("Las fechas de inicio y fin deben ser mayores a hoy\n"
@@ -82,21 +81,7 @@ public class Manager {
 		}
 		return null;
 	}
-	
-	/**
-	 * Convierte a los users en cadenas
-	 * @return string s
-	 */
-	public String showUserBiddings() {
-		StringBuilder builder = new StringBuilder();
-		for (int i = 0; i < user.getMyBiddings().size(); i++) {
-			builder.append((i+1) + ") --------------------------------------\n");
-			builder.append(user.getMyBiddings().get(i).toString());
-			builder.append("\n");
-		}
-		return builder.toString();
-	}
-	
+		
 	public Bidding searchBiddingForID(long id) {
 		for (int i = 0; i < Constants.biddingsList.size(); i++) {
 			if (Constants.biddingsList.get(i).getId() == id) {
@@ -121,9 +106,5 @@ public class Manager {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
-	/*
-	 * Estaba haciendo lo del incremento!
-	 */
 	
 }

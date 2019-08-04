@@ -127,11 +127,12 @@ public class Client extends Socket implements Runnable {
 					"Correo no valido!");
 			break;
 		case ERROR_LOGIN:
-			if (json.charAt(1) == 'f') {
+			if (json.equals("false")) {
 				Utilities.showMessageWarning("Correo o contraseña incorrectos\n"
 						+ "Por favor vuelva a intentarlo", "Datos no validos!");				
 			} else {
 				Utilities.showMessageInfo("Si! :D", "Usuario logueado");
+				System.out.println(json);
 				user = gson.fromJson(json, User.class);
 			}
 			break;

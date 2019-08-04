@@ -21,8 +21,6 @@ public class User {
 	private TypeDocument typeDocument;
 	private Gender gender;
 	private CreditCard creditCard;
-	private SimpleList<Bidding> myBiddings;
-	private SimpleList<Bidding> myParcitipations;
 	
 	/**
 	 * Crea un usuario con los siguientes datos
@@ -49,9 +47,6 @@ public class User {
 		this.typeDocument = typeDocument;
 		this.gender = gender;
 		this.creditCard = creditCard;
-		
-		myBiddings = new SimpleList<>();
-		myParcitipations = new SimpleList<>();
 	}
 
 	/**
@@ -126,26 +121,7 @@ public class User {
 		return creditCard;
 	}
 
-	/**
-	 * Obtiene las subastas 
-	 * @return myBiddings mb
-	 */
-	public SimpleList<Bidding> getMyBiddings() {
-		return myBiddings;
-	}
-
-	/**
-	 * Obtiene las participaciones 
-	 * @return myParcitipations mp
-	 */
-	public SimpleList<Bidding> getMyParcitipations() {
-		return myParcitipations;
-	}
-
 	@Override
-	/**
-	 * To string
-	 */
 	public String toString() {
 		return "Nombre y apellido: " + firstName + " email " + email +
 				"\nFecha de nacimiento: " + birthDate.getDateString() + " genero " + gender.getValue();

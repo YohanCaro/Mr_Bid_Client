@@ -13,7 +13,6 @@ public class BidTime {
 	
 	private BidDate date;
 	private float hours;
-	private Calendar calendar;
 	
 	/**
 	 * Constructor que crea un tiempo de subasta con:
@@ -23,7 +22,6 @@ public class BidTime {
 	public BidTime(BidDate date, float hours) {
 		this.date = date;
 		this.hours = hours;
-		calendar = new GregorianCalendar();
 	}
 	
 	/**
@@ -31,9 +29,7 @@ public class BidTime {
 	 * @return t d
 	 */
 	public float getTimeOnDays() {
-		if (calendar == null) {
-			calendar = new GregorianCalendar();
-		}
+		Calendar calendar = new GregorianCalendar();
 		short year = (short) (date.getYear() - calendar.get(calendar.YEAR));
 		short month = (short) (date.getMonth() - (calendar.get(calendar.MONTH)+1));
 		short day = (short) (date.getDay() - calendar.get(calendar.DAY_OF_MONTH));
@@ -54,6 +50,7 @@ public class BidTime {
 	 * @return t h
 	 */
 	public float getActualHour() {
+		Calendar calendar = new GregorianCalendar();
 		return this.hours - calendar.get(calendar.HOUR_OF_DAY) - ((float)calendar.get(calendar.MINUTE)/60);
 	}
 	

@@ -110,7 +110,6 @@ public class JPanelMainProduct extends JPanel {
 	}
 
 	private void card() {
-		JLabel jLabel, jLabel2, jLabel3, jLabel4, jLabel5, jLabel6, jLabel7, jLabel8, jLabel9, foto;
 		jPanelCard.setLayout(null);
 		jPanelCard.setBackground(new Color(0, 0, 0, 94));
 
