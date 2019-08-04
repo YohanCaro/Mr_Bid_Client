@@ -89,8 +89,6 @@ public class SimpleList<T> {
 				aux = aux.next;
 			}
 			aux.next = new Node<T>(info);
-//			for (Node<T> aux = this.head; aux.next != null; aux2 = aux, aux = aux.next); 
-//			aux2.next = new Node<T>(info);
 		}
 	}
 	
@@ -235,6 +233,11 @@ public class SimpleList<T> {
         }
     }
     
+    /**
+     * Obtiene la posicion de un elemnto en la lista
+     * @param info dato
+     * @return int pos
+     */
     public int getPos(T info) {
     	int pos = 0;
        	Node<T> aux = new Node<T>(info);
@@ -306,7 +309,6 @@ public class SimpleList<T> {
     
 	/**
 	 * Elimina un elemento ubicado en la posicion index, y lo retorna
-	 * 
 	 * @param index Indice del elemento a borrar
 	 * @return Elemento borrado
 	 */
@@ -319,7 +321,7 @@ public class SimpleList<T> {
 	/**
 	 * Obtiene el dato alojado en cierta posicion	 * 
 	 * @param index ubicacion en la lista
-	 * @return dato
+	 * @return dato d
 	 */
 	public T get(int index) {
 		Node<T> aux = head;
@@ -365,15 +367,7 @@ public class SimpleList<T> {
 			ant.next = aux.next;
 		}
 	}
-    
-    /**
-     * Convierte la lista en un JsonArray
-     * @return string json
-     */
-//    public String toJsonArray() {
-//		return new Gson().toJson(this);
-//    }
-	
+    	
     /**
      * Give the size of the list
      * @return a integer with the size
@@ -393,7 +387,7 @@ public class SimpleList<T> {
     }
     
     /**
-	 * Cambia 
+	 * Cambia el comparador de la lista
 	 * @param comparator the comparator to set
 	 */
 	public void setComparator(Comparator<T> comparator) {
