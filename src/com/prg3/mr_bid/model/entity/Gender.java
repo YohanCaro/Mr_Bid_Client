@@ -1,6 +1,6 @@
 package com.prg3.mr_bid.model.entity;
 
-/** Enum Gender - Enumerado con generos
+/** Enum Gender - Enumerado con generos de la persona o usuario
  *
  * @author Yohan Caro
  * @version 1.0 - 26/05/2019

@@ -9,6 +9,10 @@ public class Cursor<T> extends SimpleList<T> {
     
     private Node<T> cursor;
 
+    /**
+     * Constructor 
+     * @param simpleList
+     */
     public Cursor(SimpleList<T> simpleList) {
         super(simpleList);
         this.cursor = this.head;

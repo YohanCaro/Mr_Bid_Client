@@ -66,6 +66,10 @@ public class Product {
 		return "Nombre: " + nameProduct + ", descripcion: " + description;
 	}
 
+	/**
+	 * Cambia el valor de la ruta de la imagen del producto
+	 * @param paths ruta
+	 */
 	public void setImages(String paths) {
 		this.images = paths;		
 	}

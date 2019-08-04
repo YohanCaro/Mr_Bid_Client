@@ -7,6 +7,12 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.util.Random;
 
+/**
+ * Clase MyCaptcha - Captcha de ingreso a cuenta o registro
+ *
+ * @version 1.0 - 4/08/2019
+ * @author Yohan Caro
+ */
 public class MyCaptcha {
 
 	private final static byte CAPTCHA_LENGTH = 7;
@@ -17,10 +23,16 @@ public class MyCaptcha {
 	private String message;
 	private int id;
 	
+	/**
+	 * Constructor
+	 */
 	public MyCaptcha() {
 		message = "";
 	}
 	
+	/**
+	 * Crea el capthcha con valores aleatorios
+	 */
 	public void create() {
 		Random rnd = new Random();
 		this.id = rnd.nextInt(1000);
@@ -47,16 +59,26 @@ public class MyCaptcha {
 		
 	}
 	
-	//Validar captcha
-	
+	/**
+	 * Obtiene le mensaje
+	 * @return message s
+	 */
 	public String getMessage() {
 		return message;
 	}
 	
+	/**
+	 * Obtiene le id del captcha
+	 * @return id id
+	 */
 	public int getId() {
 		return id;
 	}
 	
+	/**
+	 * Obtiene la imagen del captcha
+	 * @return image i
+	 */
 	public BufferedImage getImage() {
 		return image;
 	}

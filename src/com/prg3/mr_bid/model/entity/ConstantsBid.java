@@ -1,15 +1,4 @@
-
 package com.prg3.mr_bid.model.entity;
-
-import java.awt.Color;
-import java.awt.Font;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-
-import javax.swing.BorderFactory;
-import javax.swing.JOptionPane;
-import javax.swing.border.Border;
-import javax.swing.border.MatteBorder;
 
 public class ConstantsBid {
 
@@ -57,16 +46,5 @@ public class ConstantsBid {
 	public static final String TXT_NOTFOUND = "No se ha encontrado el servidor";
 	public static final String TXT_ERRORSENDDATE = "Error al enviar el dato";
 	public static final String TXT_COMPLETE = "Por favor complete todos los campos correctamente!";
-
-
-
-
-
-
-
-	
-	
-	
-	
 
 }

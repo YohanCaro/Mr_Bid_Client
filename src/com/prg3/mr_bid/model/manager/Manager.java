@@ -21,7 +21,6 @@ import com.prg3.mr_bid.utilities.Utilities;
 public class Manager {
 	
 	private User user;
-	private static Manager manager;
 	
 	/**
 	 * Constructor vacio
@@ -82,6 +81,11 @@ public class Manager {
 		return null;
 	}
 		
+	/**
+	 * Busca una subasta por su id
+	 * @param id identificador de subasta
+	 * @return Bidding subasta si la encuentra
+	 */
 	public Bidding searchBiddingForID(long id) {
 		for (int i = 0; i < Constants.biddingsList.size(); i++) {
 			if (Constants.biddingsList.get(i).getId() == id) {
@@ -93,14 +97,14 @@ public class Manager {
 		
 	/**
 	 * Obtiene el usuario
-	 * @return user
+	 * @return user u
 	 */
 	public User getUser() {
 		return user;
 	}
 	
 	/**
-	 * Cambia 
+	 * Cambia el valor del usuario cargado
 	 * @param user the user to set
 	 */
 	public void setUser(User user) {
