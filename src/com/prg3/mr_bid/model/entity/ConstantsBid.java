@@ -52,9 +52,9 @@ public class ConstantsBid {
 	public static final String T_ACCEPT = "T_ACCEPT";
 	public static final String T_DESCRIPTION = "T_DESCRIPTION";
 	public static final String TXT_NULL = "ESTA VACIO JAJAJA";
-	public static final String TXT_CRATE = "PRODUCTO CREADO";
+	public static final String TXT_CREATE = "PRODUCTO CREADO";
 	public static final String TXT_ERROR = "ERROR";
-	public static final String TXT_NOFOUND = "No se ha encontrado el servidor";
+	public static final String TXT_NOTFOUND = "No se ha encontrado el servidor";
 	public static final String TXT_ERRORSENDDATE = "Error al enviar el dato";
 	public static final String TXT_COMPLETE = "Por favor complete todos los campos correctamente!";
 

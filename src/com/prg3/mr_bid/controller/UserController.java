@@ -146,7 +146,7 @@ public class UserController implements ActionListener {
 				this.sendData(Commands.UPBIDDING, bidding);
 				this.jFrameMain.showMain(this);
 				Utilities.showMessageInfo("Si! :D", "Bien");
-				Utilities.showMessageInfo(ConstantsBid.TXT_CRATE, null);
+				Utilities.showMessageInfo(ConstantsBid.TXT_CREATE, null);
 				this.jFrameMain.repaint();
 				String paths = "";
 				paths.equals(fileImage.getPath());
@@ -168,6 +168,7 @@ public class UserController implements ActionListener {
 			if (value > valueActually) {
 				jFrameMain.getjPanelMainProduct().setValueActually(value);
 			}
+			//no debería de enviar la subasta al servidor para actualizar el valor de puja?
 			break;
 		case C_SHOWABOUT:
 			jDialogAbout.setVisible(true);
@@ -203,7 +204,7 @@ public class UserController implements ActionListener {
 		try {
 			Client.getInstanceOf().sendMessage(command, data);
 		} catch (UnknownHostException e) {
-			System.out.println(ConstantsBid.TXT_NOFOUND);
+			System.out.println(ConstantsBid.TXT_NOTFOUND);
 		} catch (IOException e) {
 			System.out.println(ConstantsBid.TXT_ERRORSENDDATE);
 		}
@@ -242,8 +243,7 @@ public class UserController implements ActionListener {
 				&& jFrameMain.getjPanelMainAddProduct().getDateP() != null
 				&& jFrameMain.getjPanelMainAddProduct().getDateI() != null
 				&& jFrameMain.getjPanelMainAddProduct().getDateF() != null) {
-			String list = "";
-			list.equals(fileImage.getPath());
+			String list = (fileImage==null)?"":fileImage.getPath();
 			Product p = new Product(jFrameMain.getjPanelMainAddProduct().getJTextName(),
 					jFrameMain.getjPanelMainAddProduct().getDescription(), list);
 			System.out.println(p.toString());
@@ -345,7 +345,6 @@ public class UserController implements ActionListener {
 			e1.printStackTrace();
 		}
 		manageChangeLanguage();
-
 	}
 
 	private void manageChangeLanguageES() {
@@ -355,7 +354,6 @@ public class UserController implements ActionListener {
 			e1.printStackTrace();
 		}
 		manageChangeLanguage();
-
 	}
 
 	private void manageChangeLanguage() {

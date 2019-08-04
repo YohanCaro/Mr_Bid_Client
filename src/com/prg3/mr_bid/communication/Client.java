@@ -8,11 +8,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
-
 import javax.imageio.ImageIO;
-
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.prg3.mr_bid.model.entity.Bidding;
 import com.prg3.mr_bid.model.entity.User;
 import com.prg3.mr_bid.structures.simple_list.SimpleList;
@@ -93,9 +90,9 @@ public class Client extends Socket implements Runnable {
 	 */
 	public void sendImages(String pathsImg, long bidId) throws IOException {
 		sendMessage(Commands.SENDIMG, pathsImg+" "+bidId);
-			BufferedImage bufferedImage = ImageIO.read(new File(pathsImg));
-			ImageIO.write(bufferedImage, "png", dataOS);
-			bufferedImage.flush();
+		BufferedImage bufferedImage = ImageIO.read(new File(pathsImg));
+		ImageIO.write(bufferedImage, "png", dataOS);
+		bufferedImage.flush();
 		
 	}
 	
@@ -108,7 +105,7 @@ public class Client extends Socket implements Runnable {
 		String imagePath = "data/biddingImages/bidding"+id+"_"+".png";
 		ImageIO.write(bufferedImage, "png", new FileOutputStream(imagePath));
 		bufferedImage.flush();
-		paths.equals(imagePath);	
+		paths = imagePath;	
 		return paths;
 	}
 	
@@ -136,11 +133,11 @@ public class Client extends Socket implements Runnable {
 		case UPBIDDING:
 //			Type listType = new TypeToken<SimpleList<Bidding>>(){}.getType();
 //			Constants.biddingsList = gson.fromJson(json, listType);
-			Constants.biddingsList = Utilities.stringToBiddings(json);
+			Constants.biddingsList = (json.length()>0)?Utilities.stringToBiddings(json):new SimpleList<Bidding>();
 		case UPDATE_BID:
 //			Type listType2 = new TypeToken<SimpleList<Bidding>>(){}.getType();
 //			Constants.biddingsList = gson.fromJson(json, listType2);
-			Constants.biddingsList = Utilities.stringToBiddings(json);
+			Constants.biddingsList = (json.length()>0)?Utilities.stringToBiddings(json):new SimpleList<Bidding>();
 			break;
 		case GETIMG:
 			String datas[] = json.split(" ");
