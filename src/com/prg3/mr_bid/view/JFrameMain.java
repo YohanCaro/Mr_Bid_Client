@@ -30,7 +30,6 @@ public class JFrameMain extends JFrame {
 	Icon icon;
 
 	public JFrameMain(UserController control) {
-		
 		this.jScrollPane = new JScrollPane();
 		jScrollPane.setOpaque(false);
 		this.jPanelMain = new JPanelMainWindow(control);
@@ -40,7 +39,6 @@ public class JFrameMain extends JFrame {
 		this.jPanelOptionMenu = new JPanelOptionMenu(control);
 		this.jPanelMainWindowCuenta = new JPanelMainWindowCuenta(control);
 		this.jPanelMainAddProduct = new JPanelMainAddProduct(control);
-//		this.jPanelMainProduct = new JPanelMainProduct();//---------------
 		this.jPanelMainWindowMisSubastas = new JPanelMainWindowMisSubastas();
 		
 		init();
@@ -49,7 +47,8 @@ public class JFrameMain extends JFrame {
 	private void init() {
 		this.setResizable(true);
 		this.setLayout(new BorderLayout());
-		this.setSize(Toolkit.getDefaultToolkit().getScreenSize());
+//		this.setSize(Toolkit.getDefaultToolkit().getScreenSize());
+		this.setExtendedState(MAXIMIZED_BOTH);
 		this.setTitle("MR BID");
 		jScrollPane.setViewportView(jPanelMain);
 		this.add(jScrollPane, BorderLayout.CENTER);
