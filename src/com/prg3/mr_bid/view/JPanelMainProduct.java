@@ -44,7 +44,6 @@ public class JPanelMainProduct extends JPanel {
 	private Icon icon, icon2;
 	private String text;
 	private Bidding bidding;
-	private JButton jButtonListConnect;
 	JButton jButton;
 
 	public JPanelMainProduct() {
@@ -264,22 +263,14 @@ public class JPanelMainProduct extends JPanel {
 		
 		
 
-		jButtonListConnect = new JButton("Conectados");
-		jButtonListConnect.setFocusable(false);
-		jButtonListConnect.setBackground(Color.RED);
-		jButtonListConnect.setActionCommand(ControlCommands.LIST_CONNECT.name());
-		jButtonListConnect.addActionListener(userController);
-
 		jPanelNorth3 = new JPanel();
 		jPanelNorth3.setPreferredSize(new Dimension(50, 50));
 		jPanelNorth3.setOpaque(false);
 //		jTextAreaChat.setPreferredSize(new Dimension(400, 300));
 		jpanelChat.setPreferredSize(new Dimension(400, 300));
-		jButtonListConnect.setPreferredSize(new Dimension(20, 20));
 		jPanelCardSouth2.setLayout(new BorderLayout());
 		jPanelCardSouth2.add(jPanelNorth3, BorderLayout.NORTH);
 		jPanelCardSouth2.add(jpanelChat, BorderLayout.CENTER);
-		jPanelCardSouth2.add(jButtonListConnect, BorderLayout.SOUTH);
 		jPanelCardSouth2.add(jPanelCardWest3, BorderLayout.WEST);
 		jPanelCardSouth2.add(jPanelCardEast3, BorderLayout.EAST);
 

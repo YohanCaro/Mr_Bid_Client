@@ -120,9 +120,7 @@ public class JPanelCard extends JPanel {
 	 * @return button b
 	 */
 	private JButton myJButton(String url,long  id) {
-		jButton = new JButton(String.valueOf(id));
-		System.out.println("EL IDENTIFICADOR DEL BOTON ES "+ String.valueOf(id));
-		 
+		jButton = new JButton(String.valueOf(id));		 
 		jButton.setBounds(0, 0, 200, 200);
 		jButton.setBackground(ConstantsView.COLOR_BACK_PC);
 		jButton.setForeground(ConstantsView.COLOR_FORE_PC);

@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
@@ -39,13 +40,14 @@ public class JPanelForm extends JPanel {
 	
 	private JLabel jLabelName, jLabelImage;
 	private JButton jBRegist, jButton;
-	private HintJTextField jTextFieldName, jTextFieldEmail, jTextFieldPasswor, jTextFieldid,
+	private HintJTextField jTextFieldName, jTextFieldEmail, jTextFieldid,
 			jTextFieldLastName, jTextFieldCaptchat;
 	private JComboBox<TypeDocument> jComboBox;
 	private JPanelRobotCenter jPanelRobotCenter;
 	private JDateChooser jDateChooser;
 	private JRadioButton jRadioButton, jRadioButton2;
 	private ButtonGroup buttonGroup;
+	private JPasswordField jTextFieldPasswor;
 
 	/**
 	 * Constructor que crea el formualrio
@@ -73,7 +75,11 @@ public class JPanelForm extends JPanel {
 		jTextFieldEmail = createTextField(ConstantsView.TEXT_EMAIL_PF, 150, 70, jTextFieldEmail, 250);
 
 		createLabel(ConstantsView.TEXT_PASSWORD_PF, 20, 120);
-		jTextFieldPasswor = createTextField(ConstantsView.TEXT_PASSWORD_PF, 150, 120, jTextFieldPasswor, 250);
+		jTextFieldPasswor = new JPasswordField();
+		jTextFieldPasswor.setBackground(ConstantsView.COLOR__FORE_WD);
+		jTextFieldPasswor.setBounds(150, 120, 250, 40);
+		add(jTextFieldPasswor);
+//		jTextFieldPasswor = createTextField(ConstantsView.TEXT_PASSWORD_PF, 150, 120, jTextFieldPasswor, 250);
 
 		createLabel(ConstantsView.TEXT_TYPE_DOC_PF, 20, 170);
 		jComboBox = new JComboBox<TypeDocument>();
