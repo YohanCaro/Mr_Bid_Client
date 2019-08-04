@@ -180,6 +180,10 @@ public class JpanelChat extends JPanel implements ActionListener {
 
 	}
 
+	
+	public void room() {
+		
+	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String command = e.getActionCommand();
