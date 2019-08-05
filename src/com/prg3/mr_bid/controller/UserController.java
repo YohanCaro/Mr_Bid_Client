@@ -270,8 +270,8 @@ public class UserController implements ActionListener {
 	/**
 	 * Crea un unico controllador
 	 * @return controller controlador
-	 * @throws IOException 
-	 * @throws UnknownHostException 
+	 * @throws IOException ioe
+	 * @throws UnknownHostException uhe
 	 */
 	public static UserController getInstanceOf() throws UnknownHostException, IOException {
 		if (controller == null) {

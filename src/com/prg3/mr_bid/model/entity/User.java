@@ -27,10 +27,8 @@ public class User {
 	 * @param birthDate fecha de nacimiento
 	 * @param document documento
 	 * @param typeDocument tipo de documento
-	 * @param isFemale genero
+	 * @param Gender genero
 	 * @param creditCard tarjeta de credito
-	 * @param myBiddings mis subastas
-	 * @param myParcitipations mis participaciones
 	 */
 	public User(String firstName, String lastName, String email, String password, BidDate birthDate, String document,
 			TypeDocument typeDocument, Gender gender, CreditCard creditCard) {

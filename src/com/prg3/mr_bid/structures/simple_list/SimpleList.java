@@ -32,7 +32,6 @@ public class SimpleList<T> {
 	
 	/**
 	 * Construtor que crea una lista vacia con un comparador
-	 * @param head cabeza
 	 * @param comparator criterio de comparacion
 	 */
 	public SimpleList(Comparator<T> comparator) {
@@ -50,7 +49,7 @@ public class SimpleList<T> {
 	
 	/**
 	 * Constructor que crea una lista con un array.
-	 * @param array vector
+	 * @param ts array vector
 	 */
 	public SimpleList(T[] ts) {
 		this.addArray(ts);
@@ -163,11 +162,6 @@ public class SimpleList<T> {
 		}
 	}
 		
-	/**
-	 * Pasa los elementos de la lista a un array
-	 * @return array con datos
-	 */
-	@SuppressWarnings("unchecked")
 	public T[] toArray(Class<T> classT) {
 		Node<T> aux = this.head;
 		T[] array = (T[]) Array.newInstance(classT, this.size());
