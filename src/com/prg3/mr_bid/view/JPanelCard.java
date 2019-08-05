@@ -95,6 +95,7 @@ public class JPanelCard extends JPanel {
 		myJButton(bid.getProduct().getImages(), bid.getId());
 		init();
 		this.repaint();
+		this.setVisible(true);
 	}
 
 	/**

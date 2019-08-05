@@ -163,10 +163,13 @@ public class UserController implements ActionListener {
 //			jDialogListUsers.setVisible(true);
 			break;
 		case SEND_BID:
-			double value = jFrameMain.getjPanelMainProduct().getValuePuja();
 			double valueActually = jFrameMain.getjPanelMainProduct().getValueActually();
+			double value = (!jFrameMain.getjPanelMainProduct().isAutomaticIncrement())?
+					jFrameMain.getjPanelMainProduct().getValuePuja():valueActually+valueActually*0.05;
 			if (value > valueActually) {
-				jFrameMain.getjPanelMainProduct().setValueActually(value);
+				jFrameMain.getjPanelMainProduct().setValueActually((int) value);
+				jFrameMain.getjPanelMainAddProduct();
+				this.sendData(Commands.NEWOFFER, com[1]+"-"+(int) value);
 			}
 			break;
 		case C_SHOWABOUT:
@@ -260,7 +263,8 @@ public class UserController implements ActionListener {
 					new BidTime(new BidDate(jFrameMain.getjPanelMainAddProduct().getDateF()),
 							jFrameMain.getjPanelMainAddProduct().hourF()),
 					jFrameMain.getjPanelMainAddProduct().isAutomatic(),
-					jFrameMain.getjPanelMainAddProduct().isPublic());
+					jFrameMain.getjPanelMainAddProduct().isPublic(), 
+					Integer.parseInt(jFrameMain.getjPanelMainAddProduct().getValueMin()));
 		} else {
 			Utilities.showMessageWarning(ConstantsBid.TXT_COMPLETE,
 					null);

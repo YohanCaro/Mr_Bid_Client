@@ -11,7 +11,7 @@ public enum Commands {
 	SIGNIN("signin"), LOGIN("login"), UPBIDDING("up_bidding"), DELETE_USER("delete_user"),
 	CHANGE_BIDDING("change_bidding"), DELETE_BIDDING("delete_bidding"), SENDIMG("send_img"),
 	ERROR_SINGIN("error_sigin"), ERROR_LOGIN("error_login"), UPDATE_BID("update_bid"),
-	GETIMG("get_img");
+	GETIMG("get_img"), NEWOFFER("new_offer");
 	
 	private String value;
 	

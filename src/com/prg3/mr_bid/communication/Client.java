@@ -126,7 +126,7 @@ public class Client extends Socket implements Runnable {
 				Utilities.showMessageWarning("Correo o contraseña incorrectos\n"
 						+ "Por favor vuelva a intentarlo", "Datos no validos!");				
 			} else {
-				Utilities.showMessageInfo("Cuenta se ha caragado!", "Usuario logueado");
+				Utilities.showMessageInfo("Cuenta se ha cargado!", "Usuario logueado");
 				user = gson.fromJson(json, User.class);
 			}
 			break;

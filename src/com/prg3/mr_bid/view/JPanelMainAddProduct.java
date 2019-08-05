@@ -326,7 +326,7 @@ public class JPanelMainAddProduct extends JPanel {
 	 */
 	public String getValueMin() {
 		if (jTextFieldTy.getText() != null && !jTextFieldTy.getText().isEmpty()) {
-			return jTextFieldName.getText();
+			return jTextFieldTy.getText();
 		}
 		return null;
 	}
