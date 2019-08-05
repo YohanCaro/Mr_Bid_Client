@@ -128,7 +128,6 @@ public class UserController implements ActionListener {
 			try {				
 				fileImage = jFrameMain.getjPanelMainAddProduct().getFile();
 			} catch (Exception e1) {
-				e1.printStackTrace();
 			}
 			break;
 		case ACTION_LOGIN:
@@ -227,9 +226,7 @@ public class UserController implements ActionListener {
 			this.jFrameMain.getjPanelMainWindowProfile().getjPanelFormProfile().repaint();
 			this.jFrameMain.repaint();
 		} catch (UnknownHostException e) {
-			e.printStackTrace();
 		} catch (IOException e) {
-			e.printStackTrace();
 		}
 	}
 
@@ -363,7 +360,6 @@ public class UserController implements ActionListener {
 		try {
 			changeToEnglish();
 		} catch (IOException e1) {
-			e1.printStackTrace();
 		}
 		manageChangeLanguage();
 	}
@@ -375,7 +371,6 @@ public class UserController implements ActionListener {
 		try {
 			changeToSpanish();
 		} catch (IOException e1) {
-			e1.printStackTrace();
 		}
 		manageChangeLanguage();
 	}

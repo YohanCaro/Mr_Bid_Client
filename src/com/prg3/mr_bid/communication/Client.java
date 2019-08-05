@@ -76,7 +76,6 @@ public class Client extends Socket implements Runnable {
 				this.excecuteAction(command, jsonString);
 			} catch (IOException e) {
 				isConect = false;
-				e.printStackTrace();
 			}
 		}
 	}
@@ -146,7 +145,6 @@ public class Client extends Socket implements Runnable {
 				String paths = this.getImages( (int) id);
 				Constants.biddingsList.get((int) id).getProduct().setImages(paths);
 			} catch (NumberFormatException | IOException e) {
-				e.printStackTrace();
 			}
 			break;
 		default:
