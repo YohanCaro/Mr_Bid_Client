@@ -207,7 +207,6 @@ public class JPanelMainProduct extends JPanel {
 		jPanelderNorth.add(jPanelCardSouth, BorderLayout.SOUTH);
 		jPanelderNorth.add(jPanelCardWest, BorderLayout.WEST);
 		jPanelderNorth.add(jPanelCardEast, BorderLayout.EAST);
-
 	}
 
 	/**
@@ -557,7 +556,15 @@ public class JPanelMainProduct extends JPanel {
 		jLabel2.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_NUMBEROFPUBLICATIONS));
 		jLabel3.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_OFFEREDBY));
 		jLabel4.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_PARTICIPANTS));
-
+	}
+	
+	/**
+	 * Setea el jtextarea
+	 * @param s set new text
+	 */
+	public void setJTextP(String s) {
+		this.jTextAreaParticipantes.setText(
+				jTextAreaParticipantes.getText() + "\n" + s);
 	}
 
 }

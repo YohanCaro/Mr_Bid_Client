@@ -154,14 +154,20 @@ public class UserController implements ActionListener {
 			}
 			break;
 		case SEND_BID:
-			double valueActually = jFrameMain.getjPanelMainProduct().getValueActually();
-			double value = (!jFrameMain.getjPanelMainProduct().isAutomaticIncrement())?
-					jFrameMain.getjPanelMainProduct().getValuePuja():valueActually+valueActually*0.05;
-			if (value > valueActually) {
-				jFrameMain.getjPanelMainProduct().setValueActually((int) value);
-				jFrameMain.getjPanelMainAddProduct();
-				this.sendData(Commands.NEWOFFER, com[1]+"-"+(int) value);
+			if (manager.getUser() != null) {
+				double valueActually = jFrameMain.getjPanelMainProduct().getValueActually();
+				double value = (!jFrameMain.getjPanelMainProduct().isAutomaticIncrement())?
+						jFrameMain.getjPanelMainProduct().getValuePuja():valueActually+valueActually*0.05;
+				if (value > valueActually) {
+					jFrameMain.getjPanelMainProduct().setValueActually((int) value);
+					jFrameMain.getjPanelMainAddProduct();
+					this.sendData(Commands.NEWOFFER, com[1]+"-"+(int) value);
+					jFrameMain.getjPanelMainProduct().setJTextP(manager.getUser().getEmail());
+				}
+			} else {
+				Utilities.showMessageWarning(ConstantsBid.TXT_ERROR_LOAD,null);
 			}
+
 			break;
 		case C_SHOWABOUT:
 			jDialogAbout.setVisible(true);

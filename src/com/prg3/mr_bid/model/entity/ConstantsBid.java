@@ -46,5 +46,7 @@ public class ConstantsBid {
 	public static final String TXT_NOTFOUND = "No se ha encontrado el servidor";
 	public static final String TXT_ERRORSENDDATE = "Error al enviar el dato";
 	public static final String TXT_COMPLETE = "Por favor complete todos los campos correctamente!";
+	public static final String TXT_ERROR_LOAD = "Para realizar una puja primero se tiene que\n"
+			+ "que cargar su cuenta!";
 
 }
