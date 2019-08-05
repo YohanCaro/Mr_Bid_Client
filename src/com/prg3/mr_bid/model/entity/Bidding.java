@@ -131,15 +131,15 @@ public class Bidding {
 	}
 	
 	/**
-	 * Obtiene 
-	 * @return value
+	 * Obtiene valor actual
+	 * @return value valor
 	 */
 	public int getValue() {
 		return value;
 	}
 	
 	/**
-	 * Cambia 
+	 * Cambia el valor del valor actual de la subasta
 	 * @param value the value to set
 	 */
 	public void setValue(int value) {
@@ -170,17 +170,27 @@ public class Bidding {
 		return owner;
 	}
 	
+	/**
+	 * Obtiene le id de la subasta
+	 * @return id long
+	 */
 	public long getId() {
 		return id;
 	}
+	
 	/**
-	 * Cambia 
+	 * Cambia el id de la subasta
 	 * @param id the id to set
 	 */
 	public void setId(long id) {
 		this.id = id;
 	}
 	
+	/**
+	 * Convierte un string en una subasta
+	 * @param bid subasta en cadena
+	 * @return Bidding subasta
+	 */
 	public static Bidding stringToBidding(String bid) {
 		String[] array = bid.split("-");
 		

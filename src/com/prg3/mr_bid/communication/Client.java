@@ -66,9 +66,6 @@ public class Client extends Socket implements Runnable {
 	}
 
 	@Override
-	/**
-	 * Recibe comandos y objetos del servidor
-	 */
 	public void run() {
 		Commands command;
 		String jsonString;
@@ -96,11 +93,15 @@ public class Client extends Socket implements Runnable {
 		
 	}
 	
+	/**
+	 * Obtiene una imagen de la subasta (por id)
+	 * @param id de la subasta
+	 * @return paths ruta
+	 * @throws IOException ioe
+	 */
 	public String getImages( long id) throws IOException {
-		System.out.println("Id: " + id);
 		String paths = "";
 		BufferedImage bufferedImage;
-		System.out.println("...");
 		bufferedImage = ImageIO.read(this.getInputStream());
 		String imagePath = "data/biddingImages/bidding"+id+"_"+".png";
 		ImageIO.write(bufferedImage, "png", new FileOutputStream(imagePath));
@@ -125,18 +126,13 @@ public class Client extends Socket implements Runnable {
 				Utilities.showMessageWarning("Correo o contraseña incorrectos\n"
 						+ "Por favor vuelva a intentarlo", "Datos no validos!");				
 			} else {
-				Utilities.showMessageInfo("Si! :D", "Usuario logueado");
-				System.out.println(json);
+				Utilities.showMessageInfo("Cuenta se ha caragado!", "Usuario logueado");
 				user = gson.fromJson(json, User.class);
 			}
 			break;
 		case UPBIDDING:
-//			Type listType = new TypeToken<SimpleList<Bidding>>(){}.getType();
-//			Constants.biddingsList = gson.fromJson(json, listType);
 			Constants.biddingsList = (json.length()>0)?Utilities.stringToBiddings(json):new SimpleList<Bidding>();
 		case UPDATE_BID:
-//			Type listType2 = new TypeToken<SimpleList<Bidding>>(){}.getType();
-//			Constants.biddingsList = gson.fromJson(json, listType2);
 			Constants.biddingsList = (json.length()>0)?Utilities.stringToBiddings(json):new SimpleList<Bidding>();
 			break;
 		case GETIMG:
@@ -154,11 +150,20 @@ public class Client extends Socket implements Runnable {
 		}
 	}
 	
+	/**
+	 * Actualiza las susbastas del servidor
+	 * @throws IOException ioe
+	 */
 	public void updateBiddings() throws IOException {
 		dataOS.writeUTF(gson.toJson(Commands.UPDATE_BID));
 		dataOS.writeUTF(gson.toJson(Commands.GETIMG));
 	}
 	
+	/**
+	 * Envia una nueva subasta al servidor
+	 * @param bidding subasta
+	 * @throws IOException ioe
+	 */
 	public void sendNewBidding(Bidding bidding) throws IOException {
 		sendMessage(Commands.UPBIDDING, bidding);
 	}
@@ -179,8 +184,8 @@ public class Client extends Socket implements Runnable {
 	}
 	
 	/**
-	 * Obtiene 
-	 * @return user
+	 * Obtiene el usuario
+	 * @return user usuario
 	 */
 	public User getUser() {
 		return user;

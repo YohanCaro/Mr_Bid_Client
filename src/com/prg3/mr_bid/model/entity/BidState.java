@@ -1,9 +1,7 @@
-/**
- * 
- */
 package com.prg3.mr_bid.model.entity;
 
-/**Clase BidState.java - 
+/**
+ * Enum BidState - Enumerado con los estados de la subasta
  *
  * @author Yohan Caro
  * @version 1.0 - 12/06/2019

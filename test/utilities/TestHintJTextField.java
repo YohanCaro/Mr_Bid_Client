@@ -13,7 +13,8 @@ import javax.swing.JPanel;
 
 import com.prg3.mr_bid.utilities.HintJTextField;
 
-/**Clase TestHintJTextField.java - 
+/**
+ * Clase TestHintJTextField - Preuba de la la clase HintJTextField
  * 
  * @author Yohan Caro
  * @version 1.0 - 24/05/2019
@@ -21,7 +22,8 @@ import com.prg3.mr_bid.utilities.HintJTextField;
 public class TestHintJTextField {
 
 	/**
-	 * @param args
+	 * Main test
+	 * @param args argumentos
 	 */
 	public static void main(String[] args) {
 		JPanel panel = new JPanel(new GridLayout(3, 2));

@@ -118,7 +118,6 @@ public class JPanelMainProduct extends JPanel {
 		jPanelCard.add(jLabelState);
 
 		name = new JTextField(Utilities.getState(bidding).toString());
-		System.out.println(bidding.getBiddingName());
 		name.setBounds(20, 40, 320, 25);
 		name.setBackground(new java.awt.Color(224, 224, 224));
 		name.setFont(new java.awt.Font("Andale Mono", 1, 14));
@@ -458,15 +457,12 @@ public class JPanelMainProduct extends JPanel {
 
 	public Double getValueActually() {
 
-		System.out.println(valueActually.getText());
-
 		try {
 			return Double.parseDouble(valueActually.getText());
 
 		} catch (NumberFormatException e) {
 			Utilities.showMessageWarning("El valor debe ser numerico!", "Valor no valido");
 		}
-		System.out.println("final"+valueActually.getText());
 
 		return 0.0;
 	}

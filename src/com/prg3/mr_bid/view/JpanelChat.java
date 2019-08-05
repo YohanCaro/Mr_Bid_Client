@@ -124,8 +124,6 @@ public class JpanelChat extends JPanel implements ActionListener {
 
 	private void b_connectActionPerformed() {// GEN-FIRST:event_b_connectActionPerformed
 		if (isConnected == false) {
-			System.out.println("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
-			System.out.println("la ip es " + Constants.port + "El ´puerto es " + Constants.ip);
 			try {
 				sock = new Socket(Constants.ip, 2222);// debe ser el puesto y la ip del servidor
 				InputStreamReader streamreader = new InputStreamReader(sock.getInputStream());
@@ -191,7 +189,6 @@ public class JpanelChat extends JPanel implements ActionListener {
 
 		switch (ControlCommands.valueOf(com[0])) {
 		case C_CONECT_CHAT:
-			System.out.println("jajajaja funciono");
 			b_sendActionPerformed();
 
 			break;

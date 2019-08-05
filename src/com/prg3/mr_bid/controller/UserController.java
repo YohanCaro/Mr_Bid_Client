@@ -69,9 +69,6 @@ public class UserController implements ActionListener {
 		sendComment();
 	}
 
-	/**
-	 * Maneja los eventos de botones
-	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String command = e.getActionCommand();
@@ -171,7 +168,6 @@ public class UserController implements ActionListener {
 			if (value > valueActually) {
 				jFrameMain.getjPanelMainProduct().setValueActually(value);
 			}
-			//no debería de enviar la subasta al servidor para actualizar el valor de puja?
 			break;
 		case C_SHOWABOUT:
 			jDialogAbout.setVisible(true);
@@ -196,12 +192,9 @@ public class UserController implements ActionListener {
 	}
 
 	/**
-	 * Envia cualquier dato al servidor con
-	 * 
-	 * @param command
-	 *            comando
-	 * @param data
-	 *            objeto a enviar
+	 * Envia cualquier dato al servidor con:
+	 * @param command comando
+	 * @param data objeto a enviar
 	 */
 	private void sendData(Commands command, Object data) {
 		try {
@@ -215,7 +208,6 @@ public class UserController implements ActionListener {
 
 	/**
 	 * Crea un usuario con los datos de la vista
-	 * 
 	 * @return user usuario
 	 */
 	private User createUser() {
@@ -226,6 +218,9 @@ public class UserController implements ActionListener {
 				jDialogAddUser.getjPanelForm().getGender(), null);
 	}
 
+	/**
+	 * Carga los datos de la cuenta del usuario
+	 */
 	public void changeDataAcc() {
 		try {
 			manager.setUser(Client.getInstanceOf().getUser());
@@ -241,8 +236,11 @@ public class UserController implements ActionListener {
 		}
 	}
 
+	/**
+	 * Crea una subasta con los datos de la vista
+	 * @return Bidding subasta
+	 */
 	private Bidding createBidding() {
-
 		if (jFrameMain.getjPanelMainAddProduct().getJTextName() != null
 				&& jFrameMain.getjPanelMainAddProduct().getDescription() != null
 				&& jFrameMain.getjPanelMainAddProduct().getDateP() != null
@@ -251,7 +249,6 @@ public class UserController implements ActionListener {
 			String list = (fileImage==null)?"":fileImage.getPath();
 			Product p = new Product(jFrameMain.getjPanelMainAddProduct().getJTextName(),
 					jFrameMain.getjPanelMainAddProduct().getDescription(), list);
-			System.out.println(p.toString());
 			return manager.addBidding(jFrameMain.getjPanelMainAddProduct().getJTextName(),
 					jFrameMain.getjPanelMainAddProduct().getTypeProduct(), p,
 					new BidTime(new BidDate(jFrameMain.getjPanelMainAddProduct().getDateP()),
@@ -271,7 +268,6 @@ public class UserController implements ActionListener {
 
 	/**
 	 * Crea un unico controllador
-	 * 
 	 * @return controller controlador
 	 * @throws IOException 
 	 * @throws UnknownHostException 
@@ -283,12 +279,6 @@ public class UserController implements ActionListener {
 		return controller;
 	}
 	
-//	public void updateBid() {
-//		int id = 0;
-//		int value = 0;
-//		this.sendData(Com, data);
-//	}
-
 	/**
 	 * Metodo para manda y recibe un array de string al panel de comentarios
 	 */
@@ -297,6 +287,10 @@ public class UserController implements ActionListener {
 		jFrameMain.getjPanelMainProduct().sendComment(menssge);
 	}
 
+	/**
+	 * Cambia el valor por defecto del idioma de la aplicación
+	 * @return cadena con el idioma
+	 */
 	public String getLanguageDefault() {
 		languageDefault = Locale.getDefault().getLanguage();
 		switch (languageDefault) {
@@ -308,6 +302,10 @@ public class UserController implements ActionListener {
 		return "Spanish";
 	}
 
+	/**
+	 * Carga el idioma
+	 * @throws IOException ioe
+	 */
 	public void loadLanguage() throws IOException {
 		try {
 			config.loadLanguage();
@@ -315,6 +313,10 @@ public class UserController implements ActionListener {
 		}
 	}
 
+	/**
+	 * Guarda el archivo de configuraciones (idioma)
+	 * @throws IOException ioe
+	 */
 	public void saveConfig() throws IOException {
 		try {
 			new HandlerLanguage(NAME_FILE_CONFIG).saveLanguage();
@@ -322,18 +324,29 @@ public class UserController implements ActionListener {
 		}
 	}
 
+	/**
+	 * Cambia el idioma de la aplicación a inglés
+	 * @throws IOException ioe
+	 */
 	public void changeToEnglish() throws IOException {
 		HandlerLanguage.language = "language/languageUS.properties";
 		saveConfig();
 		loadLanguage();
 	}
 
+	/**
+	 * Cambia el idioma de la aplicación a español
+	 * @throws IOException ioe
+	 */
 	public void changeToSpanish() throws IOException {
 		HandlerLanguage.language = "language/languageES.properties";
 		saveConfig();
 		loadLanguage();
 	}
 
+	/**
+	 * Carga las configuraciones del archivo
+	 */
 	public void loadConfiguration() {
 		if (config == null) {
 			config = new HandlerLanguage(NAME_FILE_CONFIG);
@@ -345,6 +358,9 @@ public class UserController implements ActionListener {
 		}
 	}
 
+	/**
+	 * Manejo de idioma inglés
+	 */
 	private void manageChangeLanguageUS() {
 		try {
 			changeToEnglish();
@@ -354,6 +370,9 @@ public class UserController implements ActionListener {
 		manageChangeLanguage();
 	}
 
+	/**
+	 * Manejo de idioma español
+	 */
 	private void manageChangeLanguageES() {
 		try {
 			changeToSpanish();
@@ -363,11 +382,11 @@ public class UserController implements ActionListener {
 		manageChangeLanguage();
 	}
 
+	/**
+	 * Caraga el idioma en toda la aplicación y el frame
+	 */
 	private void manageChangeLanguage() {
 		jFrameMain.changeLanguage();
-
 	}
-
-
 
 }
