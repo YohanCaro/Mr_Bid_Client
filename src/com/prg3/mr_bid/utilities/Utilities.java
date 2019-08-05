@@ -1,6 +1,7 @@
 package com.prg3.mr_bid.utilities;
 
 import java.awt.Dimension;
+import java.util.Comparator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -10,6 +11,7 @@ import com.prg3.mr_bid.model.entity.BidDate;
 import com.prg3.mr_bid.model.entity.BidState;
 import com.prg3.mr_bid.model.entity.BidTime;
 import com.prg3.mr_bid.model.entity.Bidding;
+import com.prg3.mr_bid.structures.simple_list.Cursor;
 import com.prg3.mr_bid.structures.simple_list.SimpleList;
 
 /** Clase Utilities - Utilidades de la apicación
@@ -134,6 +136,16 @@ public class Utilities {
 		}
 	}
 	
+	public static int getTimeRemainingInt(Bidding bidding) {
+		if (isAfterOfToDay(bidding.getInitTime())) {
+			return toSeconds(bidding.getInitTime());
+		} else if (isAfterOfToDay(bidding.getFinishTime())) {
+			return toSeconds(bidding.getFinishTime());
+		} else {
+			return 0;
+		}
+	}
+	
 	/**
 	 * Conviete una fecha de subasta a una cadena con la inofrmación del 
 	 * teimp restante para ser iniciada o finalizada
@@ -178,6 +190,10 @@ public class Utilities {
 		return (int)(h - d);
 	}
 	
+	public static int toSeconds(BidTime bt) {
+		return (int) hoursToSeconds(bt.getTimeOnHours());
+	}
+	
 	/**
 	 * Setea una dimension para un componente de una ventana o panel
 	 * @param x pos x
@@ -186,6 +202,27 @@ public class Utilities {
 	 */
 	public static Dimension setDimension(int x, int y) {
 		return new Dimension(x, y);
+	}
+	
+	public static void changeCritrium() {
+		SimpleList<Bidding> list = Constants.biddingsList;
+		Constants.biddingsList = new SimpleList<Bidding>(new Comparator<Bidding>() {
+
+			@Override
+			public int compare(Bidding b1, Bidding b2) {
+				return getTimeRemainingInt(b1) - getTimeRemainingInt(b2);
+			}
+		});
+		
+		Cursor<Bidding> cursor = new Cursor<>(list);
+		while (!cursor.isOut()) {
+			Bidding b = cursor.nextAndGetInfo();
+			if (!getTimeRemaining(b).equals("0")) {
+				Constants.biddingsList.add(b);
+			} else {
+				Constants.biddingsList.addLast(b);
+			}
+		}
 	}
 
 }

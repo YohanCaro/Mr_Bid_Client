@@ -88,10 +88,7 @@ public class UserController implements ActionListener {
 				}
 			} catch (IOException e2) {
 			}
-			this.jPanelMainWindow = new JPanelMainWindow(this);
-			this.jFrameMain.setjPanelMain(jPanelMainWindow);
 			this.jFrameMain.showMain(this);
-			jFrameMain.showHome();
 			break;
 		case SHOW_REGISTER_USER:
 			jDialogAddUser.setVisible(true);
