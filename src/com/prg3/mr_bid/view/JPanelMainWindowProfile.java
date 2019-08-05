@@ -6,12 +6,15 @@ import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.io.IOException;
+import java.net.UnknownHostException;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import com.prg3.mr_bid.controller.ControlCommands;
 import com.prg3.mr_bid.controller.UserController;
@@ -28,13 +31,13 @@ import com.prg3.mr_bid.utilities.Utilities;
  * @version 1.0 - 4/08/2019
  * @author Daniel García
  */
-public class JPanelMainWindowAccount extends JPanel {
+public class JPanelMainWindowProfile extends JPanel {
 
 	/**
 	 * Serial por defecto
 	 */
 	private static final long serialVersionUID = 1L;
-	
+	private JPanelFormProfile jPanelFormProfile;
 	private JPanel jPanelNorth, jPanelNorth2, jPanelSouth, jPanelSouth2, jPanelWest, jPanelEast, jPanelCenter,
 			jPanelMainImage, jPanelTools, jPanelPhoto;
 	private JLabel jLabel;
@@ -46,8 +49,10 @@ public class JPanelMainWindowAccount extends JPanel {
 	/**
 	 * Constructor que crea los paneles
 	 * @param controller controlador
+	 * @throws IOException 
+	 * @throws UnknownHostException 
 	 */
-	public JPanelMainWindowAccount(UserController controller) {
+	public JPanelMainWindowProfile() throws UnknownHostException, IOException {
 		this.setOpaque(false);
 		this.jPanelNorth = new JPanel();
 		this.jPanelNorth2 = new JPanel();
@@ -60,8 +65,8 @@ public class JPanelMainWindowAccount extends JPanel {
 		this.jPanelTools = new JPanel();
 		this.jPanelPhoto = new JPanel();
 		this.jLabel = new JLabel();
-
-		init(controller);
+		this.jPanelFormProfile = new JPanelFormProfile(null);
+		init();
 	}
 
 	/**
@@ -80,7 +85,7 @@ public class JPanelMainWindowAccount extends JPanel {
 		jPanelEast.setOpaque(false);
 
 		jPanelCenter.setBackground(Color.WHITE);
-		jPanelTools.setBackground(Color.WHITE);
+		jPanelTools.setBackground(Color.RED);
 	}
 
 	/**
@@ -114,48 +119,54 @@ public class JPanelMainWindowAccount extends JPanel {
 	 * Organiza y crea los botones de opciones del panel
 	 * @param control controlador
 	 */
-	private void myjButton(UserController control) {
-		jPanelTools.setLayout(new GridLayout(4, 1));
-
-		jButton = new JButton(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_SUMMARY));
-		jButton.setForeground(ConstantsView.COLOR__FORE_WD);
-		jButton.setBackground(ConstantsView.COLOR__BACK_WD);
-		jButton.setActionCommand(ControlCommands.SHOW_HISTORY.name());
-		jButton.addActionListener(control);
-		imageIcon = new ImageIcon(ConstantsView.PATH_BLOC_IMG);
-		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(70, 70, Image.SCALE_AREA_AVERAGING));
-		jButton.setIcon(icon);
-		jPanelTools.add(jButton);
+	private void myjButton() {
 		
-		jButton2 = new JButton(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_CREATEAUCTIONS));
-		jButton2.setForeground(ConstantsView.COLOR__FORE_WD);
-		jButton2.setBackground(ConstantsView.COLOR__BACK_WD);
-		jButton2.setActionCommand(ControlCommands.SHOW_ADDPRODUCT.name());
-		jButton2.addActionListener(control);
-		imageIcon = new ImageIcon(ConstantsView.PATH_VENT_IMG);
-		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(70, 70, Image.SCALE_AREA_AVERAGING));
-		jButton2.setIcon(icon);
-		jPanelTools.add(jButton2);
 		
-		jButton3 = new JButton(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_PROFILE));
-		jButton3.setForeground(ConstantsView.COLOR__FORE_WD);
-		jButton3.setBackground(ConstantsView.COLOR__BACK_WD);
-		jButton3.setActionCommand(ControlCommands.SHOW_PROFILE.name());
-		jButton3.addActionListener(control);
-		imageIcon = new ImageIcon(ConstantsView.PATH_BLOC_IMG);
-		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(70, 70, Image.SCALE_AREA_AVERAGING));
-		jButton3.setIcon(icon);
-		jPanelTools.add(jButton3);
-		
-		jButton5 = new JButton(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_CONFIGURATION));
-		jButton5.setForeground(ConstantsView.COLOR__FORE_WD);
-		jButton5.setBackground(ConstantsView.COLOR__BACK_WD);
-		jButton5.setActionCommand(ControlCommands.SHOW_ADDPRODUCT.name());
-		jButton5.addActionListener(control);
-		imageIcon = new ImageIcon(ConstantsView.PATH_AJUST_IMG);
-		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(70, 70, Image.SCALE_AREA_AVERAGING));
-		jButton5.setIcon(icon);
-		jPanelTools.add(jButton5);
+		jPanelTools.setLayout(new BorderLayout());
+		jPanelTools.add(jPanelFormProfile, BorderLayout.CENTER);
+//		JTextField jTextField = new JTextField("Nombre");
+//		jPanelTools.add(jTextField);
+//		jPanelTools.setLayout(new GridLayout(4, 1));
+//
+//		jButton = new JButton(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_SUMMARY));
+//		jButton.setForeground(ConstantsView.COLOR__FORE_WD);
+//		jButton.setBackground(ConstantsView.COLOR__BACK_WD);
+//		jButton.setActionCommand(ControlCommands.SHOW_HISTORY.name());
+//		jButton.addActionListener(control);
+//		imageIcon = new ImageIcon(ConstantsView.PATH_BLOC_IMG);
+//		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(70, 70, Image.SCALE_AREA_AVERAGING));
+//		jButton.setIcon(icon);
+//		jPanelTools.add(jButton);
+//		
+//		jButton2 = new JButton(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_CREATEAUCTIONS));
+//		jButton2.setForeground(ConstantsView.COLOR__FORE_WD);
+//		jButton2.setBackground(ConstantsView.COLOR__BACK_WD);
+//		jButton2.setActionCommand(ControlCommands.SHOW_ADDPRODUCT.name());
+//		jButton2.addActionListener(control);
+//		imageIcon = new ImageIcon(ConstantsView.PATH_VENT_IMG);
+//		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(70, 70, Image.SCALE_AREA_AVERAGING));
+//		jButton2.setIcon(icon);
+//		jPanelTools.add(jButton2);
+//		
+//		jButton3 = new JButton(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_PROFILE));
+//		jButton3.setForeground(ConstantsView.COLOR__FORE_WD);
+//		jButton3.setBackground(ConstantsView.COLOR__BACK_WD);
+//		jButton3.setActionCommand(ControlCommands.SHOW_ADDPRODUCT.name());
+//		jButton3.addActionListener(control);
+//		imageIcon = new ImageIcon(ConstantsView.PATH_BLOC_IMG);
+//		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(70, 70, Image.SCALE_AREA_AVERAGING));
+//		jButton3.setIcon(icon);
+//		jPanelTools.add(jButton3);
+//		
+//		jButton5 = new JButton(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_CONFIGURATION));
+//		jButton5.setForeground(ConstantsView.COLOR__FORE_WD);
+//		jButton5.setBackground(ConstantsView.COLOR__BACK_WD);
+//		jButton5.setActionCommand(ControlCommands.SHOW_ADDPRODUCT.name());
+//		jButton5.addActionListener(control);
+//		imageIcon = new ImageIcon(ConstantsView.PATH_AJUST_IMG);
+//		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(70, 70, Image.SCALE_AREA_AVERAGING));
+//		jButton5.setIcon(icon);
+//		jPanelTools.add(jButton5);
 	}
 
 	/**
@@ -211,9 +222,9 @@ public class JPanelMainWindowAccount extends JPanel {
 	 * Inicializa los componentes del panel
 	 * @param controller controlador
 	 */
-	private void init(UserController controller) {
+	private void init() {
 		panelPhoto();
-		myjButton(controller);
+		myjButton();
 		character();
 		sizePanel();
 		jPanelImage();
@@ -247,6 +258,10 @@ public class JPanelMainWindowAccount extends JPanel {
 		jButton2.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_CREATEAUCTIONS));
 		jButton3.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_PROFILE));
 		jButton5.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_CONFIGURATION));
+	}
+	
+	public JPanelFormProfile getjPanelFormProfile() {
+		return jPanelFormProfile;
 	}
 
 }

@@ -1,6 +1,8 @@
 package com.prg3.mr_bid.view;
 
 import java.awt.BorderLayout;
+import java.io.IOException;
+import java.net.UnknownHostException;
 
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
@@ -31,12 +33,16 @@ public class JFrameMain extends JFrame {
 	private MainPanelHome jMainPanelHome;
 	private JPanelMainProduct jPanelMainProduct;
 	private JPanelMainWindowMyBiddings jPanelMainWindowMyBiddings;
+	private JPanelMainWindowProfile jPanelMainWindowProfile;
+
 
 	/**
 	 * Constructor que crea los paneles de la aplicación
 	 * @param control controlador
+	 * @throws IOException 
+	 * @throws UnknownHostException 
 	 */
-	public JFrameMain(UserController control) {
+	public JFrameMain(UserController control) throws UnknownHostException, IOException {
 		this.jScrollPane = new JScrollPane();
 		jScrollPane.setOpaque(false);
 		this.jPanelMain = new JPanelMainWindow(control);
@@ -47,6 +53,8 @@ public class JFrameMain extends JFrame {
 		this.jPanelMainWindowAccount = new JPanelMainWindowAccount(control);
 		this.jPanelMainAddProduct = new JPanelMainAddProduct(control);
 		this.jPanelMainWindowMyBiddings = new JPanelMainWindowMyBiddings();
+		this.jPanelMainWindowProfile = new JPanelMainWindowProfile();
+
 		
 		init();
 	}
@@ -135,6 +143,12 @@ public class JFrameMain extends JFrame {
 		repaint();
 		revalidate();
 	}
+	public void showProfile() {
+		jPanelMain.removeAll();
+		jPanelMain.add(jPanelMainWindowProfile, BorderLayout.CENTER);
+		repaint();
+		revalidate();
+	}
 	
 	/**
 	 * Obtiene el panel del producto
@@ -213,6 +227,9 @@ public class JFrameMain extends JFrame {
 	 */
 	public void getrepaint() {
 		jPanelMain.repaints();
+	}
+	public JPanelMainWindowProfile getjPanelMainWindowProfile() {
+		return jPanelMainWindowProfile;
 	}
 	
 }

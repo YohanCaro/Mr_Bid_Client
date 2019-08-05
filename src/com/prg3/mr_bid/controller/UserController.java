@@ -53,8 +53,10 @@ public class UserController implements ActionListener {
 
 	/**
 	 * Construtor que inicia la app
+	 * @throws IOException 
+	 * @throws UnknownHostException 
 	 */
-	private UserController() {
+	private UserController() throws UnknownHostException, IOException {
 		manager = new Manager();
 		getLanguageDefault();
 		loadConfiguration();
@@ -77,6 +79,10 @@ public class UserController implements ActionListener {
 		switch (ControlCommands.valueOf(com[0])) {
 		case SHOW_LOGIN:
 			jFrameMain.showLogin();
+			break;
+		case SHOW_PROFILE:
+			jFrameMain.showProfile();
+			this.changeDataAcc();
 			break;
 		case SHOW_HOME:
 			try {
@@ -224,7 +230,9 @@ public class UserController implements ActionListener {
 		try {
 			manager.setUser(Client.getInstanceOf().getUser());
 			this.jFrameMain.getjPanelMainWindowCuenta().changeData(Client.getInstanceOf().getUser());
+			this.jFrameMain.getjPanelMainWindowProfile().getjPanelFormProfile().changeData(Client.getInstanceOf().getUser());;
 			this.jFrameMain.getjPanelMainWindowCuenta().repaint();
+			this.jFrameMain.getjPanelMainWindowProfile().getjPanelFormProfile().repaint();
 			this.jFrameMain.repaint();
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
@@ -265,8 +273,10 @@ public class UserController implements ActionListener {
 	 * Crea un unico controllador
 	 * 
 	 * @return controller controlador
+	 * @throws IOException 
+	 * @throws UnknownHostException 
 	 */
-	public static UserController getInstanceOf() {
+	public static UserController getInstanceOf() throws UnknownHostException, IOException {
 		if (controller == null) {
 			controller = new UserController();
 		}
