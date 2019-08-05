@@ -26,6 +26,13 @@ import com.prg3.mr_bid.structures.simple_list.SimpleList;
 import com.prg3.mr_bid.utilities.HandlerLanguage;
 import com.prg3.mr_bid.utilities.Utilities;
 
+/**
+ * Clase -Tiene la vista principal de cada Producto con informacion relacionada
+ * al producto
+ * 
+ * @author danie
+ *
+ */
 public class JPanelMainProduct extends JPanel {
 
 	private JpanelChat jpanelChat;
@@ -46,10 +53,19 @@ public class JPanelMainProduct extends JPanel {
 	private Bidding bidding;
 	JButton jButton;
 
+	/**
+	 * Constructo vacio
+	 */
 	public JPanelMainProduct() {
 
 	}
 
+	/**
+	 * Metodo que inicializa los componentes graficos de la vista principal de los
+	 * productos
+	 * 
+	 * @param userController
+	 */
 	public void start(UserController userController) {
 		this.setOpaque(false);
 		this.jpanelChat = new JpanelChat();
@@ -76,7 +92,7 @@ public class JPanelMainProduct extends JPanel {
 		jPanelEast.setOpaque(false);
 		this.jTextArea = new JTextArea();
 		this.jLabel = new JLabel();
-//		getValueActually();
+		// getValueActually();
 		cardParticipantes();
 		card();
 		jtextArea();
@@ -88,10 +104,18 @@ public class JPanelMainProduct extends JPanel {
 		this.blockJTextField();
 	}
 
+	/**
+	 * Recive una lista de mensajes
+	 * 
+	 * @param message
+	 */
 	public JPanelMainProduct(SimpleList<String> message) {
 		sendComment(message);
 	}
 
+	/**
+	 * Metodo que asigana una imagen a la ventana relacionada con el producto
+	 */
 	private void JpanelImage() {
 		imageIcon = new ImageIcon("data/images/tv.jpg");
 		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(350, 350, Image.SCALE_AREA_AVERAGING));
@@ -99,24 +123,29 @@ public class JPanelMainProduct extends JPanel {
 		jPanelizqImage.add(jLabel);
 	}
 
+	/**
+	 * Metodo con las caracteristicas del campo de LA DESCIPCION DEL PRODUCTO
+	 */
 	private void jtextArea() {
 		jTextArea.setText(bidding.getProduct().getDescription());
+		jTextArea.setLineWrap(true);
 		jTextArea.setPreferredSize(new Dimension(400, 300));
 		jPanelizqInfo.setBackground(new Color(0, 0, 0, 94));
 		jPanelizqInfo.add(jTextArea);
 	}
 
+	/**
+	 * Metodo que crea una tarjeta de informacion con los tiempos de las subasta
+	 */
 	private void card() {
 		jPanelCard.setLayout(null);
 		jPanelCard.setBackground(new Color(0, 0, 0, 94));
-
 		jLabelState = new JLabel(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_STATE));
 		jLabelState.setBounds(20, 10, 300, 25);
 		jLabelState.setFont(new Font("Andale Mono", 3, 15));
 		jLabelState.setForeground(Color.WHITE);
 		// jLabel.setBackground(Color.BLUE);
 		jPanelCard.add(jLabelState);
-
 		name = new JTextField(Utilities.getState(bidding).toString());
 		name.setBounds(20, 40, 320, 25);
 		name.setBackground(new java.awt.Color(224, 224, 224));
@@ -178,6 +207,11 @@ public class JPanelMainProduct extends JPanel {
 
 	}
 
+	/**
+	 * Metodo que crea una tarjeta con la informacion de la puja
+	 * 
+	 * @param userController
+	 */
 	private void card2(UserController userController) {
 		JLabel jLabel, jLabel2;
 		JTextField name, correo;
@@ -206,7 +240,7 @@ public class JPanelMainProduct extends JPanel {
 		jLabelVauleBid.setBackground(new Color(0, 0, 0, 94));
 		jPanelCard2.add(jLabelVauleBid);
 
-//		valuePuja = new JTextField(bidding.getIncrement());
+		// valuePuja = new JTextField(bidding.getIncrement());
 		valuePuja = new JTextField("0");
 		valuePuja.setBounds(20, 115, 320, 25);
 		valuePuja.setBackground(new java.awt.Color(224, 224, 224));
@@ -254,18 +288,15 @@ public class JPanelMainProduct extends JPanel {
 		jPanelCardWest3.setPreferredSize(new Dimension(50, 100));
 		jPanelCardEast3.setPreferredSize(new Dimension(50, 200));
 
-//		jTextAreaChat = new JTextArea();
-//		jTextAreaChat.setEditable(false);
-//		jTextAreaChat.setBackground(new Color(0, 0, 0, 94));
-//		jTextAreaChat.setText("Camilo");
-		
-		
-		
+		// jTextAreaChat = new JTextArea();
+		// jTextAreaChat.setEditable(false);
+		// jTextAreaChat.setBackground(new Color(0, 0, 0, 94));
+		// jTextAreaChat.setText("Camilo");
 
 		jPanelNorth3 = new JPanel();
 		jPanelNorth3.setPreferredSize(new Dimension(50, 50));
 		jPanelNorth3.setOpaque(false);
-//		jTextAreaChat.setPreferredSize(new Dimension(400, 300));
+		// jTextAreaChat.setPreferredSize(new Dimension(400, 300));
 		jpanelChat.setPreferredSize(new Dimension(400, 300));
 		jPanelCardSouth2.setLayout(new BorderLayout());
 		jPanelCardSouth2.add(jPanelNorth3, BorderLayout.NORTH);
@@ -281,6 +312,9 @@ public class JPanelMainProduct extends JPanel {
 
 	}
 
+	/**
+	 * Metodo que asigna la dimenciones a los paneles de la clase
+	 */
 	private void sizePanel() {
 
 		jPanelWest.setPreferredSize(new Dimension(100, 0));
@@ -294,6 +328,10 @@ public class JPanelMainProduct extends JPanel {
 
 	}
 
+	/**
+	 * Metodo que crea una tarjeta con la informacion de la persona que ofrece el
+	 * producto y los usuario que estan participando
+	 */
 	private void cardPublicaciones() {
 
 		cardPublicaciones = new JPanel();
@@ -336,6 +374,10 @@ public class JPanelMainProduct extends JPanel {
 
 	}
 
+	/**
+	 * Metodo que crea el textArea donde se muestra la informacion de los usurioa
+	 * que participan en la subasta
+	 */
 	private void cardParticipantes() {
 
 		cardParticipantes = new JPanel();
@@ -356,6 +398,9 @@ public class JPanelMainProduct extends JPanel {
 
 	}
 
+	/**
+	 * Metodo que inicia cada una de las tarjetas de informacion correspondiantes con la clase del producto
+	 */
 	private void init() {
 
 		this.setLayout(new BorderLayout());
@@ -368,7 +413,7 @@ public class JPanelMainProduct extends JPanel {
 
 		jPanelDere.add(jPanelderNorth, BorderLayout.NORTH);
 		jPanelDere.add(jPanelderCenter, BorderLayout.CENTER);
-		
+
 		jPanelizq.setLayout(new BorderLayout());
 		jPanelizqSouth = new JPanel();
 		jPanelizqSouth.setPreferredSize(new Dimension(0, 500));
@@ -401,6 +446,10 @@ public class JPanelMainProduct extends JPanel {
 
 	}
 
+	
+	/**
+	 * Metodo que bloquea los campos 
+	 */
 	public void blockJTextField() {
 		this.jTextArea.setEditable(false);
 		this.name.setEditable(false);
@@ -414,6 +463,9 @@ public class JPanelMainProduct extends JPanel {
 		}
 	}
 
+	/**
+	 * Metodo que asigana una imagen de fondo al panel
+	 */
 	@Override
 	protected void paintComponent(Graphics g) {
 		imageIcon = new ImageIcon("data/images/fondoLogin.jpg");
@@ -432,9 +484,9 @@ public class JPanelMainProduct extends JPanel {
 		aux.add(jTextAreaChat.getText());
 		return aux;
 	}
-	
+
 	public void getComment(SimpleList<String> message) {
-		
+
 	}
 
 	/**
@@ -446,14 +498,15 @@ public class JPanelMainProduct extends JPanel {
 	public void setBidding(Bidding bidding) {
 		this.bidding = bidding;
 	}
-	 public Double getValuePuja() {
-		 try {
-			 return Double.parseDouble(valuePuja.getText());
-		 } catch (NumberFormatException e) {
-			 Utilities.showMessageWarning("El valor de la puja debe ser numerico!", "Valorno valido");
-		 }
-		 return 0.0;
-	 }
+
+	public Double getValuePuja() {
+		try {
+			return Double.parseDouble(valuePuja.getText());
+		} catch (NumberFormatException e) {
+			Utilities.showMessageWarning("El valor de la puja debe ser numerico!", "Valorno valido");
+		}
+		return 0.0;
+	}
 
 	public Double getValueActually() {
 
@@ -471,6 +524,9 @@ public class JPanelMainProduct extends JPanel {
 		valueActually.setText(String.valueOf(value));
 	}
 
+	/**
+	 * Metodo que cambia el idioma a los componentes de la ventana
+	 */
 	public void changeLanguage() {
 		jLabelState.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_STATE));
 		jLabelTime.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_TIME));

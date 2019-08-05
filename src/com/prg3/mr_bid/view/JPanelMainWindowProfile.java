@@ -25,8 +25,8 @@ import com.prg3.mr_bid.utilities.HandlerLanguage;
 import com.prg3.mr_bid.utilities.Utilities;
 
 /**
- * Clase JPanelMainWindowCuenta - Se encarga de crear la ventana principal
- * de la cuenta de usuario
+ * Clase JPanelMainWindowCuenta - Se encarga de crear la ventana principal de la
+ * cuenta de usuario
  *
  * @version 1.0 - 4/08/2019
  * @author Daniel García
@@ -48,9 +48,11 @@ public class JPanelMainWindowProfile extends JPanel {
 
 	/**
 	 * Constructor que crea los paneles
-	 * @param controller controlador
-	 * @throws IOException 
-	 * @throws UnknownHostException 
+	 * 
+	 * @param controller
+	 *            controlador
+	 * @throws IOException
+	 * @throws UnknownHostException
 	 */
 	public JPanelMainWindowProfile() throws UnknownHostException, IOException {
 		this.setOpaque(false);
@@ -116,62 +118,18 @@ public class JPanelMainWindowProfile extends JPanel {
 	}
 
 	/**
-	 * Organiza y crea los botones de opciones del panel
-	 * @param control controlador
+	 * Añade un panel con los campos de los datos del usuario al lado izquierdo del
+	 * panel
+	 * @param control
+	 *            controlador
 	 */
-	private void myjButton() {
-		
-		
+	private void addPanelProfile() {
 		jPanelTools.setLayout(new BorderLayout());
 		jPanelTools.add(jPanelFormProfile, BorderLayout.CENTER);
-//		JTextField jTextField = new JTextField("Nombre");
-//		jPanelTools.add(jTextField);
-//		jPanelTools.setLayout(new GridLayout(4, 1));
-//
-//		jButton = new JButton(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_SUMMARY));
-//		jButton.setForeground(ConstantsView.COLOR__FORE_WD);
-//		jButton.setBackground(ConstantsView.COLOR__BACK_WD);
-//		jButton.setActionCommand(ControlCommands.SHOW_HISTORY.name());
-//		jButton.addActionListener(control);
-//		imageIcon = new ImageIcon(ConstantsView.PATH_BLOC_IMG);
-//		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(70, 70, Image.SCALE_AREA_AVERAGING));
-//		jButton.setIcon(icon);
-//		jPanelTools.add(jButton);
-//		
-//		jButton2 = new JButton(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_CREATEAUCTIONS));
-//		jButton2.setForeground(ConstantsView.COLOR__FORE_WD);
-//		jButton2.setBackground(ConstantsView.COLOR__BACK_WD);
-//		jButton2.setActionCommand(ControlCommands.SHOW_ADDPRODUCT.name());
-//		jButton2.addActionListener(control);
-//		imageIcon = new ImageIcon(ConstantsView.PATH_VENT_IMG);
-//		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(70, 70, Image.SCALE_AREA_AVERAGING));
-//		jButton2.setIcon(icon);
-//		jPanelTools.add(jButton2);
-//		
-//		jButton3 = new JButton(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_PROFILE));
-//		jButton3.setForeground(ConstantsView.COLOR__FORE_WD);
-//		jButton3.setBackground(ConstantsView.COLOR__BACK_WD);
-//		jButton3.setActionCommand(ControlCommands.SHOW_ADDPRODUCT.name());
-//		jButton3.addActionListener(control);
-//		imageIcon = new ImageIcon(ConstantsView.PATH_BLOC_IMG);
-//		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(70, 70, Image.SCALE_AREA_AVERAGING));
-//		jButton3.setIcon(icon);
-//		jPanelTools.add(jButton3);
-//		
-//		jButton5 = new JButton(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_CONFIGURATION));
-//		jButton5.setForeground(ConstantsView.COLOR__FORE_WD);
-//		jButton5.setBackground(ConstantsView.COLOR__BACK_WD);
-//		jButton5.setActionCommand(ControlCommands.SHOW_ADDPRODUCT.name());
-//		jButton5.addActionListener(control);
-//		imageIcon = new ImageIcon(ConstantsView.PATH_AJUST_IMG);
-//		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(70, 70, Image.SCALE_AREA_AVERAGING));
-//		jButton5.setIcon(icon);
-//		jPanelTools.add(jButton5);
 	}
 
 	/**
-	 * Añade el panel donde se marca el nombre del usuario cuando se
-	 * loguea
+	 * Añade el panel donde se marca el nombre del usuario cuando se loguea
 	 */
 	private void panelPhoto() {
 		jLabelName = new JLabel(ConstantsView.TEXT_NOT_LOGIN);
@@ -185,7 +143,9 @@ public class JPanelMainWindowProfile extends JPanel {
 
 	/**
 	 * Cambia el dato del usuario
-	 * @param user usuario
+	 * 
+	 * @param user
+	 *            usuario
 	 */
 	public void changeData(User user) {
 		if (user != null) {
@@ -196,13 +156,21 @@ public class JPanelMainWindowProfile extends JPanel {
 
 	/**
 	 * Crea los botones con:
-	 * @param name nombre
-	 * @param x posX
-	 * @param y posY
-	 * @param atribute valor
-	 * @param url path
-	 * @param commands comandos
-	 * @param control controlador
+	 * 
+	 * @param name
+	 *            nombre
+	 * @param x
+	 *            posX
+	 * @param y
+	 *            posY
+	 * @param atribute
+	 *            valor
+	 * @param url
+	 *            path
+	 * @param commands
+	 *            comandos
+	 * @param control
+	 *            controlador
 	 * @return button boton
 	 */
 	public JButton createJbuton(String name, int x, int y, JButton atribute, String url, String commands,
@@ -220,11 +188,13 @@ public class JPanelMainWindowProfile extends JPanel {
 
 	/**
 	 * Inicializa los componentes del panel
-	 * @param controller controlador
+	 * 
+	 * @param controller
+	 *            controlador
 	 */
 	private void init() {
 		panelPhoto();
-		myjButton();
+		addPanelProfile();
 		character();
 		sizePanel();
 		jPanelImage();
@@ -259,7 +229,11 @@ public class JPanelMainWindowProfile extends JPanel {
 		jButton3.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_PROFILE));
 		jButton5.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_CONFIGURATION));
 	}
-	
+
+	/**
+	 * Llama al panel tipo formulario
+	 * @return
+	 */
 	public JPanelFormProfile getjPanelFormProfile() {
 		return jPanelFormProfile;
 	}

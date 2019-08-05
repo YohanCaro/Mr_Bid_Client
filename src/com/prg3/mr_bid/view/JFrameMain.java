@@ -143,6 +143,10 @@ public class JFrameMain extends JFrame {
 		repaint();
 		revalidate();
 	}
+	
+	/**
+	 * Muestra el panel de la cuenta del usuario
+	 */
 	public void showProfile() {
 		jPanelMain.removeAll();
 		jPanelMain.add(jPanelMainWindowProfile, BorderLayout.CENTER);
@@ -228,6 +232,11 @@ public class JFrameMain extends JFrame {
 	public void getrepaint() {
 		jPanelMain.repaints();
 	}
+	
+	/**
+	 * Obtiene el panel JPanelMainWindowProfile
+	 * @return JPanelMainWindowProfile
+	 */
 	public JPanelMainWindowProfile getjPanelMainWindowProfile() {
 		return jPanelMainWindowProfile;
 	}

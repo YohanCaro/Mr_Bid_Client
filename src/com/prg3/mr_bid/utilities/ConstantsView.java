@@ -152,18 +152,11 @@ public class ConstantsView {
 	public static Font FONT_DA_1 = new Font("Andale Mono", 1, 14);
 	public static Font FONT_DA_2 = new Font("Andale Mono", 0, 9);
 	public static Color COLOR_DA = new Color(0, 0, 0);
+	
 	public static final String TEXT_DIALOG_ABOUT = "\n\n          ACERCA DE"
-			+ "\n\n            A.  PROHIBIDA SU VENTA O DISTRIBUCIÓN SIN AUTORIZACIÓN."
-			+ "\n            B.  PROHIBIDA LA ALTERACIÓN DEL CÓDIGO FUENTE O DISEÑO DE LAS INTERFACES GRÁFICAS."
-			+ "\n            C.  LA EMPRESA BUSINESS NAME NO SE HACE RESPONSABLE DEL MAL USO DE ESTE SOFTWARE."
-			+ "\n\n          LOS ACUERDOS LEGALES EXPUESTOS ACONTINUACIÓN RIGEN EL USO QUE USTED HAGA DE ESTE SOFTWARE"
-			+ "\n          (LA EMPRESA BUSINESS NAME), NO SE RESPONSABILIZAN DEL USO QUE USTED"
-			+ "\n          HAGA CON ESTE SOFTWARE Y SUS SERVICIOS"
-			+ "\n\n          PARA MAYOR INFORMACIÓN SOBRE NUESTROS PRODUCTOS O SERVICIOS, POR FAVOR VISITE"
-			+ "\n            BUSINESS@GMAIL.COM. LA EMPRESA BUSINESS NO SE HACE RESPONSABLE DEL MAL USO DE ESTE SOFTWARE."
-			+ "\n\n          LOS ACUERDOS LEGALES EXPUESTOS ACONTINUACIÓN RIGEN EL USO QUE USTED HAGA DE ESTE SOFTWARE"
-			+ "\n          LA EMPRESA BUSINESS NAME, NO SE RESPONSABILIZAN DEL USO QUE USTED"
-			+ "\n          HAGA CON ESTE SOFTWARE Y SUS SERVICIOS. AL HACER USO DE ESTE SOFTWARE USTED ESTA ACEPTANDO \n"
-			+ "          LOS TERMINOS PROPUESTOS ANTERIORMENTE." + "\n          ";
+			+ "\n Mr BID es una aplicación cliente servidor de subastas que busca ofrecer el"
+			+ " servicio de publicación de productos de diferentes tipos en donde las personas podrán subir"
+			+ " y productos y participar en las subastas que estén disponibles. \r\n" 
+			;
 	
 }

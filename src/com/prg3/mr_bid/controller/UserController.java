@@ -227,6 +227,8 @@ public class UserController implements ActionListener {
 			this.jFrameMain.getjPanelMainWindowCuenta().changeData(Client.getInstanceOf().getUser());
 			this.jFrameMain.getjPanelMainWindowProfile().getjPanelFormProfile().changeData(Client.getInstanceOf().getUser());;
 			this.jFrameMain.getjPanelMainWindowCuenta().repaint();
+			this.jFrameMain.getjPanelMainWindowProfile().changeData(Client.getInstanceOf().getUser());
+			this.jFrameMain.getjPanelMainWindowProfile().repaint();
 			this.jFrameMain.getjPanelMainWindowProfile().getjPanelFormProfile().repaint();
 			this.jFrameMain.repaint();
 		} catch (UnknownHostException e) {

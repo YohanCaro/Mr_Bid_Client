@@ -51,6 +51,7 @@ public class JDialogAbout extends JDialog {
 		add(label1);
 		
 		textarea1.setEditable(false);
+		textarea1.setLineWrap(true);
 		textarea1.setFont(ConstantsView.FONT_DA_2);
 		textarea1.setText(ConstantsView.TEXT_DIALOG_ABOUT);
 		
