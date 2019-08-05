@@ -136,10 +136,10 @@ public class JPanelCard extends JPanel {
 	 * Le da tamaño a los paneles
 	 */
 	private void sizePanel() {
-		jPanelCenterWest.setPreferredSize(Utilities.setDimension(400, 0)); //500
-		jPanelCenterEast.setPreferredSize(Utilities.setDimension(700, 0)); //700
-		jPanelNameProduct.setPreferredSize(Utilities.setDimension(250, 0)); //300
-		jPanelInfoProduct.setPreferredSize(Utilities.setDimension(250, 0)); //300
+		jPanelCenterWest.setPreferredSize(Utilities.setDimension(400, 0)); 
+		jPanelCenterEast.setPreferredSize(Utilities.setDimension(700, 0)); 
+		jPanelNameProduct.setPreferredSize(Utilities.setDimension(250, 0)); 
+		jPanelInfoProduct.setPreferredSize(Utilities.setDimension(250, 0));
 
 	}
 

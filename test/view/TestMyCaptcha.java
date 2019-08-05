@@ -27,7 +27,6 @@ public class TestMyCaptcha {
 		frame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
 		frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
 		jPanel.add(new CaptchaJPanel(captcha));
-//		frame.add();
 		frame.add(jPanel);
 		frame.setVisible(true);
 	}

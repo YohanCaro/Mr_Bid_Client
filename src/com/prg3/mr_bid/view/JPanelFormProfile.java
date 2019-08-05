@@ -64,7 +64,6 @@ public class JPanelFormProfile extends JPanel {
 	public JPanelFormProfile(UserController controller) throws UnknownHostException, IOException {
 		this.jPanelRobotCenter = new JPanelRobotCenter();
 		this.setLayout(null);
-		// setSize(350, 400);
 		initComponents(controller);
 	}
 

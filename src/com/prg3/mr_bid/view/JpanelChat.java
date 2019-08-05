@@ -34,7 +34,6 @@ public class JpanelChat extends JPanel implements ActionListener {
 	private Manager manager;
 	String username, address;
 	SimpleList<String> users = new SimpleList<>();
-	// int port = 12345;
 	Boolean isConnected = false;
 	Socket sock;
 	BufferedReader reader;
@@ -86,13 +85,9 @@ public class JpanelChat extends JPanel implements ActionListener {
 	 */
 	public void writeUsers() {
 		String[] tempList = new String[(users.size())];
-		// users.toArray(tempList);
 		for (String token : tempList) {
-			// users.append(token + "\n");
 		}
 	}
-
-	// --------------------------//
 
 	/**
 	 * Metodo que muestra cuando el usuario esta desconectado
@@ -110,8 +105,6 @@ public class JpanelChat extends JPanel implements ActionListener {
 		}
 	}
 
-	// --------------------------//
-
 	/**
 	 * Metodo que muestra los fallos en la conexion
 	 */
@@ -123,7 +116,6 @@ public class JpanelChat extends JPanel implements ActionListener {
 			jTextArea.append("Failed to disconnect. \n");
 		}
 		isConnected = false;
-		// tf_username.setEditable(true);
 
 	}
 
@@ -149,10 +141,8 @@ public class JpanelChat extends JPanel implements ActionListener {
 						userAdd(data[0]);
 					} else if (data[2].equals(disconnect)) {
 						userRemove(data[0]);
-					} else if (data[2].equals(done)) {
-						// users.setText("");
+					} else if (data[2].equals(done)) {						
 						writeUsers();
-						// users.clear();
 					}
 				}
 			} catch (Exception ex) {
@@ -196,7 +186,7 @@ public class JpanelChat extends JPanel implements ActionListener {
 			try {
 				writer.println(Client.getInstanceOf().getUser().getFirstName() + ":" + jTextField.getText() + ":"
 						+ "Chat de prueba");
-				writer.flush(); // flushes the jTextField
+				writer.flush();
 			} catch (Exception ex) {
 				jTextArea.append("Message was not sent. \n");
 			}

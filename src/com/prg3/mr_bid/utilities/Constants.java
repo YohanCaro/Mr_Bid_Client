@@ -14,7 +14,6 @@ import com.prg3.mr_bid.structures.simple_list.SimpleList;
  */
 public class Constants {
 	
-	//Communications
 	public static String ip = "localHost";
 	public static int port = 12345;
 	public static User user = null;

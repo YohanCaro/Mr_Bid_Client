@@ -49,7 +49,7 @@ public class MyCaptcha {
 			g2d.drawString(""+ message.charAt(i), i*25, 20);
 			g2d.fillOval(i*25, 17, 5, 5);	 
 	        AffineTransform at = new AffineTransform();
-	        at.rotate(Math.toRadians(15), 20, 100); //se asigna el angulo y centro de rotacion
+	        at.rotate(Math.toRadians(15), 20, 100); 
 	        g2d.setTransform(at);
 			
 			g2d.setColor(Color.lightGray);

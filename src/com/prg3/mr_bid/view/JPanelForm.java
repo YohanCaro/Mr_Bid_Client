@@ -56,7 +56,6 @@ public class JPanelForm extends JPanel {
 	public JPanelForm(UserController controller) {
 		this.jPanelRobotCenter = new JPanelRobotCenter();
 		this.setLayout(null);
-//		setSize(350, 400);
 		initComponents(controller);
 	}
 
@@ -79,7 +78,6 @@ public class JPanelForm extends JPanel {
 		jTextFieldPasswor.setBackground(ConstantsView.COLOR__FORE_WD);
 		jTextFieldPasswor.setBounds(150, 120, 250, 40);
 		add(jTextFieldPasswor);
-//		jTextFieldPasswor = createTextField(ConstantsView.TEXT_PASSWORD_PF, 150, 120, jTextFieldPasswor, 250);
 
 		createLabel(ConstantsView.TEXT_TYPE_DOC_PF, 20, 170);
 		jComboBox = new JComboBox<TypeDocument>();
