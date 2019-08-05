@@ -64,6 +64,10 @@ public class JPanelPrincipalLogin extends JPanel {
 		init(controller);
 	}
 	
+	
+	/**
+	 * Crea los espacios que hay entre los paneles internos de la clase
+	 */
 	private void setSpaces() {
 		jPanelCenter.setOpaque(false);
 		jPanelCenter.setLayout(new BorderLayout());
@@ -89,6 +93,10 @@ public class JPanelPrincipalLogin extends JPanel {
 		jPanelSout.setPreferredSize(Utilities.setDimension(100, 100));
 	}
 
+	/**
+	 * Inicializa los componentes de la ventana
+	 * @param controller
+	 */
 	private void init(UserController controller) {
 		this.setLayout(new BorderLayout());
 		this.setBackground(ConstantsView.COLOR_BACKGROUD_JPRINCIPAL);
@@ -115,6 +123,11 @@ public class JPanelPrincipalLogin extends JPanel {
 		this.add(jPanelSout, BorderLayout.SOUTH);
 	}
 
+	
+	/**
+	 * Metodo que crea espacion en blanco
+	 * @return
+	 */
 	public JLabel createEspacio() {
 		jLabel = new JLabel();
 		jLabel.setPreferredSize(Utilities.setDimension(0, 20));
@@ -123,15 +136,33 @@ public class JPanelPrincipalLogin extends JPanel {
 
 	}
 	
+	
+	/**
+	 * Obtiene el correo de la cuenta que desea ingresar
+	 * @return
+	 */
     public String getjTextFieldName() {
         return jTextFieldName.getText();
     }
 
+    /**
+     * Obtiene la contraseña del usuario que esta ingresando 
+     * @return
+     */
     public String getJpassword() {
         return String.valueOf(jpassword.getPassword());
     }
     
     
+    /**
+     * Metodo que asigana un campo el cual se limpia 
+     * @param name
+     * @param x
+     * @param y
+     * @param atribute
+     * @param xsize
+     * @return
+     */
     public HintJTextField createTextField(String name, int x, int y, HintJTextField atribute, int xsize) {
 		atribute = new HintJTextField(name);
 		atribute.setBounds(x, y, xsize, 30);
@@ -142,6 +173,9 @@ public class JPanelPrincipalLogin extends JPanel {
 
 	}
 	
+    /**
+     * Asigna una imagen de fondo al panel
+     */
 	@Override
 	protected void paintComponent(Graphics g) {
 		imageIcon = new ImageIcon(ConstantsView.PATH_JPRINCIPAL_BACK_IMG);

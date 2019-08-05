@@ -66,8 +66,6 @@ public class JPanelOptionMenu extends JPanel {
 
 		jButtonCompras = new JButton();
 		jButtonCompras.setBackground(ConstantsView.BACKGROUD_MENU);
-		// jButtonEnglish.setActionCommand(Commands.C_ENGLISH.name());
-		// jButtonEnglish.addActionListener(control);
 		imageIcon = new ImageIcon(ConstantsView.PATH_ICON_CAR_MENU);
 		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(70, 70, Image.SCALE_AREA_AVERAGING));
 		jButtonCompras.setIcon(icon);

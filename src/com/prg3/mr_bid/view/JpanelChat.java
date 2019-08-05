@@ -24,7 +24,7 @@ import com.prg3.mr_bid.utilities.Constants;
 
 /**
  * Clase JpanelChat- Encargada de mandar los mensajes al servidor
- *
+ * * @version 1.0 - 23/07/2019
  */
 public class JpanelChat extends JPanel implements ActionListener {
 

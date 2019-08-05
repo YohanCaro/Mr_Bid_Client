@@ -38,9 +38,7 @@ public class JDialogAddCreditCard extends JDialog {
 		this.setResizable(false);
 		setSize(ConstantsView.SIZE_DIALOG_CREDIT_CARD);
 		this.setLocationRelativeTo(null);
-
 		this.add(jPanelForm, BorderLayout.CENTER);
-
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 

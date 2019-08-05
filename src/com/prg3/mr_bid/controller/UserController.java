@@ -43,7 +43,6 @@ public class UserController implements ActionListener {
 	private JDialogAddCreditCard jDialogAddCreditCard;
 	private JDialogAbout jDialogAbout;
 	private JPanelMainWindow jPanelMainWindow;
-//	private JDialogListUsers jDialogListUsers;
 	private static UserController controller;
 	private HandlerLanguage config = null;
 	private String languageDefault;
@@ -61,7 +60,6 @@ public class UserController implements ActionListener {
 		getLanguageDefault();
 		loadConfiguration();
 		this.jFrameMain = new JFrameMain(this);
-//		this.jDialogListUsers = new JDialogListUsers(this);
 		this.jDialogAddUser = new JDialogAddUser(this);
 		this.jDialogAbout = new JDialogAbout();
 		this.jDialogAddCreditCard = new JDialogAddCreditCard();
@@ -155,9 +153,6 @@ public class UserController implements ActionListener {
 				}
 				this.jFrameMain.getrepaint();
 			}
-			break;
-		case LIST_CONNECT:
-//			jDialogListUsers.setVisible(true);
 			break;
 		case SEND_BID:
 			double valueActually = jFrameMain.getjPanelMainProduct().getValueActually();

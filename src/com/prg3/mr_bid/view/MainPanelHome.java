@@ -36,6 +36,10 @@ public class MainPanelHome extends JPanel {
 		this.add(jPanelPrincipal, BorderLayout.CENTER);
     }
     
+    
+    /**
+     * Asigana una imagen de fondo al panel 
+     */
 	@Override
 	protected void paintComponent(Graphics g) {
 		imageIcon = new ImageIcon(ConstantsView.PATH_JPRINCIPAL_BACK_IMG);

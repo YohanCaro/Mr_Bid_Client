@@ -39,6 +39,10 @@ public class JPanelRobotCenter extends JPanel {
 		init();
 	}
 
+	
+	/**
+	 * Inicializa los coponentes de la clase
+	 */
 	private void init() {
 		this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		this.setBackground(ConstantsView.COLOR_BACKGROUD_ROBOT);
