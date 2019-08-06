@@ -157,7 +157,8 @@ public class UserController implements ActionListener {
 			if (manager.getUser() != null) {
 				double valueActually = jFrameMain.getjPanelMainProduct().getValueActually();
 				double value = (!jFrameMain.getjPanelMainProduct().isAutomaticIncrement())?
-						jFrameMain.getjPanelMainProduct().getValuePuja():valueActually+valueActually*0.05;
+						jFrameMain.getjPanelMainProduct().getValuePuja():(valueActually+valueActually*0.05);
+				int intValue = (int)value;
 				if (value > valueActually) {
 					jFrameMain.getjPanelMainProduct().setValueActually((int) value);
 					jFrameMain.getjPanelMainAddProduct();

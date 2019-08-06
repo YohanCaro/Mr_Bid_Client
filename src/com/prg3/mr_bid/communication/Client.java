@@ -131,11 +131,9 @@ public class Client extends Socket implements Runnable {
 			break;
 		case UPBIDDING:
 			Constants.biddingsList = (json.length()>0)?Utilities.stringToBiddings(json):new SimpleList<Bidding>();
-			System.out.println("Size list: "+ Constants.biddingsList.size());
 			Utilities.changeCritrium();
 		case UPDATE_BID:
 			Constants.biddingsList = (json.length()>0)?Utilities.stringToBiddings(json):new SimpleList<Bidding>();
-			System.out.println("Size list: "+ Constants.biddingsList.size());
 			Utilities.changeCritrium();
 			break;
 		case GETIMG:
