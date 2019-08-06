@@ -67,8 +67,8 @@ public class Manager {
 			BidTime initTime, BidTime finishTime, boolean isAutomaticIncremet, boolean isPublic, int value) {
 		if (user != null) {
 			if (Utilities.isAfterOfToDay(initTime) && Utilities.isAfterOfToDay(finishTime)) {
-				Bidding bidding = new Bidding(biddingName, typeProduct, product, publicationTime, initTime,
-						finishTime, isAutomaticIncremet, isPublic, user.getEmail(), value);
+				Bidding bidding = new Bidding(value, biddingName, typeProduct, product, publicationTime, initTime,
+						finishTime, isAutomaticIncremet, isPublic, user.getEmail());
 				return bidding;
 			} else {
 				Utilities.showMessageError("Las fechas de inicio y fin deben ser mayores a hoy\n"

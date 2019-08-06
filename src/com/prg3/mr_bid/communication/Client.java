@@ -141,7 +141,7 @@ public class Client extends Socket implements Runnable {
 			long id = Long.parseLong(datas[1]);
 			try {
 				String paths = this.getImages( (int) id);
-				Constants.biddingsList.get((int) id).getProduct().setImages(paths);
+				Constants.biddingsList.get((int) id).getProduct().setImage(paths);
 			} catch (NumberFormatException | IOException e) {
 			}
 			break;

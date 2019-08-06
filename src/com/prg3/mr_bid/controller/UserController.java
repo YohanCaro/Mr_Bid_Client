@@ -247,7 +247,7 @@ public class UserController implements ActionListener {
 				&& jFrameMain.getjPanelMainAddProduct().getDateP() != null
 				&& jFrameMain.getjPanelMainAddProduct().getDateI() != null
 				&& jFrameMain.getjPanelMainAddProduct().getDateF() != null) {
-			String list = (fileImage==null)?"":fileImage.getPath();
+			String list = (fileImage==null)?"No Images":fileImage.getPath();
 			Product p = new Product(jFrameMain.getjPanelMainAddProduct().getJTextName(),
 					jFrameMain.getjPanelMainAddProduct().getDescription(), list);
 			return manager.addBidding(jFrameMain.getjPanelMainAddProduct().getJTextName(),

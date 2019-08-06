@@ -23,8 +23,8 @@ public class TestTime2 {
 	public static void main(String[] args) {
 		BidTime bidTime = new BidTime(new BidDate(13, 6, 2019), (float) 12);
 		BidTime bidTime2 = new BidTime(new BidDate(28, 6, 2019), (float) 20);
-		Bidding b = new Bidding("a", TypeProduct.ACCESSORIESVEHICLES, new Product("m", "n"),
-				bidTime, bidTime, bidTime2, true, true, null, 1000);
+		Bidding b = new Bidding(1000, "a", TypeProduct.ACCESSORIESVEHICLES, new Product("m", "n"),
+				bidTime, bidTime, bidTime2, true, true, null);
 		System.out.println(Utilities.getTimeRemaining(b));
 	}
 

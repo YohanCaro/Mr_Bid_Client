@@ -92,7 +92,7 @@ public class JPanelCard extends JPanel {
 		changeData(bid, controller);
 		character();
 		sizePanel();
-		myJButton(bid.getProduct().getImages(), bid.getId());
+		myJButton(bid.getProduct().getImage(), bid.getId());
 		init();
 		this.repaint();
 		this.setVisible(true);

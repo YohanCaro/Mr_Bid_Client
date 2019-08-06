@@ -10,7 +10,7 @@ public class Product {
 	
 	private String nameProduct;
 	private String description;
-	private String images;
+	private String image;
 	
 	/**
 	 * Crea un producto con los siguientes datos
@@ -21,7 +21,7 @@ public class Product {
 	public Product(String nameProduct, String description, String images) {
 		this.nameProduct = nameProduct;
 		this.description = description;
-		this.images = images;
+		this.image = images;
 	}
 	
 	/**
@@ -54,8 +54,8 @@ public class Product {
 	 * Obtiene unalista con la ruta de las imagenes
 	 * @return images imagenes
 	 */
-	public String getImages() {
-		return images;
+	public String getImage() {
+		return image;
 	}
 	
 	@Override
@@ -70,8 +70,8 @@ public class Product {
 	 * Cambia el valor de la ruta de la imagen del producto
 	 * @param paths ruta
 	 */
-	public void setImages(String paths) {
-		this.images = paths;		
+	public void setImage(String paths) {
+		this.image = paths;		
 	}
 	
 }

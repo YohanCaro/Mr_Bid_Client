@@ -7,8 +7,8 @@ package com.prg3.mr_bid.model.entity;
  * @version 1.0 - 2/06/2019
  */
 public class Bidding {
-	
-	private long id;
+	public final static int RECORD_SIZE = 221;
+	private BidInfo bidInfo;
 	private String biddingName;
 	private TypeProduct typeProduct;
 	private Product product;
@@ -18,10 +18,9 @@ public class Bidding {
 	private boolean isAutomaticIncremet;
 	private boolean isPublic;
 	private String owner;
-	private int value;
 	
 	/**
-	 * Contruye una subasta con los siguientes datos
+	 * Contruye una nueva subasta con los siguientes datos
 	 * @param biddingName nombre de la subasta
 	 * @param typeProduct tipo de susbasta 
 	 * @param product producto
@@ -30,11 +29,11 @@ public class Bidding {
 	 * @param finishTime teiempo de finalizado
 	 * @param isAutomaticIncremet define el tipo de incremento
 	 * @param isPublic define si es publica
+	 * @param emailUser Dueño de la subasta
 	 */
-	public Bidding(long id,String biddingName, TypeProduct typeProduct, Product product, BidTime publicationTime,
-			BidTime initTime, BidTime finishTime, boolean isAutomaticIncremet, boolean isPublic, String emailUser,
-			int value) {
-		this.id = id;
+	public Bidding(int value, String biddingName, TypeProduct typeProduct, Product product, BidTime publicationTime,
+			BidTime initTime, BidTime finishTime, boolean isAutomaticIncremet, boolean isPublic, String emailUser) {
+		this.bidInfo = new BidInfo(value);
 		this.biddingName = biddingName;
 		this.typeProduct = typeProduct;
 		this.product = product;
@@ -44,7 +43,6 @@ public class Bidding {
 		this.isAutomaticIncremet = isAutomaticIncremet;
 		this.isPublic = isPublic;
 		this.owner = emailUser;
-		this.value = value;
 	}
 	
 	/**
@@ -57,11 +55,11 @@ public class Bidding {
 	 * @param finishTime teiempo de finalizado
 	 * @param isAutomaticIncremet define el tipo de incremento
 	 * @param isPublic define si es publica
-	 * Dueño de la subasta
+	 * @param emailUser Dueño de la subasta
 	 */
-	public Bidding(String biddingName, TypeProduct typeProduct, Product product, BidTime publicationTime,
-			BidTime initTime, BidTime finishTime, boolean isAutomaticIncremet, boolean isPublic, 
-			String emailUser, int value) {
+	public Bidding(long id, int value, String highestBidder, String biddingName, TypeProduct typeProduct, Product product, BidTime publicationTime,
+			BidTime initTime, BidTime finishTime, boolean isAutomaticIncremet, boolean isPublic, String emailUser) {
+		this.bidInfo = new BidInfo(id, highestBidder, value);
 		this.biddingName = biddingName;
 		this.typeProduct = typeProduct;
 		this.product = product;
@@ -71,9 +69,14 @@ public class Bidding {
 		this.isAutomaticIncremet = isAutomaticIncremet;
 		this.isPublic = isPublic;
 		this.owner = emailUser;
-		this.value = value;
 	}
-		
+	
+	/**
+	 * Constructor vacío de la clase Bidding. Nota: es usado en operaciones de persistencia con arboles bst
+	 */
+	public Bidding() {
+	}
+	
 	/**
 	 * Cambia el propietario
 	 * @param owner pripietario
@@ -131,19 +134,19 @@ public class Bidding {
 	}
 	
 	/**
-	 * Obtiene valor actual
-	 * @return value valor
+	 * Obtiene 
+	 * @return value
 	 */
 	public int getValue() {
-		return value;
+		return bidInfo.value;
 	}
 	
 	/**
-	 * Cambia el valor del valor actual de la subasta
+	 * Cambia 
 	 * @param value the value to set
 	 */
 	public void setValue(int value) {
-		this.value = value;
+		this.bidInfo.value = value;
 	}
 	
 	/**
@@ -170,21 +173,17 @@ public class Bidding {
 		return owner;
 	}
 	
-	/**
-	 * Obtiene le id de la subasta
-	 * @return id long
-	 */
 	public long getId() {
-		return id;
+		return bidInfo.id;
 	}
-	
 	/**
-	 * Cambia el id de la subasta
+	 * Cambia 
 	 * @param id the id to set
 	 */
 	public void setId(long id) {
-		this.id = id;
+		this.bidInfo.id = id;
 	}
+
 	
 	/**
 	 * Convierte un string en una subasta
@@ -192,22 +191,22 @@ public class Bidding {
 	 * @return Bidding subasta
 	 */
 	public static Bidding stringToBidding(String bid) {
-		String[] array = bid.split("-");
-		
-		return new Bidding(Long.parseLong(array[0]), array[1], TypeProduct.values()[Integer.parseInt(array[2])],
-				new Product(array[3], array[4], array[5]), 
-				new BidTime(new BidDate(array[6]), Float.parseFloat(array[7])),
+		String[] array = bid.split("-");		
+		return new Bidding(Long.parseLong(array[0]),Integer.parseInt(array[1]), array[2], array[3],
+				TypeProduct.values()[Integer.parseInt(array[4])],
+				new Product(array[5], array[6], array[7]), 
 				new BidTime(new BidDate(array[8]), Float.parseFloat(array[9])),
 				new BidTime(new BidDate(array[10]), Float.parseFloat(array[11])),
-				(array[12].equals("1")), (array[13].equals("1")), array[14],Integer.parseInt(array[15]));
+				new BidTime(new BidDate(array[12]), Float.parseFloat(array[13])),
+				(array[12].equals("1")), (array[14].equals("1")), array[15]);
 	}
-	
 	@Override
 	public String toString() {
-		return id + "-" + biddingName + "-" + typeProduct.ordinal() + "-" + product.toString()
+		return bidInfo.id + "-" + bidInfo.value+ "-" + bidInfo.highestBidder + "-" + biddingName 
+				+ "-" + typeProduct.ordinal() + "-" + product.toString()
 				+ "-" + publicationTime.toString() + "-" + initTime.toString() + "-"
 				+ finishTime.toString() + "-" + (isAutomaticIncremet?1:0) + "-" 
-				+ (isPublic?1:0) + "-" + owner + "-" + value;
+				+ (isPublic?1:0) + "-" + owner ;
 	}
 
 }
