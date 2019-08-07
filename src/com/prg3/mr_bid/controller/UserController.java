@@ -131,7 +131,8 @@ public class UserController implements ActionListener {
 			}
 			break;
 		case ACTION_LOGIN:
-			this.sendDataLogin();
+			this.sendDataLogin();			
+			this.changeDataAcc();
 			jFrameMain.showMyCount();
 			break;
 		case CLOSE_PRODUCT:
