@@ -115,8 +115,9 @@ public class UserController implements ActionListener {
 				JPanelMainProduct jPanelMainProduct = new JPanelMainProduct();
 				jFrameMain.setjPanelMainProduct(jPanelMainProduct);
 				jFrameMain.getjPanelMainProduct().setBidding(manager.searchBiddingForID(Long.parseLong(com[1])));
-				jFrameMain.getjPanelMainProduct().start(this);
+				jFrameMain.getjPanelMainProduct().start(this,manager.searchBiddingForID(Long.parseLong(com[1])).getId());
 				jFrameMain.showPanelCardProduct();
+				
 			} else {
 				Utilities.showMessageError(ConstantsBid.TXT_NULL, ConstantsBid.TXT_ERROR);
 			}

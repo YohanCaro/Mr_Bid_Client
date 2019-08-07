@@ -66,9 +66,9 @@ public class JPanelMainProduct extends JPanel {
 	 * 
 	 * @param userController
 	 */
-	public void start(UserController userController) {
+	public void start(UserController userController,long idBid) {
 		this.setOpaque(false);
-		this.jpanelChat = new JpanelChat();
+		this.jpanelChat = new JpanelChat(idBid);
 		this.jPanelSouth = new JPanel();
 		this.jPanelizqImage = new JPanel();
 		this.jPanelizqInfo = new JPanel();

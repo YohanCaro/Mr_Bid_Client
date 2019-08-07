@@ -1,5 +1,6 @@
 package com.prg3.mr_bid.view;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,9 +10,11 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -23,78 +26,62 @@ import com.prg3.mr_bid.structures.simple_list.SimpleList;
 import com.prg3.mr_bid.utilities.Constants;
 
 /**
- * Clase JpanelChat- Encargada de mandar los mensajes al servidor
- * * @version 1.0 - 23/07/2019
+ * Clase JpanelChat- Encargada de mandar los mensajes al servidor * @version 1.0
+ * - 23/07/2019
  */
 public class JpanelChat extends JPanel implements ActionListener {
 
 	private JButton jButton;
 	private JTextField jTextField;
 	private JTextArea jTextArea;
+	private JScrollPane jScrollPane;
+
 	private Manager manager;
 	String username, address;
-	SimpleList<String> users = new SimpleList<>();
+	ArrayList<String> users = new ArrayList();
+	int port = 2222;
+	long idBid;
 	Boolean isConnected = false;
 	Socket sock;
 	BufferedReader reader;
 	PrintWriter writer;
 
-	/**
-	 * Metodo con los componenete graficos del Chat
-	 */
-	public JpanelChat() {
+	public JpanelChat(long id) {
 		jButton = new JButton("SEND");
 		jButton.setActionCommand(ControlCommands.C_CONECT_CHAT.name());
 		jButton.addActionListener(this);
+		this.idBid = id;
+		this.jScrollPane = new JScrollPane(jTextArea);
+		
 		jTextField = new JTextField("Escriba su mensaje");
 		jTextArea = new JTextArea();
-		jTextArea.setLineWrap(true);
+		jTextArea.setEditable(false);
 		init();
 	}
 
-	/**
-	 * Metodo que inicia un hilo
-	 */
 	public void ListenThread() {
 		Thread IncomingReader = new Thread(new IncomingReader());
 		IncomingReader.start();
 	}
 
-	/**
-	 * Metodo que agrega los usuarios a un lista Simple
-	 * 
-	 * @param data
-	 *            Usuario
-	 */
-
 	public void userAdd(String data) {
 		users.add(data);
 	}
 
-	/**
-	 * Metodo que muestra cuando el usuario esta desconectado
-	 * 
-	 * @param data
-	 */
 	public void userRemove(String data) {
 		jTextArea.append(data + " is now offline.\n");
 	}
 
-	/**
-	 * Metodo que aumenta el tam del array
-	 */
 	public void writeUsers() {
 		String[] tempList = new String[(users.size())];
+		users.toArray(tempList);
 		for (String token : tempList) {
+			// users.append(token + "\n");
 		}
 	}
 
-	/**
-	 * Metodo que muestra cuando el usuario esta desconectado
-	 * 
-	 * @throws UnknownHostException
-	 * @throws IOException
-	 */
+	// --------------------------//
+
 	public void sendDisconnect() throws UnknownHostException, IOException {
 		String bye = (Client.getInstanceOf().getUser().getFirstName() + ": :Disconnect");
 		try {
@@ -105,9 +92,8 @@ public class JpanelChat extends JPanel implements ActionListener {
 		}
 	}
 
-	/**
-	 * Metodo que muestra los fallos en la conexion
-	 */
+	// --------------------------//
+
 	public void Disconnect() {
 		try {
 			jTextArea.append("Disconnected.\n");
@@ -116,24 +102,23 @@ public class JpanelChat extends JPanel implements ActionListener {
 			jTextArea.append("Failed to disconnect. \n");
 		}
 		isConnected = false;
+		// tf_username.setEditable(true);
 
 	}
 
-	/**
-	 * Clase que recibe los mensajes provenientes del servidor
-	 *
-	 */
 	public class IncomingReader implements Runnable {
 		@Override
 		public void run() {
 			String[] data;
+			String[] data2;
+
 			String stream, done = "Done", connect = "Connect", disconnect = "Disconnect", chat = "Chat";
 
 			try {
-				while ((stream = reader.readLine()) != null) {
+				while ((stream = reader.readLine()) != null ) {
 					data = stream.split(":");
-
-					if (data[2].equals(chat)) {
+					data2 = data[0].split("Sala");
+					if (data[2].equals(chat)&& idBid == Long.parseLong(data2[0])) {
 						jTextArea.append(data[0] + ": " + data[1] + "\n");
 						jTextArea.setCaretPosition(jTextArea.getDocument().getLength());
 					} else if (data[2].equals(connect)) {
@@ -141,26 +126,28 @@ public class JpanelChat extends JPanel implements ActionListener {
 						userAdd(data[0]);
 					} else if (data[2].equals(disconnect)) {
 						userRemove(data[0]);
-					} else if (data[2].equals(done)) {						
+					} else if (data[2].equals(done)) {
+						// users.setText("");
 						writeUsers();
+						users.clear();
 					}
+					
+
 				}
 			} catch (Exception ex) {
 			}
 		}
 	}
 
-	/**
-	 * Metodo que conecta el chat del cliente con el servidor
-	 */
-	private void b_connectActionPerformed() {
+	private void b_connectActionPerformed() {// GEN-FIRST:event_b_connectActionPerformed
 		if (isConnected == false) {
+
 			try {
-				sock = new Socket(Constants.ip, 2222);
+				sock = new Socket(address, port);
 				InputStreamReader streamreader = new InputStreamReader(sock.getInputStream());
 				reader = new BufferedReader(streamreader);
 				writer = new PrintWriter(sock.getOutputStream());
-				writer.println(Client.getInstanceOf().getUser().getFirstName() + ":has connected.:Connect");
+				writer.println(idBid +"Sala " +  Client.getInstanceOf().getUser().getFirstName() + ":has connected.:Connect");
 				writer.flush();
 				isConnected = true;
 			} catch (Exception ex) {
@@ -174,9 +161,6 @@ public class JpanelChat extends JPanel implements ActionListener {
 		}
 	}
 
-	/**
-	 * Metodo que manda un mensaje del cliente al Servidor
-	 */
 	private void b_sendActionPerformed() {
 		String nothing = "";
 		if ((jTextField.getText()).equals(nothing)) {
@@ -184,9 +168,9 @@ public class JpanelChat extends JPanel implements ActionListener {
 			jTextField.requestFocus();
 		} else {
 			try {
-				writer.println(Client.getInstanceOf().getUser().getFirstName() + ":" + jTextField.getText() + ":"
-						+ "Chat de prueba");
-				writer.flush();
+				writer.println(idBid +"Sala " +  Client.getInstanceOf().getUser().getFirstName() + ":"
+						+ jTextField.getText() + ":" + "Chat");
+				writer.flush(); // flushes the jTextField
 			} catch (Exception ex) {
 				jTextArea.append("Message was not sent. \n");
 			}
@@ -198,32 +182,25 @@ public class JpanelChat extends JPanel implements ActionListener {
 		jTextField.requestFocus();
 	}
 
-	/**
-	 * Metodo que inicializa componentes graficos y uso de metodo para conectar con
-	 * el servidor
-	 */
 	public void init() {
 		manager = new Manager();
 		this.setLayout(null);
 		this.setBackground(Color.LIGHT_GRAY);
 		jTextField.setBounds(20, 370, 300, 30);
 		jTextArea.setBounds(20, 20, 490, 320);
+		jTextArea.getAutoscrolls();
 		jButton.setBounds(400, 370, 100, 30);
 		this.add(jButton);
+		this.add(jScrollPane);
 		this.add(jTextField);
+//		jScrollPane.setViewportView(jTextArea);
+//		this.add(jScrollPane);
 		this.add(jTextArea);
 		b_connectActionPerformed();
+		// this.setPreferredSize(new Dimension(100, 100));
 
 	}
 
-	public void room() {
-
-	}
-
-	/**
-	 * Metodo que se utiliza para conectar con el setvidor al momento de entrar en
-	 * una subasta y mandar el mensaje
-	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String command = e.getActionCommand();
