@@ -57,8 +57,9 @@ public class Bidding {
 	 * @param isPublic define si es publica
 	 * @param emailUser Dueño de la subasta
 	 */
-	public Bidding(long id, int value, String highestBidder, String biddingName, TypeProduct typeProduct, Product product, BidTime publicationTime,
-			BidTime initTime, BidTime finishTime, boolean isAutomaticIncremet, boolean isPublic, String emailUser) {
+	public Bidding(long id, int value, String highestBidder, String biddingName, TypeProduct typeProduct,
+			Product product, BidTime publicationTime, BidTime initTime, BidTime finishTime,
+			boolean isAutomaticIncremet, boolean isPublic, String emailUser) {
 		this.bidInfo = new BidInfo(id, highestBidder, value);
 		this.biddingName = biddingName;
 		this.typeProduct = typeProduct;
@@ -191,15 +192,16 @@ public class Bidding {
 	 * @return Bidding subasta
 	 */
 	public static Bidding stringToBidding(String bid) {
-		String[] array = bid.split("-");		
+		String[] array = bid.split("-");
 		return new Bidding(Long.parseLong(array[0]),Integer.parseInt(array[1]), array[2], array[3],
 				TypeProduct.values()[Integer.parseInt(array[4])],
 				new Product(array[5], array[6], array[7]), 
 				new BidTime(new BidDate(array[8]), Float.parseFloat(array[9])),
 				new BidTime(new BidDate(array[10]), Float.parseFloat(array[11])),
 				new BidTime(new BidDate(array[12]), Float.parseFloat(array[13])),
-				(array[12].equals("1")), (array[14].equals("1")), array[15]);
+				(array[14].equals("1")), (array[15].equals("1")), array[16]);
 	}
+	
 	@Override
 	public String toString() {
 		return bidInfo.id + "-" + bidInfo.value+ "-" + bidInfo.highestBidder + "-" + biddingName 
