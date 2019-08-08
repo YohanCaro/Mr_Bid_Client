@@ -158,7 +158,7 @@ public class JPanelMainProduct extends JPanel {
 		// jLabel.setBackground(Color.BLUE);
 		jPanelCard.add(jLabelState);
 
-		name = new JTextField(bidding.getBiddingName().toString());
+		name = new JTextField(bidding.getBiddingName());
 		name.setBounds(20, 40, 320, 25);
 		name.setBackground(new java.awt.Color(224, 224, 224));
 		name.setFont(new java.awt.Font("Andale Mono", 1, 14));
