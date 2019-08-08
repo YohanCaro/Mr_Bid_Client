@@ -63,7 +63,9 @@ public class ConstantsView {
 
 	public static final String PATH_PUBLI_IMG = "data/images/publicidad1.png";
 	
+	//JPanel Main Product
 	public static final String PATH_TV_IMG = "data/images/tv.jpg";
+	public static final String TEXT_NAME_MP = "Nombre";
 	public static final Color COLOR_BACK_MP = new Color(0, 0, 0, 94);
 	public static final Color COLOR_COMP_MP = new Color(224, 224, 224);
 	public static final Color COLOR_COMP_2_MP = new Color(255, 0, 0);
@@ -74,7 +76,8 @@ public class ConstantsView {
 	public static final String TEXT_CONECTED_MP = "Conectados";
 	public static final String TEXT_PRIVATE_MP = "PRIVATE";
 	public static final String TEXT_PARTI_MP = "Participantes";
-
+	public static final String TEXT_BEST_MP = "Mayor Postor";
+	
 	public static final String BT_ADD_IMG_MAP = "Agregar imagen";
 	public static final String TEXT_DATA_PRODUCT = "DATOS DEL PRODUCTO";
 	public static final String TEXT_DESCRIPTION = "DESCRIPCION";

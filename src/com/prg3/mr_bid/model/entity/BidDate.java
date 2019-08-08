@@ -1,5 +1,8 @@
 package com.prg3.mr_bid.model.entity;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 /**
  * Clase BidDate - Maneja las fechas
  *
@@ -56,6 +59,19 @@ public class BidDate {
 			return shortDate;
 		}
 		return null;
+	}
+	
+	/**
+	 * Pasa el tiempo a años
+	 * @return int con años
+	 */
+	public int toYears() {
+		Calendar calendar = new GregorianCalendar();
+		short year = (short) (calendar.get(Calendar.YEAR) - this.year);
+		short month = (short) ((calendar.get(Calendar.MONTH)+1) - this.month);
+		short day = (short) (calendar.get(Calendar.DAY_OF_MONTH) - this.day);
+		
+		return ((year*365 + month*30 + day)/365);
 	}
 	
 	/**

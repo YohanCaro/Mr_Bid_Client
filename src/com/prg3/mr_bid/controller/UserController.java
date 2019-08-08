@@ -93,8 +93,12 @@ public class UserController implements ActionListener {
 			break;
 		case ACTION_SINGIN:
 			if (jDialogAddUser.isVisible() && this.createUser() != null) {
-				this.sendData(Commands.SIGNIN, this.createUser());
-				jDialogAddUser.setVisible(false);
+				if (this.createUser().getBirthDate().toYears() > 18) {
+					this.sendData(Commands.SIGNIN, this.createUser());
+					jDialogAddUser.setVisible(false);
+				} else {
+					Utilities.showMessageWarning(ConstantsBid.TXT_BIRTHDATE,null);
+				}
 			} else {
 				Utilities.showMessageWarning(ConstantsBid.TXT_COMPLETE,null);
 			}

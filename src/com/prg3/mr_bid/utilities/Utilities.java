@@ -190,10 +190,15 @@ public class Utilities {
 		return (int)(h - d);
 	}
 	
+	/**
+	 * Pasa a segundos el tiempo de hoy a la fecha
+	 * @param bt time
+	 * @return tiempo en segundos
+	 */
 	public static int toSeconds(BidTime bt) {
 		return (int) hoursToSeconds(bt.getTimeOnHours());
 	}
-	
+		
 	/**
 	 * Setea una dimension para un componente de una ventana o panel
 	 * @param x pos x
@@ -204,6 +209,9 @@ public class Utilities {
 		return new Dimension(x, y);
 	}
 	
+	/**
+	 * Cambia el criterio de comparación, para ordenar las subastas
+	 */
 	public static void changeCritrium() {
 		SimpleList<Bidding> list = Constants.biddingsList;
 		Constants.biddingsList = new SimpleList<Bidding>(new Comparator<Bidding>() {

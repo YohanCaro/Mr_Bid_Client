@@ -178,13 +178,20 @@ public class Bidding {
 		return bidInfo.id;
 	}
 	/**
-	 * Cambia 
+	 * Cambia setea el id
 	 * @param id the id to set
 	 */
 	public void setId(long id) {
 		this.bidInfo.id = id;
 	}
-
+	
+	/**
+	 * Obtiene la infomación de la última puja
+	 * @return the bidInfo
+	 */
+	public BidInfo getBidInfo() {
+		return bidInfo;
+	}
 	
 	/**
 	 * Convierte un string en una subasta
