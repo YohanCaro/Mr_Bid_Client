@@ -10,6 +10,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import javax.imageio.ImageIO;
 import com.google.gson.Gson;
+import com.prg3.mr_bid.controller.UserController;
 import com.prg3.mr_bid.model.entity.Bidding;
 import com.prg3.mr_bid.model.entity.User;
 import com.prg3.mr_bid.structures.simple_list.SimpleList;
@@ -127,6 +128,8 @@ public class Client extends Socket implements Runnable {
 			} else {
 				Utilities.showMessageInfo("Cuenta se ha cargado!", "Usuario logueado");
 				user = gson.fromJson(json, User.class);
+				UserController.changeDataAcc();
+				UserController.showMyAccount();
 			}
 			break;
 		case UPBIDDING:

@@ -50,7 +50,7 @@ public class JPanelMainProduct extends JPanel {
 			cardParticipantes;
 	private JScrollPane jScrollPane, jScrollPane2;
 	private JTextArea jTextArea, jTextAreaChat, jTextAreaParticipantes;
-	private JTextField name, correo, password, offer, publicaciones, valuePuja, valueActually, mayorPostor,
+	private JTextField name, email, password, offer, publicaciones, valuePuja, valueActually, mayorPostor,
 			jTextFieldPrincipalName;
 	private JLabel jLabelPrinciaplName, jLabel, jLabel2, jLabel3, jLabel4, jLabelState, jLabelTime, jLabelFinish,
 			jLabelCurrenntValue, jLabelMayorPostor, jLabelVauleBid;
@@ -176,12 +176,12 @@ public class JPanelMainProduct extends JPanel {
 		jLabelTime.setBackground(Color.BLUE);
 		jPanelCard.add(jLabelTime);
 
-		correo = new JTextField(Utilities.getState(bidding).toString());
-		correo.setBounds(20, 115, 320, 25);
-		correo.setBackground(ConstantsView.COLOR_COMP_MP);
-		correo.setFont(ConstantsView.FONT_LABEL_R_MP);
-		correo.setForeground(ConstantsView.COLOR_COMP_2_MP);
-		jPanelCard.add(correo);
+		email = new JTextField(Utilities.getState(bidding).toString());
+		email.setBounds(20, 115, 320, 25);
+		email.setBackground(ConstantsView.COLOR_COMP_MP);
+		email.setFont(ConstantsView.FONT_LABEL_R_MP);
+		email.setForeground(ConstantsView.COLOR_COMP_2_MP);
+		jPanelCard.add(email);
 
 		jLabelFinish = new JLabel(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_TIME));
 		jLabelFinish.setBounds(20, 150, 200, 25);
@@ -264,7 +264,7 @@ public class JPanelMainProduct extends JPanel {
 		jLabelVauleBid.setBackground(ConstantsView.COLOR_BACK_MP);
 		jPanelCard2.add(jLabelVauleBid);
 
-		valuePuja = new JTextField((bidding.getValue()*0.1) + "");
+		valuePuja = new JTextField(Integer.toString((int)((bidding.getValue()*0.1))+bidding.getValue()));
 		valuePuja.setBounds(20, 115, 320, 25);
 		valuePuja.setBackground(ConstantsView.COLOR_COMP_MP);
 		valuePuja.setFont(ConstantsView.FONT_LABEL_R_MP);
@@ -481,7 +481,7 @@ public class JPanelMainProduct extends JPanel {
 	public void blockJTextField() {
 		this.jTextArea.setEditable(false);
 		this.name.setEditable(false);
-		this.correo.setEditable(false);
+		this.email.setEditable(false);
 		this.offer.setEditable(false);
 		this.password.setEditable(false);
 		this.publicaciones.setEditable(false);

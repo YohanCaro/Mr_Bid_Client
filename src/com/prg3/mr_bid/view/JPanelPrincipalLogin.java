@@ -104,7 +104,7 @@ public class JPanelPrincipalLogin extends JPanel {
 		jLabel.setIcon(icon);
 		jPanelCenterImage.add(jLabel);
 				
-		jTextFieldName = createTextField("name", 0, 0, jTextFieldName, 400);
+		jTextFieldName = createTextField(ConstantsView.TEXT_EMAIL_PF, 0, 0, jTextFieldName, 400);
 		jPanelCenterCampos.add(jTextFieldName);
 
 		jpassword.setPreferredSize(new Dimension(400, 30));

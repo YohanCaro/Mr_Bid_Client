@@ -108,7 +108,7 @@ public class JFrameMain extends JFrame {
 	/**
 	 * Muestra el panel de la cuenta del usuario
 	 */
-	public void showMyCount() {
+	public void showMyAccount() {
 		jPanelMain.removeAll();
 		jPanelMain.add(jPanelMainWindowAccount, BorderLayout.CENTER);
 		repaint();

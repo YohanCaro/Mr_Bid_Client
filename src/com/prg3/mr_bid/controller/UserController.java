@@ -38,7 +38,7 @@ import com.prg3.mr_bid.view.JPanelMainWindow;
 public class UserController implements ActionListener {
 	private static final String NAME_FILE_CONFIG = "config.init";
 
-	private JFrameMain jFrameMain;
+	private static JFrameMain jFrameMain;
 	private JDialogAddUser jDialogAddUser;
 	private JDialogAddCreditCard jDialogAddCreditCard;
 	private JDialogAbout jDialogAbout;
@@ -47,7 +47,7 @@ public class UserController implements ActionListener {
 	private HandlerLanguage config = null;
 	private String languageDefault;
 	private MyCaptcha myCaptcha;
-	private Manager manager;
+	private static Manager manager;
 	private File fileImage;
 
 	/**
@@ -108,7 +108,7 @@ public class UserController implements ActionListener {
 			break;
 		case SHOW_MYCOUNT:
 			this.changeDataAcc();
-			jFrameMain.showMyCount();
+			showMyAccount();
 			break;
 		case SHOW_ADDPRODUCT:
 			this.changeDataAcc();
@@ -137,11 +137,10 @@ public class UserController implements ActionListener {
 			break;
 		case ACTION_LOGIN:
 			this.sendDataLogin();			
-			this.changeDataAcc();
-			jFrameMain.showMyCount();
+			this.showMyAccount();
 			break;
 		case CLOSE_PRODUCT:
-			jFrameMain.showMyCount();
+			this.showMyAccount();
 			break;
 		case ACTION_BIDDING:
 			Bidding bidding = this.createBidding();
@@ -163,12 +162,12 @@ public class UserController implements ActionListener {
 			if (manager.getUser() != null) {
 				double valueActually = jFrameMain.getjPanelMainProduct().getValueActually();
 				double value = (!jFrameMain.getjPanelMainProduct().isAutomaticIncrement())?
-						jFrameMain.getjPanelMainProduct().getValuePuja():(valueActually+valueActually*0.05);
+						jFrameMain.getjPanelMainProduct().getValuePuja():(valueActually+valueActually*0.1);
 				int intValue = (int)value;
 				if (value > valueActually) {
 					jFrameMain.getjPanelMainProduct().setValueActually((int) value);
 					jFrameMain.getjPanelMainAddProduct();
-					this.sendData(Commands.NEWOFFER, com[1]+"-"+(int) value);
+					this.sendData(Commands.NEWOFFER, com[1]+"-"+(int) value+"-"+manager.getUser().getEmail());
 					jFrameMain.getjPanelMainProduct().setJTextP(manager.getUser().getEmail());
 				}
 			} else {
@@ -228,16 +227,16 @@ public class UserController implements ActionListener {
 	/**
 	 * Carga los datos de la cuenta del usuario
 	 */
-	public void changeDataAcc() {
+	public static void changeDataAcc() {
 		try {
 			manager.setUser(Client.getInstanceOf().getUser());
-			this.jFrameMain.getjPanelMainWindowCuenta().changeData(Client.getInstanceOf().getUser());
-			this.jFrameMain.getjPanelMainWindowProfile().getjPanelFormProfile().changeData(Client.getInstanceOf().getUser());;
-			this.jFrameMain.getjPanelMainWindowCuenta().repaint();
-			this.jFrameMain.getjPanelMainWindowProfile().changeData(Client.getInstanceOf().getUser());
-			this.jFrameMain.getjPanelMainWindowProfile().repaint();
-			this.jFrameMain.getjPanelMainWindowProfile().getjPanelFormProfile().repaint();
-			this.jFrameMain.repaint();
+			jFrameMain.getjPanelMainWindowCuenta().changeData(Client.getInstanceOf().getUser());
+			jFrameMain.getjPanelMainWindowProfile().getjPanelFormProfile().changeData(Client.getInstanceOf().getUser());;
+			jFrameMain.getjPanelMainWindowCuenta().repaint();
+			jFrameMain.getjPanelMainWindowProfile().changeData(Client.getInstanceOf().getUser());
+			jFrameMain.getjPanelMainWindowProfile().repaint();
+			jFrameMain.getjPanelMainWindowProfile().getjPanelFormProfile().repaint();
+			jFrameMain.repaint();
 		} catch (UnknownHostException e) {
 		} catch (IOException e) {
 		}
@@ -285,6 +284,10 @@ public class UserController implements ActionListener {
 			controller = new UserController();
 		}
 		return controller;
+	}
+	
+	public static void showMyAccount() {
+		jFrameMain.showMyAccount();
 	}
 	
 	/**
