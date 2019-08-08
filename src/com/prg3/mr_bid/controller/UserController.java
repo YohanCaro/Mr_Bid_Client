@@ -27,6 +27,7 @@ import com.prg3.mr_bid.view.JDialogAddUser;
 import com.prg3.mr_bid.view.JFrameMain;
 import com.prg3.mr_bid.view.JPanelMainProduct;
 import com.prg3.mr_bid.view.JPanelMainWindow;
+import com.prg3.mr_bid.view.Splash;
 
 /**
  * Clase UserController - Clase encaragda de manejar las acciones de las
@@ -59,7 +60,7 @@ public class UserController implements ActionListener {
 		manager = new Manager();
 		getLanguageDefault();
 		loadConfiguration();
-		this.jFrameMain = new JFrameMain(this);
+		jFrameMain = new JFrameMain(this);
 		this.jDialogAddUser = new JDialogAddUser(this);
 		this.jDialogAbout = new JDialogAbout();
 		this.jDialogAddCreditCard = new JDialogAddCreditCard();
@@ -77,7 +78,7 @@ public class UserController implements ActionListener {
 			break;
 		case SHOW_PROFILE:
 			jFrameMain.showProfile();
-			this.changeDataAcc();
+			changeDataAcc();
 			break;
 		case SHOW_HOME:
 			try {
@@ -86,7 +87,7 @@ public class UserController implements ActionListener {
 				}
 			} catch (IOException e2) {
 			}
-			this.jFrameMain.showMain(this);
+			jFrameMain.showMain(this);
 			break;
 		case SHOW_REGISTER_USER:
 			jDialogAddUser.setVisible(true);
@@ -107,11 +108,11 @@ public class UserController implements ActionListener {
 			jDialogAddCreditCard.setVisible(true);
 			break;
 		case SHOW_MYCOUNT:
-			this.changeDataAcc();
+			changeDataAcc();
 			showMyAccount();
 			break;
 		case SHOW_ADDPRODUCT:
-			this.changeDataAcc();
+			changeDataAcc();
 			jFrameMain.showPanelAddProduct();
 			break;
 		case SHOW_PRODUCT:
@@ -137,25 +138,25 @@ public class UserController implements ActionListener {
 			break;
 		case ACTION_LOGIN:
 			this.sendDataLogin();			
-			this.showMyAccount();
+			showMyAccount();
 			break;
 		case CLOSE_PRODUCT:
-			this.showMyAccount();
+			showMyAccount();
 			break;
 		case ACTION_BIDDING:
 			Bidding bidding = this.createBidding();
 			if (bidding != null) {
 				this.sendData(Commands.UPBIDDING, bidding);
-				this.jFrameMain.showMain(this);
+				jFrameMain.showMain(this);
 				Utilities.showMessageInfo("Si! :D", "Bien");
 				Utilities.showMessageInfo(ConstantsBid.TXT_CREATE, null);
-				this.jFrameMain.repaint();
+				jFrameMain.repaint();
 				String paths = (fileImage==null)?"":fileImage.getPath();
 				try {
 					Client.getInstanceOf().sendImages(paths, bidding.getId() +Constants.biddingsList.size());
 				} catch (IOException e1) {
 				}
-				this.jFrameMain.getrepaint();
+				jFrameMain.getrepaint();
 			}
 			break;
 		case SEND_BID:
@@ -163,7 +164,6 @@ public class UserController implements ActionListener {
 				double valueActually = jFrameMain.getjPanelMainProduct().getValueActually();
 				double value = (!jFrameMain.getjPanelMainProduct().isAutomaticIncrement())?
 						jFrameMain.getjPanelMainProduct().getValuePuja():(valueActually+valueActually*0.1);
-				int intValue = (int)value;
 				if (value > valueActually) {
 					jFrameMain.getjPanelMainProduct().setValueActually((int) value);
 					jFrameMain.getjPanelMainAddProduct();
@@ -396,6 +396,12 @@ public class UserController implements ActionListener {
 	 */
 	private void manageChangeLanguage() {
 		jFrameMain.changeLanguage();
+	}
+	
+	public static void reset() {
+		new Splash();
+		jFrameMain.dispose();
+		Client.resetClient();
 	}
 
 }

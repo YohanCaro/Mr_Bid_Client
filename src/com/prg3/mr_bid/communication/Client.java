@@ -77,6 +77,8 @@ public class Client extends Socket implements Runnable {
 				this.excecuteAction(command, jsonString);
 			} catch (IOException e) {
 				isConect = false;
+				Utilities.showMessageError("No se ha podido establecer una conexión al servidor", "Error de conexión");
+				UserController.reset();
 			}
 		}
 	}
@@ -192,6 +194,10 @@ public class Client extends Socket implements Runnable {
 	 */
 	public User getUser() {
 		return user;
+	}
+	
+	public static void resetClient() {
+		client = null;
 	}
 
 }

@@ -71,7 +71,7 @@ public class JFrameMain extends JFrame {
 		this.add(jScrollPane, BorderLayout.CENTER);
 		this.add(jPanelOptionMenu, BorderLayout.NORTH);
 		this.setVisible(true);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 
 	/**
