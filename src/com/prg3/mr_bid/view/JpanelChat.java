@@ -141,7 +141,6 @@ public class JpanelChat extends JPanel implements ActionListener {
 
 	private void b_connectActionPerformed() {// GEN-FIRST:event_b_connectActionPerformed
 		if (isConnected == false) {
-
 			try {
 				sock = new Socket(address, port);
 				InputStreamReader streamreader = new InputStreamReader(sock.getInputStream());
