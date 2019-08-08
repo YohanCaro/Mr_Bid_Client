@@ -78,7 +78,7 @@ public class ConstantsView {
 	public static final String BT_ADD_IMG_MAP = "Agregar imagen";
 	public static final String TEXT_DATA_PRODUCT = "DATOS DEL PRODUCTO";
 	public static final String TEXT_DESCRIPTION = "DESCRIPCION";
-	public static final String TEXT_TYPE_PUB = "TIPO DE LA PUBLICACION";
+	public static final String TEXT_TYPE_PUB = "NOMBRE DEL PRODUCTO";
 	public static final String TEXT_TYPE_PRO = "TIPO DE PRODUCTO";
 	public static final String TEXT_TIME_BID = "TIEMPO DE LA SUBASTA";
 	public static final String TEXT_DATE_PUB = "FECHA DE LA PUBLICACION";

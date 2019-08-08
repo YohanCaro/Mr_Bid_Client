@@ -7,6 +7,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.text.Bidi;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -14,6 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -44,10 +46,12 @@ public class JPanelMainProduct extends JPanel {
 			jPanelCardCenterIzquie, jPanelCardWest4, jPanelCardEast4, jPanelCardSouthIzquie, cardPublicaciones,
 			cardParticipantes;
 	private JPanelOptionMenu jPanelOptionMenu;
+	private JScrollPane jScrollPane, jScrollPane2;
 	private JTextArea jTextArea, jTextAreaChat, jTextAreaParticipantes;
-	private JTextField name, correo, password, offer, publicaciones, valuePuja, valueActually;
-	private JLabel jLabel, jLabel2, jLabel3, jLabel4, jLabelState, jLabelTime, jLabelFinish, jLabelCurrenntValue,
-			jLabelVauleBid;
+	private JTextField name, correo, password, offer, publicaciones, valuePuja, valueActually, mayorPostor,
+			jTextFieldPrincipalName;
+	private JLabel jLabelPrinciaplName, jLabel, jLabel2, jLabel3, jLabel4, jLabelState, jLabelTime, jLabelFinish,
+			jLabelCurrenntValue, jLabelMayorPostor, jLabelVauleBid;
 	private ImageIcon imageIcon, imageIcon2;
 	private Icon icon, icon2;
 	private String text;
@@ -66,7 +70,7 @@ public class JPanelMainProduct extends JPanel {
 	 * 
 	 * @param userController
 	 */
-	public void start(UserController userController,long idBid) {
+	public void start(UserController userController, long idBid) {
 		this.setOpaque(false);
 		this.jpanelChat = new JpanelChat(idBid);
 		this.jPanelSouth = new JPanel();
@@ -81,6 +85,8 @@ public class JPanelMainProduct extends JPanel {
 		this.jPanelCenter = new JPanel();
 		this.jPanelCard = new JPanel();
 		this.jPanelCard2 = new JPanel();
+		this.jScrollPane = new JScrollPane(jTextAreaParticipantes);
+		this.jScrollPane2 = new JScrollPane(jTextArea);
 
 		jPanelCenter.setOpaque(false);
 		jPanelizqImage.setOpaque(false);
@@ -129,9 +135,12 @@ public class JPanelMainProduct extends JPanel {
 	 */
 	private void jtextArea() {
 		jTextArea.setText(bidding.getProduct().getDescription());
-		jTextArea.setPreferredSize(new Dimension(400, 300));
+		jTextArea.setPreferredSize(new Dimension(400, 180));
+		jTextArea.setLineWrap(true);
 		jPanelizqInfo.setBackground(new Color(0, 0, 0, 94));
-		jPanelizqInfo.add(jTextArea);
+		jScrollPane2.setPreferredSize(new Dimension(400, 300));
+		jScrollPane2.setViewportView(jTextArea);
+		jPanelizqInfo.add(jScrollPane2);
 	}
 
 	/**
@@ -142,47 +151,62 @@ public class JPanelMainProduct extends JPanel {
 		jPanelCard.setLayout(null);
 		jPanelCard.setBackground(new Color(0, 0, 0, 94));
 
-		jLabelState = new JLabel(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_STATE));
+		jLabelState = new JLabel("NOMBRE");
 		jLabelState.setBounds(20, 10, 300, 25);
 		jLabelState.setFont(new Font("Andale Mono", 3, 15));
 		jLabelState.setForeground(Color.WHITE);
 		// jLabel.setBackground(Color.BLUE);
 		jPanelCard.add(jLabelState);
 
-		name = new JTextField(Utilities.getState(bidding).toString());
+		name = new JTextField(bidding.getBiddingName().toString());
 		name.setBounds(20, 40, 320, 25);
 		name.setBackground(new java.awt.Color(224, 224, 224));
 		name.setFont(new java.awt.Font("Andale Mono", 1, 14));
 		name.setForeground(new java.awt.Color(255, 0, 0));
 		jPanelCard.add(name);
 
-		jLabelTime = new JLabel(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_TIME));
+		jLabelTime = new JLabel(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_STATE));
 		jLabelTime.setBounds(20, 85, 200, 25);
 		jLabelTime.setFont(new Font("Andale Mono", 3, 15));
 		jLabelTime.setForeground(Color.WHITE);
 		jLabelTime.setBackground(Color.BLUE);
 		jPanelCard.add(jLabelTime);
 
-		correo = new JTextField(Utilities.getTimeRemaining(bidding));
+		correo = new JTextField(Utilities.getState(bidding).toString());
 		correo.setBounds(20, 115, 320, 25);
 		correo.setBackground(new java.awt.Color(224, 224, 224));
 		correo.setFont(new java.awt.Font("Andale Mono", 1, 14));
 		correo.setForeground(new java.awt.Color(255, 0, 0));
 		jPanelCard.add(correo);
 
-		jLabelFinish = new JLabel(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_FINISH));
+		jLabelFinish = new JLabel(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_TIME));
 		jLabelFinish.setBounds(20, 150, 200, 25);
 		jLabelFinish.setFont(new Font("Andale Mono", 3, 15));
 		jLabelFinish.setForeground(Color.WHITE);
 		jLabelFinish.setBackground(Color.BLUE);
 		jPanelCard.add(jLabelFinish);
 
-		password = new JTextField(bidding.getFinishTime().toString() + " horas");
+		password = new JTextField(Utilities.getTimeRemaining(bidding));
 		password.setBounds(20, 175, 320, 25);
 		password.setBackground(new java.awt.Color(224, 224, 224));
 		password.setFont(new java.awt.Font("Andale Mono", 1, 14));
 		password.setForeground(new java.awt.Color(255, 0, 0));
 		jPanelCard.add(password);
+
+		jLabelPrinciaplName = new JLabel(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_FINISH));
+		jLabelPrinciaplName.setBounds(20, 200, 200, 25);
+		jLabelPrinciaplName.setFont(new Font("Andale Mono", 3, 15));
+		jLabelPrinciaplName.setForeground(Color.WHITE);
+		jLabelPrinciaplName.setBackground(Color.BLUE);
+		jPanelCard.add(jLabelPrinciaplName);
+
+		jTextFieldPrincipalName = new JTextField(bidding.getFinishTime().toString() + " horas");
+		jTextFieldPrincipalName.setBounds(20, 225, 320, 25);
+		jTextFieldPrincipalName.setBackground(new java.awt.Color(224, 224, 224));
+		jTextFieldPrincipalName.setFont(new java.awt.Font("Andale Mono", 1, 14));
+		jTextFieldPrincipalName.setForeground(new java.awt.Color(255, 0, 0));
+		jPanelCard.add(jTextFieldPrincipalName);
+
 		this.jPanelCardnorth = new JPanel();
 		this.jPanelCardSouth = new JPanel();
 		this.jPanelCardWest = new JPanel();
@@ -193,7 +217,7 @@ public class JPanelMainProduct extends JPanel {
 		jPanelCardWest.setOpaque(false);
 		jPanelCardEast.setOpaque(false);
 
-		jPanelCard.setBackground(new Color(0, 0, 0, 94));
+		// jPanelCard.setBackground(new Color(0, 0, 0, 94));
 		jPanelderNorth.setLayout(new BorderLayout());
 		jPanelderNorth.setOpaque(false);
 
@@ -367,6 +391,20 @@ public class JPanelMainProduct extends JPanel {
 		publicaciones.setForeground(new java.awt.Color(255, 0, 0));
 		cardPublicaciones.add(publicaciones);
 
+		jLabelMayorPostor = new JLabel("MAYOR POSTOR");
+		jLabelMayorPostor.setBounds(20, 160, 200, 25);
+		jLabelMayorPostor.setFont(new Font("Andale Mono", 3, 15));
+		jLabelMayorPostor.setForeground(Color.WHITE);
+		jLabelMayorPostor.setBackground(Color.BLUE);
+		cardPublicaciones.add(jLabelMayorPostor);
+
+		mayorPostor = new JTextField();
+		mayorPostor.setBounds(20, 195, 320, 25);
+		mayorPostor.setFont(new Font("Andale Mono", 3, 15));
+		mayorPostor.setForeground(new java.awt.Color(255, 0, 0));
+		mayorPostor.setBackground(new java.awt.Color(224, 224, 224));
+		cardPublicaciones.add(mayorPostor);
+
 	}
 
 	/**
@@ -377,7 +415,8 @@ public class JPanelMainProduct extends JPanel {
 		cardParticipantes = new JPanel();
 		cardParticipantes.setLayout(null);
 		cardParticipantes.setBackground(new Color(0, 0, 0, 94));
-		cardParticipantes.setPreferredSize(new Dimension(10, 300));
+
+		cardParticipantes.setPreferredSize(new Dimension(10, 200));
 
 		jLabel4 = new JLabel(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_PARTICIPANTS));
 		jLabel4.setBounds(20, 10, 300, 25);
@@ -387,8 +426,11 @@ public class JPanelMainProduct extends JPanel {
 		cardParticipantes.add(jLabel4);
 
 		jTextAreaParticipantes = new JTextArea("Participantes");
-		jTextAreaParticipantes.setBounds(20, 50, 400, 200);
-		cardParticipantes.add(jTextAreaParticipantes);
+		jTextAreaParticipantes.setEditable(false);
+		jTextAreaParticipantes.setBounds(20, 50, 400, 100);
+		jScrollPane.setBounds(20, 50, 400, 100);
+		jScrollPane.setViewportView(jTextAreaParticipantes);
+		cardParticipantes.add(jScrollPane);
 
 	}
 
@@ -449,12 +491,12 @@ public class JPanelMainProduct extends JPanel {
 		this.password.setEditable(false);
 		this.publicaciones.setEditable(false);
 		this.valueActually.setEditable(false);
+		this.mayorPostor.setEditable(false);
 		if (bidding.isAutomaticIncremet()) {
 			this.valuePuja.setEditable(false);
 		}
 	}
 
-	
 	/**
 	 * Asigna una imagen de fondo a la subasta
 	 */
@@ -468,6 +510,7 @@ public class JPanelMainProduct extends JPanel {
 
 	/**
 	 * Metodo que manda una lista de mensajes provenientes del chat Provicional
+	 * 
 	 * @param message
 	 * @return
 	 */
@@ -488,16 +531,17 @@ public class JPanelMainProduct extends JPanel {
 
 	/**
 	 * Cambia
-	 * @param bidding the bidding to set
+	 * 
+	 * @param bidding
+	 *            the bidding to set
 	 */
 	public void setBidding(Bidding bidding) {
 		this.bidding = bidding;
 	}
 
-	
-	
 	/**
-	 * Obtiene el valor de la puja 
+	 * Obtiene el valor de la puja
+	 * 
 	 * @return
 	 */
 	public Double getValuePuja() {
@@ -511,15 +555,16 @@ public class JPanelMainProduct extends JPanel {
 
 	/**
 	 * Metodo que evalua el tipo de incremento en la subasta
+	 * 
 	 * @return
 	 */
 	public boolean isAutomaticIncrement() {
 		return bidding.isAutomaticIncremet();
 	}
 
-	
 	/**
 	 * Obtiene el valor actual del precio del producto
+	 * 
 	 * @return
 	 */
 	public Double getValueActually() {
@@ -534,9 +579,9 @@ public class JPanelMainProduct extends JPanel {
 		return 0.0;
 	}
 
-	
 	/**
 	 * Manda el valor nuevo del producto
+	 * 
 	 * @param value
 	 */
 	public void setValueActually(int value) {
@@ -557,14 +602,15 @@ public class JPanelMainProduct extends JPanel {
 		jLabel3.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_OFFEREDBY));
 		jLabel4.setText(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_PARTICIPANTS));
 	}
-	
+
 	/**
 	 * Setea el jtextarea
-	 * @param s set new text
+	 * 
+	 * @param s
+	 *            set new text
 	 */
 	public void setJTextP(String s) {
-		this.jTextAreaParticipantes.setText(
-				jTextAreaParticipantes.getText() + "\n" + s);
+		this.jTextAreaParticipantes.setText(jTextAreaParticipantes.getText() + "\n" + s);
 	}
 
 }

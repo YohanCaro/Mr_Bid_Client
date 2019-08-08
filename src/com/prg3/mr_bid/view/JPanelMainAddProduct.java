@@ -15,6 +15,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 import javax.swing.SpinnerNumberModel;
@@ -41,7 +42,7 @@ public class JPanelMainAddProduct extends JPanel {
 	 * Serial por defecto
 	 */
 	private static final long serialVersionUID = 1L;
-	
+	private JScrollPane jScrollPane;
 	private JPanel jPanelNorth, jPanelSouth, jPanelWest, jPanelEast, jPanelCenter, jPanelCard1, jPanelCard2,
 			jPanelCard3;
 	private JLabel jLabelName, jLabelDescription;
@@ -57,7 +58,9 @@ public class JPanelMainAddProduct extends JPanel {
 
 	/**
 	 * Constructor que crea los paneles del panel
-	 * @param control controlador
+	 * 
+	 * @param control
+	 *            controlador
 	 */
 	public JPanelMainAddProduct(UserController control) {
 		this.jPanelNorth = new JPanel();
@@ -65,6 +68,7 @@ public class JPanelMainAddProduct extends JPanel {
 		this.jPanelWest = new JPanel();
 		this.jPanelEast = new JPanel();
 		this.jPanelCenter = new JPanel();
+		this.jScrollPane = new JScrollPane(descriptionJTextArea);
 
 		character();
 		sizePanel();
@@ -78,7 +82,6 @@ public class JPanelMainAddProduct extends JPanel {
 	 * Colorea los paneles
 	 */
 	private void character() {
-		jPanelSouth.setBackground(Color.GREEN);
 		jPanelCenter.setBackground(Color.black);
 	}
 
@@ -93,9 +96,10 @@ public class JPanelMainAddProduct extends JPanel {
 	}
 
 	/**
-	 * Se dividen la secciones del panel por tarjetas
-	 * Tarjeta 1
-	 * @param control controlador
+	 * Se dividen la secciones del panel por tarjetas Tarjeta 1
+	 * 
+	 * @param control
+	 *            controlador
 	 */
 	private void Card1(UserController control) {
 		this.jPanelCard1 = new JPanel();
@@ -103,11 +107,15 @@ public class JPanelMainAddProduct extends JPanel {
 		jButton.setActionCommand(ControlCommands.ADD_PHOTO.name());
 		jButton.addActionListener(control);
 		descriptionJTextArea = new JTextArea();
+		descriptionJTextArea.setLineWrap(true);
 		descriptionJTextArea.setBounds(600, 60, 500, 200);
+
+		jScrollPane.setBounds(600, 60, 500, 200);
+		jScrollPane.setViewportView(descriptionJTextArea);
+
 		jButton.setBounds(200, 180, 200, 30);
 		jPanelCard1.setLayout(null);
 		jPanelCard1.setBackground(Color.LIGHT_GRAY);
-
 		jPanelCard1.add(createLabel(ConstantsView.TEXT_DATA_PRODUCT, 10, 10, 200, 30));
 
 		jPanelCard1.add(createLabel(ConstantsView.TEXT_DESCRIPTION, 600, 10, 200, 30));
@@ -125,12 +133,11 @@ public class JPanelMainAddProduct extends JPanel {
 		typeJComboBox.setBounds(200, 120, 200, 30);
 		jPanelCard1.add(typeJComboBox);
 		jPanelCard1.add(jButton);
-		jPanelCard1.add(descriptionJTextArea);
+		jPanelCard1.add(jScrollPane);
 	}
 
 	/**
-	 * Se dividen la secciones del panel por tarjetas
-	 * Tarjeta 2
+	 * Se dividen la secciones del panel por tarjetas Tarjeta 2
 	 */
 	private void Card2() {
 		this.jPanelCard2 = new JPanel();
@@ -177,9 +184,10 @@ public class JPanelMainAddProduct extends JPanel {
 	}
 
 	/**
-	 * Se dividen la secciones del panel por tarjetas
-	 * Tarjeta 3
-	 * @param control controlador
+	 * Se dividen la secciones del panel por tarjetas Tarjeta 3
+	 * 
+	 * @param control
+	 *            controlador
 	 */
 	private void Card3(UserController controller) {
 		this.jPanelCard3 = new JPanel();
@@ -259,11 +267,17 @@ public class JPanelMainAddProduct extends JPanel {
 
 	/**
 	 * Crea e instancia un label
-	 * @param name nombre
-	 * @param x posX
-	 * @param y posY
-	 * @param sisex tamaño x
-	 * @param sizey tamaño y
+	 * 
+	 * @param name
+	 *            nombre
+	 * @param x
+	 *            posX
+	 * @param y
+	 *            posY
+	 * @param sisex
+	 *            tamaño x
+	 * @param sizey
+	 *            tamaño y
 	 * @return jLabelName label con el nombre
 	 */
 	public JLabel createLabel(String name, int x, int y, int sisex, int sizey) {
@@ -277,11 +291,17 @@ public class JPanelMainAddProduct extends JPanel {
 
 	/**
 	 * Crea un HintTextField para los campos de texto
-	 * @param name nombre
-	 * @param x posX
-	 * @param y posY
-	 * @param sisex tamaño X
-	 * @param sizey tamañoY
+	 * 
+	 * @param name
+	 *            nombre
+	 * @param x
+	 *            posX
+	 * @param y
+	 *            posY
+	 * @param sisex
+	 *            tamaño X
+	 * @param sizey
+	 *            tamañoY
 	 * @return jTextFieldName tf
 	 */
 	public HintJTextField createTextField(String name, int x, int y, int sisex, int sizey) {
@@ -294,11 +314,17 @@ public class JPanelMainAddProduct extends JPanel {
 
 	/**
 	 * Crea un HintTextField para los campos de texto
-	 * @param name nombre
-	 * @param x posX
-	 * @param y posY
-	 * @param sisex tamaño X
-	 * @param sizey tamañoY
+	 * 
+	 * @param name
+	 *            nombre
+	 * @param x
+	 *            posX
+	 * @param y
+	 *            posY
+	 * @param sisex
+	 *            tamaño X
+	 * @param sizey
+	 *            tamañoY
 	 * @return jTextFieldName tf
 	 */
 	public HintJTextField createTextField2(String name, int x, int y, int sisex, int sizey) {
@@ -311,6 +337,7 @@ public class JPanelMainAddProduct extends JPanel {
 
 	/**
 	 * Obtiene el valor del nombre
+	 * 
 	 * @return jTextFieldName name
 	 */
 	public String getJTextName() {
@@ -319,9 +346,10 @@ public class JPanelMainAddProduct extends JPanel {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * Obtien el valor de la puja
+	 * 
 	 * @return
 	 */
 	public String getValueMin() {
@@ -333,6 +361,7 @@ public class JPanelMainAddProduct extends JPanel {
 
 	/**
 	 * Obtiene el valor de la descripción
+	 * 
 	 * @return descriptionJTextArea textArea
 	 */
 	public String getDescription() {
@@ -344,6 +373,7 @@ public class JPanelMainAddProduct extends JPanel {
 
 	/**
 	 * Obtiene le tipo de producto
+	 * 
 	 * @return typeJComboBox combo
 	 */
 	public TypeProduct getTypeProduct() {
@@ -400,6 +430,7 @@ public class JPanelMainAddProduct extends JPanel {
 
 	/**
 	 * Obtien la hora de publicación
+	 * 
 	 * @return hora byte
 	 */
 	public byte hourP() {
@@ -408,6 +439,7 @@ public class JPanelMainAddProduct extends JPanel {
 
 	/**
 	 * Obtien la hora de inicio
+	 * 
 	 * @return hora byte
 	 */
 	public byte hourI() {
@@ -416,6 +448,7 @@ public class JPanelMainAddProduct extends JPanel {
 
 	/**
 	 * Obtien la hora de finalizacion
+	 * 
 	 * @return hora byte
 	 */
 	public byte hourF() {
@@ -424,6 +457,7 @@ public class JPanelMainAddProduct extends JPanel {
 
 	/**
 	 * Verifica si la subasta es automatica
+	 * 
 	 * @return jRadioButton auto
 	 */
 	public boolean isAutomatic() {
@@ -432,6 +466,7 @@ public class JPanelMainAddProduct extends JPanel {
 
 	/**
 	 * Verifica si la subasta es publica
+	 * 
 	 * @return jRadioButtonPublic public
 	 */
 	public boolean isPublic() {
@@ -442,15 +477,17 @@ public class JPanelMainAddProduct extends JPanel {
 	 * Cambia el idioma :/
 	 */
 	public void changeLanguage() {
-		
+
 	}
-	
+
 	/**
 	 * JFileChooser para cargar la imagen de la subasta o publicacion
+	 * 
 	 * @return jFileChooser chooser
-	 * @throws Exception exception con el archivo
+	 * @throws Exception
+	 *             exception con el archivo
 	 */
-	public File getFile() throws Exception{
+	public File getFile() throws Exception {
 		jFileChooser = new JFileChooser();
 		jFileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 		int option = jFileChooser.showOpenDialog(this);

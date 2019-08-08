@@ -95,7 +95,6 @@ public class JPanelMainWindow extends JPanel {
 	 */
 	private void character() {
 		jPanelNorth.setBackground(Color.RED);
-		jPanelSouth.setBackground(Color.GREEN);
 		jPanelCenter.setBackground(Color.black);
 		jPanelEspacio.setBackground(Color.WHITE);
 	}

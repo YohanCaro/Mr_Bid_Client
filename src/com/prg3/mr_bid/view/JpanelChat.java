@@ -188,14 +188,14 @@ public class JpanelChat extends JPanel implements ActionListener {
 		this.setBackground(Color.LIGHT_GRAY);
 		jTextField.setBounds(20, 370, 300, 30);
 		jTextArea.setBounds(20, 20, 490, 320);
-		jTextArea.getAutoscrolls();
+		jScrollPane.setBounds(20, 20, 490, 320);
 		jButton.setBounds(400, 370, 100, 30);
 		this.add(jButton);
 		this.add(jScrollPane);
 		this.add(jTextField);
-//		jScrollPane.setViewportView(jTextArea);
-//		this.add(jScrollPane);
-		this.add(jTextArea);
+		jScrollPane.setViewportView(jTextArea);
+		this.add(jScrollPane);
+//		this.add(jTextArea);
 		b_connectActionPerformed();
 		// this.setPreferredSize(new Dimension(100, 100));
 
