@@ -15,6 +15,7 @@ import com.prg3.mr_bid.model.entity.Bidding;
 import com.prg3.mr_bid.model.entity.User;
 import com.prg3.mr_bid.structures.simple_list.SimpleList;
 import com.prg3.mr_bid.utilities.Constants;
+import com.prg3.mr_bid.utilities.ConstantsView;
 import com.prg3.mr_bid.utilities.Utilities;
 
 /**
@@ -77,7 +78,7 @@ public class Client extends Socket implements Runnable {
 				this.excecuteAction(command, jsonString);
 			} catch (IOException e) {
 				isConect = false;
-				Utilities.showMessageError("No se ha podido establecer una conexión al servidor", "Error de conexión");
+				Utilities.showMessageError(ConstantsView.TEXT_FAILED_CONNECTION, ConstantsView.TEXT_TITLE_FCONNECTION);
 				UserController.reset();
 			}
 		}

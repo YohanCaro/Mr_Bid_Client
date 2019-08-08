@@ -57,7 +57,7 @@ public class JPanelOptionMenu extends JPanel {
 	 */
 	private void init(UserController control) {
 		this.setLayout(new BorderLayout());
-		this.setBackground(ConstantsView.BACKGROUD_MENU);
+		this.setBackground(ConstantsView.BACKGROUND_MENU);
 		this.setPreferredSize(Utilities.setDimension(0, 100));
 
 		jPanelWhite = new JPanel();
@@ -65,7 +65,7 @@ public class JPanelOptionMenu extends JPanel {
 		jPanelWhite.setPreferredSize(Utilities.setDimension(400, 100));
 
 		jButtonCompras = new JButton();
-		jButtonCompras.setBackground(ConstantsView.BACKGROUD_MENU);
+		jButtonCompras.setBackground(ConstantsView.BACKGROUND_MENU);
 		imageIcon = new ImageIcon(ConstantsView.PATH_ICON_CAR_MENU);
 		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(70, 70, Image.SCALE_AREA_AVERAGING));
 		jButtonCompras.setIcon(icon);
@@ -73,14 +73,14 @@ public class JPanelOptionMenu extends JPanel {
 		signin = new JButton(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_SIGNIN));
 		signin.setFont(ConstantsView.FONT_SIGNIN_MENU);
 		signin.setForeground(ConstantsView.COLOR_FOREGROUND_MENU);
-		signin.setBackground(ConstantsView.BACKGROUD_MENU);
+		signin.setBackground(ConstantsView.BACKGROUND_MENU);
 		signin.setActionCommand(ControlCommands.SHOW_REGISTER_USER.name());
 		signin.addActionListener(control);
 
 		jButtonLogin = new JButton();
 		jButtonLogin.setActionCommand(ControlCommands.SHOW_LOGIN.name());
 		jButtonLogin.addActionListener(control);
-		jButtonLogin.setBackground(ConstantsView.BACKGROUD_MENU);
+		jButtonLogin.setBackground(ConstantsView.BACKGROUND_MENU);
 		imageIcon = new ImageIcon(ConstantsView.PATH_ICON_USER_MENU);
 		icon = new ImageIcon(imageIcon.getImage().getScaledInstance(70, 70, Image.SCALE_AREA_AVERAGING));
 		jButtonLogin.setIcon(icon);
@@ -104,13 +104,13 @@ public class JPanelOptionMenu extends JPanel {
 
 		jMenu2 = new JMenu(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_ACCOUNT));
 		jMenu2.setFont(ConstantsView.FONT_ITEM_HOME_MENU);
-		jMenu2.setBackground(ConstantsView.BACKGROUD_MENU_2);
+		jMenu2.setBackground(ConstantsView.BACKGROUND_MENU_2);
 		jMenu2.setForeground(ConstantsView.COLOR_FOREGROUND_MENU);
 		jMenuBar.add(jMenu2);
 
 		jMenu3 = new JMenu(HandlerLanguage.languageProperties.getProperty(ConstantsBid.T_LENGUAGE));
 		jMenu3.setFont(ConstantsView.FONT_ITEM_HOME_MENU);
-		jMenu3.setBackground(ConstantsView.BACKGROUD_MENU_2);
+		jMenu3.setBackground(ConstantsView.BACKGROUND_MENU_2);
 		jMenu3.setForeground(ConstantsView.COLOR_FOREGROUND_MENU);
 		jMenuBar.add(jMenu3);
 
@@ -118,7 +118,7 @@ public class JPanelOptionMenu extends JPanel {
 		jMenu4.setActionCommand(ControlCommands.C_SHOWABOUT.name());
 		jMenu4.addActionListener(control);
 		jMenu4.setFont(ConstantsView.FONT_ITEM_HOME_MENU);
-		jMenu4.setBackground(ConstantsView.BACKGROUD_MENU_2);
+		jMenu4.setBackground(ConstantsView.BACKGROUND_MENU_2);
 		jMenu4.setForeground(ConstantsView.COLOR_FOREGROUND_MENU);
 		jMenuBar.add(jMenu4);
 	

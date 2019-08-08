@@ -15,13 +15,15 @@ public class ConstantsView {
 	
 	public static final Color COLOR_BACKGROUD_SPLASH = new Color(0, 0, 0, 94);
 	public static final Dimension SIZE_SPLASH = new Dimension(700, 600);
-	public static final String TEXT_SPALSH_RESET = "Reintentando...!";
-	public static final String TEXT_SPALSH_CONECT = "Conexión exitosa!";
-	public static final String TEXT_SPALSH_CONECT_INIT = "Conectando con el servidor!";
+	public static final String TEXT_FAILED_CONNECTION = "No se ha podido establecer una conexión al servidor";
+	public static final String TEXT_TITLE_FCONNECTION = "Error de conexión";
+	public static final String TEXT_SPLASH_RESET = "Reintentando...!";
+	public static final String TEXT_SPLASH_CONNECT = "Conexión exitosa!";
+	public static final String TEXT_SPLASH_CONNECT_INIT = "Conectando con el servidor!";
 	public static final Font FONT_SPLASH = new Font("Tahoma", 1, 15);
 	public static final Font FONT_PERCENT_SPLASH = new Font("Tahoma", Font.PLAIN, 14);
 	public static final Font FONT_LABEL_SPLASH = new Font("Tahoma", Font.PLAIN, 18);
-	public static final Color COLOR_CONECT_TEXT = new Color(255, 255, 255);
+	public static final Color COLOR_CONNECT_TEXT = new Color(255, 255, 255);
 	public static final String PATH_SPLASH_ICON_IMG = "data/images/logo.jpg"; 
 	
 	public static final String BTN_JPRINCPAL_LOGIN = "INGRESAR";
@@ -35,10 +37,10 @@ public class ConstantsView {
 	public static final String TEXT_NO_ROBOT = "No soy un robot";
 	public static final String PATH_RECAPTCHA_ROBOT = "data/images/reCaptcha.png";
 	public static final Font FONT_CHECK_ROBOT = new Font("Nunito Sams",0,20);
-	public static final Color COLOR_BACKGROUD_ROBOT = Color.WHITE;
+	public static final Color COLOR_BACKGROUND_ROBOT = Color.WHITE;
 	
-	public static final Color BACKGROUD_MENU = new Color(48, 48, 48);
-	public static final Color BACKGROUD_MENU_2 = Color.BLACK;
+	public static final Color BACKGROUND_MENU = new Color(48, 48, 48);
+	public static final Color BACKGROUND_MENU_2 = Color.BLACK;
 	public static final String PATH_ICON_CAR_MENU = "data/images/carro.png";
 	public static final Font FONT_SIGNIN_MENU = new Font("Arial", 1, 13);
 	public static final Font FONT_ITEM_HOME_MENU = new Font("Arial", 1, 15);
@@ -141,9 +143,17 @@ public class ConstantsView {
 	public static Color COLOR_DA = new Color(0, 0, 0);
 	
 	public static final String TEXT_DIALOG_ABOUT = "\n\n          ACERCA DE"
-			+ "\n Mr BID es una aplicación cliente servidor de subastas que busca ofrecer el"
-			+ " servicio de publicación de productos de diferentes tipos en donde las personas podrán subir"
-			+ " y productos y participar en las subastas que estén disponibles. \r\n" 
-			;
+			+ "\n\n            A.  PROHIBIDA SU VENTA O DISTRIBUCIÓN SIN AUTORIZACIÓN."
+			+ "\n            B.  PROHIBIDA LA ALTERACIÓN DEL CÓDIGO FUENTE O DISEÑO DE LAS INTERFACES GRÁFICAS."
+			+ "\n            C.  LA EMPRESA BUSINESS NAME NO SE HACE RESPONSABLE DEL MAL USO DE ESTE SOFTWARE."
+			+ "\n\n          LOS ACUERDOS LEGALES EXPUESTOS ACONTINUACIÓN RIGEN EL USO QUE USTED HAGA DE ESTE SOFTWARE"
+			+ "\n          (LA EMPRESA BUSINESS NAME), NO SE RESPONSABILIZAN DEL USO QUE USTED"
+			+ "\n          HAGA CON ESTE SOFTWARE Y SUS SERVICIOS"
+			+ "\n\n          PARA MAYOR INFORMACIÓN SOBRE NUESTROS PRODUCTOS O SERVICIOS, POR FAVOR VISITE"
+			+ "\n            BUSINESS@GMAIL.COM. LA EMPRESA BUSINESS NO SE HACE RESPONSABLE DEL MAL USO DE ESTE SOFTWARE."
+			+ "\n\n          LOS ACUERDOS LEGALES EXPUESTOS ACONTINUACIÓN RIGEN EL USO QUE USTED HAGA DE ESTE SOFTWARE"
+			+ "\n          LA EMPRESA BUSINESS NAME, NO SE RESPONSABILIZAN DEL USO QUE USTED"
+			+ "\n          HAGA CON ESTE SOFTWARE Y SUS SERVICIOS. AL HACER USO DE ESTE SOFTWARE USTED ESTA ACEPTANDO \n"
+			+ "          LOS TERMINOS PROPUESTOS ANTERIORMENTE." + "\n          ";
 	
 }

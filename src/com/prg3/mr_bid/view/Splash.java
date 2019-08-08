@@ -69,12 +69,12 @@ public class Splash extends JDialog {
 								this.isConect = true;
 							} catch (IOException e) {
 								if (x > 0) {
-									conectText.setText(ConstantsView.TEXT_SPALSH_RESET);
+									conectText.setText(ConstantsView.TEXT_SPLASH_RESET);
 								}
 							}
 						}
 						jProgressBar.setValue(x);
-						conectText.setText(ConstantsView.TEXT_SPALSH_CONECT);
+						conectText.setText(ConstantsView.TEXT_SPLASH_CONNECT);
 						porcentaje1.setText("  " + x + "%");
 						x += rnd.nextInt(5);
 						Thread.sleep(70*rnd.nextInt(7));
@@ -112,12 +112,12 @@ public class Splash extends JDialog {
 
 		porcentaje1 = new JLabel("0%");
 		porcentaje1.setFont(ConstantsView.FONT_PERCENT_SPLASH);
-		porcentaje1.setForeground(ConstantsView.COLOR_CONECT_TEXT);// blanco
+		porcentaje1.setForeground(ConstantsView.COLOR_CONNECT_TEXT);// blanco
 		porcentaje1.setBounds(330, 480, 46, 14);
 		this.add(porcentaje1);
 		
-		conectText = new JLabel(ConstantsView.TEXT_SPALSH_CONECT_INIT);
-		conectText.setForeground(ConstantsView.COLOR_CONECT_TEXT);
+		conectText = new JLabel(ConstantsView.TEXT_SPLASH_CONNECT_INIT);
+		conectText.setForeground(ConstantsView.COLOR_CONNECT_TEXT);
 		conectText.setFont(ConstantsView.FONT_SPLASH);
 		conectText.setBounds(20, 20, 200, 14);
 		this.add(conectText);

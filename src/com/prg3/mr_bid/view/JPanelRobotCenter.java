@@ -45,7 +45,7 @@ public class JPanelRobotCenter extends JPanel {
 	 */
 	private void init() {
 		this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
-		this.setBackground(ConstantsView.COLOR_BACKGROUD_ROBOT);
+		this.setBackground(ConstantsView.COLOR_BACKGROUND_ROBOT);
 		
 		jCheckBox.setMnemonic (KeyEvent.VK_C); 
 		jCheckBox.setSelected (true);
