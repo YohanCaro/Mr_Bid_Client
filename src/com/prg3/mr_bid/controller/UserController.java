@@ -1,5 +1,6 @@
 package com.prg3.mr_bid.controller;
 
+import java.awt.Event;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -86,7 +87,7 @@ public class UserController implements ActionListener {
 					Client.getInstanceOf().updateBiddings();
 				}
 			} catch (IOException e2) {
-			}
+			}			
 			jFrameMain.showMain(this);
 			break;
 		case SHOW_REGISTER_USER:
@@ -157,7 +158,13 @@ public class UserController implements ActionListener {
 				} catch (IOException e1) {
 				}
 				jFrameMain.getrepaint();
+				try {
+					Thread.sleep(500);
+				} catch (InterruptedException e1) {
+				}
+				jFrameMain.showMain(this);
 			}
+			
 			break;
 		case SEND_BID:
 			if (manager.getUser() != null) {
@@ -398,6 +405,10 @@ public class UserController implements ActionListener {
 		jFrameMain.changeLanguage();
 	}
 	
+	/**
+	 * Reinicia la aplicación, cerrando todos los frame, y ejecutando nuevamente el splash
+	 *  en busca de una nueva conexión al servidor
+	 */
 	public static void reset() {
 		new Splash();
 		jFrameMain.dispose();

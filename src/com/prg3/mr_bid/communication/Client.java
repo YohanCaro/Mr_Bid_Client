@@ -79,6 +79,7 @@ public class Client extends Socket implements Runnable {
 			} catch (IOException e) {
 				isConect = false;
 				Utilities.showMessageError(ConstantsView.TEXT_FAILED_CONNECTION, ConstantsView.TEXT_TITLE_FCONNECTION);
+				user = null;
 				UserController.reset();
 			}
 		}
@@ -137,10 +138,12 @@ public class Client extends Socket implements Runnable {
 			break;
 		case UPBIDDING:
 			Constants.biddingsList = (json.length()>0)?Utilities.stringToBiddings(json):new SimpleList<Bidding>();
-			Utilities.changeCritrium();
+			Utilities.changeCritrium();			
+			
 		case UPDATE_BID:
 			Constants.biddingsList = (json.length()>0)?Utilities.stringToBiddings(json):new SimpleList<Bidding>();
 			Utilities.changeCritrium();
+			
 			break;
 		case GETIMG:
 			String datas[] = json.split(" ");

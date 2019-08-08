@@ -90,10 +90,10 @@ public class ConstantsView {
 	public static final String TEXT_DATE_INI = "FECHA DE INICIO";
 	public static final String TEXT_DATE_FIN = "FECHA DE CIERRE";
 	public static final String TEXT_HOUR_PUB = "HORA DE LA PUBLICACION";
-	public static final String TEXT_HOUR_INI = "HORA DE CIERRE";
+	public static final String TEXT_HOUR_INI = "HORA DE INICIO";
 	public static final String TEXT_HOUR_FIN = "HORA DE CIERRE";
 	public static final String TEXT_ABOUT_BID = "SOBRE LA SUBASTA";
-	public static final String TEXT_TYPE_INCREMENT = "TIPO DE INCEMENTO";
+	public static final String TEXT_TYPE_INCREMENT = "TIPO DE INCREMENTO";
 	public static final String TEXT_MIN_VALUE = "VALOR MINIMO";
 	public static final String TEXT_TYPE_BID = "TIPO DE SUBASTA";
 	public static final String TEXT_AUTOMATIC = "Automatico";
